@@ -1,0 +1,32 @@
+include ../../theme_elephant/allMixin
+extends ../../theme_elephant/layout
+block content
+    include ../../theme_elephant/partials/_header
+    include ../../theme_elephant/partials/_navArea
+    include ../../theme_elephant/partials/_navAreaSecondary
+    div.container
+        .row.mtop15
+            #breaking-news-section
+                -if(data['breaking-news-section'] && data['breaking-news-section'].templateData && data['breaking-news-section'].templateData.mixinName){
+                                +#{data['breaking-news-section'].templateData.mixinName}(data['breaking-news-section'])
+                -}
+        .row.mtop15
+            .col-md-8.no-padding.pright15
+               .outer_wrapper.clearfix
+                    .row.mtop15
+                        .col-md-12
+                           ul(class="cp-authors-grid")
+                                        -for(var i=0;i<env.partnerCatData.length;i++){
+                                            li(class="col-md-4 col-sm-6")
+                                                a(href="#{env.partnerCatData[i].url}",class="cp-author-box")
+                                                    
+                                                    h3  #{env.partnerCatData[i].name}
+                                                    // p ( #{env.partnerAuthorData[i].total_news} )
+                                              
+                                        -}
+            .col-md-4.no-padding
+                include ../../theme_elephant/partials/_genericRightSection
+                      
+            
+    include ../../theme_elephant/partials/_footer
+

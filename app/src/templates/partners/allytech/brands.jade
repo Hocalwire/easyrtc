@@ -1,0 +1,39 @@
+include ../../theme_service/allMixin
+
+extends ../../theme_service/layout
+block content
+    div.homepage
+        include ../../theme_service/partials/_header
+        include ../../theme_service/partials/_brandscontent
+        include ../../theme_service/partials/_brandsFeatures
+        include ../../theme_service/partials/_brandsidentity
+        //- +ourPartners()
+        include ../../theme_service/partials/_features
+        
+        //- include partials/_recentWork
+        //- include ../../theme_service/partials/_valueAdds
+
+        //- section(id="middle")
+        //-     div(class="container")
+        //-         div(class="row")
+                    
+        //-             div(class="col-sm-6 wow fadeInDown")
+        //-                 include partials/_ourSkills
+        //-             div(class="col-sm-6 wow fadeInDown")
+        //-                 div(class="accordion")
+        //-                 h2 Why People like us?
+        //-                 include partials/_whyLikeUs
+        
+        //- .row
+        //-     .col-md-12.col-sm-12.col-xs-12.col-lg-12.packages_home_big_wrap#partner.position_why
+        //-         .col-md-4.col-sm-4.col-xs-12
+        //-             h2 Why Us?
+        //-             //- include partials/_packagesHome
+        //-         .col-md-8.col-sm-8.col-xs-12.padding_top_bottom35
+        //-             include partials/_whyLikeUs
+        //- include partials/_ourPartners
+        
+        include ../../theme_service/partials/_requestDemo
+    include ../../theme_service/partials/_footer
+
+        

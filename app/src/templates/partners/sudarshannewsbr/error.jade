@@ -1,0 +1,43 @@
+include ../../theme_cobra/allMixin
+include ../../common/_registerReporter
+extends ../../theme_cobra/layout
+block content
+    include ../../theme_cobra/partials/_header
+    div(id="sb-site", class="body_wraper_box")
+        include ../../theme_cobra/partials/_navArea
+        //- +stickySocialShare("","",true)
+        div(class="main_content row")
+            div(class="content_wraper three_columns_container box-item")
+                div(class="twelve columns")
+                    #level_top_full
+                div(class="twelve columns")
+                    div(class="eight columns clearfix home_left_section")
+                        .container
+                            .row
+                                .eight.columns
+                                    h1 Some Error Occured
+                                    h2 (Error)
+                            .row
+                                .eight.columns
+                                        
+                                    h3
+                                      | We&apos;re sorry, but looks like something went wrong. Now we know about it we&apos;ll try to fix it. 
+                                    |     
+                                    ul.arrow-list
+                                          
+                                      li
+                                        a(href='/') Go to homepage
+                    .four.columns
+                        div(class="twelve columns clearfix")
+                            .sidebar.side-bar.right-sidebar
+                                include ../../theme_cobra/partials/_genericRightSection
+                div(class="content_wraper three_columns_container")
+                    div(class="row")
+                        #level_bottom_full
+                            -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                                +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                            -}
+
+        include ../../theme_cobra/partials/_footer
+block scripts
+    include ../../common/_reporterResources

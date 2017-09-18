@@ -1,0 +1,56 @@
+.footer-widgets
+        .wrapper
+            .widget
+                h3 Reach us
+                .socialize-widget
+                    ul.list-group
+                        li
+                            i.fa.fa-location-arrow.fa-fw
+                                b
+                                    |  Ammembala Media
+                            br      
+                            | #13, 2nd Floor,
+                            br  
+                            | Vishwanatha Rao Road, Near Jain Temple,
+                            br
+                            | Madhavanagara, Bengaluru- 560001
+                        li
+                            i.fa.fa-phone.fa-fw
+                            | 08069990888
+                        li
+                            i.fa.fa-envelope.fa-fw
+                            | bfirst.in@gmail.com
+            .widget(style='background: red;')
+                h3.active Other Links
+                .comments-block.ot-tab-block.active
+                    ul.list-group
+                        li
+                            a(href='/contact-us', target='') Contact Us
+                        li
+                            a(href='/about-us', target='') About Us
+                        li
+                            a(href='/privacy-policy', target='')  Privacy Policy
+                        li
+                            a(href='/disclaimer', target='') Disclaimer
+                        li
+                            a(href='/all-authors', target='') All Authors
+                        li
+                            a(href='/all-categories', target='') All Categories
+            .widget
+                h3 Trending Tags
+                -if(env.partnerData.trendingTags && env.partnerData.trendingTags.length >0){
+                    .content-item.cipos-2.cirpos-2.clearfix 
+                      .tagcloud
+                        -for(var i=0;i<env.partnerData.trendingTags.length-1;i++){
+                            a(href="#{env.rootUrl}/search?search=#{env.partnerData.trendingTags[i].value}&search_type=tags") #{env.partnerData.trendingTags[i].name}
+                                
+                        -}
+                          a(href="#{env.rootUrl}/search?search=#{env.partnerData.trendingTags[env.partnerData.trendingTags.length-1].value}&search_type=tags") #{env.partnerData.trendingTags[env.partnerData.trendingTags.length-1].name}
+                -}
+.footer-copyright
+    .wrapper
+        p.left
+        | © partner name (All Rights Reserved)
+        p.right
+            strong
+                a(href='http://hocalwire.com', target='_blank') Hocalwire.com

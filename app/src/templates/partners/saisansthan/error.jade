@@ -1,0 +1,20 @@
+include ../../theme_mouse/allMixin
+extends ../../theme_mouse/layout
+block content
+    .boxed.active
+        .wrapper
+            include ../../theme_mouse/partials/_header
+        section.content
+            .wrapper
+                .main-content.has-sidebar
+                    #top-three-section
+                        -if(data['top-three-section'] && data['top-three-section'].templateData && data['top-three-section'].templateData.mixinName){
+                                                +#{data['top-three-section'].templateData.mixinName}(data['top-three-section'])
+                        -}
+                    .left-content
+                        h1 Some error occured. Now we know the error we will fix it soon.
+                        br
+                        | Sorry for the inconvineance.
+                    aside#sidebar
+                        include ../../theme_mouse/partials/_homeRightSection
+                include ../../theme_mouse/partials/_footer

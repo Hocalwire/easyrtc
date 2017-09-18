@@ -1,0 +1,26 @@
+include ../../theme_duck/allMixin
+extends  ../../theme_duck/layout
+block content
+    include ../../theme_duck/partials/_header
+    div.wrapper.punica-home-1#about-us-page
+        #main-content
+            div.container1.punica-home-1
+                div#contentSection.wrapper
+                    .wrapper
+                        .widget-area-2.pull-left.punica-shadow-box
+                            .bg-404
+                                .error404-content
+                                   
+                                    h1  Sorry this page never returned from a trip to server.
+                                    div.clearfix.error-button-wrapper
+                                        a.error-button(href="/") Go to HomePage
+                        div.widget-area-3.sidebar.pull-left.punica-shadow-box
+                            include ../../theme_duck/partials/_genericRightSection
+                        div.clear
+                        #level_bottom_full
+                            -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                                +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                            -}
+                    
+    div.clear                  
+    include ../../theme_duck/partials/_footer

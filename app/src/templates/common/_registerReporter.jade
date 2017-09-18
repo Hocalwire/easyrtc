@@ -1,0 +1,63 @@
+include contents/_dateTimeType
+include contents/_dateType
+include contents/_inputType
+include contents/_selectType
+include contents/_radioType
+include contents/_textareaType
+include contents/_mediaType
+include contents/_checkboxType
+mixin registerAsReporter(data)
+    -if(env.query.on_behalf && (!env.partnerLoginData || env.partnerLoginData.state!="APPROVED")){
+        +includeElement(data,"not_approved_for_content_create_on_behalf")
+    -} else {
+        #before_form_data
+        .container-fluid.register-reporter
+            form(name="myForm" data-redirect="#{env.query.redirecturl}" id='myForm' method="post",data-content-type="#{data.content_type_name || data[0].content_type_name}",data-on-behalf="#{env.query.on_behalf}",data-by-agent="#{env.query.submit_by_agent}",data-uid="#{env.partnerLoginData && env.partnerLoginData.userId ?  env.partnerLoginData.userId : ''}")
+                input(style="display:none",name="content_type_name",value="#{data.content_type_name || data[0].content_type_name}")
+                -for(var count=0;count<data.length;count+=2){
+                    -var limit = count+2>data.length?data.length:count+2
+                    .col-md-12.padding-top5
+                        .row
+
+                            -for(var i=count;i<limit;i++){
+                                -var o = data[i]
+                                -var mandatory = ""
+                                -if(o.is_mandatory && o.is_mandatory == "true") mandatory = "*"
+                                -var type = o.inputType
+                                .col-md-6.col-sm-12.padding-left5.padding-right5.padding-top5.reporter_content_row
+                                    div.data-heading #{o.display_name} #{mandatory}
+                                    div(class='errorMessages errorMessages_val_#{o.id}')
+                                    -if(type=="SELECT"){
+                                        +selectType(o)
+                                    -} else if(type=="INPUT"){
+                                        +inputType(o)
+                                    -}else if(type=="TEXT_AREA"){
+                                        +textareaType(o)
+                                    -}else if(type=="DATE"){
+                                        +dateType(o)
+                                    -}else if(type=="MEDIA"){
+                                        +mediaType(o)
+                                    -} else if(type=="CHECKBOX"){
+                                        +checkboxType(o)
+                                    -} else if(type=="RADIO"){
+                                        +radioType(o)
+                                    -} else if(type=="LOCATION_SELECT"){
+                                        select(class="location_select location_select_#{o.extra_css}" data-params='#{o.extra_params}')
+                                    -}
+                            -}
+                -}
+                .row
+                    .col-md-12
+                        .success_msg_div
+                .row
+                    .col-md-12
+                        div.submit
+                            a(class='js-submit-register-form') Submit
+            .errorHandling
+        #after_form_data
+        
+                
+        
+       
+    -}
+    

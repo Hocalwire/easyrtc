@@ -1,0 +1,103 @@
+include ../../theme_duck/allMixin
+extends  ../../theme_duck/layout
+block content
+    include ../../theme_duck/partials/_header
+    div.wrapper.punica-home-1#about-us-page
+        #main-content
+            div.container1.punica-home-1
+                div#contentSection.wrapper
+                    .wrapper
+                        .widget-area-2.pull-left.punica-shadow-box
+                            include ../../theme_duck/partials/_breadcrumb
+                            //- .widget.punica-map-widget
+                            //-     .punica-map-wrapper
+                            //-         #punica-map.punica-map(data-place='New Delhi', data-latitude='28.7124568', data-longitude='77.1172135')
+                            //-     // punica-map-wrapper
+                            //- // punica-map-widget
+                            .widget.widget_text
+                                h4.widget-title About us
+                                
+                                p About SMESTREET.IN
+
+                                p With an urge to serve the much-needed service to the Indian SMEs, SMEStreet.in is created to become a dynamic platform for SMEs. A platform on which SMEs can not only expect valued content for their business growth but also network with experts who can guide them to achieve growth.
+
+                                p As part of Vertical Business Media Pvt. Ltd. SMEStreet.in is an initiative dedicated to contribute in Indian SMEs’ growth.
+
+                                p This portal has established a direct engagement with SMEs. As part of this direct engagement, there are four critical elements of SMEStreet.in. A strong offline action plan is designed for such engagement. This offline plan includes events, panel discussions and power interactions at SME’s door step.
+
+                                p.bold Key Objectives
+                                p SMEStreet.in is an efficient and dynamic platform for Indian SMEs. The content inflow for this portal not only includes news, analysis, interviews and success stories but it also have a window of opportunity to enhance the profitability of business, personalized networking with subject matter experts and insightful market research data.
+
+                                p The initiative has Entrepreneurs and CXOs of SME organizations as the core audience. The whole experience of being part of SMEStreet.in is aimed at contributing great value in the business growth.
+
+                                p.bold Key Goals of this Initiative:
+
+                                p To Become the facilitator of growth for SMEs
+                                p To Produce Market Insights regarding SMEs
+                                p To Bring Opportunities closer to SMEs
+                                p To Develop and nurture Growth through Cluster Development Approach
+                                p.bold Key People
+                                p Faiz Askari- Editor | CEO
+                                p Tabinda Hilal- Director – Market Outreach
+                                p Raj K Pathak – Adviser
+                                p Surindar Sharma- Adviser 
+                                p Vishnu Sharma – Adviser
+                                p Mehul Gupta – Adviser
+                                p Sunil Goenka – Adviser
+                                p GK Pramod – Adviser
+
+                                h4.widget-title Contact us 
+                                p Vertical Business Media Pvt. Ltd.
+
+                                p Phone: 0129-4084301 / 9711522304
+                                p Email: info@smestreet.in/ faiz@smestreet.in
+                                p Web: www.verticalmedia.co.in
+
+                                
+                            .widget.punica-contact-widget.contact-us-form
+                                h4.widget-title Your data will be safe!
+                                form.contact-form.clearfix
+                                    p Your email address will not be published. Required fields are marked *
+                                    .row
+                                        .col-md-4.col-sm-4.col-xs-12
+                                            p.input-block
+                                                label.required(for='name')
+                                                    | Name 
+                                                    span (*)
+                                                input#name.valid(type='text', name='name', placeholder="Name (*)")
+                                                #err-name.error.contact-us-error.left-align(style='display:none;') Please enter your name.
+                                        .col-md-4.col-sm-4.col-xs-12
+                                            p.input-block
+                                                label.required(for='email')
+                                                    | Email 
+                                                    span (*)
+                                                input#email.valid(type='text', name='email', placeholder="Email (*)")
+                                                #err-email.error.contact-us-error.left-align(style='display:none;') Please enter your Email.
+                                        .col-md-4.col-sm-4.col-xs-12
+                                            p.input-block
+                                                label.required(for='subject') Subject
+                                                input#subject.valid(type='text', placeholder="Subject..." name='url')
+
+                                    // row
+                                    p.textarea-block
+                                        label.required(for='message')
+                                            | Your message 
+                                            span (*)
+                                        textarea#message(rows='6', cols='88', name='message', placeholder="Your message (*)") 
+                                        #err-message.error.contact-us-error.left-align(style='display:none;') Please enter your Message.
+                                    p.contact-button.clearfix
+                                        input#submit-contact.input-submit.js-btn-submit-contact(type='submit', value='Send message')
+                                #success-common.error.common-error.coloralert(style='display:none;')
+                                    #response Message Sent Successfully
+                                #err-common.error.common-error(style='display:none;')
+                                    #response Message Send Error
+                    div.widget-area-3.sidebar.pull-left.punica-shadow-box
+                        include ../../theme_duck/partials/_genericRightSection
+                    div.clear
+                        #level_bottom_full
+                            -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                                +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                            -}
+                    
+    div.clear                  
+    include ../../theme_duck/partials/_footer

@@ -1,0 +1,23 @@
+.navbar-inverse, .sb-icon-search {
+	background:#ff8200;
+}
+
+.navigation-breadcrumb {
+	background: #e2e2e2 !important
+}
+
+#main-menu li ul li:hover {
+  background: #ff8200;
+}
+
+.single_post_content>h2,.single_sidebar>h2 {
+	background: none repeat scroll 0 0 #ff8200;
+}
+
+.single_post_content>h2 span,.single_sidebar>h2 span {
+	background: none repeat scroll 0 0 #ffffff;
+}
+.breadcrumb {
+    border-left: 10px solid #008fd7;
+}
+

@@ -1,0 +1,111 @@
+include ../../theme_specialcoverage/mixin/_mainBigSlider
+include ../../theme_specialcoverage/mixin/_newsList
+include ../../theme_specialcoverage/mixin/_newsListStrip
+include ../../theme_specialcoverage/mixin/_newsListWithPreview
+
+include ../../theme_specialcoverage/mixin/_newsSlider
+include ../../theme_specialcoverage/mixin/_newsTiles
+include ../../theme_specialcoverage/mixin/_newsTilesWithDetails
+include ../../theme_specialcoverage/mixin/_newsWithTabs
+include ../../theme_specialcoverage/mixin/_newsWithTopBig
+include ../../theme_specialcoverage/mixin/_photoGallery
+include ../../theme_specialcoverage/mixin/_newsDetailsMain
+include ../../theme_specialcoverage/mixin/_headerCatNews
+
+extends ../../theme_specialcoverage/layout
+block content
+    
+    .kopa-single-2
+        .wrapper.kopa-shadow
+            .row-fluid
+                div.span12.clearfix
+                    header#page-header
+                      include ../../theme_specialcoverage/partials/_topCatHeader
+                      #header-top.clearfix
+                        #top_category_news
+                          -if(data['top_category_news'] && data['top_category_news'].templateData && data['top_category_news'].templateData.mixinName){
+                            +#{data['top_category_news'].templateData.mixinName}(data['top_category_news'])
+                          -}
+                        #partner_social_links
+                          .social-search-box
+                            include ../../theme_specialcoverage/partials/_socialLinks
+                    #main-content
+                        .row-fluid
+                          .span12
+                            .breadcrumb.clearfix
+                                //- span You are here:
+                                //- |                             
+                                //- a(href='index.html') Home
+                                //- |                             
+                                //- span /
+                                //- |                             
+                                //- span.current-page Single post
+                  
+                        #main-col
+                          #ad_details_main_level_1.entry-box.clearfix.hide
+                          //- #news_details_main.entry-box.clearfix
+
+                          section.clearfix
+                            h1(style="color:black") Contact Us – specialcoveragenews.com
+                            .kopa-divider
+
+                            br
+                            b Special Coverage News
+                            br
+                            span Address:- GC-57, 5th Floor, Aditya Gold Crest, Kala Pathar Road, Vaibhav Khand, Indirapuram, Ghaziabad (U.P.)
+                            br
+                            br
+                            span You can contact our teams.
+                            br
+                            br
+
+                            b Mr. Shiv Kumar Mishra
+                            br
+                            span Phone No- +91 9891544545
+                            br
+                            br
+                            b Mr. Neeraj Sharma
+                            br
+                            span Phone No- +91 945601400
+                            br
+                            br
+                            span You can contact us by email at 
+                            a(href="mailto:specialcoveragenews@gmail.com") specialcoveragenews@gmail.com
+                            span  or 
+                            a(href="mailto:editor@specialcoveragenews.com") editor@specialcoveragenews.com
+                            span , Special Coverage News will respond to you shortly
+                            
+                            .right-col
+                              ul.arrow-list
+                                    
+                                li
+                                  a(href='/') Go to homepage
+                            iframe(style="width:100%;height:300px", src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7003.565138424677!2d77.35793486326996!3d28.63627801972887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce54b52ee9723%3A0x2cbfeadd413bb998!2sSpecial+Coverage+News%2C+GC-57%2C+Aditya+Gold+Crest%2C+Vaibhav+Khand%2C+Indirapuram%2C+Ghaziabad+(U.P.)%2C+GC-57%2C+Aditya+Gold+Crest%2C+Kala+Pathar+Marg%2C+Aditya+Mega+City%2C+Vaibhav+Khand%2C+Indirapuram%2C+Ghaziabad%2C+Uttar+Pradesh+201014!5e0!3m2!1sen!2sin!4v1457338932482")
+                            
+                          #ad_details_main_level_2.entry-box.clearfix.hide
+                                             
+                          
+                          #comments
+                            //- .news-content Comments (news_comments)
+                          // comments
+                        // main-col
+                        .widget-area-3.sidebar
+                          #ad_right_level_1.widget.kopa-adv-widget.hide
+                                            
+                          #news_tabs_right_level_1.widget.kopa-article-list-widget
+                            -if(data['news_tabs_right_level_1'] && data['news_tabs_right_level_1'].templateData && data['news_tabs_right_level_1'].templateData.mixinName){
+                                +#{data['news_tabs_right_level_1'].templateData.mixinName}(data['news_tabs_right_level_1'])
+                            -}
+                          #ad_right_level_2.widget.kopa-adv-widget.hide
+                            
+                          #news_listing_right_level_2.widget.kopa-most-review-widget
+                            -if(data['news_listing_right_level_2'] && data['news_listing_right_level_2'].templateData && data['news_listing_right_level_2'].templateData.mixinName){
+                                +#{data['news_listing_right_level_2'].templateData.mixinName}(data['news_listing_right_level_2'])
+                            -}
+                          #news_listing_right_level_3.widget.kopa-most-review-widget
+                            -if(data['news_listing_right_level_3'] && data['news_listing_right_level_3'].templateData && data['news_listing_right_level_3'].templateData.mixinName){
+                                +#{data['news_listing_right_level_3'].templateData.mixinName}(data['news_listing_right_level_3'])
+                            -}
+                        .clear
+            include ../../theme_specialcoverage/partials/_footer 
+                         

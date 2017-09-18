@@ -1,0 +1,13 @@
+mixin socialShareOld(newsUrl,title,showSharingImage,large,type)
+  ul.social-link.clearfix
+      li Like Post:
+      
+      li
+        div(class="fb-like", data-href="#{env.rootUrl}#{data.baseUrl || data.newsUrl}", data-layout="button_count" data-action="like", data-show-faces="false", data-share="true")
+      li
+        a(class="twitter-share-button no-ajaxy", data-url="#{data.baseUrl || data.newsUrl}", href="https://twitter.com/intent/tweet?text=#{env.rootUrl}#{data.baseUrl || data.newsUrl}", style="float:left") Tweet
+      -if(env.isMobile){
+        li.whatsapp-img
+          a(href="whatsapp://send?text=#{encodeURIComponent(data.title)} #{env.rootUrl}#{data.baseUrl || data.newsUrl}", target="_blank") 
+            img(src="/images/whatsapp.png") 
+      -}

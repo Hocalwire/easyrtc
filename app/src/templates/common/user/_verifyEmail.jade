@@ -1,0 +1,46 @@
+section#content
+  .container
+    .row
+      .hocal_col.hocal_col_12.common-user-pages
+        div#verify-email-page(data-role="page")
+          .page-login-form.box-wrapper-verify.form
+            .page-login-form.box-wrapper-verify
+            -if(data.status=="0"){
+              h3
+                | Congratulations
+                
+              .collapset-title.no-border
+                | Your Email Verification is successful. Please login to continue
+              a.btn.btn-common.log-btn.js-btn-submit-register(href="/login") Login
+            -} else {
+                -if(!env.query["regenerate-email"] && !env.query["regenerate-phone"]){
+                    .collapset-title.no-border
+                        | Your Email Verification has failed. Please regenrate verifcation code by entering email again.
+                        br
+                
+                -}
+                div.regenrate-validate.common-user-pages
+                  .form1
+                    -if(env.partnerData.registration_verification_mode=="otp"){
+                        div.wrapper-to-generate-otp
+                          p Enter mobile number to generate OTP
+                          input#email-address.verify-email-input(type='text', name='email', placeholder='Phone Number',value="#{env.query.mobile || ''}")
+                          a.btn.btn-common.log-btn.js-btn-submit-regenerate-email-code.buttom Regenerate
+                        div.verify-otp-wrapper.hide
+                            include _verifyOTPForm
+                    -} else {
+                        p Enter Email Id
+                        input#email-address.verify-email-input(type='text', name='email', placeholder='Email Address')
+                        a.btn.btn-common.log-btn.js-btn-submit-regenerate-email-code.buttom Regenerate
+                    -}
+                  
+                
+                
+                h5.regenrate-message.hide
+            -}
+
+            
+            
+            
+
+  

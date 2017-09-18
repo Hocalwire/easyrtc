@@ -1,0 +1,49 @@
+include ../../theme_cobra/allMixin
+include ../../common/_registerReporter
+extends ../../theme_cobra/layout
+block content
+    include ../../theme_cobra/partials/_header
+    div(id="sb-site", class="body_wraper_box")
+        include ../../theme_cobra/partials/_navArea
+        //- +stickySocialShare("","",true)
+        div(class="main_content row")
+            div(class="content_wraper three_columns_container box-item")
+                div(class="twelve columns")
+                    #level_top_full
+                div(class="twelve columns")
+                    div(class="eight columns clearfix home_left_section")
+                        .container
+                            .row
+                                .eight.columns
+                                    h1.single-post-title.page-title Privacy Policy
+                                    p(style='text-align:justified')
+                                    | Introduction: Sudarshantv.com is committed to respecting your online privacy and recognize your need for appropriate protection and management of any personally identifiable information ("Personal Information") you share with us. Sudarshantv.com has established this Online Privacy Policy so that you can understand the care with which we intend to treat your Personal Information. 
+                                    br
+                                    | Personal Information means any information that may be used to identify an individual, including, but not limited to, a first and last name, a home or other physical address and an email address or other contact information, whether at work or at home. In general, you can visit Sudarshantv.com's web pages without telling us who you are or revealing any Personal Information about yourself. 
+                                    br
+                                    | If you choose to provide us with your Personal Information on web, we may transfer that Information within Sudarshantv.com or to Sudarshantv.com's third-party service providers, across borders, and from your country or jurisdiction to other countries or jurisdictions around the world.
+                                    br
+                                    | Sudarshantv.com strives to comply with all applicable laws around the globe that are designed to protect your privacy. Although legal requirements may vary from country to country, Sudarshantv.com intends to adhere to the principles set forth in this Online Privacy Policy even if, in connection with the above, we transfer your Personal Information from your country to countries that may not require an "adequate" level of protection for your Personal Information. In other words, our goal is to provide protection for your Personal Information no matter where that Personal Information is collected, transferred, or retained. 
+                                    br
+                                    | Cookies and Other Tracking Technologies: Some of our web pages utilize "cookies" and other tracking technologies. A "cookie" is a small text file that may be used, for example, to collect information about web site activity. Some cookies and other technologies may serve to recall Personal Information previously indicated by a Web user. Most browsers allow you to control cookies, including whether or not to accept them and how to remove them. You may set most browsers to notify you if you receive a cookie, or you may choose to block cookies with your browser. 
+                                    br
+                                    | Tracking technologies may record information such as Internet domain and host names; Internet protocol (IP) addresses; browser software and operating system types; click stream patterns; and dates and times that our portal is accessed. Our use of cookies and other tracking technologies allows us to improve our portal and your web experience. We may also analyze information that does not contain Personal Information for trends and statistics. 
+                                    br
+                                    | Third Party Services: Third parties provide certain services available on Sudarshantv.com on own behalf. Sudarshantv.com may provide information, including Personal Information, that Sudarshantv.com collects on web to third-party service providers to help us deliver programs, products, information, and services. Commitment: We are committed to privacy and, through our membership in Online Privacy Alliance, are actively involved in and support current industry initiatives to preserve individual privacy rights on Internet. Protecting your privacy online is an evolving area, and Sudarshantv.com is constantly evolving to meet these demands. If you have any comments or questions regarding our Online Privacy Policy, please contact us at info@sudarshantv.com. While we cannot guarantee privacy perfection, we will address any issue to the best of our abilities as soon as possible. 
+                                    br
+                                    | Your Consent: By using this portal, you consent to the terms of our Online Privacy Policy and to Sudarshantv.com's processing of Personal Information for the purposes given above as well as those explained where Sudarshantv.com collects Personal Information on web. We intend to take every reasonable step to ensure that changes are brought to your attention by posting all changes prominently on our portal for a reasonable period of time.
+                                    
+                    .four.columns
+                        div(class="twelve columns clearfix")
+                            .sidebar.side-bar.right-sidebar
+                                include ../../theme_cobra/partials/_genericRightSection
+                div(class="content_wraper three_columns_container")
+                    div(class="row")
+                        #level_bottom_full
+                            -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                                +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                            -}
+
+        include ../../theme_cobra/partials/_footer
+block scripts
+    include ../../common/_reporterResources

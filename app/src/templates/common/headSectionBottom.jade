@@ -1,0 +1,19 @@
+-if('!{env.partnerData.extraStylePath}'!="undefined" && '!{env.partnerData.extraStylePath}'!=""){
+    style.
+        !{env.partnerStylingData}
+-}
+-if(env.partnerData.extraPreloadResouces){
+    -for(var i=0;i<env.partnerData.extraPreloadResouces.js.length;i++){
+        script(type="text/javascript", src="#{env.partnerData.extraPreloadResouces.js[i]}")
+    -}
+    -for(var i=0;i<env.partnerData.extraPreloadResouces.css.length;i++){
+        link(rel="stylesheet", type="text/css", href="#{env.partnerData.extraPreloadResouces.css[i]}")
+    -}
+-}
+block head-content
+    //- link(rel="alternate", href= env.pageUrl, hreflang="#{env.lang=='hi' ? 'hi' : 'en'}")
+    block canonical
+        link(rel='canonical', href= env.pageUrl, hreflang="#{env.lang=='hi' ? 'hi' : 'en'}")
+    block other-head-content
+include preloadGTM
+

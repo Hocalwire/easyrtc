@@ -1,0 +1,5 @@
+#
+# robots.txt for http://www.hocalwire.com
+
+User-agent: *
+Allow: /

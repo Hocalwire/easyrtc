@@ -1,0 +1,11 @@
+mixin checkboxType(data)
+    -var options = data.options
+    input(class="checkbox_type", data-name="#{data.name}",data-display-name="#{data.display_name}", data-validation='#{data.validation_type}', id='val_#{data.id}',name='val_#{data.id}', style='width:22px;display:none;', type='text' value='')
+    -if(options && options.length){
+        -for(var i=0;i<options.length;i++){
+            input(class="checkbox_input_#{data.name}",data-display-name="#{data.display_name}", data-validation='#{data.validation_type}', data-mandatry='#{data.is_mandatory}', id='val_#{options[i].name}',name='val_#{options[i].name}', style='width:22px;', type='checkbox' value='#{options[i].display_name}')
+            div(style='padding-right:15px;display:inline-block;') #{options[i].display_name}
+        -}
+    -}
+    
+    

@@ -1,0 +1,120 @@
+extends ../../theme_lion/layout
+include ../../theme_lion/allMixin
+block content
+  div#login-page(data-role="page")
+     include ../../theme_lion/partials/_headerTop
+     include ../../theme_lion/partials/_headerMiddle
+     include ../../theme_lion/partials/_headerBottom
+    .main-content
+        .container
+          .row
+            section#pricePlans
+              ul#plans
+                li.plan
+                  ul.planContainer
+                    li.title
+                      h2 Plan 1
+                    li.price
+                      p
+                        | $10/
+                        span month
+                    li
+                      ul.options
+                        li
+                          | 2x 
+                          span option 1
+                        li
+                          | Free 
+                          span option 2
+                        li
+                          | Unlimited 
+                          span option 3
+                        li
+                          | Unlimited 
+                          span option 4
+                        li
+                          | 1x 
+                          span option 5
+                    li.button
+                      a(href='#') Purchase
+                li.plan
+                  ul.planContainer
+                    li.title
+                      h2.bestPlanTitle Plan 2
+                    li.price
+                      p.bestPlanPrice $20/month
+                    li
+                      ul.options
+                        li
+                          | 2x 
+                          span option 1
+                        li
+                          | Free 
+                          span option 2
+                        li
+                          | Unlimited 
+                          span option 3
+                        li
+                          | Unlimited 
+                          span option 4
+                        li
+                          | 1x 
+                          span option 5
+                    li.button
+                      a.bestPlanButton(href='#') Purchase
+                li.plan
+                  ul.planContainer
+                    li.title
+                      h2 Plan 3
+                    li.price
+                      p
+                        | $30/
+                        span month
+                    li
+                      ul.options
+                        li
+                          | 2x 
+                          span option 1
+                        li
+                          | Free 
+                          span option 2
+                        li
+                          | Unlimited 
+                          span option 3
+                        li
+                          | Unlimited 
+                          span option 4
+                        li
+                          | 1x 
+                          span option 5
+                    li.button
+                      a(href='#') Purchase
+                li.plan
+                  ul.planContainer
+                    li.title
+                      h2 Plan 4
+                    li.price
+                      p
+                        | $40/
+                        span month
+                    li
+                      ul.options
+                        li
+                          | 2x 
+                          span option 1
+                        li
+                          | Free 
+                          span option 2
+                        li
+                          | Unlimited 
+                          span option 3
+                        li
+                          | Unlimited 
+                          span option 4
+                        li
+                          | 1x 
+                          span option 5
+                    li.button
+                      a(href='#') Purchase
+
+

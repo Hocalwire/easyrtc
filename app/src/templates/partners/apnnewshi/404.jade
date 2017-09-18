@@ -1,0 +1,28 @@
+include ../../theme_panda/allMixin
+
+extends ../../theme_panda/layout
+block content
+    div.wrapper
+        .header
+            include ../../theme_panda/partials/_topHeader
+            include ../../theme_panda/partials/_navArea
+        .top-tick
+            .adBlock
+                .mainBlock(align='center')
+                    #level_top_ticker
+        .topAd
+            .adBlock
+                .mainBlock(align='center')
+                    #level_top_ad
+        .container
+            #centerScecMain.innerLeftScecMain
+                    .bg-404
+                        .error404-content
+                           
+                            h1  Sorry this page never returned from a trip to server.
+                            div.clearfix.error-button-wrapper
+                                a.error-button(href="/") Go to HomePage
+            .rightScecMain
+                include ../../theme_panda/partials/_detailRightSection
+        .clear
+        include ../../theme_panda/partials/_footer

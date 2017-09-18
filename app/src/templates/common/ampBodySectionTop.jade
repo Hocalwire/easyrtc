@@ -1,0 +1,4 @@
+div#content(data-registration-mode="#{env.partnerData.registration_verification_mode}", data-partner="#{env.partner}",data-sessionid="#{env.requestSessionId}", data-has-ga-store-key="#{env.has_ga_store_key ? env.has_ga_store_key: ''}",data-newsid = "#{env.newsId ? env.newsId : ''}",data-path="#{env.pathname}",data-logging-enabled="#{env.partnerData.enable_logging?env.partnerData.enable_logging:''}",data-request-id="#{env.requestId ? env.requestId : ''}",data-referer="#{env.referer?env.referer:''}",class="prettyphoto")
+	<!--INFOLINKS_OFF-->
+    block content
+div#generic_ad_block   

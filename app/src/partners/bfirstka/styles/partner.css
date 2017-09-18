@@ -1,0 +1,34 @@
+
+*{
+	font-family: Merriweather,sans-serif;
+}
+.paragraph-row .follow-us-links .social_nav{
+	float: right !important;
+}
+.paragraph-row .follow-us-links .social_nav li{
+	float: right !important;
+}
+.paragraph-row .header-date-row {
+	text-align: right !important;
+}
+.paragraph-row .header-date-row span {
+    margin-right: 10px;
+}
+.cp-mega-menu .drop-down.full-width{
+	width:100% !important;
+	
+}
+.cp-mega-menu .drop-down li a {
+    color: #ffffff !important;
+    background-color: #1c1c1c !important;
+}
+.cp-mega-menu .drop-down{
+	background: #1c1c1c !important;
+	border-top: 3px solid #fc0203;
+}
+.cp-mega-menu .drop-down.full-width.col-5>li{
+	background: #1c1c1c !important;
+}
+.waves-button{
+	color:#f2f2f2;
+}

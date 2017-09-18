@@ -1,0 +1,124 @@
+extends ../../theme_dolphin/layout
+include ../../theme_dolphin/allMixin
+block content
+    include ../../theme_dolphin/partials/_header
+    div.container
+        
+        include ../../theme_dolphin/partials/_navArea
+        div#contentSection
+            div.row.row_main#article-post-page
+                div(class="col-md-12")
+                    #level_top_full
+                        -if(data['level_top_full'] && data['level_top_full'].templateData && data['level_top_full'].templateData.mixinName){
+                            +#{data['level_top_full'].templateData.mixinName}(data['level_top_full'])
+                        -}
+                div#contact-us-page(data-role="page",class="col-lg-12 col-md-12 col-sm-12 contact-us-page")
+
+                    div(class="top_left_content")
+                        div.breadcrumb-static
+                            include ../../theme_dolphin/partials/_breadcrumb
+                            h2 Contact Us
+                            div(class="cp-post-content")
+                                
+                                .contact-us-page
+                                    h1(style="color:black") Contact Us – specialcoveragenews.com
+                                    .kopa-divider
+
+                                    br
+                                    b Special Coverage News
+                                    br
+                                    span Address:- GC-57, 5th Floor, Aditya Gold Crest, Kala Pathar Road, Vaibhav Khand, Indirapuram, Ghaziabad (U.P.)
+                                    br
+                                    br
+                                    span You can contact our teams.
+                                    br
+                                    br
+
+                                    b Mr. Shiv Kumar Mishra
+                                    br
+                                    span Phone No- +91 9891544545
+                                    br
+                                    br
+                                    b Mr. Neeraj Sharma
+                                    br
+                                    span Phone No- +91 945601400
+                                    br
+                                    br
+                                    span You can contact us by email at 
+                                    a(href="mailto:specialcoveragenews@gmail.com") specialcoveragenews@gmail.com
+                                    span  or 
+                                    a(href="mailto:editor@specialcoveragenews.com") editor@specialcoveragenews.com
+                                    span , Special Coverage News will respond to you shortly
+                                    
+                                    .right-col
+                                      ul.arrow-list
+                                            
+                                        li
+                                          a(href='/') Go to homepage
+                                    iframe(style="width:100%;height:300px", src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7003.565138424677!2d77.35793486326996!3d28.63627801972887!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390ce54b52ee9723%3A0x2cbfeadd413bb998!2sSpecial+Coverage+News%2C+GC-57%2C+Aditya+Gold+Crest%2C+Vaibhav+Khand%2C+Indirapuram%2C+Ghaziabad+(U.P.)%2C+GC-57%2C+Aditya+Gold+Crest%2C+Kala+Pathar+Marg%2C+Aditya+Mega+City%2C+Vaibhav+Khand%2C+Indirapuram%2C+Ghaziabad%2C+Uttar+Pradesh+201014!5e0!3m2!1sen!2sin!4v1457338932482")
+                                           
+                                    span.contact-us-headers  You can also contact us by filling form bellow
+                                    .cp-contactus
+                                      // Contact Info
+                                      .container
+                                        .row
+                                          .col-md-6
+                                            .cp-contact-form
+
+                                              form.material.contact-us-form
+                                                #success-common.error.common-error(style='display:none;')
+                                                #err-common.error.common-error(style='display:none;')
+                                                ul
+                                                    
+                                                    li.input-group
+                                                        
+                                                        span.input-group-addon
+                                                            i.icon-2
+                                                        input.form-control(name="name", id="name", type='text', placeholder='Name')
+                                                        #err-name.error.contact-us-error.left-align(style='display:none;') Please enter your name.
+                                                    li.input-group
+                                                        
+                                                        span.input-group-addon
+                                                            i.fa.fa-envelope
+                                                        input.form-control(name="email", id="email",type='text', placeholder='Email')
+                                                        #err-email.contact-us-error.error.left-align(style='display:none;') Please enter your email.
+                                                    li.input-group
+                                                        
+                                                        span.input-group-addon
+                                                            i.fa.fa-paperclip
+                                                        input.form-control(name="subject", id="subject",type='text', placeholder='Subject')
+                                                        #err-subject.contact-us-error.error.left-align(style='display:none;') Please enter a subject.
+                                                    li.input-group
+                                                        
+                                                        span.input-group-addon
+                                                            i.fa.fa-pencil
+                                                        textarea.form-control(name="message", id="message",placeholder='Message')
+                                                        #err-message.error.contact-us-error.left-align(style='display:none;') Please enter your message.
+                                                    li
+                                                        button.btn.btn-submit.waves-effect.waves-button.js-btn-submit-contact(type='submit')
+                                                            | Submit 
+                                                            i.fa.fa-angle-right
+                                         
+                                      
+                    +socialShare("/about-us","About Us",true)
+                        
+                //- div(class="col-lg-4 col-md-4 col-sm-4")
+                //-     aside(class="right_content")
+                //-         include ../../theme_dolphin/partials/_genericRightSection
+            #ad_first_middle
+            div.row.row_main
+                div(class="col-lg-12 col-md-12 col-sm-12")   
+                     include ../../theme_dolphin/partials/_genericMiddleSection
+            div.row.row_main
+                div(class="col-lg-12 col-md-12 col-sm-12")
+                    #level_bottom_full
+                        -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                            +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                        -}
+                    div.comments-wrapper
+                        #comments
+                            
+                        
+        include ../../theme_dolphin/partials/_footer
+    
+                 

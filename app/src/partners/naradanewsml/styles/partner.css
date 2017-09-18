@@ -1,0 +1,44 @@
+
+
+@font-face {
+    font-family: 'narada';
+    src: url('/fonts/Manjari-Regular.woff2') format('woff2'),
+		 url('/fonts/Manjari-Regular.woff') format('woff'),
+		 url('/fonts/Manjari-Regular.ttf') format('truetype');
+    font-style: normal;
+}
+@font-face {
+    font-family: 'narada bold';
+    src: url('/fonts/Manjari-Bold.woff2') format('woff2'),
+		 url('/fonts/Manjari-Bold.woff') format('woff'),
+		 url('/fonts/Manjari-Bold.ttf') format('truetype');
+    font-style: normal;
+}
+* {
+    font-family: narada,Raleway,sans-serif;
+}
+ a.head-link.normal,.latest-stories .story-in a.head-link {
+    font-family: "narada", sans-serif;
+    font-weight: normal;
+    line-height: 18px;
+    font-size: 15px;
+}
+a.head-link{
+  font-weight: 500 !important;
+}
+/* #mob-menu:after {
+    border-top: 3px solid #1c1c1c !important;
+    border-bottom: 3px solid #1c1c1c !important;
+}
+#mob-menu:before {
+    border-top: 3px solid #1c1c1c !important;
+    border-bottom: 3px solid #1c1c1c !important;
+}
+@media only screen and (max-width: 880px){
+    .logo {
+        padding: 10px;
+        width: 100%;
+        float: none;
+        background: #fff;
+    }
+} */

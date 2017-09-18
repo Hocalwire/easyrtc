@@ -1,0 +1,41 @@
+include ../../theme_zebra/allMixin
+extends ../../theme_zebra/layout
+block content
+   div.container
+     include ../../theme_zebra/partials/_header
+     include ../../theme_zebra/partials/_navArea
+     div#contentSection
+        div.row#contact-us-page
+              div(class="col-lg-8 col-md-8 col-sm-8")
+                  .left_content
+                    // start contact area
+                    .contact_area
+                      h2 About Us
+                      p
+                        | Resource Digest is a pioneering monthly Indian magazine, established in 2008, specializing in content related to the mineral and hydrocarbon resources of the country. The magazine aims to bring into focus all issues, big and small, pertaining to these sectors, to showcase India’s achievements, to highlight the experts involved and to stand as a sentinel in proper use of the nation’s resources for general welfare.<br /><br />Resource Digest draws its strength from the support of luminaries engaged in the mineral and hydrocarbon sectors - economists, sociologists and professionals, and expects to fill a vacuum in the Indian economy. Since India embarked on a new phase of economic policy – from a licence-control-raj to one where market and competition are the guiding spirits, the mainstream media has largely ignored the mineral sectors. As a result there have been very few public debates on the extraction of resources, and news about these sectors reached public domain only in cases of disasters or as a part of political reports. Resource Digest is committed to rectify this omission.<br /><br />Today we are observing a global scramble for owning natural resources, with companies crossing borders to set up bases wherever there are plenty of the natural resources. In the process, nations are reworking their rule books and sovereignty is taking on a new meaning.
+                        br
+                        | A natural corollary of this process is a relook at the rights of the natives. Often enough there are conflicts – between the original settlers on resource-rich lands and the possible economic exploitation of the same. Such conflicts are more pronounced in a democratic society like India, where population pressure on land is more than countries like Australia or Canada, and even China. Resource Digest will address these debates with the intent to arrive at a consensus between the two apparently conflicting sets of agenda – that of the natives and the resource prospectors.
+                        br
+                        | The magazine will reach the policymakers, bureaucrats and opinion leaders so that healthy debates can resolve the seemingly insurmountable conflicts, while placing well-researched opinions in the mainstream media. The accompanying portal, www.resourcedigest.info will help in broadcasting the debate to a much larger base across the world.
+                        br
+                        | Resource Digest is determined to emerge as a one-stop-platform for all resource-related issues in India. This will strike a balance between the global and local views, covering narrow political interests and the broader global economic views, and bridge the gap between the armchair theoretician and the person at the bottom of the pyramid who is threatened by the new developments.
+                        br
+                        | Resource Digest, the magazine, features news, editorials, interviews, snippets and special reports from the chosen sectors. The online portal, in addition to providing the magazine articles on the Internet, features news that is updated daily on a real-time basis, and allows readers to comment on the articles, thus encouraging active online debates. This dual approach, supported with lucid writing and accurate and relevant reporting, is the core competence of the magazine.
+                        br
+                        | The editorial board of Resource Digest comprises Mr. Sugato Hazra, noted writer, journalist and consultant, and Mr. Durbar Ganguly, who is as well known for his journalistic background spanning eighteen years as his business acumen in managing media productions.
+                        br
+                        | Resource Digest is distributed among top Indian bureaucrats, politicians including central cabinet ministers, media and industry professionals, foreign embassies and Indian missions overseas.
+                        br
+                        | For more information, please contact us at 
+                        a(href="mailto:info@resourcedigest.info" class="links2")
+                          info@resourcedigest.info
+                      
+              div(class="col-lg-4 col-md-4 col-sm-4")
+                  aside(class="right_content")
+                      include ../../theme_zebra/partials/_homeRightSection
+                div(class="col-lg-12 col-md-12 col-sm-12")
+                    #level_bottom_full
+                        -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                            +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                        -}
+        include ../../theme_zebra/partials/_footer

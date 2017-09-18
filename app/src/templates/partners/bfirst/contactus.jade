@@ -1,0 +1,43 @@
+include ../../theme_bear/allMixin
+extends ../../theme_bear/layout
+block content
+    .boxed.active
+        .wrapper
+            include ../../theme_bear/partials/_header
+        section.content
+            .wrapper
+                .main-content.has-sidebar
+                    #top-three-section
+                        -if(data['top-three-section'] && data['top-three-section'].templateData && data['top-three-section'].templateData.mixinName){
+                                                +#{data['top-three-section'].templateData.mixinName}(data['top-three-section'])
+                        -}
+                    .left-content
+                        h1.banner.margin-bottom10 Contact Us
+                        .paragraph-row
+                            .column12
+                                .column6.left
+                                    h3 Bangalore Head Office:
+                                    p www.bfirst.in
+                                    p #13, 2nd Floor,
+                                    p Vishwanatha Rao Road, Near Jain Temple,
+                                    p Madhavanagara, Bengaluru- 560001
+                                    p Ph: 08069990888
+                                    p email: bfirst.in@gmail.com
+                                    p Web: www.bfirst.in
+                                .column6.left
+                                    iframe(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15551.559898775906!2d77.57686606868724!3d12.978888453616166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd73ff3a4d2fd6e5c!2sBfirst.in!5e0!3m2!1sen!2sin!4v1490791018806', width='100%', height='250', frameborder='0', style='border:0', allowfullscreen='')
+                            .column12.no-margin-left
+                                .column6.left
+                                    h3 Correspondence Address in USA:
+                                    p 19210, Carrington Club Dr
+                                    p Unit 721,
+                                    p Cornelius NC 28031
+                                    p email: prashanthbfirst.in@gmail.com
+                                
+                                .column6.left
+                                    iframe(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3249.0948907502693!2d-80.88348668522302!3d35.47719598024236!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8856a95c1cc47445%3A0x6b6d26c8f7170e92!2s19210+Carrington+Club+Dr+%23721%2C+Cornelius%2C+NC+28031%2C+USA!5e0!3m2!1sen!2sin!4v1490791115245', width='100%', height='250', frameborder='0', style='border:0', allowfullscreen='')
+
+                                    
+                    aside#sidebar
+                        include ../../theme_bear/partials/_homeRightSection
+                include ../../theme_bear/partials/_footer

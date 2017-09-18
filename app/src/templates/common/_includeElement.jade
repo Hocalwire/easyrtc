@@ -1,0 +1,18 @@
+mixin includeElement(data,idv,classv,style)
+    -if(style){
+        -if(data[idv] && data[idv].templateData && data[idv].templateData.mixinName){
+            div(a="#{data[idv].templateData.mixinName}",id="#{idv}",class="#{classv? classv :''}",style="#{style}")
+                +#{data[idv].templateData.mixinName}(data[idv])
+        -} else {
+            div(id="#{idv}",class="#{classv? classv :''} hide",style="#{style}")
+        -}
+    -} else {
+        -if(data[idv] && data[idv].templateData && data[idv].templateData.mixinName){
+            div(id="#{idv}",class="#{classv? classv :''}")
+                +#{data[idv].templateData.mixinName}(data[idv])
+        -} else {
+            div(id="#{idv}",class="#{classv? classv :''} hide")
+        -}
+    -}
+    
+    

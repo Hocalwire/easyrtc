@@ -1,0 +1,46 @@
+include ../../theme_cobra/allMixin
+include ../../common/_registerReporter
+extends ../../theme_cobra/layout
+block content
+    include ../../theme_cobra/partials/_header
+    div(id="sb-site", class="body_wraper_box")
+        include ../../theme_cobra/partials/_navArea
+        //- +stickySocialShare("","",true)
+        div(class="main_content row")
+            div(class="content_wraper three_columns_container box-item")
+                div(class="twelve columns")
+                    #level_top_full
+                div(class="twelve columns")
+                    div(class="eight columns clearfix home_left_section")
+                        .container
+                            .row
+                                .eight.columns
+                                    h1.single-post-title.page-title Production
+                                    
+                                    p(style='text-align:justified')
+                                    | Sudarshan Media Production Unit has one of the most experienced teams having expertise in conceptualizing, creation and production of content. Our video and television production services ranges from TVCs, Reality Shows, Advertiser Funded Programmes, Live Events and any other form of Audio-Video production. The team has been working on all scale of productions; be it single camera, multi-cam, indoor or outdoor location shoots across the country. 
+
+                                    | The difference with Sudarshan Media Production Unit is of course the people who work in our team committed to convey a professional service to meet your every filming need. 
+
+                                    | Our key focus is to deliver our skills and specialized knowledge on time and in line with your budget. Our dedicated team is fully geared towards achieving high standards and client satisfaction. Having worked for many projects, we relish the challenges brought to us, meeting some with the capability of our experienced staff, and others with fresh, dynamic and resourceful approaches. 
+
+                                    | Whatever be the production requirements, be it a documentary, commercial, corporate or ad film, you can expect an enthusiastic and vibrant team of seasoned professionals to look after your requirements. 
+
+                                    | Please contact us at the following numbers & email ID to discuss any kind of production requirements. 
+
+                                    | +9811999905 / +9868115710 sales@sudarshantv.com
+                                    
+                    .four.columns
+                        div(class="twelve columns clearfix")
+                            .sidebar.side-bar.right-sidebar
+                                include ../../theme_cobra/partials/_genericRightSection
+                div(class="content_wraper three_columns_container")
+                    div(class="row")
+                        #level_bottom_full
+                            -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                                +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                            -}
+
+        include ../../theme_cobra/partials/_footer
+block scripts
+    include ../../common/_reporterResources

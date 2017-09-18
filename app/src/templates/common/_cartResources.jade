@@ -1,0 +1,73 @@
+
+-if(env.lazyloadResources){
+    - if(environment === 'development') {
+        -if(!env.excludeBootStrap){
+            link(rel="preload", href="/styles/cart/bootstrap.css", as="style", onload="this.rel='stylesheet'")
+        -}
+        
+        link(rel="preload", href="/styles/cart/cartpage.css", as="style", onload="this.rel='stylesheet'")
+        -if(!env.excludeBootStrap){
+            script(type="text/javascript", src="#{Utils.getCDNUrl('scripts/cart/bootstrap.js')}")
+        -}
+        
+        script(type="text/javascript", src="#{Utils.getCDNUrl('scripts/cart/jquery.mycart.js')}")
+        script(type="text/javascript", src="#{Utils.getCDNUrl('scripts/cart/custom.js')}")
+
+        
+    - } else {
+        -if(!env.excludeBootStrap){
+            link(rel="preload", href="/styles/cartpage.min.c05ac6e0.css", as="style", onload="this.rel='stylesheet'")
+        -} else {
+            link(rel="preload", href="/styles/cartpagewithoutbootstrap.min.f720e296.css", as="style", onload="this.rel='stylesheet'")
+        -}
+        
+        script.
+            var loadDeferredStylesCart = function() {
+                var head = document.getElementsByTagName("head")[0];
+                var s = document.createElement("script");
+                s.type = "text/javascript";
+                s.src = '!{env.excludeBootStrap}'=='true' ? "/scripts/cartpagejswithoutbootstrap.min.d6df7db6.js":'/scripts/cartpagejs.min.d2ddd943.js';
+                head.appendChild(s);
+                var event = new CustomEvent("EXTRA_PAGE_RESOURCES_LOADED", { "detail": "ALL DEPENDENCIES LOADED" });
+                document.dispatchEvent(event);
+            
+            };
+            document.addEventListener("RESOURCES_LOADED", function(e) {
+                loadDeferredStylesCart();
+            });
+        
+    - }
+
+-} else {
+    - if(environment === 'development') {
+        -if(!env.excludeBootStrap){
+            link(rel="preload", href="/styles/cart/bootstrap.css", as="style", onload="this.rel='stylesheet'")
+        -}
+        
+        link(rel="preload", href="/styles/cart/cartpage.css", as="style", onload="this.rel='stylesheet'")
+        -if(!env.excludeBootStrap){
+            script(type="text/javascript", src="#{Utils.getCDNUrl('scripts/cart/bootstrap.js')}")
+        -}
+        
+        script(type="text/javascript", src="#{Utils.getCDNUrl('scripts/cart/jquery.mycart.js')}")
+        script(type="text/javascript", src="#{Utils.getCDNUrl('scripts/cart/custom.js')}")
+
+        
+
+            
+    - } else {
+        -if(!env.excludeBootStrap){
+            link(rel="stylesheet", href="/styles/cartpage.min.c05ac6e0.css")
+        -} else {
+            link(rel="stylesheet", href="/styles/cartpagewithoutbootstrap.min.f720e296.css")
+        -}
+        
+        -if(!env.excludeBootStrap){
+            script(type="text/javascript", src="/scripts/cartpagejs.min.d2ddd943.js")
+        -} else {
+            script(type="text/javascript", src="/scripts/cartpagejswithoutbootstrap.min.d6df7db6.js")             
+        -}
+            
+    - }
+    
+-}

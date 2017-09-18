@@ -1,0 +1,105 @@
+.logo img {
+    height: 87px;
+    padding-top: 3px;
+    padding-bottom: 15px;
+}
+.top-head-wrap {
+    min-height: 30px;
+    background: #fdfff7;
+    border-bottom: 3px solid #ec1c24;
+}
+#navArea {
+    height: 40px;
+    background: #0c4891;
+    z-index: 99999;
+}
+.sb-icon-search {
+    color: #fff;
+    background: rgb(227, 196, 192);
+}
+.latest_newsarea span {
+    background: #0c4891;
+}
+.latest_newsarea {
+    background-color: rgb(227, 196, 192);
+}
+.newsticker li a {
+    color:#000;
+}
+.heading_main {
+    background: #0c4891;
+}
+.head-title {
+    border-color: #106b0d;
+    border-bottom: 3px solid #0c4891;
+}
+.static-links.dark-bg {
+    background: rgb(10, 21, 18);
+}
+.cp-mega-menu>ul>li {
+    border-right: 1px solid #617fa9;
+}
+.cp-mega-menu>ul>li>a {
+    font-size: 17px;
+    font-weight: 500;
+}
+.latest_newsarea a {
+    font-size: 17px;
+    font-weight: 500;
+}
+.tickercontainer {
+    padding-top: 2px;
+}
+
+.maxheight {
+    background: #231c1c;
+    color: #fff;
+    text-align: center;
+    margin-top: 5px;
+    font-size: 19px;
+    padding: 10px;
+}
+#slippry img {
+    height:200px;
+}
+.about-v-profile {
+    font-size: 16px;
+}
+.about-doc-problems {
+    text-align: center;
+    margin: 20px;
+}
+.text1 {
+    font-size: 22px;
+    color: red;
+}
+.center-me .newsSocialIcons {
+    text-align: center;
+}
+.center-me .newsSocialIcons .blog-share-socials{
+    width: 200px;
+    float: none;
+    display: inline-block;
+}
+.full-section-hocalwire-ad {
+    background: #f9f9f9;
+    text-align: center;
+    border: 1px solid #ccc;
+}
+a.head-link {
+    font-size: 15px !important;
+}
+.hocal-page-header {
+    border-bottom: 1px dotted #0c4891;
+    padding-bottom: 8px;
+    margin-bottom: 25px;
+    color: #0c4891;
+    font-size: 30px;
+    text-transform: uppercase;
+}
+.static-page-content {
+    margin: 0 0 22px;
+    font-size: 19px;
+    text-align: justify;
+    line-height: 1.5;
+}

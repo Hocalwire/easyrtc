@@ -1,0 +1,14 @@
+div.hide#screen_capture_for_snap_share
+    div.cropAndPreviewArea
+    div.share-icon Share On Social Media
+    .row.top-post-social.mtop15.mbtm15
+        div.center
+            -if(env.isMobile){
+                a.watsapp(href="whatsapp://send?text=ENCODED_TITLE_URL") 
+                    span 
+            -}
+            a.fb(title="Facebook", href="http://www.facebook.com/share.php?u=ENCODED_URL", target="_blank")
+                span
+            a.twitter(title="Twitter", href="http://twitter.com/intent/tweet?u=ENCODED_URL&text=ENCODED_TWITTER_TITLE", target="_blank")
+                span
+           

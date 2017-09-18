@@ -1,0 +1,40 @@
+include ../../theme_cow/allMixin
+extends ../../theme_cow/layout
+block content
+        include ../../theme_cow/partials/_header
+        include ../../theme_cow/partials/_navArea
+        section.clearfix
+            .left
+                .huge-message1
+                    h1 All Authors & Guest Writers
+                    .details-content-story
+                        div(class="cp-authors")
+                            div(class="row")
+                                div.ash
+                                -var userGroups = env.partnerData.display_user_groups
+                                -var authorData = env.partnerAuthorData
+                                -if(userGroups && userGroups.length){
+                                    li.has-user-groups ashwani
+                                    -authorData = authorData.filter(function(item){
+                                        return (userGroups.indexOf(item.group_id)>-1)
+                                    })
+                                -}
+                                div(my="#{userGroups.length}")
+                                ul(class="cp-authors-grid")
+                                    -for(var i=0;i<authorData.length;i++){
+                                        -if(authorData[i].total_news >0){
+                                            li(class="col-md-4 col-sm-6")
+                                                a(href="#{authorData[i].url}",class="cp-author-box")
+                                                    div(class="cp-thumb")
+                                                        img(src="#{authorData[i].imageUrl}")
+                                                    h3  #{authorData[i].name}
+                                                    p ( #{authorData[i].total_news} )
+                                        -}
+                                        
+                                          
+                                    -}
+            .right
+                include ../../theme_cow/partials/_genricRightSection
+            
+        include ../../theme_cow/partials/_footer
+

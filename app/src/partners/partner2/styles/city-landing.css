@@ -1,0 +1,157 @@
+#features {
+	background: #000;
+}
+.top-read-all-news{
+	text-align:  center;
+}
+#one {
+	padding-top:0px;
+}
+#features {
+	padding-top: 30px;
+}
+#features .box-item .text {
+	padding-top:10px;
+}
+#features .box-item h4 {
+
+}
+#features .box-item p {
+
+}
+.feature-top {
+	padding-top:10px;
+}
+.navbar {
+	margin-top: -43px;
+}
+.navbar.navbar-fixed-top{
+	margin-top:0px;
+}
+.page-heading {
+	font-size: 16px;
+    background: white;
+    text-align: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+    
+}
+#js-footer {
+	margin-bottom: 0px;
+}
+#js-footer .row-fluid, #js-footer a {
+	display: none;
+}
+
+/* download app popup styling */
+#download-app #popup-features table tr {
+	background:white;
+}
+#download-app .popup-heading {
+	padding: 10px 5px 20px 5px;
+    font-size: 17px;
+}
+#download-app .popup-heading-top {
+	color: black;
+    padding: 5px;
+    font-size: 18px;
+    font-weight: normal;
+    border-bottom: 1px solid #ccc;
+}
+#download-app #download-app-content{
+    text-align: center;
+    margin-right: 5px;
+}
+
+#download-app {
+  color:black;
+}
+#download-app .close-cross {
+  background: #ccc;
+  padding: 5px 10px;
+  height: 50px;
+}
+#download-app .closelink {
+  margin-top:0px;
+  padding:0;
+}
+#download-app .modalbox {
+	background: white;
+	border: 3px solid #ccc;
+}
+#download-app #download-now {
+	padding: 10px 16px;
+    font-size: 18px;
+    line-height: 1.33;
+    background: #F7C805;
+    border-radius: 6px;
+    display: table;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    border: 1px solid transparent;
+    margin: 0 auto;
+    margin-top: 12px;
+    color: black;
+    text-decoration: none;
+    width: 80%;
+}
+#download-app table tbody tr {
+    border-style: none;
+    border-width: 0px;
+}
+#download-app table p {
+    margin: 0px;
+}
+#download-app table .icon i {
+    font-size:25px;
+}
+#download-app .popup-heading-top-span{
+    display:inline;
+}
+
+#download-app .app-features-heading {
+	font-size: 20px;
+    text-align: center;
+    border-bottom: 1px solid #ccc;
+    font-weight: bold;
+    color: #F7C805;
+}
+#download-app .join-commnity{
+	color:#3c3c3c;
+	font-size: 18px;
+	padding-top: 10px;
+	text-align: center;
+}
+span.listing-data {
+	padding: 0px 10px 0px 0px;
+}
+p.listing-data-wrapper{
+	margin: 5px 0px;
+    width: 100%;
+    padding: 0px 5px;
+}
+.image-grid a {
+    text-decoration: none;
+    color: black;
+    padding: 5px 5px;
+}
+.page-title {
+	text-align: center;
+	color:black;
+	width:100%;
+	font-size: 20px;
+	margin-top: 15px;
+}
+h1, h2, h3, h4, h5, h6 {
+    font-weight: 700;
+    line-height: 1em;
+    margin: 0 0 1em 0;
+    text-transform: none;
+}
+@media (max-width: 480px)  {
+  #download-app .modalbox {
+		border-bottom: none;
+	}
+}
+/* end */

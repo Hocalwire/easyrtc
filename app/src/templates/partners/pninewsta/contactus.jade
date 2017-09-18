@@ -1,0 +1,57 @@
+extends ../../theme_dragon/layout
+include ../../theme_dragon/allMixin
+block content
+    div(class="boxed")
+         include ../../theme_dragon/partials/common/_header
+        div(class="clear-float")
+        div.content.margin10
+            div.wrapper
+                div.news-ticker-area#news_ticker_area
+                    -if(data['news_ticker_area'] && data['news_ticker_area'].templateData && data['news_ticker_area'].templateData.mixinName){
+                        +#{data['news_ticker_area'].templateData.mixinName}(data['news_ticker_area'])
+                    -}
+                #level_top_full
+                    -if(data['level_top_full'] && data['level_top_full'].templateData && data['level_top_full'].templateData.mixinName){
+                        +#{data['level_top_full'].templateData.mixinName}(data['level_top_full'])
+                    -}
+                div(class="main-content-left")
+                  .content-article-title
+                    h2 Contact Us
+                    .right-title-side
+                      br
+                      a(href='/')
+                        span.icon-text ⌂
+                        | Back To Homepage
+                  .shortcode-content
+                      .paragraph-block
+                        | Contact us will be updated soon.
+                      br 
+                      br 
+                      .paragraph-block
+                        h2 Send Us a Message
+                        .contact-form
+                          form#writemessage(action='contact-us-success.html', method='post')
+                            label(for='author')
+                              | Name:
+                              span.required *
+                            input#author(type='text', placeholder='My name', name='author', style='width: 100%;')
+                            br
+                            br
+                            label(for='email')
+                              | E-mail:
+                              span.required *
+                            input#email(placeholder='e.g. email@mail.me', type='text', name='email',style='width: 100%;')
+                            br
+                            br
+                            label(for='comment') Message:
+                            textarea#comment(placeholder='Your message..')
+                            br
+                            br
+                            input#submit.submit-button(name='submit', type='submit', value='Send a Message')
+                      br 
+                      br 
+                     
+                div(class="main-content-right")
+                    include ../../theme_dragon/partials/_othersRightSection
+                .clear-float
+        include ../../theme_dragon/partials/_footer

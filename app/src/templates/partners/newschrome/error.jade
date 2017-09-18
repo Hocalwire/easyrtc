@@ -1,0 +1,84 @@
+include ../../theme_fox/mixin/_includeCatDropdown
+include ../../theme_fox/mixin/_megaMenuWithChilds
+include ../../theme_fox/mixin/_megaMenuWithoutChilds
+include ../../theme_fox/mixin/_newsFullCarousel
+include ../../theme_fox/mixin/_newsFullCarouselWithDescription
+include ../../theme_fox/mixin/_newsGrid
+include ../../theme_fox/mixin/_newsGridDouble
+include ../../theme_fox/mixin/_newsGridSmall
+include ../../theme_fox/mixin/_newsLinks
+include ../../theme_fox/mixin/_newsListing
+include ../../theme_fox/mixin/_newsListingSmall
+include ../../theme_fox/mixin/_newsListingSmallHeadingOnly
+include ../../theme_fox/mixin/_newsMediumCarousel
+include ../../theme_fox/mixin/_newsOneBigOtherSmall
+include ../../theme_fox/mixin/_newsOneBigOtherTiles
+include ../../theme_fox/mixin/_newsTiles
+include ../../theme_fox/mixin/_newsTilesWithCatname
+include ../../theme_fox/mixin/_newsTwoBigOtherSmall
+include ../../theme_fox/mixin/_newsTwoBigOtherTiles
+include ../../theme_fox/mixin/_relatedPost
+extends ../../theme_fox/layout
+block content
+    div.wrapper
+        include ../../theme_fox/partials/_headerWrapper
+
+        //- div#top_full_carousel
+        //-   -if(data['top_full_carousel'] && data['top_full_carousel'].templateData && data['top_full_carousel'].templateData.mixinName){
+        //-         +#{data['top_full_carousel'].templateData.mixinName}(data['top_full_carousel'])
+        //-   -}
+        div(class="main-content")
+            div(class="container")
+                div(class="row")
+                    div(class="col-md-8")
+                        .cp-single-post
+    
+                            include ../../theme_fox/partials/_websiteCurrentTags
+                            include ../../theme_fox/partials/_breadcrumb
+                            #left_level_1.left_level_1
+                            
+                            #left_level_2.left_level_2
+                            
+                            .details-content-story
+                                    div(class="p404")
+                                        h1 Error Occured
+                                        img(src="/images/p404-icon.png" alt="")
+            
+                                        h2  OOPS!
+                                            br
+                                            |   Page Not Found</h2>
+                                        strong  We&apos;re sorry, but looks like something went wrong. Now we know about it we&apos;ll try to fix it.  
+
+                                        div(class="loadmore-holder")
+                                             a(class="load waves-effect waves-button", href="/")    HomePage 
+                                                i(class="fa fa-home")
+                                
+                                div.social
+                                    .entry-box
+                                        -if(env.partnerData.facebookUrl || env.partnerData.twitterUrl){
+                                            ul.social-link.clearfix
+                                              li Like Us:
+                                              -if(env.partnerData.facebookUrl){
+                                                li
+                                                  div(class="fb-like", data-href="#{env.partnerData.facebookUrl}", data-layout="button_count" data-action="like", data-show-faces="false", data-share="true")
+                                              -}
+                                              -if(env.partnerData.twitterUrl){
+                                                li
+                                                  a(class="twitter-follow-button", href="#{env.partnerData.twitterUrl}") Follow
+                                              -}
+                                          
+                                        -}
+                            #left_level_3.right_level_3
+                            
+                            #left_level_4.right_level_4
+                                  
+                    div(class="col-md-4")
+                        .sidebar.side-bar.right-sidebar
+                            include ../../theme_fox/partials/_staticRightSection
+                div(class="row")
+                    div(class="col-lg-12 col-md-12 col-sm-12")
+                        #level_bottom_full
+                            -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                                +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                            -}
+        include ../../theme_fox/partials/_footer

@@ -1,0 +1,23 @@
+include ../../theme_wolf/allMixin
+extends ../../theme_wolf/layout
+block content
+    .boxed.active
+            include ../../theme_wolf/partials/_header
+        section.content
+            .wrapper
+                .main-content.has-sidebar
+                    #top-three-section
+                        -if(data['top-three-section'] && data['top-three-section'].templateData && data['top-three-section'].templateData.mixinName){
+                                                +#{data['top-three-section'].templateData.mixinName}(data['top-three-section'])
+                        -}
+                    .left-content
+                        h1.banner About Us
+                          
+                        br
+                        p.center
+                            img(src="/images/logo.png")
+                        p दैनिकं रॉयल बुलेटिन 1985 में मुज़फ्फरनगर [उत्तर प्रदेश]से शुरू हुआ उत्तर प्रदेश का प्रमुख हिन्दी दैनिक समाचार पत्र है,जिसके इस समय 5 संस्करण प्रकाशित होते है 
+                        p इसका मुख्यालय रॉयल हाउस,174-गाँधी कॉलोनी,मुज़फ्फरनगर [उत्तर प्रदेश ] में है और एनसीआर कार्यालय 318-जयपुरिया प्लाजा,सेक्टर-२६ नॉएडा है |
+                    aside#sidebar
+                        include ../../theme_wolf/partials/_homeRightSection
+            include ../../theme_wolf/partials/_footer

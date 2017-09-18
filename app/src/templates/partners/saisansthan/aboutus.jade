@@ -1,0 +1,38 @@
+include ../../theme_mouse/allMixin
+extends ../../theme_mouse/layout
+block content
+    .boxed.active
+        .wrapper
+            include ../../theme_mouse/partials/_header
+        section.content
+            .wrapper
+                .main-content.has-sidebar
+                    #top-three-section
+                        -if(data['top-three-section'] && data['top-three-section'].templateData && data['top-three-section'].templateData.mixinName){
+                                                +#{data['top-three-section'].templateData.mixinName}(data['top-three-section'])
+                        -}
+                    .left-content
+                        h1.banner About Us
+                        
+                        h3.banner BFirst.in - Bridging Perceptions
+                        br
+                        p BFirst.in is an online news portal dedicated to news that matter to us while celebrating the views and thoughts of a common man.
+
+                        p Our objective is simple: Be First in sharing news that matter to you, to the community and society. BFirst is the brainchild of Ammembala Media, which has a team of journalists, have been the FIRST to share news that matter to you and me. A much-respected journalists, known for their their democratic views and passion towards culture and heritage are associated with the project.
+
+                        p Started on December 4, 2015, Bfirst.in has made rapid strides - steadily climbing the online ranking .
+
+                        p Bfirst.in offers a platter of fresh, exciting, useful and reliable information on the immediate community, society, civic matters, politics, sports, cinema, art and culture... Importantly, anything and everything that concerns you and interests you.
+
+                        p In our endeavour to bring to our readers a 360-degree view to information, we have the honour of bringing together a panel of thinkers and writers on varied subjects who will demystify or share the other side of the story.
+
+                        p Our philosophy is to bridge perceptions and celebrate the cultural connect among the Indian diaspora flourishing across the globe, by sharing news and the inside stories. Bfirst will also be a diasporic bridge between Bangalore/Karnataka and rest of the world, thus connecting the natives to their roots.
+
+                        p BFirst also aims to bring to the limelight the cultures or communities within the country which has minimal or no representation like the ones in North-East India, Old Mysore, South Kanara, Malabar and connect them to the mainstream. Veterans and cubs from diverse areas of life from around the globe will write on topics that interest/ affect them.
+
+                        p We intend to be your information and your voice within the reasonable boundaries of Freedom of Speech and Expression. We vouch to offer you information that is unbiased or unadulterated by fanatical ideologies, isms or preconceived notions.
+
+                        p As a diligent online forum, we look forward to catapult Indians and Indian culture on the global platform and provide a platform for netizens across the world for a universal connect. Let's connect and unite as global citizens.
+                    aside#sidebar
+                        include ../../theme_mouse/partials/_homeRightSection
+                include ../../theme_mouse/partials/_footer

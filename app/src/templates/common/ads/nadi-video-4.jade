@@ -1,0 +1,175 @@
+.outer.nadi-ad.nadi-inline.open
+    .level_1
+        .hocal_row
+            div.video-player-wrapper
+                //- iframe.video-ad-iframe(src="http://www.youtube.com/embed/CFGGSve0KJU" autoplay="0",frameborder="0" allowfullscreen)
+                div#player3(data-ip="#{env.requestIp}")
+                
+        div.callback-wrapper
+            -env.adunitname="nadi-video-4"
+            .hocal_row
+                h4(style="background:#e6e6da;margin-bottom:5px;") Call &nbsp;
+                    -if(env.isMobile){
+                        a.add-wrapper.video-ad-unit.video-open-form(href="tel:08595197197", onclick="$('.callback-wrapper').removeClass('hide');",data-category="nadi-ad",data-label="video-ad-4",data-ip="#{env.requestIp}")
+                            span(style="font-weight:bold;font-size:20px;color:red") 08595 197 197 
+                        | या कालबैक के लिए मोबाइल नंबर दे
+                    -} else {
+                        a.add-wrapper.video-ad-unit(onclick="$('.callback-wrapper').removeClass('hide');",data-category="nadi-ad",data-label="video-ad-4",data-ip="#{env.requestIp}")
+                            span(style="font-weight:bold;font-size:22px;color:red") 08595 197 197 
+                        | या कालबैक के लिए मोबाइल नंबर दे
+                    -}
+                    
+                .hocal_row.ad-form-wrapper
+                    input#mobile.ad-mobile.ad-input.primary.open(tabindex="1",type='text', placeholder='Mobile Number', name='mobile')
+                    
+                    input#name.ad-name.ad-input.hide(tabindex="1",type='text', placeholder='Your Name', name='name')
+                    div.btn-hold
+                        a.nadi-ad-submit-btn(tabindex="3") Submit
+                    .hocal_row
+                        div.hide.success-msg Thanks for providing details, we will call you back.
+                    
+
+                input.unitname.hide(value="#{env.adunitname}")
+
+            style.
+                .nadi-form-title{ text-align:center;} .ad-mobile, .ad-name{margin:0 auto !important;}
+                .ad-input.primary.open {
+                    max-width:200px; 
+                    display:inline-block !important;
+                    position: relative !important;
+                    float: left !important;
+                    left: 5px !important;
+                    top: 5px !important;
+                }
+                .nadi-ad.nadi-inline.open {
+                    padding-bottom:50px !important;
+                    border: 2px solid #080808;
+                }
+                .open .btn-hold {
+                    display: inline-block !important;
+                    position: relative !important;
+                    margin: 0px !important;
+                    float: right !important;
+                    right:10px;
+
+                }
+                .open .btn-hold a {
+                    border-radius:0px !important;
+
+                }
+                .video-ad-unit.video-open-form {
+                    cursor:pointer;
+                }
+
+
+script.
+    var partner = $("#content").data("partner");
+    var tag = document.createElement('script');
+    tag.src = "http://www.youtube.com/player_api";
+    tag.onload = function(){
+        console.log("api script is loaded, initialize player");
+        onYouTubePlayerAPIReady4();
+    }
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+    var player;
+
+    function onYouTubePlayerAPIReady4() {
+        player = new YT.Player('player3', {
+            height: '250',
+            width: '360',
+            videoId: 'ER7Ya_EzFc0',
+            events: {
+                'onReady': onPlayerReady4,
+                'onStateChange': onPlayerStateChange4
+            }
+        });
+    }
+
+    function onPlayerReady4(event) {
+        /// event.target.playVideo(); 
+    }
+    function trackAction4(actionType){
+            var clickedAlready = Hocalwire.Services.GlobalService.getCookie("_NADI_AD_UNIT_CLICKED_");
+            var isUniuque = !clickedAlready;
+            var val = isUniuque ? 1 : 0;
+            var label = "nadi-video-4"
+            var category = "nadi-ad";
+            var action = "video-click-"+actionType+"-"+partner;
+            if(window.ga){
+                window.ga('send', 'event', category, action, label,val);
+                window.ga('common.send', 'event', category, action, label,val);    
+                window.ga('common2.send', 'event', category, action, label,val);    
+            }
+            var ip = $("#player3").data("ip");
+            if(window.ga){
+                var labelnew = "ip-track-"+ip;
+                window.ga('send', 'event', category, action, labelnew,val);
+                window.ga('common.send', 'event', category, action, labelnew,val);    
+                window.ga('common2.send', 'event', category, action, labelnew,val);    
+            }
+            var clickedCount = isUniuque ? 1 : parseInt(clickedAlready)+1;
+            Hocalwire.Services.GlobalService.setCookie("_NADI_AD_UNIT_CLICKED_",clickedCount,{"path":"/","expires":new Date(new Date().getTime())+(24*7*60*60*1000)});
+            Hocalwire.Services.GlobalService.setCookie("_NADI_AD_UNIT_LOADED_","1",{"path":"/","expires":new Date(new Date().getTime())+(24*7*60*60*1000)});
+    }
+    function onPlayerStateChange4(event) {
+        if (event.data == YT.PlayerState.PLAYING) {
+            trackAction4("playing");
+
+        }
+        if (event.data == YT.PlayerState.PAUSED) {
+            trackAction4("paused");
+        }
+        if (event.data == YT.PlayerState.ENDED) {
+            trackAction4("ended");
+        }
+    }
+   
+style.
+    .video-ad-iframe {
+        height:250px;
+        max-width:100%;
+        width:auto;
+    }
+    a.video-ad-unit img {
+        cursor:pointer;
+        max-height:70px;
+    }
+    .nadi-inline {
+        border: 1px solid #ccc;
+        margin:5px;
+        padding:2px;
+        margin-bottom:10px;
+        max-width:400px;
+        text-align:center;
+        margin:0px auto;
+        width: 100%;
+        display: block;
+    }
+    .nadi-ad-submit-btn {
+        background: #13d413;
+        padding: 5px;
+        border-radius: 15px;
+        color: #fff;
+        margin-top:15px;
+        margin-bottom:15px;
+    }
+    .nadi-ad-submit-btn:hover{
+    color:#ccc;
+    cursor: pointer;
+    }
+    .btn-hold{
+        margin-top:15px;
+        margin-bottom:15px;
+    }
+    .nadi-form-title{
+    margin-bottom:15px;
+
+    }
+    .ad-input {
+        width: 86%;
+        height: 25px;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }

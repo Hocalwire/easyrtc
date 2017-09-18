@@ -1,0 +1,35 @@
+include ../../theme_fish/allMixin
+extends ../../theme_fish/layout
+block content
+    div(class="boxed")
+        include ../../theme_fish/partials/common/_header
+        //- include partials/common/_footer
+        section#content
+            .page-header
+              .container
+                .row
+                  .col-md-12
+                    .breadcrumb-wrapper
+                      h1.page-title Disclaimer
+            .container
+                .row
+                  .col-sm-8
+                    .inner-box
+                      .main-testimonials.column9
+                        p(style='text-align:justify; margin-bottom:5px;')
+                          | All information published on www.indiaprojectsnews.in has been generated or obtained from sources believed to be reliable. Domex Business Information Private Limited or www.indiaprojectsnews.in do not make any representation, warranty or assurance nor represent that all the information provided herewith is absolutely accurate or complete and it should not be relied upon as such. The content hereof does not constitute any form of advice, recommendation or arrangement by Domex Business Information Private Limited or www.indiaprojectsnews.in. 
+                        br
+                        p(style='text-align:justify; margin-bottom:5px;')
+                          | Domex Business Information Private Limited or www.indiaprojectsnews.in or its affiliates will not be liable for any direct or indirect losses caused because of readers' reliance on the same in making any specific or other decisions. Readers and subscribers are recommended to make 
+                        br
+                        p(style='text-align:justify; margin-bottom:5px;') We also do not vouch for the veracity, accuracy, reliability or completeness of any comments, articles, dates, information and other data provided by our advertisers in their advertisements or on their own websites linked to this web site under any arrangement. Nor do we vouch for the veracity or genuineness of any of the services and products advertised on this web site. Visitors dealing or transacting with our advertisers or linked web sites do so on their own risk and responsibility.
+                        br
+                        p(style='text-align:justify; margin-bottom:5px;') Viewing www.indiaprojectsnews.in website stipulates that you have read this disclaimer, fully understand it and that you indemnify the editors, writers, correspondents, designers, owners, directors, officers, managers, agents, and all employees of this website harmless from all liens or claims, financial or otherwise, whatsoever arising from your use, or business or trade or speculation conducted, or investments made on the basis of the rates, comments, articles, dates, information and other data provided by us and/or our advertisers.
+                  #sidebar.col-sm-4.sidebar.sticky_sidebar
+                    .sticky_sidebar1.theiaStickySidebar
+                        .inner-box
+                            #generic_ad_bellow_filters
+                        include ../../theme_fish/partials/_genericRightSection
+                        
+        include ../../theme_fish/partials/_footer
+    

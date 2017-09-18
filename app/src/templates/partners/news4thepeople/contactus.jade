@@ -1,0 +1,64 @@
+include ../../theme_elephant/allMixin
+extends ../../theme_elephant/layout
+block content
+    include ../../theme_elephant/partials/_header
+    include ../../theme_elephant/partials/_navArea
+    div.container
+        .row.mtop15
+            include ../../theme_elephant/partials/_breakingSocial
+        .row.mtop15
+            .col-md-8.no-padding.pright15
+                .outer_wrapper.clearfix#contact-us-page
+                    .row.mtop15
+                        .col-md-12
+                            h3.center
+                                span
+                                    | Contact Us
+                            h4.center
+                                //- span
+                                //-     | xl,xl,xl,l,xlxll, 
+                                //-     br
+                                //-     | blahblah@gmail.com
+                     .row
+                                .col-md-12
+                                    .cp-contactus
+                                        .cp-contact-form
+                                              form.material.contact-us-form
+                                                #success-common.error.common-error(style='display:none;')
+                                                #err-common.error.common-error(style='display:none;')
+                                                ul
+                                                    
+                                                    li.input-group
+                                                        
+                                                        span.input-group-addon
+                                                            i.fa.fa-user
+                                                        input.form-control(name="name", id="name", type='text', placeholder='Name')
+                                                        #err-name.error.contact-us-error.left-align(style='display:none;') Please enter your name.
+                                                    li.input-group
+                                                        
+                                                        span.input-group-addon
+                                                            i.fa.fa-envelope
+                                                        input.form-control(name="email", id="email",type='text', placeholder='Email')
+                                                        #err-email.contact-us-error.error.left-align(style='display:none;') Please enter your email.
+                                                    li.input-group
+                                                        
+                                                        span.input-group-addon
+                                                            i.fa.fa-paperclip
+                                                        input.form-control(name="subject", id="subject",type='text', placeholder='Subject')
+                                                        #err-subject.contact-us-error.error.left-align(style='display:none;') Please enter a subject.
+                                                    li.input-group
+                                                        
+                                                        span.input-group-addon
+                                                            i.fa.fa-pencil
+                                                        textarea.form-control(name="message", id="message",placeholder='Message')
+                                                        #err-message.error.contact-us-error.left-align(style='display:none;') Please enter your message.
+                                                    li
+                                                        button.btn.btn-submit.waves-effect.waves-button.js-btn-submit-contact(type='submit')
+                                                            | Submit 
+                                                            i.fa.fa-angle-right
+            .col-md-4.no-padding
+                include ../../theme_elephant/partials/_genericRightSection
+                      
+            
+    include ../../theme_elephant/partials/_footer
+

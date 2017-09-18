@@ -1,0 +1,82 @@
+include ../../theme_fox/mixin/_includeCatDropdown
+include ../../theme_fox/mixin/_megaMenuWithChilds
+include ../../theme_fox/mixin/_megaMenuWithoutChilds
+include ../../theme_fox/mixin/_newsFullCarousel
+include ../../theme_fox/mixin/_newsFullCarouselWithDescription
+include ../../theme_fox/mixin/_newsGrid
+include ../../theme_fox/mixin/_newsGridDouble
+include ../../theme_fox/mixin/_newsGridSmall
+include ../../theme_fox/mixin/_newsLinks
+include ../../theme_fox/mixin/_newsListing
+include ../../theme_fox/mixin/_newsListingSmall
+include ../../theme_fox/mixin/_newsListingSmallHeadingOnly
+include ../../theme_fox/mixin/_newsMediumCarousel
+include ../../theme_fox/mixin/_newsOneBigOtherSmall
+include ../../theme_fox/mixin/_newsOneBigOtherTiles
+include ../../theme_fox/mixin/_newsTiles
+include ../../theme_fox/mixin/_newsTilesWithCatname
+include ../../theme_fox/mixin/_newsTwoBigOtherSmall
+include ../../theme_fox/mixin/_newsTwoBigOtherTiles
+include ../../theme_fox/mixin/_relatedPost
+extends ../../theme_fox/layout
+block content
+    div.wrapper#aboutus-page
+        include ../../theme_fox/partials/_headerWrapper
+        div(class="main-content")
+            div(class="container")
+                div(class="row")
+                    div(class="col-md-8")
+                        .cp-single-post
+    
+                            include ../../theme_fox/partials/_websiteCurrentTags
+                            include ../../theme_fox/partials/_breadcrumb
+                            #left_level_1.left_level_1
+                            div(class="cp-post-content")
+                                h1 हमारे बारे में
+                            #left_level_2.left_level_2
+                            .details-content-story
+                                    p   “उगता-भारत” एक विचारात्मक आंदोलन है ।राष्ट्र ,राष्ट्रवाद और राष्ट्रीयता की भावना का विकास करना इसका प्रमुख उद्देश्य है । देश में क्षेत्रवाद, भाषावाद, संप्रदायवाद, जातिवाद, प्रांतवाद आदि की भावना जिस प्रकार फैल रही है उसे यह समाचार पत्र राष्ट्र ,राष्ट्रवाद ,और राष्ट्रीयता की भावना के विकास में बाधक मानता हैं।देश के सभी नागरिकों को यह अंगूर के फल की तरह ‘एकरस’ बनाना चाहता है । संतरे की फाड़ियों की तरह अपनी अपनी पहचानों के घरौंदों में कैद देशवासियों को ये वास्तविक एकता का पाठ पढ़ाना चाहता है । इस विचारात्मक आंदोलन को आप कैसे गति दिला सकते हैं? कैसे हम पुनः विश्वगुरु बन सकते हैं?इत्यादि प्रश्नों  के उत्तर लेकर यदि आप “उगता-भारत एक मिशन” के साथ जुडते है तो ये हमारा सौभाग्य होगा। हमारी आपसे अपील है कि इस समाचार पत्र को आप एक विचारक की भाँति पढ़ें ,और इसके साथ एक सुधारक की भाँति जुड़ें ।
+                                    
+                                    
+                                    b
+                                        div    अगर आपके भीतर तड़प है भारत के निर्माण की ,
+                                        div    अगर आपके भीतर लगन है मानव के कल्याण की ,
+                                        div    तो आओ एक साथ चले ,एक साथ आगे बढ़ें ,
+                                        div    सचमुच हमारी मंजिल एक है । 
+                                    
+                                    div.pull-right
+                                        div    निवेदक :राकेश कुमार आर्य
+                                        div    प्रधान संपादक “उगता-भारत”
+                                        div    
+                                            span    मो : 
+                                            a(href="tel:9911169917") 9911169917
+
+                            div.social
+                                    .entry-box
+                                        -if(env.partnerData.facebookUrl || env.partnerData.twitterUrl){
+                                            ul.social-link.clearfix
+                                              li Like Us:
+                                              -if(env.partnerData.facebookUrl){
+                                                li
+                                                  div(class="fb-like", data-href="#{env.partnerData.facebookUrl}", data-layout="button_count" data-action="like", data-show-faces="false", data-share="true")
+                                              -}
+                                              -if(env.partnerData.twitterUrl){
+                                                li
+                                                  a(class="twitter-follow-button", href="#{env.partnerData.twitterUrl}") Follow
+                                              -}
+                                          
+                                        -}
+                            #left_level_3.right_level_3
+                            
+                            #left_level_4.right_level_4
+                                  
+                    div(class="col-md-4")
+                        .sidebar.side-bar.right-sidebar
+                            include ../../theme_fox/partials/_staticRightSection
+                div(class="row")
+                    div(class="col-lg-12 col-md-12 col-sm-12")
+                        #level_bottom_full
+                            -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                                +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                            -}
+        include ../../theme_fox/partials/_footer

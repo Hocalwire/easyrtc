@@ -1,0 +1,39 @@
+#
+# robots.txt for http://www.millenniumpost.in
+User-agent: *
+Allow: /
+Disallow: /admin/*
+
+Disallow: /xhr/*
+Disallow: /refer-*
+Disallow: /Stories.aspx*
+Disallow: /all-cateogires
+Disallow: /PrivacyPolicy.aspx
+Disallow: /ForgotPassword.aspx
+Disallow: /Horoscope.aspx
+Disallow: /subscribe
+Disallow: /Terms.aspx
+Disallow: /undefined
+Disallow: /Register.aspx
+Disallow: /MPLetters.aspx
+Disallow: /eNewspaper/epaper.php
+Disallow: /Default.aspx
+Disallow: /ePaper.aspx
+Disallow: /images-of-dead-kurdish-militant-dragged-by-turkish-police-spark-outrage-107904
+Disallow: /category/Inland/*
+Disallow: /Columnists.aspx
+Disallow: /ContactUs.aspx
+Disallow: /AboutUs.aspx
+Disallow: /living-dead-river/*
+Disallow: /SundayPost.aspx
+Disallow: /africa-rising
+Disallow: /MPAdmin/ePaper/MPSupp/2Anni/260514_MP_02.pdf
+Disallow: /home.aspx
+Disallow: /rss-feed
+Disallow: /eNewspaper/article.php?articleid*
+Disallow: /OpinionList.aspx*
+
+Allow: /content/servlet/RDESController?*
+
+Sitemap: http://www.millenniumpost.in/sitemap/sitemap-index.xml
+Sitemap: http://www.millenniumpost.in/news-sitemap-daily.xml

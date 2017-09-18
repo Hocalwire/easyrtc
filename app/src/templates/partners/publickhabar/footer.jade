@@ -1,0 +1,181 @@
+//- #footer-ads
+//- .footer-content 
+//-   .footer_container
+//-     .footer.clearfix
+//-     .row
+//-       .column.column_1_3
+//-         h4.box_header a(href="#{data.url}") #{data.name} ( #{data.total_news} )
+//-         p.padding_top_bottom_25
+//-           | Maecenas mauris elementum, est morbi interdum cursus at elite imperdiet libero. Proin odios dapibus integer an nulla augue pharetra cursus.
+//-     .row
+//-       .column.column_1_2
+//-         h5 PressRoom Ltd.
+//-         -if(data.description){
+//-                     p !{data.description}
+//-                 -}
+//-       .column.column_1_2
+//-         h5 Phone &amp; Fax
+//-         p
+//-           | contact details
+//-         h4.box_header.page_margin_top 
+//-           | Get In Touch With Us
+//-         span.article-content.listing-social-share
+//-       //- +socialShare(data[0].url,data[0].title)
+//-       .column.column_1_3
+//-         h4.box_header Latest Posts
+//-         .vertical_carousel_container.clearfix
+//-           ul.blog.small.vertical_carousel.autoplay-1.scroll-1.navigation-1.easing-easeInOutQuint.duration-750
+//-             li.post
+//-               a(href='post_gallery.html', title='Study Linking Illnes and Salt Leaves Researchers Doubtful')
+//-                 span.icon.small.gallery
+//-                 img(src='images/samples/100x100/image_06.jpg', alt='img')
+//-               .post_content
+//-                 h5
+//-                   a(href='post_gallery.html', title='Study Linking Illnes and Salt Leaves Researchers Doubtful') Study Linking Illnes and Salt Leaves Researchers Doubtful
+//-                 ul.post_details.simple
+//-                   li.category
+//-                     a(href='category_health.html', title='HEALTH') HEALTH
+//-                   li.date
+//-                     | 10:11 PM, Feb 02
+//-       .column.column_1_3
+//-         h4.box_header Latest Galleries
+//-         .horizontal_carousel_container.big.page_margin_top
+//-           ul.blog.horizontal_carousel.visible-1.autoplay-0.scroll-1.navigation-1.easing-easeInOutQuint.duration-750
+//-             li.post
+//-               a(href='post_gallery.html', title='Struggling Nuremberg Sack Coach Verbeek')
+//-                 span.icon.gallery
+//-                 img(src='images/samples/330x242/image_03.jpg', alt='img')
+//-               h5.with_number
+//-                 a(href='post_gallery.html', title='Struggling Nuremberg Sack Coach Verbeek') Struggling Nuremberg Sack Coach Verbeek
+//-                 //- a.comments_number(href='post_gallery.html#comments_list', title='2 comments')
+//-                 //-   | 2
+//-                 //-   span.arrow_comments
+//-               ul.post_details.simple
+//-                 li.category
+//-                   a(href='category_sports.html', title='SPORTS') SPORTS
+//-                 li.date
+//-                   | 10:11 PM, Feb 02
+//-     .row.page_margin_top_section
+//-       .column.column_3_4
+//-         ul.footer_menu
+//-           li
+//-             h4
+//-               a(href='category_world.html', title='World') World
+//-       .column.column_1_4
+//-         a.scroll_top(href='#top', title='Scroll to top') Top
+//-     .row.copyright_row
+//-       .column.column_2_3
+//-         | © Copyright 
+//-         a(href='http://quanticalabs.com', title='QuanticaLabs', target='_blank') QuanticaLabs
+//-         |  - PressRoom Template. 
+//-         a(href='http://themeforest.net/item/pressroom-responsive-news-and-magazine-template/9066845?ref=QuanticaLabs', title='PressRoom Template', target='_blank') Click here to buy it
+//-       .column.column_1_3
+//-         ul.footer_menu
+//-         li
+//-         h6
+//-           a(href='about.html', title='About') About
+//-         li
+      
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//-     div.static-links.dark-bg.follow-us-block
+//-       .content-item.cipos-2.cirpos-2.clearfix
+//-           div.follow-us-lable  Follow Us On
+//-           div.follow-us-links.newsSocialIcons
+//-             -if(env.partnerData.socialLinks.length){
+//-                 ul.social_nav
+//-                     -if(env.partnerData.externalSite){
+//-                         li.external-site-name
+//-                             a(href="#{env.partnerData.externalSite.url}") #{env.partnerData.externalSite.name}
+//-                     -}
+//-                     -for(var i=0;i<env.partnerData.socialLinks.length;i++){
+//-                         li(class="#{env.partnerData.socialLinks[i].name}")
+//-                             a(href="#{env.partnerData.socialLinks[i].url}")
+//-                               img(src="/images/social/#{env.partnerData.socialLinks[i].name}_icon.png")
+//-                     -}
+//-             -}
+//-     div.static-links.light-dark-bg
+//-       .content-item.cipos-2.cirpos-2.clearfix
+//-         ul.footer-legals
+//-           li.nav-legals.nav-privacy-policy.first
+//-               a(href='/', target='') Home
+//-           li.nav-legals.nav-relevant-ad-opt-out
+//-               a(href='/contact-us', target='') Contact Us
+//-           li.nav-legals.nav-relevant-ad-opt-out
+//-               a(href='/about-us', target='') About Us
+//-           li.nav-legals.nav-relevant-ad-opt-out
+//-               a(href='/rss-feed', target='') RSS Feed
+//-           li.nav-legals.nav-relevant-ad-opt-out
+//-               a(href='/epaper', target='') EPaper
+//-           li.nav-legals.nav-relevant-ad-opt-out
+//-               a(href='/terms', target='') Terms
+//-         ul.footer-legals
+//-           li.nav-legals.nav-relevant-ad-opt-out
+//-               a(href='/terms', target='') Advertise
+          
+//-           li.nav-legals.nav-relevant-ad-opt-out
+//-               a(href='/all-authors', target='') All Authors
+//-           li.nav-legals.nav-relevant-ad-opt-out
+//-               a(href='/all-cateogires', target='') All News Categories
+//-           li.nav-legals.nav-relevant-ad-opt-out
+//-               a(href='/send-news', target='') Send An Article
+//-           li.nav-legals.nav-relevant-ad-opt-out
+//-               a(href='/mobile-app', target='') Mobile App
+          
+//-       -if(env.partnerData.trendingTags && env.partnerData.trendingTags.length >0){
+//-         .content-item.cipos-2.cirpos-2.clearfix 
+//-           ul.footer-legals.trending-tags
+//-             li.label-text.trending-label-text Trending Topics
+//-             -for(var i=0;i<env.partnerData.trendingTags.length-1;i++){
+//-               li
+//-                 a.current-page(href="#{env.rootUrl}/search?search=#{env.partnerData.trendingTags[i].value}&search_type=tags") #{env.partnerData.trendingTags[i].name}
+//-                     span &nbsp;|&nbsp;
+//-             -}
+        
+//-             li
+//-               a.current-page(href="#{env.rootUrl}/search?search=#{env.partnerData.trendingTags[env.partnerData.trendingTags.length-1].value}&search_type=tags") #{env.partnerData.trendingTags[env.partnerData.trendingTags.length-1].name}
+             
+//-       -}
+    
+
+//-     .content-item.cipos-3.cirpos-1.clearfix
+//-         .footer-copyright
+//-           p.copyright Copyright &copy; Public Khabar 2016.
+//-           p.powered-by-hocalwire.pull-right
+//-               | Powered by 
+//-               a(href='http://hocalwire.com/') Hocalwire
+//-  

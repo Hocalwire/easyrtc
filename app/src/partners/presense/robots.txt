@@ -1,0 +1,12 @@
+#
+# robots.txt for http://www.digitalpresense.com
+User-agent: *
+Allow: /
+Disallow: /admin/*
+
+Disallow: /xhr/*
+Disallow: /refer-*
+
+Allow: /content/servlet/RDESController?*
+
+Sitemap: http://www.digitalpresense.com/sitemap/sitemap-index.xml

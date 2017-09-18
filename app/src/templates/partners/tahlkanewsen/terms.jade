@@ -1,0 +1,39 @@
+include ../../theme_cobra/allMixin
+include ../../common/_registerReporter
+extends ../../theme_cobra/layout
+block content
+    include ../../theme_cobra/partials/_header
+    div(id="sb-site", class="body_wraper_box")
+        include ../../theme_cobra/partials/_navArea
+        +stickySocialShare("","",true)
+        div(class="main_content row")
+            div(class="content_wraper three_columns_container box-item")
+                div(class="twelve columns")
+                    #level_top_full
+                div(class="twelve columns")
+                    div(class="eight columns clearfix home_left_section")
+                        .container
+                            .row
+                                .eight.columns
+                                    h2 Terms and Conditions
+                            .row
+                                .eight.columns
+                                    p(style='text-align:justify')
+                                    |The materials on Tahlkanews.com’s web site are provided “as is”. Tahlkanews.com makes no warranties, expressed or implied, and hereby disclaims and negates all other warranties, including without limitation, implied warranties or conditions of merchantability, fitness for a particular purpose, or non-infringement of intellectual property or other violation of rights. Further, Tahlkanews.com does not warrant or make any representations concerning the accuracy, likely results, or reliability of the use of the materials on its Internet web site or otherwise relating to such materials or on any sites linked to this site.
+                                    p(style='text-align:justify')
+                                    | In no event shall Tahlkanews.com or its suppliers be liable for any damages (including, without limitation, damages for loss of data or profit, or due to business interruption,) arising out of the use or inability to use the materials on Puridunia.Com’s Internet site, even if Tahlkanews.com or a Tahlkanews.com authorized representative has been notified orally or in writing of the possibility of such damage. Because some jurisdictions do not allow limitations on implied warranties, or limitations of liability for consequential or incidental damages, these limitations may not apply to you.
+                                   
+                                .four.columns
+                                    div(class="twelve columns clearfix")
+                                        .sidebar.side-bar.right-sidebar
+                                            include ../../theme_cobra/partials/_genericRightSection
+                div(class="content_wraper three_columns_container")
+                    div(class="row")
+                        #level_bottom_full
+                            -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                                +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                            -}
+
+        include ../../theme_cobra/partials/_footer
+block scripts
+    include ../../common/_reporterResources

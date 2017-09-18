@@ -1,0 +1,22 @@
+.breaking-news ul li a{
+	margin-top: 5px;
+	font-size: 13px;
+}
+.article-block-big .article-content h4 {
+	line-height: 25px;
+}
+.article-block .article-content h4, .widget .widget-articles .article-content h4 {
+	line-height: 25px;
+}
+.main-menu {
+    background: #b61c26;
+}
+#wp-calendar td#today, #writecomment p input[type=submit], .block-title, .breaking-news .the-title, .button, .hover-effect, .marker, .small-button, .widget>h3, a.small-button {
+	background-color: #5fbae6;
+}
+.mixin-header.blue.block-title {
+	background-color: #5fbae6;
+}
+.article-title h1 {
+	line-height: 130%;
+}

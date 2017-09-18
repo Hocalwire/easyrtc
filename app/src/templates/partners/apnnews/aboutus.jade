@@ -1,0 +1,24 @@
+include ../../theme_panda/allMixin
+
+extends ../../theme_panda/layout
+block content
+    div.wrapper
+        .header
+            include ../../theme_panda/partials/_topHeader
+            include ../../theme_panda/partials/_navArea
+        .top-tick
+            .adBlock
+                .mainBlock(align='center')
+                    #level_top_ticker
+        .topAd
+            .adBlock
+                .mainBlock(align='center')
+                    #level_top_ad
+        .container
+            #centerScecMain.innerLeftScecMain
+                    h1 About Us
+                    h3 about us content.
+            .rightScecMain
+                include ../../theme_panda/partials/_detailRightSection
+        .clear
+        include ../../theme_panda/partials/_footer
