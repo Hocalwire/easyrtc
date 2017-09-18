@@ -92,6 +92,7 @@ html
           if( easyrtc.isRecordingTypeSupported("vp9")) document.getElementById("useVP9").disabled = false;
           if( easyrtc.isRecordingTypeSupported("vp8")) document.getElementById("useVP8").disabled = false;
           easyrtc.setVideoDims(640,480);
+          easyrtc.setRecordingVideoCodec("h264");
           easyrtc.setRoomOccupantListener(convertListToButtons);
           easyrtc.easyApp("easyrtc.audioVideoSimple", "selfVideo", ["callerVideo"], loginSuccess, loginFailure);
          }
@@ -135,8 +136,11 @@ html
         function startRecording() {
           var selfLink = document.getElementById("selfDownloadLink");
           selfLink.innerText = "";
-          selfRecorder = easyrtc.recordToFile( easyrtc.getLocalStream(), 
-                 selfLink, "selfVideo");
+          var callback = function(e){
+            console.log(e);
+          }
+          selfRecorder = easyrtc.recordToCallback( easyrtc.getLocalStream(), 
+                 callback,2000);
           if( selfRecorder ) {
              document.getElementById("startRecording").disabled = true;
              document.getElementById("stopRecording").disabled = false;
