@@ -37,7 +37,7 @@ module.exports.setup = function(app) {
         if(!partner && req.vhost){
             partner = getPartnerFromDomain(req.vhost.hostname);
         }
-        if(!partner) partner="jantakiawaz";
+        if(!partner) partner="allytech";
         req.partner=partner;
         var c = partnerConfig[partner];
         if(c && c.parentPartner){
