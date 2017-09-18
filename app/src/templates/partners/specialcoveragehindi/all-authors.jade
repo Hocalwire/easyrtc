@@ -1,0 +1,37 @@
+extends ../../theme_dolphin/layout
+include ../../theme_dolphin/allMixin
+block content
+    include ../../theme_dolphin/partials/_header
+    div.container#all-authors
+        
+        include ../../theme_dolphin/partials/_navArea
+        div#contentSection
+            div.row.row_main
+                div(class="col-md-12")
+                    #level_top_full
+                        -if(data['level_top_full'] && data['level_top_full'].templateData && data['level_top_full'].templateData.mixinName){
+                            +#{data['level_top_full'].templateData.mixinName}(data['level_top_full'])
+                        -}
+                div(class="col-lg-8 col-md-8 col-sm-8")
+                    div(class="top_left_content")
+                        +authorVone(data)
+                div(class="col-lg-4 col-md-4 col-sm-4")
+                    aside(class="right_content")
+                        include ../../theme_dolphin/partials/_genericRightSection
+            #ad_first_middle
+            div.row.row_main
+                div(class="col-lg-12 col-md-12 col-sm-12")   
+                     include ../../theme_dolphin/partials/_genericMiddleSection
+            div.row.row_main
+                div(class="col-lg-12 col-md-12 col-sm-12")
+                    #level_bottom_full
+                        -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                            +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                        -}
+                    div.comments-wrapper
+                        #comments
+                            
+                        
+        include ../../theme_dolphin/partials/_footer
+    
+ 

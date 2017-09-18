@@ -1,0 +1,9 @@
+#
+# robots.txt for http://www.hocalwire.com
+
+User-agent: *
+Allow: /
+Disallow: /admin/*
+Disallow: /refer-*
+Disallow: /404
+Allow: /content/servlet/RDESController?*

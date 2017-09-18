@@ -1,0 +1,144 @@
+include ../socialShare
+.outer.nadi-ad.nadi-inline.open-ad
+    .level_1
+        .hocal_row
+            div.video-player-wrapper.image-ad
+                -var text = encodeURIComponent('via-'+env.partner+' आयुर्वेद के इलाज के बारें में अधिक जानकारी उपलब्ध कराये, Whatsapp पर संपर्क करे')
+                -if(env.isMobile){
+                    a.add-wrapper.image-ad-unit(href="https://api.whatsapp.com/send?phone=919811517287&text="+text, onclick="$('.callback-wrapper').removeClass('hide');",data-category="nadi-ad",data-label="image-ad-5",data-ip="#{env.requestIp}")
+                        img(src="/images/ads/image5.jpg")
+                -} else {
+                    a.add-wrapper.image-ad-unit(data-category="nadi-ad",data-label="image-ad-5",data-ip="#{env.requestIp}")
+                        img(src="/images/ads/image5.jpg")
+                -}
+                div.callback-wrapper1.call-back-open
+                    
+                    -env.adunitname="nadi-image-5"
+                    .hocal_row.ad-form-wrapper.open-ad
+                        
+                        input#mobile.ad-mobile.ad-input.primary.open-ad(tabindex="1",type='text', placeholder='Mobile Number', name='mobile')
+                        
+                        input#name.ad-name.ad-input.hide(tabindex="1",type='text', placeholder='Your Name', name='name')
+                        div.btn-hold1
+                            a.nadi-ad-submit-btn(tabindex="3") भेजे 
+                        
+                        .hocal_row
+                            div.hide.success-msg Thanks for providing details, we will call you back.
+                        
+                    
+                    input.unitname.hide(value="#{env.adunitname}")
+                    a.add-wrapper.image-ad-unit.whatsapp-inline(href="https://api.whatsapp.com/send?phone=919811517287&text="+text,data-category="nadi-ad",data-label="image-ad-5",data-ip="#{env.requestIp}")
+                        span(style="background:#24bc3d;border-radius: 1px;") Whatsapp द्वारा संपर्क करे
+                    style.
+                        .whatsapp-inline {
+                            position: relative;
+                            right: -17px;
+                            bottom: -15px;
+                            margin-top: 10px;
+                            display: inline-block;
+                            float: right;
+                            cursor: pointer;
+                        }
+                        .whatsapp-inline span {
+                                background: #24bc3d;
+                                border-radius: 1px;
+                                padding: 5px;
+                                padding-left: 10px;
+                                padding-right: 10px;
+                                color: #fff;
+                                font-size: 18px;
+                        }
+                        .call-back-open {
+                            margin-top: -5px;
+                            margin-bottom: 90px;
+                        }
+                        .nadi-form-title{ text-align:center;} .ad-mobile, .ad-name{margin:0 auto !important;}
+                        .ad-input.primary.open-ad {
+                            max-width:150px; 
+                            display:inline-block !important;
+                            position: relative !important;
+                            float: left !important;
+                            left: 5px !important;
+                            top: 5px !important;
+                        }
+                        
+                        .open-ad .btn-hold1 {
+                            display: inline-block !important;
+                            position: relative !important;
+                            margin: 0px !important;
+                            float: right !important;
+                            right:18px;
+                            height:30px;
+
+                        }
+                        .open-ad .btn-hold1 a {
+                            border-radius:0px !important;
+                            width: 80px;
+                            float: right;
+
+                        }
+                        .video-ad-unit.video-open-form {
+                            cursor:pointer;
+                        }
+                        #recommended-wrapper.recommended-popup .recommended_popup_item_container {
+                            height: 100px;
+                            background: #fff;
+                        }
+                        #recommended-wrapper.recommended-popup .recommended-close.pull_right {
+                            float:left !important;
+                            left:0px;
+                        }
+                        #recommended-wrapper.recommended-popup {
+                            max-height:125px;
+                        }
+
+
+
+style.
+    .video-ad-iframe {
+        height:250px;
+        max-width:100%;
+        width:auto;
+    }
+    a.video-ad-unit img {
+        cursor:pointer;
+        max-height:70px;
+    }
+    .nadi-inline {
+        border: 1px solid #ccc;
+        margin:5px;
+        padding:2px;
+        margin-bottom:10px;
+        max-width:400px;
+        text-align:center;
+        margin:0px auto;
+        width: 100%;
+        display: block;
+    }
+    .nadi-ad-submit-btn {
+        background: #13d413;
+        padding: 5px;
+        border-radius: 15px;
+        color: #fff;
+        margin-top:15px;
+        margin-bottom:15px;
+    }
+    .nadi-ad-submit-btn:hover{
+    color:#ccc;
+    cursor: pointer;
+    }
+    .btn-hold1{
+        margin-top:15px;
+        margin-bottom:15px;
+    }
+    .nadi-form-title{
+    margin-bottom:15px;
+
+    }
+    .ad-input {
+        width: 86%;
+        height: 25px;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }

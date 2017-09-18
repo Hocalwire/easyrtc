@@ -1,0 +1,56 @@
+<html>
+<script type="text/javascript"> // <![CDATA[
+if ((navigator.userAgent.indexOf('iPad') != -1)) {
+document.location = "http://live.wmncdn.net/sudarshantv2/live.stream/index.m3u8";
+}
+if ((navigator.userAgent.indexOf('iPhone') != -1) || (navigator.userAgent.indexOf('iPod') != -1)) {
+document.location = "http://live.wmncdn.net/sudarshantv2/live.stream/index.m3u8";
+}
+if ( (navigator.userAgent.indexOf('Android') != -1) || (navigator.userAgent.indexOf('Bada') != -1) ) {
+document.location = "http://live.wmncdn.net/sudarshantv2/live.stream/index.m3u8";
+} 
+if ( (navigator.userAgent.indexOf('BlackBerry') != -1) || (navigator.userAgent.indexOf('BB10') != -1) ) {
+document.location = "http://live.wmncdn.net/sudarshantv2/live.stream/index.m3u8";
+}// ]]>
+// ]]>
+</script>
+<head>
+   <meta charset="utf-8">
+   <title>safari</title>
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="//releases.flowplayer.org/6.0.5/skin/functional.css">
+   <style>
+   body {font-family: "myriad pro", tahoma, verdana, arial, sans-serif;font-size: 14px;margin: 0;padding: 0;}
+   #content { max-width: 640px; }
+   #fp-hlsjs{background-image:url("/flowplayer/skin/img/drive-shoot.jpg");background-size:auto 100%}@media (-webkit-min-device-pixel-ratio:2),(min-resolution:2dppx){#fp-hlsjs{background-image:url("/flowplayer/skin/img/drive-shoot@2x.jpg")}}
+</style>
+      <script src="//releases.flowplayer.org/6.0.5/flowplayer.min.js"></script>
+<script src="//releases.flowplayer.org/hlsjs/flowplayer.hlsjs.min.js"></script>
+
+</head>
+<body>
+<div id="content">
+<div id="fp-hlsjs" data-key="$137091925528435" class="is-closeable"></div>
+<video autoplay>
+<script>
+flowplayer("#fp-hlsjs", {
+    autoplay: true,
+    ratio: 9/16,
+    clip: {
+        title: "Safari ...", 
+      sources: [
+            { type: "application/x-mpegurl",
+              src:  "http://live.wmncdn.net/sudarshantv1/live.stream/index.m3u8" }
+        ]
+    },
+    embed: false
+
+}).on("ready", function (e, api, video) {
+ 
+
+});
+</script>
+ </div>
+</body>
+
+</html>

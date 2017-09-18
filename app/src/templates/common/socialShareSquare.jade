@@ -1,0 +1,58 @@
+mixin socialShareSquare(newsUrl,title,showSharingImage,large)
+    -var twitterTitle = title
+    -if(twitterTitle.length>110){
+        -twitterTitle  = twitterTitle.substring(0,110)+"..."
+    -}
+    -var queryParams = "?utm_source="+(env.isMobile?'mobile-':'web-')+"social-share&utm_partner="+env.partner+"&utm_campaign=share&utm_medium="
+    -var whatsappurl = newsUrl
+    -if(whatsappurl.indexOf("http")!=0){
+        -whatsappurl=env.rootUrl+whatsappurl+queryParams+'whatsapp' 
+    -}
+    -var twitterData = "url="+encodeURIComponent(env.rootUrl+newsUrl+queryParams+'twitter')+"&text="+encodeURIComponent(twitterTitle)+(env.partnerData.twitter_handle?"&via="+env.partnerData.twitter_handle:'')
+    .row.top-post-social.mtop15.mbtm15
+        div.center
+            -if(env.isMobile){
+                a.watsapp(href="whatsapp://send?text=#{encodeURIComponent(title)} #{env.rootUrl}#{newsUrl}") 
+                    span 
+            -}
+            a.fb(class="track-click", data-category="common-social-square-share-#{env.partner}",data-label="facebook-#{env.pageType}-#{relativeUrl}", title="Facebook", href="http://www.facebook.com/share.php?u=#{env.rootUrl}#{encodeURIComponent(newsUrl+queryParams+'facebook')}", target="_blank")
+                span
+            a.twitter(class="track-click", data-category="common-social-square-share-#{env.partner}",data-label="twitter-#{env.pageType}-#{relativeUrl}",title="Twitter", href="http://twitter.com/intent/tweet?#{twitterData}", target="_blank")
+                span
+            a.goog-plus(class="track-click", data-category="common-social-square-share-#{env.partner}",data-label="gplus-#{env.pageType}-#{relativeUrl}", title="Google Plus", href="https://plus.google.com/share?url=#{env.rootUrl}#{encodeURIComponent(newsUrl+queryParams+'gplus')}", target="_blank")
+                span
+           
+            -if(env.isMobile){
+                -var newsContentWhatsapp = title+" "+whatsappurl
+                li(class="whatsapp")
+                    div.whatsapp-img
+                        a(class="track-click", data-category="common-social-square-share-#{env.partner}",data-label="whatsapp-#{env.pageType}-#{relativeUrl}", href="whatsapp://send?text=#{encodeURIComponent(newsContentWhatsapp)}") 
+                            img(src="/images/whatsapp.png") 
+            -}
+            -if(env.isDynamicPage){
+                a.js-share-article-by-email.mail(class="track-click", data-category="common-social-square-share-#{env.partner}",data-label="email-#{env.pageType}-#{relativeUrl}", href="javascript: void(0);" ,data-domain="#{env.rootUrl}",data-url="#{encodeURIComponent(newsUrl+queryParams+'email')}", title='Share by Email')
+                    span
+                    
+            -}
+            -if(!env.isMobile && env.partnerData.enable_page_print_option){
+                -if(print_selector){
+                    a.print(class="track-click", data-category="common-social-square-share-#{env.partner}",data-label="print-#{env.pageType}-#{relativeUrl}",  href='javascript: void(0)', title='Print',onclick="$('#{print_selector}').print()")
+                        img(src='/images/social/print_icon.png')
+                -} else {
+                    a.print(class="track-click", data-category="common-social-square-share-#{env.partner}",data-label="print-#{env.pageType}-#{relativeUrl}",  href='javascript: void(0)', title='Print',onclick="$('#content').print()")
+                        img(src='/images/social/print_icon.png')
+                -}
+            -}
+            -if(env.partnerData.has_smart_share){
+                li(class="sshare clearfix",title="Hocalwire Smart Share",data-href="http://hocal.hocalwire.com/social_client/splash.jsp?newsId=#{env.newsId}&app=rdes&partner=#{env.partner}&url=#{newsUrl}&sessionId=#{env.requestSessionId}") 
+                        a(class="track-click", data-category="common-social-square-share-#{env.partner}",data-label="sshare-#{env.pageType}-#{relativeUrl}", href="javascript:void(0);", title="Hocalwire Smart Share")
+                            span.hocal_share_button
+                                div.left-sshare-img-wrapper
+                                    img(src="/images/hocal_logo.png")
+                                div.right-sshare
+                                    span SShare
+            -}
+       
+            
+
+        

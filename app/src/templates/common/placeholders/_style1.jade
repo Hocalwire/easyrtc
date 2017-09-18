@@ -1,0 +1,16 @@
+mixin style1(props)
+    -var img = props.img
+    -var imgCount = props.imgCount || 1
+    -var colClass = parseInt(12/imgCount)
+    -var hasPlay = props.video || false
+                        
+    .hocal_row
+        -for(var i=0;i<imgCount;i++){
+            div(class="hocal_col hocal_col_#{colClass}")
+                div(class="#{img || 'medium'} img animated-background")
+                    -if(hasPlay){
+                        div.play
+                    -}
+
+        -}
+    

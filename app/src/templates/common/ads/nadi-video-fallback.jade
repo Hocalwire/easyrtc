@@ -1,0 +1,162 @@
+doctypemobile
+html(dir='ltr')
+  head
+    script.
+        window.ignorePageViewTracking=true;
+    include ../headSectionTop
+    include ../headSectionBottom
+body
+    include ../bodySectionTop
+    block commonScripts
+        - if(environment === 'development') {
+            include ../commonscripts
+            
+        - } else {
+            include ../_includeCommonJS
+            script(src="#{env.commonjsfilepath}")
+            
+        - }
+    include ../bodySectionBottom
+    block content
+        .outer.nadi-ad.nadi-inline
+            .level_1
+                .hocal_row
+                    div.video-player-wrapper.fallback-ad
+                        //- iframe.video-ad-iframe(src="http://www.youtube.com/embed/CFGGSve0KJU" autoplay="0",frameborder="0" allowfullscreen)
+                        div#player4(data-ip="#{env.requestIp}")
+                        -if(env.isMobile){
+                            a.add-wrapper.video-ad-unit(href="tel:08595197197", onclick="$('.callback-wrapper').removeClass('hide');",data-category="nadi-ad",data-label="video-ad-5",data-ip="#{env.requestIp}")
+                                img(src="/images/ads/call_now.jpg")
+                        -} else {
+                            a.add-wrapper.video-ad-unit(onclick="$('.callback-wrapper').removeClass('hide');",data-category="nadi-ad",data-label="video-ad-5",data-ip="#{env.requestIp}")
+                                img(src="/images/ads/call_now.jpg")
+                        -}
+                div.callback-wrapper.hide
+                    -env.adunitname="nadi-video-5"
+                    include callback-form
+
+
+    script.
+        var partner;
+        loadFallbackAd();
+        function loadFallbackAd(){
+            partner = $("#content").data("partner");
+            var tag = document.createElement('script');
+            tag.src = "http://www.youtube.com/player_api";
+            tag.onload = function(){
+                console.log("api script is loaded, initialize player");
+                console.log(YT.Player);
+                setTimeout(function(){onYouTubePlayerAPIReady6();},1000);
+            }
+            var firstScriptTag = document.getElementsByTagName('script')[0];
+            firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+        }
+        
+        var player;
+
+        function onYouTubePlayerAPIReady6() {
+            player = new YT.Player('player4', {
+                height: '220',
+                width: '280',
+                videoId: 'ER7Ya_EzFc0',
+                events: {
+                    'onReady': onPlayerReady6,
+                    'onStateChange': onPlayerStateChange6
+                }
+            });
+        }
+
+        function onPlayerReady6(event) {
+            /// event.target.playVideo(); 
+        }
+        function trackAction6(actionType){
+                var clickedAlready = Hocalwire.Services.GlobalService.getCookie("_NADI_AD_UNIT_CLICKED_");
+                var isUniuque = !clickedAlready;
+                var val = isUniuque ? 1 : 0;
+                var label = "nadi-video-5"
+                var category = "nadi-ad";
+                var action = "video-click-"+actionType+"-"+partner;
+                if(window.ga){
+                    window.ga('send', 'event', category, action, label,val);
+                    window.ga('common.send', 'event', category, action, label,val);    
+                    window.ga('common2.send', 'event', category, action, label,val);    
+                }
+                var ip = $("#player4").data("ip");
+                if(window.ga){
+                    var labelnew = "ip-track-"+ip;
+                    window.ga('send', 'event', category, action, labelnew,val);
+                    window.ga('common.send', 'event', category, action, labelnew,val);    
+                    window.ga('common2.send', 'event', category, action, labelnew,val);    
+                }
+                var clickedCount = isUniuque ? 1 : parseInt(clickedAlready)+1;
+                Hocalwire.Services.GlobalService.setCookie("_NADI_AD_UNIT_CLICKED_",clickedCount,{"path":"/","expires":new Date(new Date().getTime())+(24*7*60*60*1000)});
+                Hocalwire.Services.GlobalService.setCookie("_NADI_AD_UNIT_LOADED_","1",{"path":"/","expires":new Date(new Date().getTime())+(24*7*60*60*1000)});
+        }
+        function onPlayerStateChange6(event) {
+            if (event.data == YT.PlayerState.PLAYING) {
+                trackAction6("playing");
+
+            }
+            if (event.data == YT.PlayerState.PAUSED) {
+                trackAction6("paused");
+            }
+            if (event.data == YT.PlayerState.ENDED) {
+                trackAction6("ended");
+            }
+        }
+       
+    style.
+        #player4 {
+            max-width:280px;
+            max-height:200px;
+        }
+        .fallback-ad .video-ad-unit img {
+            max-height:30px !important;
+            margin-top:-5px;
+        }
+        .video-ad-iframe {
+            height:250px;
+            max-width:100%;
+            width:auto;
+        }
+        
+        .nadi-inline {
+            border: 1px solid #ccc;
+            margin:5px;
+            padding:2px;
+            margin-bottom:10px;
+            max-width:400px;
+            text-align:center;
+            margin:0px auto;
+            width: 100%;
+            display: block;
+        }
+        .nadi-ad-submit-btn {
+            background: #13d413;
+            padding: 5px;
+            border-radius: 15px;
+            color: #fff;
+            margin-top:15px;
+            margin-bottom:15px;
+        }
+        .nadi-ad-submit-btn:hover{
+        color:#ccc;
+        cursor: pointer;
+        }
+        .btn-hold{
+            margin-top:15px;
+            margin-bottom:15px;
+        }
+        .nadi-form-title{
+        margin-bottom:15px;
+
+        }
+        .ad-input {
+            width: 86%;
+            height: 25px;
+            background: #fff;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }    
+block script
+

@@ -1,0 +1,130 @@
+doctypemobile
+html
+  head
+    title= meta.title || 'Hocalwire.com'
+    meta(charset="utf-8")
+    meta(content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no")
+    meta(name='description', content=meta.description)
+    meta(name="application-name", content="Hocalwire")
+    meta(name='keywords', content=meta.keywords)
+    meta(name='language', content='en-uk, english')
+    meta(name="google", content="notranslate")
+    meta(http-equiv="Content-Language", content="en")
+    meta(name='author', content=meta.author)
+    meta(name="copyright" content="Ally Technologies India Pvt Ltd")
+
+    meta(name='HandheldFriendly', content='true')
+    meta(name='referrer', content='origin')
+
+    meta(property="og:title", content=meta.title)
+    meta(property="og:type", content="article")
+    meta(property="og:image", content=meta.image)
+    meta(property="og:description", content=meta.description)
+    meta(property='og:author', content=meta.author)
+
+    meta(name="twitter:card", content="summary")
+    meta(name="twitter:title", content=meta.title)
+    meta(name="twitter:description", content=meta.description)
+    meta(name="twitter:image", content=meta.image)
+
+    include otherMeta
+    include GATrackingCode
+
+
+    - if(environment === 'development') {
+        link(rel="stylesheet", type="text/css", href="/styles/bootstrap.min.css")
+        link(rel="stylesheet", type="text/css", href="/styles/bootstrap-responsive.css")
+        link(rel="stylesheet", type="text/css", href="/styles/common.css")
+    - } else {
+        link(rel="stylesheet", type="text/css", href="/styles/hocalwire.min.3edb6b57.css")
+        
+    - }
+    block head-content
+        block canonical
+            link(rel='canonical', href= reqHost + reqPath)
+        block other-head-content
+
+body(class="#{env.isPartner ? 'partner-site' : 'hocalwire-site'}")
+    
+    div#content-styles
+        block styles
+    div.ui-loader-new.hide
+    //- div.js-included-app-banner.hide
+        include partials/_topAppDownloadBanner
+    
+    // -var headerParams = {};
+    // -headerParams.hasBack = false
+    // -headerParams.hasDrawer = true
+    // -headerParams.callButton = true
+    // -headerParams.showSearch = true
+    // -headerParams.noShare = true
+    // -headerParams.shareUrl = ""
+    // -headerParams.loadHomeNoAjaxy = false
+    //- block commonHeader
+        +loadHeader(headerParams.noShare,headerParams.hasBack,headerParams.shareUrl,headerParams.callButton,headerParams.hasDrawer,headerParams.loadHomeNoAjaxy,headerParams.showSearch)
+    include partials/_dialog
+    div#content
+        block content
+
+        div#js-footer.footer
+            .row-fluid.centered
+                ul.social
+                  li
+                    a(href='https://www.facebook.com/hocalwire', target='_blank',id='footer-facebook')
+                      span.icon-facebook-circled
+                  |                             
+                  li
+                    a(href='https://twitter.com/hocalwire', target='_blank',id='footer-twitter')
+                      span.icon-twitter-circled
+                  |                             
+                  li
+                    a(href='https://www.linkedin.com/company/hocalwire', target='_blank' id='footer-linkedin')
+                      span.icon-linkedin-circled
+            a(style="text-decoration: underline;color: #DCD6D6;",href="https://feedburner.google.com/fb/a/mailverify?uri=Hocalwire-ReportNewsEarn&amp;loc=en_US")
+                | Subscribe to Hocalwire RSS Feeds by Email  
+            
+            p &copy; 2015 Copyright, Ally Technologies India Pvt Ltd
+        -if(!env.isPartner)
+            a(data-href="#{env.appStoreUrl}",  class="da-link button fixed-floating-btn js-sing-up-btn") Join As Journalist    
+
+
+    div#popup-container.hide
+        div#common-popup-container
+            div.popup-overlay
+            div#interstitial(data-role="popup")
+                div.modalbox
+                    //- div.popup-content#interstitial-content
+                        
+
+        div#page-popup-container.hide
+            div.popup-overlay
+            block popups
+
+    block commonScripts
+        - if(environment === 'development') {
+            script(src="#{Utils.getCDNUrl('bower_components/jquery/dist/jquery-1.11.2.min.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/jquery-fallback.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/vendor/jquery.history.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/vendor/ajaxify-html5.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/vendor/jquery.unveil.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/vendor/promise-1.0.0.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/main.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/mobile.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/ajaxHelper.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/pageScript.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/services/AnalyticsService.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/services/UniversalGlobalService.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/overlay/overlay.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/EventsManager.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/Utils.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/popup.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/common.js')}")
+            //- script(src="#{Utils.getCDNUrl('scripts/js/bootstrap.js')}",pageScript="true")
+            
+        - } else {
+
+            script(src="#{Utils.getCDNUrl('scripts/hocalwire.min.de0229e9.js')}")
+
+        - }
+block script

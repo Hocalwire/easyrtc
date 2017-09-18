@@ -1,0 +1,118 @@
+include ../../theme_specialcoverage/mixin/_mainBigSlider
+include ../../theme_specialcoverage/mixin/_newsList
+include ../../theme_specialcoverage/mixin/_newsListStrip
+include ../../theme_specialcoverage/mixin/_newsListWithPreview
+
+include ../../theme_specialcoverage/mixin/_newsSlider
+include ../../theme_specialcoverage/mixin/_newsTiles
+include ../../theme_specialcoverage/mixin/_newsTilesWithDetails
+include ../../theme_specialcoverage/mixin/_newsWithTabs
+include ../../theme_specialcoverage/mixin/_newsWithTopBig
+include ../../theme_specialcoverage/mixin/_photoGallery
+include ../../theme_specialcoverage/mixin/_newsDetailsMain
+include ../../theme_specialcoverage/mixin/_headerCatNews
+
+extends ../../theme_specialcoverage/layout
+block content
+    
+    .kopa-single-2#contact-us-page
+        .wrapper.kopa-shadow
+            .row-fluid
+                div.span12.clearfix
+                    header#page-header
+                      include ../../theme_specialcoverage/partials/_topCatHeader
+                      #header-top.clearfix
+                        #top_category_news
+                          -if(data['top_category_news'] && data['top_category_news'].templateData && data['top_category_news'].templateData.mixinName){
+                            +#{data['top_category_news'].templateData.mixinName}(data['top_category_news'])
+                          -}
+                        #partner_social_links
+                          .social-search-box
+                            include ../../theme_specialcoverage/partials/_socialLinks
+                    #main-content
+                        .row-fluid
+                          .span12
+                            .breadcrumb.clearfix
+                        #main-col
+                          #ad_details_main_level_1.entry-box.clearfix.hide
+                          //- #news_details_main.entry-box.clearfix
+
+                          section.clearfix
+                            h1(style="color:black") Terms and Conditions
+                            .kopa-divider
+
+                            br
+                            div(class='privacy_policy')
+                              p 
+                                div(class='heading') Last updated: May 02, 2016
+                                br
+                                | Please read these Terms and Conditions (“Terms”, “Terms and Conditions”) carefully before using the http://dailypratap.com website (the “Service”) operated by Daily Pratap (“us”, “we”, or “our”).
+                                br
+                                br
+                                | Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.
+
+                                | By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.
+                                br
+                                br
+                                div(class='heading') Links To Other Web Sites
+                                br
+                                br
+                                | Our Service may contain links to third-party web sites or services that are not owned or controlled by Daily Pratap.
+                                br
+                                br
+                                | Daily Pratap has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that Daily Pratap shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.
+
+                                | We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites or services that you visit.
+                                br
+                                br
+                                div(class='heading') Governing Law
+                                br
+                                br
+                                | These Terms shall be governed and construed in accordance with the laws of Uttar Pradesh, India, without regard to its conflict of law provisions.
+                                br
+                                br
+                                | Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us regarding our Service, and supersede and replace any prior agreements we might have between us regarding the Service.
+                                br
+                                br
+                                div(class='heading') Changes
+                                br
+                                br
+                                | We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
+
+                                | By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service.
+                                br
+                                br
+                                div(class='heading') Contact Us
+                                br
+                                br
+                                | If you have any questions about these Terms, please contact us at
+
+                                | info@dailypratap.com
+                                                           
+                          #ad_details_main_level_2.entry-box.clearfix.hide
+                                             
+                          
+                          #comments
+                            //- .news-content Comments (news_comments)
+                          // comments
+                        // main-col
+                        .widget-area-3.sidebar
+                          #ad_right_level_1.widget.kopa-adv-widget.hide
+                                            
+                          #news_tabs_right_level_1.widget.kopa-article-list-widget
+                            -if(data['news_tabs_right_level_1'] && data['news_tabs_right_level_1'].templateData && data['news_tabs_right_level_1'].templateData.mixinName){
+                                +#{data['news_tabs_right_level_1'].templateData.mixinName}(data['news_tabs_right_level_1'])
+                            -}
+                          #ad_right_level_2.widget.kopa-adv-widget.hide
+                            
+                          #news_listing_right_level_2.widget.kopa-most-review-widget
+                            -if(data['news_listing_right_level_2'] && data['news_listing_right_level_2'].templateData && data['news_listing_right_level_2'].templateData.mixinName){
+                                +#{data['news_listing_right_level_2'].templateData.mixinName}(data['news_listing_right_level_2'])
+                            -}
+                          #news_listing_right_level_3.widget.kopa-most-review-widget
+                            -if(data['news_listing_right_level_3'] && data['news_listing_right_level_3'].templateData && data['news_listing_right_level_3'].templateData.mixinName){
+                                +#{data['news_listing_right_level_3'].templateData.mixinName}(data['news_listing_right_level_3'])
+                            -}
+                        .clear
+            include ../../theme_specialcoverage/partials/_footer 
+                         

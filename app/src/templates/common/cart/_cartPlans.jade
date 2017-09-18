@@ -1,0 +1,15 @@
+mixin cartPlans(data)
+      section#pricing-table.plan_price_section
+        .container
+          .hocal_row
+           -if(data && data.data && data.data.length>0){
+            -for(var i=0;i<data.data.length;i++){
+              a(href="#{data.data[i].payment_url||'/user/user-cart?planId='+data.data[i].id}",class="plan_item hocal_col hocal_col_3 #{data.selectedPlan && data.selectedPlan.id==data.data[i].id ?'selected' : ''}")
+                .table
+                  .title
+                    !{data.data[i].headingDisplay}
+                  .price-value
+                      |  !{data.data[i].pricingDisplay} 
+            -}
+          -}
+        

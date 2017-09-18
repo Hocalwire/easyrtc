@@ -1,0 +1,210 @@
+doctype html
+html(amp='', lang="#{env.lang=='hi' ? 'hi' : 'en'}")
+    head
+        meta(charset='utf-8')
+        
+        title= meta.title
+        link(rel='canonical', href= env.pageUrl,itemprop='mainEntityOfPage')
+        meta(name='viewport', content='width=device-width,minimum-scale=1,initial-scale=1')
+        
+        meta(http-equiv='X-UA-Compatible', content='IE=Edge')
+        meta(name='format-detection', content='telephone=no')
+        meta(name='HandheldFriendly', content='True')
+        link(rel="shortcut icon", href="/images/ico/favicon.ico", type="image/x-icon")
+
+        meta(name='apple-mobile-web-app-title', content='#{meta.title}')
+        meta(name="application-name", content="#{meta.name || Hocalwire}")
+        
+        meta(name='referrer', content='unsafe-url')
+        -if(env.partnerData.gplus_publisher_link){
+            meta(name='Publisher', content=env.partnerData.gplus_publisher_link)
+        -}
+        meta(name='author', content=meta.author)
+        meta(name='description', content=meta.description)
+        meta(name='keywords', content=meta.keywords)
+        meta(name="google", content="notranslate")
+        meta(http-equiv="Content-Language", content="#{env.lang=='hi' ? 'hi' : 'en'}")
+        meta(name="copyright" content="#{meta.copyright}")
+        -if(env.partnerData.gplus_publisher_link){
+            meta(name='Publisher', content=env.partnerData.gplus_publisher_link)
+        -}
+
+
+        meta(property="og:title", content=meta.title)
+        meta(property="og:description", content=meta.description)
+
+        meta(property="og:url", content=meta.url)
+
+
+        -if(env.partnerData.FBCODE){
+            meta(property="fb:app_id", content="#{env.partnerData.FBCODE}")
+        -}
+        meta(property="og:type", content="image")
+        meta(property="og:image", content=meta.shareImage || meta.image)
+        meta(property='og:author', content=env.partnerData.defaultSourceUrl || meta.author)
+            
+        meta(property="og:image:width", content="600")
+        meta(property="og:image:height", content="315")
+
+
+        meta(name="twitter:card", content="summary_large_image")
+        meta(name="twitter:title", content=meta.title)
+        meta(name="twitter:description", content=meta.description)
+
+        meta(name="twitter:image", content=meta.image)
+        meta(name="twitter:url", content=meta.url)
+        -if(env.partnerData.defaultSourceUrl){
+            meta(property='article:publisher', content='#{env.partnerData.defaultSourceUrl}')
+        -}
+        -if(meta.tags){
+            meta(property='article:tag', content='#{meta.tags}')
+        -}
+        meta(property='og:site_name', content='#{meta.name || Hocalwire}')
+        
+
+        -if(env.pageType=="article"){
+            include ../../partials/_articleSchema
+        -} else if(env.pageType=="website"){
+            include ../../partials/_websiteSchema
+        -} 
+     
+       
+        script(async='', custom-element="amp-iframe", src="https://cdn.ampproject.org/v0/amp-iframe-0.1.js")
+        script(async='', custom-element='amp-analytics', src='https://cdn.ampproject.org/v0/amp-analytics-0.1.js')
+        
+        script(async='', custom-element="amp-sidebar", src="https://cdn.ampproject.org/v0/amp-sidebar-0.1.js")
+        script(async='', custom-element="amp-fit-text", src="https://cdn.ampproject.org/v0/amp-fit-text-0.1.js")
+        script(async='', custom-element="amp-carousel", src="https://cdn.ampproject.org/v0/amp-carousel-0.1.js")
+        script(async='', custom-element="amp-ad", src="https://cdn.ampproject.org/v0/amp-ad-0.1.js")
+
+
+        script(async='', src='https://cdn.ampproject.org/v0.js')
+        
+        style(amp-boilerplate='').
+            body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}
+        noscript
+            style(amp-boilerplate='').
+                body{-webkit-animation:none;-moz-animation:none;-ms-animation:none;animation:none}
+        style(amp-custom='').
+            .newsSocialIcons li,.newsSocialIcons li a:hover{text-decoration:none}body{overflow-y:scroll}amp-sidebar{width:250px;padding-right:10px}.amp-sidebar-image{line-height:100px;vertical-align:middle}li{margin-bottom:10px;list-style:none}button{margin-left:20px}.header{background:#fff;height:62px}.header .topHeader{height:40px;margin-top:10px;margin-bottom:20px;position:relative}.leftmenuSec{float:left;width:12%;height:30px}.openmenu{border:0;width:60px;height:40px;margin-left:10px}.openmenu.menu_bar{background:red}#sidebar .sub-cats,#sidebar .sub-cats a{font-size:12px;margin-left:10px;padding:2px}.amp-close-image{top:15px;left:225px;cursor:pointer;margin-left:-5px}.pull-right{float:right;margin-right:10px}h1.story_title{font-size:20px;text-align:center}.story-content{padding:5px 20px 0}.story-content .author-name,.story-content .story-time{color:#999}.amp-carousel-button{visibility:visible;opacity:1}.newsSocialIcons{display:inline-block;text-align:right}.newsSocialIcons a{padding-right:5px;display:inline-block}.newsSocialIcons li{list-style:none;width:25px;height:25px;font-family:Oswald;text-transform:uppercase;background:0 0;opacity:1;line-height:30px;padding:0;margin:0 3px;float:left}.newsSocialIcons li a{color:#FFF;height:15px}.newsSocialIcons li a i{margin-right:4px}.newsSocialIcons li.facebook{border:0 solid #314b83;background-color:#4769A5}.newsSocialIcons li.twitter{border:0 solid #0092ba;background-color:#65CCEF}.newsSocialIcons li.googleplus,.newsSocialIcons li.gplus{border:0 solid #ab2b1d;background-color:#bf3727}.newsSocialIcons li.linkedin{border:0 solid #278cc0;background-color:#2ba3e1}.newsSocialIcons li.tumblr{border:0 solid #2C3C4C;background-color:#34495e}.newsSocialIcons li.pinterest{border:0 solid #ae1319;background-color:#cd252b}.newsSocialIcons li.mail{border:0 solid #18AE91;background-color:#1abc9c}.newsSocialIcons li.youtube{border:0 solid #e62117;background-color:#e62117}.newsSocialIcons li img{vertical-align:top}.newsSocialIcons ul{border-radius:5px;padding:5px;z-index:10;width:230px;float:left;clear:both}.newsSocialIcons li.whatsapp,.sticky li.whatsapp{border:0 solid #19d639;background-color:#24bc3d}.image_caption{margin-top:10px;display:block;padding:3px 10px;background:#eee;color:#747474;font-size:13px}.pagi_wrap{position:relative}.pagi_wrap ul{margin:auto;display:block;text-align:center;width:615px;position:relative}.pagi_wrap ul li,.pagi_wrap ul li span{display:inline-block;text-align:center}.pagi_wrap ul li{margin:0 15px;position:relative}.pagi_wrap ul li.active a{cursor:default}.pagi_wrap ul li span{color:#333;vertical-align:middle;font-size:20px;line-height:45px;width:45px;height:45px;background:#dfebf9;border-radius:50%}.pagi_wrap ul li.active span{background:#ccc}#footer .footer-content{background-color:#f5f5f5;border-top:1px solid #fff;margin:0 auto;padding:0 0 2px;position:relative}p.copyright{display:inline}#footer .powered-by-hocalwire{font-size:12px}p.powered-by-hocalwire{margin-right:10px}.static-links.dark-bg{background:#0f0f0f;min-height:40px}.follow-us-block{padding-top:5px;text-align:left;color:#fff;padding-bottom:2px}#footer .footer-content .content-item{margin:0 auto;display:inline;padding:0;position:relative}#footer .footer-content .social_nav{position:absolute;padding:0 0 0 10px;margin-top:5px}#footer .follow-label{float:left}#footer .footer-content .social_nav li{float:right}#footer .footer-content .follow-us-links.newsSocialIcons{padding:5px}#footer .footer-legals{height:15px;padding-top:5px}#footer .footer-legals li.nav-legals{position:relative;padding-right:30px}#footer .footer-legals li{float:left;margin-right:10px}#footer .footer-legals li a{color:#000;text-decoration:none}.follow-us-links.newsSocialIcons{float:left}
+    body
+        include ampAnalytics
+        -env.isAMP=true
+        -data.story=Utils.getAMPStoryData(data)
+
+        include ampNav
+        include ampHeader
+
+        div.apm-post-details.story-content
+            h1.story_title !{data.title}
+            #ad_level_1
+                -if(data['ampAds'] && data['ampAds']['ad_level_1']){
+                    -if(data['ampAds']['ad_level_1']['adType']=="adsense"){
+                        !{data['ampAds']['ad_level_1']['content']}      
+                    -} else {
+                        amp-iframe(width='500', height='281', layout='responsive', sandbox='allow-scripts allow-same-origin allow-popups', allowfullscreen='', frameborder='0', src='#{env.rootUrl}/xhr/admin/loadAdIframe?elementId=ad_level_1')
+                    -}
+                -}
+            
+
+            .story-shortinfo
+                -if(!env.partnerData.hide_about_author){
+                    .author-name
+                        a(href="#{data.author ? data.author.url : '/'}", class="icon-link") 
+                            span(class="icon-text") 
+                                | &nbsp;
+                                span #{data.author ? data.author.name : data.source}
+                                | &nbsp;
+                -}
+                .story-time
+                    -if(data.location){
+                        | #{data.location} &nbsp;
+                    -} 
+                    // -if(!env.partnerData.do_not_show_time_in_listing){
+                    //   span.convert-to-localtime(data-datestring = "#{data.date_string}") #{data.date} 
+                    // -} else {
+                    //   span.convert-to-localtime.date-only(data-datestring = "#{data.date_string}") #{data.date} 
+                    // -}
+                
+            include ampImgOrCarousel
+            #ad_level_2
+                -if(data['ampAds'] && data['ampAds']['ad_level_2']){
+                    -if(data['ampAds']['ad_level_2']['adType']=="adsense"){
+                        !{data['ampAds']['ad_level_2']['content']}      
+                    -} else {
+                        amp-iframe(width='500', height='281', layout='responsive', sandbox='allow-scripts allow-same-origin allow-popups', allowfullscreen='', frameborder='0', src='#{env.rootUrl}/xhr/admin/loadAdIframe?elementId=ad_level_2')
+                    -}
+                -}
+            include socialShare
+            div.article_story_details
+                div
+                    div
+                        p !{data.story}
+            #ad_level_3
+                -if(data['ampAds'] && data['ampAds']['ad_level_3']){
+                    -if(data['ampAds']['ad_level_3']['adType']=="adsense"){
+                        !{data['ampAds']['ad_level_3']['content']}      
+                    -} else {
+                        amp-iframe(width='500', height='281', layout='responsive', sandbox='allow-scripts allow-same-origin allow-popups', allowfullscreen='', frameborder='0', src='#{env.rootUrl}/xhr/admin/loadAdIframe?elementId=ad_level_3')
+                    -}
+                -}
+            -if(data.pageCount>1){
+              div(class="page-pager pagi_wrap #{env.partnerData.goto_next_page_message}")
+                -if(data.pageNo && data.pageNo < data.pageCount && env.partnerData.goto_next_page_message){
+                  div.goto-next-page-post #{env.partnerData.goto_next_page_message}
+                -}
+                -if(data.pageCount>1){
+                  ul
+                    -if(data.pageNo>1){
+                      li
+                        a(href="#{data.baseUrl}#{data.pageSufix}#{data.pageNo-1}#{data.queryparams ? '?'+data.queryparams : ''}",class="prev")
+                          div(class="icon-text") 
+                            i.fa.fa-chevron-left &nbsp;
+                            | Prev Page
+                    -}
+                    -for(var i=1;i<=data.pageCount;i++){
+                      li(class="#{data.pageNo==i ? 'active' :''}")
+                        a.artpage(href="#{data.baseUrl}#{data.pageSufix}#{i}#{data.queryparams ? '?'+data.queryparams : ''}", title='Slide #{i}')
+                          span #{i}
+                    -}
+                    -if(data.pageNo<data.pageCount){
+                      li
+                        a(href="#{data.baseUrl}#{data.pageSufix}#{data.pageNo+1}#{data.queryparams ? '?'+data.queryparams : ''}",class="next")
+                          div(class="icon-text") 
+                            | Next Page &nbsp;
+                            i.fa.fa-chevron-right
+                             
+                    -}
+                -}
+              br
+            -}
+            -var tags = data.hashtags ? data.hashtags.split(",") : [];
+            -if(tags.length){
+            div(class="article-share-bottom tagcloud03")
+                b.tag_heading Tags: &nbsp;&nbsp;&nbsp;
+                  i.fa.fa-tags
+                ul(class="tag-block article-tags")
+                  -for(var i=0;i<tags.length;i++){
+                    li
+                      a.current-page(href="/search?search=#{tags[i]}&search_type=tags") #{tags[i]}&nbsp;&nbsp;&nbsp;
+                  -}
+                div(class="clear-float")
+
+            -}
+            #left_level_3.left_level_3.left_level_ad.hide
+            div.clear-float
+            #ad_level_4
+                -if(data['ampAds'] && data['ampAds']['ad_level_4']){
+                    -if(data['ampAds']['ad_level_4']['adType']=="adsense"){
+                        !{data['ampAds']['ad_level_4']['content']}      
+                    -} else {
+                        amp-iframe(width='500', height='281', layout='responsive', sandbox='allow-scripts allow-same-origin allow-popups', allowfullscreen='', frameborder='0', src='https://jantakiawaz.org:5001/xhr/admin/loadAdIframe?elementId=ad_level_4')
+                    -}
+                -}
+            include footer
+            
+
+            
+
+
+        

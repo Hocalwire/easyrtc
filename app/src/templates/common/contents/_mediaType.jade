@@ -1,0 +1,3 @@
+mixin mediaType(data)
+	#upload_params.hide(data-display-name="#{data.display_name}", data-url="/content/servlet/RDESController?command=rdm.FileUpload&app=rdes&partner="+(env.partner ? env.partner:"hocal")+"&uploadType=7&sessionId=#{env.requestSessionId}")
+	#fileuploader Upload

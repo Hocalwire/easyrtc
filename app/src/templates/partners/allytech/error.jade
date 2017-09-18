@@ -1,0 +1,15 @@
+include ../../theme_service/allMixin
+
+extends ../../theme_service/layout
+block content
+    div.homepage
+        include ../../theme_service/partials/_header
+        section#about-us
+            .container
+                .center.wow.fadeInDown
+                    section#error.container.text-center
+                        h1 Error Occured
+                        p The Page you are looking for doesn't exist or an other error occurred.
+                        a.btn.btn-primary(href='index.html') GO BACK TO THE HOMEPAGE
+                    // /#error
+    include ../../theme_service/partials/_footer

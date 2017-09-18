@@ -1,0 +1,50 @@
+include ../../theme_cobra/allMixin
+include ../../common/_registerReporter
+extends ../../theme_cobra/layout
+block content
+    include ../../theme_cobra/partials/_header
+    div(id="sb-site", class="body_wraper_box")
+        include ../../theme_cobra/partials/_navArea
+        //- +stickySocialShare("","",true)
+        div(class="main_content row")
+            div(class="content_wraper three_columns_container box-item")
+                div(class="twelve columns")
+                    #level_top_full
+                div(class="twelve columns")
+                    div(class="eight columns clearfix home_left_section")
+                        .container
+                            .row
+                                .eight.columns
+                                    h1.single-post-title.page-title Advertisement Enquiry
+                                    p(style='text-align:justified')
+                                    | These rates are applicable from March 1, 2012. Send your Demand Draft or cheque to "****" in favor of ""****"" payble at New Delhi. For further enquiry email to- ****. You can also contact us by sending just an SMS. Type 'Ad' and send it to ****.
+                                    br
+                                    i.fa.fa-check
+                                    | Banner ad for any edition- Rs.****/- for 6 months and Rs.****/- for a year. Dimension: 468*60, 300*250, 120*600 and 728*90 pixels and Size limit upto 30 kb.
+                                    br
+                                    i.fa.fa-check
+                                    | Buy 10,000 banner impressions for any edition just Rs.****/- (Applicable for only size of 468*60 pixels)
+                                    br
+                                    i.fa.fa-check
+                                    | Sponsored web page with designing and external links in just Rs.****/- in all editions.
+                                    br
+                                    i.fa.fa-check
+                                    | Buy 5mb sub-domain hosting space for one year in just Rs.****/-
+                                    br
+                                    i.fa.fa-check
+                                    | Buy website or blog text link for any edition just Rs.****/- for a year.
+                                    
+                    .four.columns
+                        div(class="twelve columns clearfix")
+                            .sidebar.side-bar.right-sidebar
+                                include ../../theme_cobra/partials/_genericRightSection
+                div(class="content_wraper three_columns_container")
+                    div(class="row")
+                        #level_bottom_full
+                            -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                                +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                            -}
+
+        include ../../theme_cobra/partials/_footer
+block scripts
+    include ../../common/_reporterResources

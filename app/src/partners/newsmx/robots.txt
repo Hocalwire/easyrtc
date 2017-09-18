@@ -1,0 +1,13 @@
+#
+# robots.txt for http://newsmx.tv
+
+User-agent: *
+Allow: /
+Disallow: /admin/*
+
+Disallow: /xhr/*
+Disallow: /refer-*
+
+Allow: /content/servlet/RDESController?*
+
+Sitemap: http://newsmx.tv/sitemap/sitemap-index.xml

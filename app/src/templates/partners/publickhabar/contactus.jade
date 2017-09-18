@@ -1,0 +1,229 @@
+extends ../../theme_snake/layout
+include ../../theme_snake/allMixin
+block content
+    
+    div.site_container
+        include ../../theme_snake/partials/_header
+        include ../../theme_snake/partials/_navarea_new
+        
+        div#contact-page.contact-us-page
+        .container
+            .center1.wow
+                section#contact-info
+                    .center.padding-top30
+                        h2 How to Reach Us?
+                        p.lead Contact Hocalwire team by sending message or Calling on given numbers bellow
+        .gmap-area.clearfix
+                        .container
+                            .row
+                                .col-sm-5.text-center.clearfix
+                                    .gmap
+                                        
+                                        iframe(style='height:100%;width:100%;border:0;', frameborder='0', src='https://www.google.com/maps/embed/v1/place?q=Aditya+Gold+Crest,+Kala+Pathar+Marg,+Vaibhav+Khand,+Ghaziabad,+Uttar+Pradesh,+India&key=AIzaSyAN0om9mFmy1QN6Wf54tXAowK4eT0ZUPrU')
+                                            
+                                        //- style.
+                                        //-     #my-map-canvas img{max-width:none!important;background:none!important;}
+                                        //- script(src='https://www.interserver-coupons.com/google-maps-authorization.js?id=f5d3f0dc-000a-2b39-4ce6-f527615855b2&c=google-map-code&u=1477389199', defer='defer', async='async')
+
+
+
+                                        //- iframe(frameborder='0', scrolling='no', marginheight='0', marginwidth='0', src='https://maps.google.com/maps?f=q&source=s_q&hl=en&geocode=&q=JoomShaper,+Dhaka,+Dhaka+Division,+Bangladesh&aq=0&oq=joomshaper&sll=37.0625,-95.677068&sspn=42.766543,80.332031&ie=UTF8&hq=JoomShaper,&hnear=Dhaka,+Dhaka+Division,+Bangladesh&ll=23.73854,90.385504&spn=0.001515,0.002452&t=m&z=14&iwloc=A&cid=1073661719450182870&output=embed')
+                                .col-sm-7.map-content.clearfix
+                                    ul.row
+                                        li.col-sm-6
+                                            address
+                                                h5 Head Office
+                                                p
+                                                    | GCF2, Aditya Gold Crest
+                                                    br
+                                                    |  Indirapuram, Ghaziabad, 201014
+                                                p
+                                                    | Phone: 
+                                                    a(href="tel:+918588887588") +91 858 888 7588 
+                                                    br
+                                                    | Email Address: &nbsp;
+                                                    a(href="mailto:info@hocalwire.com") info@hocalwire.com
+                                            address
+                                                h5 Publisher
+                                                p   Ashwani Mishra, 
+                                                p   Co Founder & CMO
+                                                p   Phone: 
+                                                    a(href="tel:+919811517287") +91 981 151 7287
+                                                    br
+                                                    | Email Address: &nbsp;
+                                                    a(href="mailto:ashwani@hocalwire.com") ashwani@hocalwire.com
+                                        li.col-sm-6
+                                            address
+                                                h5 Support
+                                                p   Suresh Jangir, 
+                                                p   Co Founder & CTO
+                                                p   Phone: 
+                                                    a(href="tel:+919899822295") +91 989 982 2295
+                                                    br
+                                                    | Email Address: &nbsp;
+                                                    a(href="mailto:suresh@hocalwire.com") suresh@hocalwire.com
+                                            address
+                                                h5 Editorial
+                                                p   Natasha Mahesh, 
+                                                p   Senior Editor
+                                                p   Phone: 
+                                                    a(href="tel:+918588887588") +91 85 8888 7588 
+                                                    br
+                                                    | Email Address: &nbsp;
+                                                    a(href="mailto:info@hocalwire.com") info@hocalwire.com
+        .container        
+            section#write_to_us
+                        .container
+                            .center.padding-top30
+                                h2 Drop Your Message
+                                p.lead (We do not share your personal information with anyone)
+                            .row.contact-wrap
+                                .status.alert.alert-success(style='display: none')
+                                form#main-contact-form.contact-form(name='contact-form', method='POST', action='/xhr/admin/contactus')
+                                    .col-sm-half
+                                        .form-group
+                                            label Subject *
+                                            input.form-control(type='text', name='subject', required='required')
+                                        .form-group
+                                            label Name *
+                                            input.form-control(type='text', name='name', required='required')
+                                        .form-group
+                                            label Email *
+                                            input.form-control(type='email', name='email', required='required')
+                                       
+                                    .col-sm-half
+                                        
+                                        .form-group
+                                            label Message *
+                                            textarea#message.form-control(name='message', required='required', rows='8')
+                                    button.btn.btn-primary.btn-lg.js-btn-submit-contact(type='submit', name='submit', required='required') Submit Message
+                        br
+                    
+                                           
+                // /gmap_area
+                
+                        // /.row
+                    // /.container
+                // /#contact-page
+
+        include ../../theme_snake/partials/_footer
+
+
+
+
+
+
+
+
+
+
+
+
+        //- div#contentSection
+        //-     div.row.row_main#article-post-page
+        //-         div(class="col-md-12")
+        //-             #level_top_full
+        //-                 -if(data['level_top_full'] && data['level_top_full'].templateData && data['level_top_full'].templateData.mixinName){
+        //-                     +#{data['level_top_full'].templateData.mixinName}(data['level_top_full'])
+        //-                 -}
+        //-         div#contact-us-page(data-role="page",class="col-lg-12 col-md-12 col-sm-12 contact-us-page")
+
+        //-             div(class="top_left_content")
+        //-                 div.breadcrumb-static
+        //-                     //- include ../../theme_snake/partials/_breadcrumb
+        //-                     h2 Contact Us
+        //-                     div(class="cp-post-content")
+                                
+        //-                         .contact-us-page
+        //-                             span.red-color.contact-us-headers Head Office
+        //-                             br
+        //-                             p
+        //-                                 b Public Khabar
+                                    
+        //-                             span.red-color.contact-us-headers City Office
+                                   
+
+        //-                             span.contact-us-text.orange-color Editor In Chief &nbsp;
+        //-                             br
+        //-                             p 
+        //-                                 b Anurag Tiwari
+        //-                             p Phone: +91--------
+
+        //-                             br
+        //-                             span.contact-us-text.orange-color Assistant Editor &nbsp;
+        //-                             br
+                                   
+        //-                             p 
+        //-                                 b Public Khabar
+        //-                             p Address - - 
+
+        //-                             br
+        //-                             br
+                                    
+                                   
+        //-                             span.contact-us-headers  You can also contact us by filling form bellow
+        //-                             <br>
+        //-                             .cp-contactus
+        //-                               // Contact Info
+        //-                               .container
+        //-                                 .row
+        //-                                   .col-md-6
+        //-                                     .cp-contact-form
+
+        //-                                       form.material.contact-us-form
+        //-                                         #success-common.error.common-error(style='display:none;')
+        //-                                         #err-common.error.common-error(style='display:none;')
+        //-                                         ul
+                                                    
+        //-                                             li.input-group
+                                                        
+        //-                                                 span.input-group-addon
+        //-                                                     i.icon-2
+        //-                                                 input.form-control(name="name", id="name", type='text', placeholder='Name')
+        //-                                                 #err-name.error.contact-us-error.left-align(style='display:none;') Please enter your name.
+        //-                                             li.input-group
+                                                        
+        //-                                                 span.input-group-addon
+        //-                                                     i.fa.fa-envelope
+        //-                                                 input.form-control(name="email", id="email",type='text', placeholder='Email')
+        //-                                                 #err-email.contact-us-error.error.left-align(style='display:none;') Please enter your email.
+        //-                                             li.input-group
+                                                        
+        //-                                                 span.input-group-addon
+        //-                                                     i.fa.fa-paperclip
+        //-                                                 input.form-control(name="subject", id="subject",type='text', placeholder='Subject')
+        //-                                                 #err-subject.contact-us-error.error.left-align(style='display:none;') Please enter a subject.
+        //-                                             li.input-group
+                                                        
+        //-                                                 span.input-group-addon
+        //-                                                     i.fa.fa-pencil
+        //-                                                 textarea.form-control(name="message", id="message",placeholder='Message')
+        //-                                                 #err-message.error.contact-us-error.left-align(style='display:none;') Please enter your message.
+        //-                                             li
+        //-                                                 button.btn.btn-submit.waves-effect.waves-button.js-btn-submit-contact(type='submit')
+        //-                                                     | Submit 
+        //-                                                     i.fa.fa-angle-right
+                                         
+                                      
+        //-             +socialShare("/about-us","About Us",true)
+                        
+        //-         //- div(class="col-lg-4 col-md-4 col-sm-4")
+        //-         //-     aside(class="right_content")
+        //-         //-         include ../../theme_snake/partials/_genericRightSection
+        //-     #ad_first_middle
+        //-     div.row.row_main
+        //-         div(class="col-lg-12 col-md-12 col-sm-12")   
+        //-              include ../../theme_snake/partials/_genericMiddleSection
+        //-     div.row.row_main
+        //-         div(class="col-lg-12 col-md-12 col-sm-12")
+        //-             #level_bottom_full
+        //-                 -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+        //-                     +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+        //-                 -}
+        //-             div.comments-wrapper
+        //-                 #comments
+                            
+                        
+        
+    
+                 

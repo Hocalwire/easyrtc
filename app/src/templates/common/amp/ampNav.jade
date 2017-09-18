@@ -1,0 +1,18 @@
+amp-sidebar#sidebar(layout='nodisplay', side='left')
+    amp-img.amp-close-image(src='/images/clear-button.png', width='20', height='20', alt='close sidebar', on='tap:sidebar.close', role='button', tabindex='0')
+    ul
+        -if(!env.partnerData.hide_home_in_menu){
+            li
+                a(href="#{env.partnerData.homePageRoot || '/'}") #{env.partnerData.partnerHomeName || "Home"}
+        -}
+        -for(var i=0;i<env.partnerCatData.topHeaderCats.length;i++){
+            li
+                a(href="#{env.partnerCatData.topHeaderCats[i].url}") #{env.partnerCatData.topHeaderCats[i].name}
+                -if(env.partnerCatData.topHeaderCats[i].childs.length){
+                    -for(var j=0;j<env.partnerCatData.topHeaderCats[i].childs.length;j++){
+                        amp-fit-text.sub-cats(width='220', height='20', layout='responsive', max-font-size='24')
+                            a(href="#{env.partnerCatData.topHeaderCats[i].childs[j].url}") #{env.partnerCatData.topHeaderCats[i].childs[j].name}
+                    -}
+                -}
+        -}
+        

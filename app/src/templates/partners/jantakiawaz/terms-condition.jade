@@ -1,0 +1,82 @@
+include ../../theme_ape/allMixin
+extends ../../theme_ape/layout
+block content
+    div#site.left.relative.home
+        #site-wrap.left.relative
+            include ../../theme_ape/partials/_header
+            .col-tabs-wrap.left.relative.mobile_tabs_wrapper(style='top: 0px;')
+                #mobile_tabs
+            #body-main-wrap.left.relative(style='transform: none;')
+                .body-main-out.relative(style='transform: none;')
+                    .body-main-in(style='transform: none;')
+                        #body-main-cont.left.relative(style='transform: none;')
+                            #level_top_full.leader-right-wrap
+                                -if(data['level_top_full'] && data['level_top_full'].templateData && data['level_top_full'].templateData.mixinName){
+                                    +#{data['level_top_full'].templateData.mixinName}(data['level_top_full'])
+                                -}
+                            #feat-top-wrap.feat_top_wrap.left.relative
+                                -if(data['feat-top-wrap'] && data['feat-top-wrap'].templateData && data['feat-top-wrap'].templateData.mixinName){
+                                    +#{data['feat-top-wrap'].templateData.mixinName}(data['feat-top-wrap'])
+                                -}
+                            #post-main-wrap.left.relative
+                                .post-wrap-out1
+                                    .post-wrap-in1.white_bg_card
+                                        .post-left-col.static-page-wrapper
+                                            h1(style="color:black") Privacy Policy
+                                            .kopa-divider
+
+                                            br
+                                            div(class='privacy_policy')
+                                              p 
+                                                div(class='heading') Last updated: May 02, 2016
+                                                br
+                                                | Please read these Terms and Conditions (“Terms”, “Terms and Conditions”) carefully before using the http://www.jantakiawaz.in website (the “Service”) operated by Janta Ki Awaz (“us”, “we”, or “our”).
+                                                br
+                                                br
+                                                | Your access to and use of the Service is conditioned on your acceptance of and compliance with these Terms. These Terms apply to all visitors, users and others who access or use the Service.
+
+                                                | By accessing or using the Service you agree to be bound by these Terms. If you disagree with any part of the terms then you may not access the Service.
+                                                br
+                                                br
+                                                div(class='heading') Links To Other Web Sites
+                                                br
+                                                br
+                                                | Our Service may contain links to third-party web sites or services that are not owned or controlled by Janta Ki Awaz.
+                                                br
+                                                br
+                                                | Janta Ki Awaz has no control over, and assumes no responsibility for, the content, privacy policies, or practices of any third party web sites or services. You further acknowledge and agree that Janta Ki Awaz shall not be responsible or liable, directly or indirectly, for any damage or loss caused or alleged to be caused by or in connection with use of or reliance on any such content, goods or services available on or through any such web sites or services.
+
+                                                | We strongly advise you to read the terms and conditions and privacy policies of any third-party web sites or services that you visit.
+                                                br
+                                                br
+                                                div(class='heading') Governing Law
+                                                br
+                                                br
+                                                | These Terms shall be governed and construed in accordance with the laws of Uttar Pradesh, India, without regard to its conflict of law provisions.
+                                                br
+                                                br
+                                                | Our failure to enforce any right or provision of these Terms will not be considered a waiver of those rights. If any provision of these Terms is held to be invalid or unenforceable by a court, the remaining provisions of these Terms will remain in effect. These Terms constitute the entire agreement between us regarding our Service, and supersede and replace any prior agreements we might have between us regarding the Service.
+                                                br
+                                                br
+                                                div(class='heading') Changes
+                                                br
+                                                br
+                                                | We reserve the right, at our sole discretion, to modify or replace these Terms at any time. If a revision is material we will try to provide at least 30 days notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.
+
+                                                | By continuing to access or use our Service after those revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, please stop using the Service.
+                                                br
+                                                br
+                                                div(class='heading') Contact Us
+                                                br
+                                                br
+                                                | If you have any questions about these Terms, please contact us at
+
+                                                | info@jantakiawaz.in
+                                    #post-right-col
+                                        include ../../theme_ape/partials/_genericRightSection
+                                    #level_bottom_full.leader-right-wrap
+                                        -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                                            +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                                        -}
+                            
+                include ../../theme_ape/partials/_footer

@@ -1,0 +1,21 @@
+.container.profile-sub-container
+    br(clear='all')
+    .row
+        #sub_block
+                    // -if(!data.subscriptionData || !data.subscriptionData.planId){
+                    //     .row
+                    //         div(class='inner-box')
+                    //             div You are not having any subscription or payments. Please view plan items
+                    //             button.submit-payment-info-btn1.js_submit_payment_info_btn1
+                    //                 a(href="#{env.partnerData.subscriptionPageUrl}") View Packages
+                    // -} else {
+                    //     include _planDetailsOnProfile
+                    // -}
+                    include _planDetailsOnProfile
+                    
+                        
+            // table-responsive close
+        // col-md-6 close
+    // row close
+// container close
+// tab-pane close

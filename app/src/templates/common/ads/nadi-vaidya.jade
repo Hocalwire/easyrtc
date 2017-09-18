@@ -1,0 +1,149 @@
+include ../socialShare
+.outer.nadi-ad
+    .cross
+        span.recommended-close.pull_right
+            img(src="/images/clear-button.png")
+
+    .level_1
+        .hocal_row.first_row
+            .hocal_col.hocal_col_3.col_share
+                span.share
+                    +socialShare("https://www.youtube.com/channel/UCCBY5zDLEC2-brPiwqJrvWw","NADI VAIDYA KAYAKALP","","","open")
+            .hocal_col.hocal_col_3.col_subscribe
+                div(class="g-ytsubscribe", data-channelid="UCCBY5zDLEC2-brPiwqJrvWw", data-layout="default" data-count="show")
+        .hocal_row
+            div.video-player-wrapper
+                iframe.video-iframe(src="http://www.youtube.com/embed/CFGGSve0KJU" frameborder="0" allowfullscreen)
+                //- iframe(src="https://www.youtube.com/watch?v=rif1QY3lmuY?auto_play=1")
+                //- div.my-player.video-player(data-type="youtube", data-video-id="rif1QY3lmuY")
+        .hocal_row
+            span.heading-wrapper
+                span.heading मोटा का आयुर्वेदिक १००% सफल इलाज, देखे वीडियो?
+
+script(src='https://apis.google.com/js/platform.js')
+script.
+    window.onYtEvent = function(payload) {
+    if (payload.eventType == 'subscribe') {
+    // Add code to handle subscribe event.
+        Hocalwire.Services.AnalyticsService.sendGAEvent("channel-subscribed-!{env.partner}","click","recommended-popup");
+    } else if (payload.eventType == 'unsubscribe') {
+        Hocalwire.Services.AnalyticsService.sendGAEvent("channel-unsubscribed-!{env.partner}","click","recommended-popup");
+    }
+    if (window.console) { // for debugging only
+    window.console.log('YT event: ', payload);
+    }
+    }
+//- link(rel="stylesheet", type="text/css", href="/recommended/ads/ytplayer/plyr.css")
+//- script(src='/recommended/ads/ytplayer/plyr.js')
+script.
+    var ck = Hocalwire.Services.GlobalService.getCookie("SHOWN_RECOM_AD");
+    if(window.screen.width>767){
+        ck="1";
+    }
+    
+    if(!ck){
+
+        Hocalwire.Services.GlobalService.setCookie("SHOWN_RECOM_AD","1",{"max-age":(3*60*60),"path":"/"});
+       //- plyr.setup();
+        $(".recommended-close").on("click",function(){
+            $("#fixed-bottom-content").addClass("hide");
+            $("#fixed-bottom-content .video-iframe").remove();
+            //- plyr.get()[0].stop();
+            Hocalwire.Services.AnalyticsService.sendGAEvent("channel-close-!{env.partner}","click","recommended-popup");
+             
+        });
+        $("#___ytsubscribe_0,#___ytsubscribe_1,#___ytsubscribe_2").on("click",function(){
+            Hocalwire.Services.AnalyticsService.sendGAEvent("channel-subscribe-!{env.partner}","click","recommended-popup");
+        });
+        
+        $("#fixed-bottom-content").addClass("hide");
+        setTimeout(function(){
+            $("#fixed-bottom-content").removeClass("hide");
+        },10000);
+    } else {
+        $("#fixed-bottom-content .video-iframe").remove();
+        $("#fixed-bottom-content").addClass("hide");
+    }
+    
+    
+style.
+    .video-iframe {
+        width: 100%;
+        height: auto;
+        min-height:200px;
+    }
+    .first_row {
+        margin-left: 50px;
+    }
+    .level_1 {
+        margin-top: -25px;
+    }
+    #___ytsubscribe_0,#___ytsubscribe_1,#___ytsubscribe_2 {
+        float:right !important;
+    }
+    .share .tumblr,.share .pinterest ,.share .linkedin{
+        display:none !important;
+    }
+    .plyr__video-embed {
+        padding-bottom: 100.25%;
+    }
+    .heading-wrapper {
+        color: #000;
+        display: block;
+        margin-right: 0px;
+        padding: 2px;
+        text-align: center;
+    }
+    .video-player-wrapper {
+        text-align:center;
+        width: 40%;
+        max-height: auto;
+    }
+
+    @media only screen and (max-width: 767px) {
+        .video-player-wrapper {
+            width: 100%;
+            height: auto;
+        }
+    }
+    
+    .level_1,.level_2 {
+        max-height:80%;
+        width: auto;
+        display: block;
+    }
+    #fixed-bottom-content {
+        background: #fff;
+        padding: 2px;
+        border: 2px solid #ccc;
+        border-top : 2px solid #bb7676;
+    }
+    .share .sshare{
+        display: none !important;
+    }
+    .nadi-ad .cross {
+        position: relative;
+        width: 100%;
+        display: inline-block;
+        height: 0px;
+        z-index: 999999;
+        cursor:pointer;
+    }
+    .nadi-ad .cross .recommended-close{ 
+        float: left;
+        width: 28px;
+        margin-top: -18px;
+        padding: 2px;
+        background: #ccc;
+    }
+    .nadi-ad  .heading{
+        font-size: 20px;
+        font-style: italic;
+        font-weight: bold;
+    }
+    .level_2,.level_1 {
+        display: block;
+    }
+    .level_2.op_0,.level_1.op_0 {
+        display:none;
+    }

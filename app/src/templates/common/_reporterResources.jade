@@ -1,0 +1,59 @@
+script.
+    window.REPORTER_RESOURCES_LOADED=false;
+    document.addEventListener("REPORTER_RESOURCES_LOADED", function(e) {
+        window.REPORTER_RESOURCES_LOADED=true;
+    });
+-if(env.lazyloadResources){
+    - if(environment === 'development') {
+        link(rel="stylesheet", type="text/css", href="/styles/reporter/main.css")
+        link(rel="stylesheet", type="text/css", href="/styles/reporter/bootstrap-light.css")
+        script(type="text/javascript", src="/scripts/reporter/main.js")
+        script(type="text/javascript", src="/scripts/reporter/jquery.fileupload.min.js")
+        script(type="text/javascript", src="/scripts/reporter/zebra_datePicker.js")
+        script.
+            var event = new CustomEvent("REPORTER_RESOURCES_LOADED", { "detail": "ALL DEPENDENCIES LOADED" });
+            document.dispatchEvent(event);
+    - } else {
+            link(rel="preload", href="/styles/reporterform.min.8c3ed281.css", as="style", onload="this.rel='stylesheet'")
+            script.
+                var loadDeferredStylesReporter = function() {
+                    var head = document.getElementsByTagName("head")[0];
+                    var s = document.createElement("script");
+                    s.type = "text/javascript";
+                    s.src = "/scripts/reporterformjs.min.e7be3c61.js";
+                    s.addEventListener("load", function (e) {
+                        var event = new CustomEvent("REPORTER_RESOURCES_LOADED", { "detail": "ALL DEPENDENCIES LOADED"});
+                        document.dispatchEvent(event);
+                        var event = new CustomEvent("EXTRA_PAGE_RESOURCES_LOADED", { "detail": "ALL DEPENDENCIES LOADED" });
+                        document.dispatchEvent(event);
+                    }, false);
+                    head.appendChild(s);
+                };
+                document.addEventListener("RESOURCES_LOADED", function(e) {
+                    loadDeferredStylesReporter();
+                });
+        
+    - }
+
+-} else {
+    - if(environment === 'development') {
+            link(rel="stylesheet", type="text/css", href="/styles/reporter/main.css")
+            link(rel="stylesheet", type="text/css", href="/styles/reporter/bootstrap-light.css")
+            script(type="text/javascript", src="/scripts/reporter/main.js")
+            script(type="text/javascript", src="/scripts/reporter/jquery.fileupload.min.js")
+            script(type="text/javascript", src="/scripts/reporter/zebra_datePicker.js")
+            script.
+                var event = new CustomEvent("REPORTER_RESOURCES_LOADED", { "detail": "ALL DEPENDENCIES LOADED" });
+                document.dispatchEvent(event);
+            
+            
+    - } else {
+            link(rel="stylesheet", type="text/css", href="/styles/reporter/main.css")
+            script(type="text/javascript", src="#{Utils.getCDNUrl('scripts/reporterformjs.min.e7be3c61.js')}")
+            script.
+                var event = new CustomEvent("REPORTER_RESOURCES_LOADED", { "detail": "ALL DEPENDENCIES LOADED" });
+                document.dispatchEvent(event);
+    - }
+    
+-}
+

@@ -1,0 +1,22 @@
+include ../../theme_bear/allMixin
+extends ../../theme_bear/layout
+block content
+    .boxed.active
+        .wrapper
+            include ../../theme_bear/partials/_header
+        section.content
+            .wrapper
+                .main-content.has-sidebar
+                    #top-three-section
+                        -if(data['top-three-section'] && data['top-three-section'].templateData && data['top-three-section'].templateData.mixinName){
+                                                +#{data['top-three-section'].templateData.mixinName}(data['top-three-section'])
+                        -}
+                    .left-content
+                        h1.banner About Us
+                        
+                        h3.banner tag line
+                        br
+                        p About us content
+                    aside#sidebar
+                        include ../../theme_bear/partials/_homeRightSection
+                include ../../theme_bear/partials/_footer

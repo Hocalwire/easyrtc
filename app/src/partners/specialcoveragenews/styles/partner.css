@@ -1,0 +1,39 @@
+
+.details-content-story{
+	color:black;
+	font-size: 14px;
+}
+.entry-content .entry-date {
+	display:inline-block;
+}
+
+
+.widget .entry-item .entry-title {
+    color:black;
+}
+.external-site-name {
+	background: #e03d3d;
+	padding: 5px 10px;
+	font-size: 16px;
+	margin-top: -5px !important;
+}
+.external-site-name a:hover {
+	color:#ddd !important;
+}
+.breadcrumb{
+	font-size: 14px;
+}
+
+.entry-box p {
+	color: #000;
+}
+#header-middle {
+	height: 120px;
+}
+#header-middle #logo-image img {
+	margin-top: -20px;
+}
+.logo_area{
+	margin-top: 0px !important;
+}
+

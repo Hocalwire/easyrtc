@@ -1,0 +1,114 @@
+include ../../theme_fish/allMixin
+extends ../../theme_fish/layout
+block content
+    div#contact-us-page(class="boxed")
+      include ../../theme_fish/partials/common/_header
+      .page-header
+        .container
+            .row
+              .col-md-12
+                .breadcrumb-wrapper
+                  h1.page-title Contact Us
+      .container
+          .row
+              .col-md-12
+                #google-map
+                section#content
+                    .container
+                        .row
+                            .col-md-6
+                                h2.title-2
+                                    | Chennai
+                                .information
+                                    .contact-datails
+                                        .icon
+                                            i.fa.fa-map-marker.icon-radius
+                                        .info
+                                            h3 Domex Business Information Pvt Ltd
+                                            div.detail 208 Kaveri Complex, Nungambakkam High Road Nungambakkam,
+                                            div.detail Telephone Number: +91-44-28235080/ 28235060  
+                                            div.detail Chennai 600034, INDIA.
+                                    
+                                    .contact-datails
+                                        .icon
+                                            i.fa.fa-location-arrow.icon-radius
+                                        .info
+                                            h3 Email Address
+                                            span.detail
+                                                |Enquiry / Subscription: subscription@indiaprojectsnews.in
+                            .col-md-6
+                                .gmap
+                                    iframe(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.577555847008!2d80.2431948141083!3d13.062540090796272!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a526668e7c70fe5%3A0x95c2765e15fd1004!2sKaveri+Complex%2C+50%2C+Nungambakkam+High+Rd%2C+Subba+Road+Avenue%2C+Nungambakkam%2C+Chennai%2C+Tamil+Nadu+600034!5e0!3m2!1sen!2sin!4v1485413480997',width='100%',height='250px', frameborder='0', style='border:0', allowfullscreen='')
+                        .row
+                            .col-md-6
+                                h2.title-2
+                                    | Mumbai
+                                .information
+                                    .contact-datails
+                                        .icon
+                                            i.fa.fa-map-marker.icon-radius
+                                        .info
+                                            h3 RF3, Kakad Chambers Annexe,
+                                            div.detail 1st Floor, Dr. Annie Besant Road, Adjacent Poddar Hospital, Worli,
+                                            div.detail Mumbai - 400 018, Maharashtra, INDIA
+                                            div.detail Telephone Number: 
+                                            a(href="tel:+912266638220") +91-22-66638220
+                                            a(href="tel:+912266638221") /21
+                                            a(href="tel:+912266638222") /22  
+                                    
+                                    .contact-datails
+                                        .icon
+                                            i.fa.fa-location-arrow.icon-radius
+                                        .info
+                                            h3 Email Address
+                                            span.detail
+                                                |Enquiry / Subscription: 
+                                                a(href="mailto:subscription@indiaprojectsnews.in") subscription@indiaprojectsnews.in
+                            .col-md-6
+                                .gmap
+                                    iframe(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2844.615116090903!2d72.81588426294945!3d19.003992933573812!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3be7ce90bc1f65e1%3A0xeb558b5ba67617e8!2sDomex+Business+Information+-+Tenders+News!5e0!3m2!1sen!2sin!4v1502866796192',width='100%',height='250px', frameborder='0', style='border:0', allowfullscreen='')
+                                            
+                        .row
+                            .col-md-9
+                                h2.title-2
+                                    | Leave A Meassage!
+                                // Form
+                                form#contactForm.contact-form(data-toggle='validator')
+                                    .row
+                                        
+                                            
+                                                .col-md-6
+                                                    .form-group
+                                                        input#name.form-control.inputBox(type='text', name='name', placeholder='Full Name', required='', data-error='Please enter your name')
+                                                        .help-block.with-errors
+                                                .col-md-6
+                                                    .form-group
+                                                        input#email.form-control.inputBox(type='email', placeholder='mail@sitename.com', required='', data-error='Please enter your email')
+                                                        .help-block.with-errors
+                                    .row
+                                              
+                                                .col-md-6
+                                                    .form-group
+                                                        input#msg_phone.form-control.inputBox(type='text', name='phone', placeholder='Phone', required='', data-error='Please enter your Phone Number')
+                                                        .help-block.with-errors
+                                                .col-md-6
+                                                    .form-group
+                                                        input#subject.form-control.inputBox(type='text', name='subject', placeholder='Subject', required='', data-error='Please enter your subject')
+                                                        .help-block.with-errors
+                                    .row
+                                        
+                                                .col-md-12
+                                                    .form-group
+                                                        textarea.form-control.inputBox(placeholder='Message', rows='3', data-error='Write your message', required='')
+                                                        .help-block.with-errors
+                                    .row.margin-bottom20
+                                        
+                                            .col-md-12.text-center
+                                                    button#submit.btn.btn-common(type='submit') Send Your Message
+                                                    #msgSubmit.h3.text-center.hidden
+                                                    .clearfix
+                            .col-md-3
+                                
+
+      include ../../theme_fish/partials/_footer
+    

@@ -1,0 +1,120 @@
+include ../../theme_loon/allMixin
+extends ../../theme_loon/layout
+block content
+    div(class="boxed")
+        include _header
+        div.content
+            div.wrapper
+                div#banner_area.banner_area
+                    -if(data['banner_area'] && data['banner_area'].templateData && data['banner_area'].templateData.mixinName){
+                        +#{data['banner_area'].templateData.mixinName}(data['banner_area'])
+                    -} 
+                div(class="clear-float")
+                div.news-ticker-area#news_ticker_area
+                    include newsUpdates
+                div(class="clear-float")
+                #level_top_full
+                    -if(data['level_top_full'] && data['level_top_full'].templateData && data['level_top_full'].templateData.mixinName){
+                        +#{data['level_top_full'].templateData.mixinName}(data['level_top_full'])
+                    -}
+                div(class="clear-float")
+                div.main-content
+                    div.main-page.left.sticky_elements_scroll
+                        div.double-block
+                            div.content-block.main.right
+                                div(class="middle_blocks_wrapper")
+                                    #middle_level_1.middle_level_1.middle_level.block
+                                        include contents/_topSlider
+                                    #middle_level_2.middle_level_2.middle_level.block
+                                        div.big_banner
+                                            div(class="mixin-header breaking-news")
+                                                a(href="javascript: void(0);",class="the-title title")  Health Checkup Camp
+                                            img(src="/images/event1.jpg")
+                                    #middle_level_3.middle_level_3.middle_level.block
+                                       
+                                    #middle_level_4.middle_level_4.middle_level.block
+                                        -if(data['middle_level_4'] && data['middle_level_4'].templateData && data['middle_level_4'].templateData.mixinName){
+                                            +#{data['middle_level_4'].templateData.mixinName}(data['middle_level_4'])
+                                        -}
+                                    
+                                    div.clear-float
+                            div.content-block.left
+                                div(class="left_blocks_wrapper")
+                                    #left_level_1.left_level_1.left_level.block
+                                        include contents/_featureLeft
+                                    #left_level_2.left_level_2.left_level.block
+                                        
+                                    #left_level_3.left_level_3.left_level.block
+                                        -if(data['left_level_3'] && data['left_level_3'].templateData && data['left_level_3'].templateData.mixinName){
+                                            +#{data['left_level_3'].templateData.mixinName}(data['left_level_3'])
+                                        -}
+                                    #left_level_4.left_level_4.left_level.block
+                                        -if(data['left_level_4'] && data['left_level_4'].templateData && data['left_level_4'].templateData.mixinName){
+                                            +#{data['left_level_4'].templateData.mixinName}(data['left_level_4'])
+                                        -}
+                                    #left_level_5.left_level_5.left_level.block
+                                        -if(data['left_level_5'] && data['left_level_5'].templateData && data['left_level_5'].templateData.mixinName){
+                                            +#{data['left_level_5'].templateData.mixinName}(data['left_level_5'])
+                                        -}
+                                    #left_level_6.left_level_6.left_level.block
+                                        -if(data['left_level_6'] && data['left_level_6'].templateData && data['left_level_6'].templateData.mixinName){
+                                            +#{data['left_level_6'].templateData.mixinName}(data['left_level_6'])
+                                        -}
+                                    #left_level_7.left_level_7.left_level.block
+                                        -if(data['left_level_7'] && data['left_level_7'].templateData && data['left_level_7'].templateData.mixinName){
+                                            +#{data['left_level_7'].templateData.mixinName}(data['left_level_7'])
+                                        -}
+                                    #left_level_8.left_level_8.left_level.block
+                                        -if(data['left_level_8'] && data['left_level_8'].templateData && data['left_level_8'].templateData.mixinName){
+                                            +#{data['left_level_8'].templateData.mixinName}(data['left_level_8'])
+                                        -}
+                                    
+                                    
+                                    div.clear-float
+                    div.main-sidebar.right.sticky_elements_scroll
+                        div(class="right_blocks_wrapper")
+                            #right_level_1.right_level_1.right_level.widget
+                                include contents/_featureRight
+                            #right_level_2.right_level_2.right_level.widget
+                                include contents/_enquiryForm
+                            #right_level_3.right_level_3.right_level.widget
+                                include contents/_rightBottomSlider
+                            #right_level_4.right_level_4.right_level.widget
+                                -if(data['right_level_4'] && data['right_level_4'].templateData && data['right_level_4'].templateData.mixinName){
+                                    +#{data['right_level_4'].templateData.mixinName}(data['right_level_4'])
+                                -}
+                            #right_level_5.right_level_5.right_level.widget
+                                -if(data['right_level_5'] && data['right_level_5'].templateData && data['right_level_5'].templateData.mixinName){
+                                    +#{data['right_level_5'].templateData.mixinName}(data['right_level_5'])
+                                -}
+                            #right_level_6.right_level_6.right_level.widget
+                                -if(data['right_level_6'] && data['right_level_6'].templateData && data['right_level_6'].templateData.mixinName){
+                                    +#{data['right_level_6'].templateData.mixinName}(data['right_level_6'])
+                                -}
+                            #right_level_7.right_level_7.right_level.widget
+                                -if(data['right_level_7'] && data['right_level_7'].templateData && data['right_level_7'].templateData.mixinName){
+                                    +#{data['right_level_7'].templateData.mixinName}(data['right_level_7'])
+                                -}
+                            #right_level_8.right_level_8.right_level.widget
+                                -if(data['right_level_8'] && data['right_level_8'].templateData && data['right_level_8'].templateData.mixinName){
+                                    +#{data['right_level_8'].templateData.mixinName}(data['right_level_8'])
+                                -}
+                            #right_level_9.right_level_9.right_level.widget
+                                -if(data['right_level_9'] && data['right_level_9'].templateData && data['right_level_9'].templateData.mixinName){
+                                    +#{data['right_level_9'].templateData.mixinName}(data['right_level_9'])
+                                -}
+                            #right_level_10.right_level_10.right_level.widget
+                                -if(data['right_level_10'] && data['right_level_10'].templateData && data['right_level_10'].templateData.mixinName){
+                                    +#{data['right_level_10'].templateData.mixinName}(data['right_level_10'])
+                                -}
+                            
+                            div.clear-float
+                    div(class="clear-float")
+        
+                div#level_bottom_full
+                    -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                        +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                    -}
+        div(class="clear-float")
+        include _subFooter
+        include ../../theme_loon/partials/_footer

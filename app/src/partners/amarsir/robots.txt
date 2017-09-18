@@ -1,0 +1,12 @@
+#
+# robots.txt for http://amarsir.com
+User-agent: *
+Allow: /
+Disallow: /admin/*
+
+Disallow: /xhr/*
+Disallow: /refer-*
+
+Allow: /content/servlet/RDESController?*
+
+Sitemap: http://amarsir.com/sitemap/sitemap-index.xml

@@ -1,0 +1,18 @@
+@font-face { font-family: Georgia; src: url('/theme_specialcoverage/fonts/Georgia.ttf'); } 
+body,h1,h2,h3,h4,h5{
+	font-family: Georgia, 'Rokkitt', serif; 
+	font-weight: 400;
+}
+p,a,span,div{
+	font-family: Georgia, 'Rokkitt', serif; 
+	font-weight: 100;
+}
+.comment-symbol {
+	display: none;
+}
+.comment-label-wrapper {
+	display: none !important;	
+}
+.right_level {
+	margin-bottom: 20px;
+}

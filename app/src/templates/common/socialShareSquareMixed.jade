@@ -1,0 +1,35 @@
+mixin socialShareSquareMixed(newsUrl,title,showSharingImage,large)
+    -var twitterTitle = title
+    -if(twitterTitle.length>110){
+        -twitterTitle  = twitterTitle.substring(0,110)+"..."
+    -}
+    
+    -var twitterData = "url="+encodeURIComponent(env.rootUrl+newsUrl)+"&text="+encodeURIComponent(twitterTitle)+(env.partnerData.twitter_handle?"&via="+env.partnerData.twitter_handle:'')
+    .row.top-post-social.mtop15.mbtm15
+        div.center
+            -if(env.isMobile){
+                a.watsapp(href="whatsapp://send?text=#{encodeURIComponent(title)} #{env.rootUrl}#{newsUrl}") 
+                    span 
+            -}
+            li(class="mixed-social-li facebook-mixed #{typeNew ? 'closed':'open'}")
+                    div(class="track-click", data-category="common-social-square-mixed-share-#{env.partner}",data-label="facebook-#{env.pageType}-#{relativeUrl}",class="fb-like", data-href="#{newsUrl}", data-layout="button_count" data-action="like", data-show-faces="false", data-share="true")
+            li.mixed-social-li.twitter-mixed
+                a(class="track-click", data-category="common-social-square-mixed-share-#{env.partner}",data-label="twitter-#{env.pageType}-#{relativeUrl}",class="twitter-share-button no-ajaxy", data-url="#{newsUrl}", href="https://twitter.com/intent/tweet?text=#{twitterTitle}", style="float:left") Tweet
+
+                
+            
+            a.goog-plus(class="track-click", data-category="common-social-square-mixed-share-#{env.partner}",data-label="gplus-#{env.pageType}-#{relativeUrl}",title="Google Plus", href="https://plus.google.com/share?url=#{env.rootUrl}#{newsUrl}", target="_blank")
+                span
+            a(class="track-click", data-category="common-social-square-mixed-share-#{env.partner}",data-label="mail-#{env.pageType}-#{relativeUrl}",class="mail" href="mailto:?text=#{encodeURIComponent(title)} #{env.rootUrl}#{newsUrl}")
+                span
+            -if(env.partnerData.has_smart_share){
+                li(class="sshare clearfix",title="Hocalwire Smart Share", data-href= "http://hocal.hocalwire.com/social_client/splash.jsp?newsId=#{env.newsId}&app=rdes&partner=#{env.partner}&url=#{newsUrl}&sessionId=#{env.requestSessionId}") 
+                        a(class="track-click", data-category="common-social-square-mixed-share-#{env.partner}",data-label="sshare-#{env.pageType}-#{relativeUrl}",href="javascript:void(0);", title="Hocalwire Smart Share")
+                            span.hocal_share_button
+                                div.left-sshare-img-wrapper
+                                    img(src="/images/hocal_logo.png")
+                                div.right-sshare
+                                    span SShare
+            -}
+       
+        

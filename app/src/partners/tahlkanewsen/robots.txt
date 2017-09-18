@@ -1,0 +1,12 @@
+#
+# robots.txt for http://english.tahlkanews.com
+User-agent: *
+Allow: /
+Disallow: /admin/*
+
+Disallow: /xhr/*
+Disallow: /refer-*
+
+Allow: /content/servlet/RDESController?*
+
+Sitemap: http://english.tahlkanews.com/sitemap/sitemap-index.xml

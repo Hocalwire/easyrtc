@@ -1,0 +1,63 @@
+doctypemobile
+html
+  head
+    title= meta.title
+    link(rel="icon", href="/images/ico/favicon.ico", type="image/x-icon")
+    link(rel="shortcut icon", href="/images/ico/favicon.ico", type="image/x-icon")
+    meta(charset="utf-8")
+    meta(content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible")
+    meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no")
+    meta(name='description', content=meta.description)
+    meta(name="application-name", content="Hocalwire")
+    meta(name='keywords', content=meta.keywords)
+    meta(name='language', content="#{env.lang=='hi' ? 'hi, हिंदी' : 'en-us, English'}")
+    meta(name="google", content="notranslate")
+    meta(http-equiv="Content-Language", content="#{env.lang=='hi' ? 'hi' : 'en'}")
+    meta(name='author', content=meta.author)
+    meta(name="copyright" content="#{meta.copyright}")
+    -if(env.partnerData.gplus_publisher_link){
+        meta(name='Publisher', content=env.partnerData.gplus_publisher_link)
+    -}
+
+    meta(name='HandheldFriendly', content='true')
+    meta(name='referrer', content='origin')
+
+    meta(property="og:title", content=meta.title)
+    meta(property="og:description", content=meta.description)
+
+    meta(property="og:url", content=meta.url)
+
+
+    -if(env.partnerData.FBCODE){
+        meta(property="fb:app_id", content="#{env.partnerData.FBCODE}")
+    -}
+    meta(property="og:type", content="image")
+    meta(property="og:image", content=meta.shareImage || meta.image)
+    meta(property='og:author', content=meta.author)
+        
+    meta(property="og:image:width", content="600")
+    meta(property="og:image:height", content="315")
+
+
+    meta(name="twitter:card", content="summary_large_image")
+    meta(name="twitter:title", content=meta.title)
+    meta(name="twitter:description", content=meta.description)
+
+    meta(name="twitter:image", content=meta.image)
+    meta(name="twitter:url", content=meta.url)
+    block head-content
+        link(rel="alternate", href= env.pageUrl, hreflang="#{env.lang}")
+        block canonical
+            link(rel='canonical', href= env.pageUrl)
+        block other-head-content
+
+body
+    
+    div#content-styles
+        block styles
+    div.ui-loader-new.hide
+    
+    div#content
+        block content
+block script
+

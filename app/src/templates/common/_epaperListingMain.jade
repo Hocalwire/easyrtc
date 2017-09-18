@@ -1,0 +1,19 @@
+mixin epaperListingMain(data)
+    div(class="photo-gallery")
+      div(class="cp-gallery")
+        -if(data.length>0){
+              ul.cp-gallery-grid.gallery
+                -for(var i=0;i<data.length;i++){
+                  li.hocalwire-col-md-6(style='padding:10px;')
+                      .clearfix.wrapper_epaper
+                        .hocalwire-col-md-12
+                          a.cp-thumb(href="#{data[i].url}")
+                            img(src='#{data[i].thumbUrl}', alt='',style='background:#FFF;')
+                        .hocalwire-col-md-12.center
+                          i #{env.partnerData.epaperLocations[i]}
+                        .hocalwire-col-md-12
+                          a.action-btn(href="#{data[i].url}",target="_blank") Preview
+                          a.full-screen.action-btn.right(href="/full-page-pdf#{data[i].url}",target="_blank") Full Page View
+                -}
+        -} 
+

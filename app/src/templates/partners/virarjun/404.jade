@@ -1,0 +1,50 @@
+include ../../theme_dragon/allMixin
+include ../../theme_dragon/mixin/_newsListingMain
+extends layout
+block head-content
+    - if (env.pageNo === 1)
+        link(rel='canonical', href= env.pageUrl)
+    - else
+        link(rel='canonical', href=Utils.updateQueryStringParameter(env.pageUrl, 'page', env.pageNo))
+
+    - if (env.pageNo > 2)
+        link(rel='prev', href=Utils.updateQueryStringParameter(env.pageUrl, 'page', env.pageNo - 1))
+    - else if (data.page == 2)
+        link(rel='prev', href=Utils.removeQueryStringParameter(env.pageUrl, 'page'))
+
+        link(rel='next', href=Utils.updateQueryStringParameter(req.url, 'page', env.pageNo + 1))
+block content
+    div(class="boxed")
+        -if(env.partnerData.head_top_version_two =="true"){
+            include ../partials/common/_header
+        -} else{
+            include ../../theme_dragon/partials/_header
+        -}
+        div(class="clear-float")
+        div.content.margin10
+            div.wrapper.all_content_wrapper.extra_padding
+                div.news-ticker-area#news_ticker_area
+                    -if(data['news_ticker_area'] && data['news_ticker_area'].templateData && data['news_ticker_area'].templateData.mixinName){
+                        +#{data['news_ticker_area'].templateData.mixinName}(data['news_ticker_area'])
+                    -}
+                #level_top_full
+                    -if(data['level_top_full'] && data['level_top_full'].templateData && data['level_top_full'].templateData.mixinName){
+                        +#{data['level_top_full'].templateData.mixinName}(data['level_top_full'])
+                    -}
+                div(class="main-content-left sticky_elements_scroll")
+                    .bg-404
+                      .error404-content
+                         
+                          h1  Sorry this page never returned from a trip to server.
+                          div.clearfix.error-button-wrapper
+                              a.error-button(href="/") Go to HomePage
+                div(class="main-content-right sticky_elements_scroll")
+                    .theiaStickySidebar
+                        include ../../theme_dragon/partials/_othersRightSection
+                div(class="clear-float")
+                div#level_bottom_full
+                    -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                        +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                    -}
+                div(class="clear-float")
+        include ../../theme_dragon/partials/_footer

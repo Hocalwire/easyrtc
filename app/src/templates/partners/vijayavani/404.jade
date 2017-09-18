@@ -1,0 +1,45 @@
+include ../../theme_loon/allMixin
+extends ../../theme_loon/layout
+block content
+    div(class="boxed")
+        include ../../theme_loon/partials/_header
+        div.content
+            div.wrapper
+                div#banner_area.banner_area
+                    -if(data['banner_area'] && data['banner_area'].templateData && data['banner_area'].templateData.mixinName){
+                        +#{data['banner_area'].templateData.mixinName}(data['banner_area'])
+                    -} 
+                div(class="clear-float")
+                div.news-ticker-area#news_ticker_area
+                    -if(data['news_ticker_area1'] && data['news_ticker_area'].templateData && data['news_ticker_area'].templateData.mixinName){
+                        +#{data['news_ticker_area'].templateData.mixinName}(data['news_ticker_area'])
+                    -}
+                div(class="clear-float")
+                #level_top_full
+                    -if(data['level_top_full'] && data['level_top_full'].templateData && data['level_top_full'].templateData.mixinName){
+                        +#{data['level_top_full'].templateData.mixinName}(data['level_top_full'])
+                    -}
+                div(class="clear-float")
+                div.main-content
+                    div.main-page.left
+                        div.single-block
+                            div.content-block.main.left
+                                div(class="middle_blocks_wrapper block")
+                                    div.block-content
+                                        div(class="shortcode-content")
+                                            div(class="full-width") 
+                                            .bg-404
+                                                .error404-content
+                                                   
+                                                    h1  Sorry this page never returned from a trip to server.
+                                                    div.clearfix.error-button-wrapper
+                                                        a.error-button(href="/") Go to HomePage  
+                                                    
+                                            div(class="clear-float")
+        
+                div#level_bottom_full
+                    -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                        +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                    -}
+                div(class="clear-float")
+        include ../../theme_loon/partials/_footer

@@ -1,0 +1,45 @@
+script(type="application/ld+json")
+    |    {
+    |     "@context" : "http://schema.org",
+    |     "@type" : "WebSite",
+    |     "name" : "!{meta.name}",
+    |     "author" : {
+    |       "@type" : "Person",
+    |       "name" : "#{meta.author}"
+    |     },
+    |     "keywords" : "!{meta.keywords}",
+    |     "interactivityType" : "mixed",
+    |     "inLanguage" : "!{meta.language}",
+    |     "headline" : "!{meta.title}",
+    |     "copyrightHolder" : "#{meta.copyright}",
+    |     "image" : {
+    |       "@context" : "http://schema.org",
+    |       "@type" : "ImageObject",
+    |       "contentUrl" : "!{meta.image}",
+    |       "height": "300",
+    |       "width" : "500",
+    |       "url" : "!{meta.image}"
+    |      },
+    |     "url" : "!{meta.url}",
+    |     "publisher" : {
+    |       "@type" : "Organization",
+    |        "name" : "#{meta.name}",
+    |        "logo" : {
+    |           "@context" : "http://schema.org",
+    |           "@type" : "ImageObject",
+    |           "contentUrl" : "#{meta.logo}",
+    |           "height": "150",
+    |           "width" : "50",
+    |           "url" : "#{meta.logo}"
+    |        }
+    |      },
+    |      "potentialAction": {
+    |         "@type": "SearchAction",
+    |           "target": "!{meta.searchUrl}",
+    |           "query-input": "required name=search_term_string"
+    |       },
+    |       "mainEntityOfPage": {
+    |            "@type": "WebPage",
+    |            "@id": "!{meta.url}"
+    |         }
+    |   }

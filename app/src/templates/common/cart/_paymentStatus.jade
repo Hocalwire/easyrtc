@@ -1,0 +1,48 @@
+-var paymentData = data.txnData
+-var planData  = data.planData
+-var pass = (paymentData.state=="RECEIVED")
+-if(pass){
+    div.success-payment-msg
+        | Your payment is successful
+
+    
+-} else {
+        div.failed-payment-msg
+            | Your transactiion is failed.
+-}
+#status-page-wrapper(data-clear-cart="true",data-partner="#{env.partner}")
+    div.details
+            span.payment-details Details of transaction
+        div.hocal_row
+            .hocal_col
+            div.hocal_row
+                div.transaction_id Transaction Id : 
+                span.data #{paymentData.txnId}
+
+            div.hocal_row
+                div.transaction_amount Amount : 
+                span.data #{paymentData.currency} #{paymentData.amount} 
+        
+
+        div#checkoutpage.statuspage-plan
+            div.your-plan 
+                div.plans 
+                    span.your_plan_heading Your Selected Plan 
+                    div.plan_data
+                        section#pricing-table.plan_price_section
+                            .container
+                                .row
+                                    div(class="plan_item")
+                                      .table
+                                        .title
+                                          !{planData.headingDisplay}
+                                        //- .pricing-header
+                                        //-   p.price-value
+                                        //-     |  !{planData.pricingDisplay} 
+
+    div.divider.print-btn
+        a(href='javascript: void(0)', title='Print',onclick="$('#status-page-wrapper').print()") Print
+            
+                        
+                                    
+                                      

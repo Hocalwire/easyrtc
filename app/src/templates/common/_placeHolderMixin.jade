@@ -1,0 +1,52 @@
+include placeholders/_style1
+include placeholders/_style2
+include placeholders/_style3
+include placeholders/_style4
+include placeholders/_style5
+include placeholders/_style6
+include placeholders/_style7
+include placeholders/_style8
+include placeholders/_style9
+include placeholders/_style10
+
+mixin placeHolderMixin(props)
+    -var rowCount = props.rowCount || 1
+    -var colCount = props.colCount || 1
+    
+
+    .placeholder_top(a="#{props.templateData ? 'true' : 'false'}")
+        -if(props.templateData && env.query.hocal_dev==1){
+            div.mixin-placeholder-details-wrapper
+                -if(props.templateData.fileName){
+                    div.name Mixin Name: #{props.templateData.fileName}
+                -} else {
+                    div.name Mixin Name: #{props.templateData.mixinName}
+                -}
+                div.id Element Id: #{props.templateData.element_id}
+                div.count #{props.templateData.newsCount || props.templateData.newsCount}
+                
+        -}
+        -for(var i=1;i<=rowCount;i++){
+            div.hocal_row
+                -for(var j=1;j<=colCount;j++){
+                    -var item = props['item_'+i+"_"+j]
+                    -if(item){
+                        -var lastItem = props['item_'+i+"_"+colCount]
+                        -var colClass = parseInt(12/colCount)
+                        
+                        -if(!lastItem){
+                            -colClass=""
+                        -}
+                        div(class="hocal_col hocal_col_#{colClass}")
+                            -var mixinName = item['style']
+                            -if(item.repeatCount){
+                                -for(k=0;k<item.repeatCount;k++){
+                                    +#{mixinName}(item)    
+                                -}
+                            -} else {
+                                +#{mixinName}(item)
+                            -}
+                            
+                    -}
+                -}
+        -}

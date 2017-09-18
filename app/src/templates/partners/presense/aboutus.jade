@@ -1,0 +1,101 @@
+include ../../theme_loon/allMixin
+extends ../../theme_loon/layout
+block content
+    
+    div(class="boxed")
+        include ../../theme_loon/partials/_header
+        div.content#aboutus-page
+            div.wrapper
+                div#banner_area.banner_area
+                    -if(data['banner_area'] && data['banner_area'].templateData && data['banner_area'].templateData.mixinName){
+                        +#{data['banner_area'].templateData.mixinName}(data['banner_area'])
+                    -} 
+                div(class="clear-float")
+                div.news-ticker-area#news_ticker_area
+                    -if(data['news_ticker_area1'] && data['news_ticker_area'].templateData && data['news_ticker_area'].templateData.mixinName){
+                        +#{data['news_ticker_area'].templateData.mixinName}(data['news_ticker_area'])
+                    -}
+                div(class="clear-float")
+                #level_top_full
+                    -if(data['level_top_full'] && data['level_top_full'].templateData && data['level_top_full'].templateData.mixinName){
+                        +#{data['level_top_full'].templateData.mixinName}(data['level_top_full'])
+                    -}
+                div(class="clear-float")
+                div.main-content
+                    div.main-page.left
+                        div.single-block
+                            div.content-block.main.left
+                                .block
+                                    .block-title
+                                        a.right(href="#{env.partnerData.homePageRoot || '/'}") Back to homepage
+                                        h2 About Us
+                                div(class="main-article-content")
+                                    h2(class="article-title") Prime Point Foundation is a non-profit Trust incepted in December 1999, to create Communication awareness among all the people.
+                                    div(class="cp-author m20")
+                                        div.paragraph-row.clearfix
+                                            div(class="cp-author-thumb column4")
+                                                img(src="/images/author.jpg",onerror="if (this.src != '/images/placeholder.jpg') this.src = '/images/authorplaceholder.jpg';")
+                                            div(class="cp-author-details column8")
+                                                p.heading
+                                                    a(href="/author/k-srini") Shri K Srinivasan (Communication Strategist ) is the Founder and Chairman the Trust
+                                                ul.about-us-points
+                                                    li The Foundation offers Training, workshop on all Communication related subjects, including Image Audit. 
+                                                    li The Foundation publishes a monthly eMagazine PreSense since March 2006. 
+                                                    li Digital Journalists Association of India (DiJAI),  India Vision, Action 2020,    Education Loan Task Force (ELTF) are other major initiatives of this Foundation. 
+                                                    li Every year, the Foundation honours the outstanding Parliamentarians with Sansad Ratna Awards 
+                                                p.heading
+                                                    a(href="http://www.prpoint.com/documents/srinivasan-briefprofile-0916.pdf", target="_blank") Profile of K. Srinivasan may be downloaded from
+
+                                        br
+                                        div.about-us-center-title
+                                            p.heading Prime Point Srinivasan - Brief Profile
+                                        p K. Srinivasan (65), popularly known as ‘Prime Point Srinivasan’ after serving Indian Bank and Corporation Bank for more than 25 years in different positions, took voluntary retirement in 1998, to start his own Public relations, Image Management and Communication consultancy. He set up a Public Relations Department for Corporation Bank at Delhi in 1988 and was the Liaison officer for the Bank to handle Parliament and the Government.  In 1993, he brought together all the Public Sector organisations under the banner of 'Public Sector PR Forum' to create 'Public Relations' awareness among the PSUs.  
+                                        p.heading  Communication practitioner and teacher
+                                        p In 1999, he started Prime Point Foundation to promote communication awareness. He developed the concept of 'Image Audit', a tool to study the perception of stake holders of any organisation. Image Audit can be used for planning strategies to build image and brand  of the organisations. 
+                                        p He is a passionate teacher on communication related subjects, like Public Relations, Business Communication, Brand building, Crisis communication, digial Journalism, etc.   He is a visiting faculty in many reputed institutions in India
+
+                                        p.heading Social Media and Digital Journalism
+                                        p He is an ardent social media evangelist.  Since 1998, he has been managing various internet discussion groups on media, PR, communication, journalism, HR, India vision etc.  He is one of the leading podcasters in India.  His Podcasts and e-magazines are quite popular in the internet world.  He is the Co-Founder and Past President of Cyber Society of India to promote cyber law, cyber security awareness. 
+                                        p To promote the concept of 'positive journalism' given by Dr Abdul Kalam, he started publishing  two monthly e-magazines, viz. 'PreSense' in English and 'New Gen Thamizhan' in Tamil.  He is the Editor in Chief of these two eMagazines.   So far, 114 monthly editions of PreSense and 32 monthly editions of New Gen Thamizhan have been published till August 2016. 
+                                        p He is the Chairman and Managing Trustee of Digital Journalists Association of India (DiJAI), incepted to hone the skills of digital journalism. 
+
+                                        p.heading Social worker
+                                        p He is a great admirer and follower of Dr Abdul Kalam and he had recorded more than 20 exclusive podcast interviews with him on various topics like innovation, health, vision 2020, role of children, etc. 
+
+                                        p As desired by Dr Kalam, he brought together various informal youth groups, under the 'Action 2020' platform.  Through Education Loan Task Force (ELTF), an initiative of eMagazine PreSense, he is creating awareness about education loans. 
+                                        p.heading Sansad Ratna Awards
+                                        p To promote another concept of 'celebrate success' given by Dr Kalam, he instituted 'Sansad Ratna Awards' for the outstanding Parliamentarians based on parameters like raising questions, participation in debates and introduction of private members bills, attendance and MPLad funds, etc.  
+                                        p These awards are given every year with the support of IIT Madras, for the past seven years. This is also another initiative of eMagazine PreSense. Srinivasan is the President of Sansad Ratna Awards Committee. Three Parliamentarians who have received Sansad Ratna Awards have now become Ministers in Government of India. 
+                                        p.heading Author
+                                        p He has authored a Tamil book titled ‘Vetrikku 7 Padigal’ published by Ananda Vikatan group and this is one of the popular Tamil books.  He has also published a book in English "PreSense 100 - A Collector's Digest", containing selected articles and cartoons published in the past 100 issues of emagazine PreSense. This book has the Foreword from Dr Abdul Kalam. The second edition of the Digest titled ‘PreSense100+’ covering selected articles upto 110 editions was released in June 2016. 
+                                        p He has received several awards for his contribution towards Public Relations, Digital journalism, etc. 
+                                        p.heading Important Websites / Blogs managed by him
+                                        p 
+                                            a(href="http://www.primepointfoundation.in",target="_blank") (Prime Point Foundation)
+                                        p 
+                                            a(href="http://www.corpezine.com",target="_blank") (EMagazine PreSense)
+                                        p 
+                                            a(href="http://www.prpoint.in",target="_blank") (Communication events)
+                                        p 
+                                            a(href="http://www.sansadratna.in",target="_blank") (Sansad Ratna Awards to Parliamentarians)
+                                        p 
+                                            a(href="http://www.action2020.in",target="_blank") (About Unsung Heroes)
+                                        p 
+                                            a(href="http://www.poduniversal.com ",target="_blank") (Podcasts)
+                                        p 
+                                            a(href="http://www.eltf.in",target="_blank") (Education Loan Task Force)
+                                        p 
+                                            a(href="http://www.dijai.in",target="_blank") (Digital Journalists Association of India)
+                                   
+                                                        
+
+                    div.main-sidebar.right
+                        include ../../theme_loon/partials/_othersRightSection
+                    div(class="clear-float")
+        
+                div#level_bottom_full
+                    -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                        +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                    -}
+                div(class="clear-float")
+        include ../../theme_loon/partials/_footer

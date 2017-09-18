@@ -1,0 +1,31 @@
+mixin oneBigFourSmall(data)
+    -if(data.data.length>0){
+        .row.margin_bottom15.clearfix.bg_carousel
+            .col_half.fleft
+                .col12.no-padding.overlay.blue.image-wrapper.hocal_big_image_wrapper.mtop10#leftelement_slider
+                    a(href="#{data.data[0].newsUrl}", class="img_link")
+                        !{Utils.getMediaElement(data.data[0],0,500,300,false)}
+                        // a(href="#{data.data[0].categoryUrl}", class="news_category_date")
+                        //             span.cat_desc
+                        //                 | #{data.data[0].categoryName}
+                        //             span.convert-to-localtime.date-only(data-datestring = "#{data.data[0].date_string}") #{data.data[0].date}
+                        div(class="news_category_description clearfix")
+                            .row
+                                .column12.no-padding
+                                    a.header-link.main_header(href="#{data.data[0].newsUrl}") !{data.data[0].title}
+            .col_half.fleft.clearfix#right-section-light-slider
+                #rightsection_slider
+                    -for(var i=1;i<data.data.length;i++){
+                        .col48.fleft.clearfix.mtop10.margin_left10
+                            a(href="#{data.data[i].newsUrl}")
+                                div.col12.fleft.margin_bottom10
+                                    div.overlay.hocal_small_image_wrapper
+                                        !{Utils.getMediaElement(data.data[i],0,500,300,false)}
+                                        div(class="news_category_description clearfix")
+                                            .row
+                                                .col12.fleft.no-padding
+                                                    a.head-link.small_img_desc(href="#{data.data[i].newsUrl}")
+                                                        !{Utils.trimSentence(data.data[i].title,65,"...").finalString}
+
+                    -}
+    -}

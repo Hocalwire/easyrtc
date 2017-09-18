@@ -1,0 +1,40 @@
+mixin photoGalleryModalCarousel(data,options)
+    
+    -var t = new Date().getTime()+"-"+Math.floor((Math.random()*10000))
+    -var width = options && options.width ? options.width : 300
+    div.gallery-pintrest-grid-wrapper
+        -if(data.length>0){
+            section(id="boxy-#{t}", class="clearfix boxy-gallery")
+                -for(var i=0;i<data.length;i++){
+                    // article.white-panel
+                    //     !{Utils.getMediaElement(data[i],0,250,150,true,"href='"+Utils.getMediaUrl(data[i])+"'")}
+                    //     h3
+                    //         #{data[i].title}
+                    -if(data[i].mediaType=="video" || data[i].mediaType=="youtube"){
+                        figure(class="view_video clearfix child-element video_item",data-video-id="#{data[i].videoId}", data-video-type="#{data[i].mediaType}",  data-video-path="#{data[i].mediaUrl}", title="#{env.partnerData.fullArticleText || 'View Video'}")
+                            !{Utils.getMediaElement(data[i],0,500,300,true,"share-url='"+env.rootUrl+data[i].newsUrl+"' href='"+Utils.getMediaUrl(data[i])+"'")}
+                            figcaption
+                                h4 !{data[i].title}
+                            div.height-gallery-element
+                    -} else {
+                        figure.clearfix.child-element.image-item(data-url="#{thumbUrl}", data-image-item="true")
+                            !{Utils.getMediaElement(data[i],0,500,300,true,"share-url='"+env.rootUrl+data[i].newsUrl+"' href='"+Utils.getMediaUrl(data[i])+"'")}
+                            figcaption
+                                h4 !{data[i].title}
+                            div.height-gallery-element
+                    -}
+                    
+
+                        // if(data[i].mediaType=="video" || data[i].mediaType=="youtube"){
+                            
+                        // }
+                    //     !{Utils.getMediaElement(data[i],0,500,300,true,"share-url='"+env.rootUrl+data[i].newsUrl+"' href='"+Utils.getMediaUrl(data[i])+"'")}
+                    //     figcaption
+                    //         h4 !{data[i].title}
+                    
+                           
+                -}
+        -}
+    script.
+        window.galleryIds = window.galleryIds || [];
+        window.galleryIds.push("#boxy-!{t}");

@@ -1,0 +1,63 @@
+#footer-ads
+.footer-content
+    
+    
+    div.static-links.dark-bg.follow-us-block
+      .content-item.cipos-2.cirpos-2.clearfix
+          div.follow-us-lable  Follow Us On
+          div.follow-us-links.newsSocialIcons
+            -if(env.partnerData.socialLinks.length){
+                ul(class="blog-share-socials")
+                    // -if(env.partnerData.externalSite){
+                    //     li.external-site-name
+                    //         a(href="#{env.partnerData.externalSite.url}") #{env.partnerData.externalSite.name}
+                    // -}
+                    -for(var i=0;i<env.partnerData.socialLinks.length;i++){
+                        li(class="#{env.partnerData.socialLinks[i].name}")
+                            a(href="#{env.partnerData.socialLinks[i].url}")
+                              img(src="/images/social/#{env.partnerData.socialLinks[i].name}_icon.png")
+                    -}
+            -}
+    div.static-links.light-dark-bg
+      .content-item.cipos-2.cirpos-2.clearfix
+        ul.footer-legals
+          li.nav-legals.nav-privacy-policy.first
+              a(href='/', target='') Home
+          li.nav-legals.nav-relevant-ad-opt-out
+              a(href='/contact-us', target='') Contact Us
+          li.nav-legals.nav-relevant-ad-opt-out
+              a(href='/about-us', target='') About Us
+          
+        ul.footer-legals
+         
+          li.nav-legals.nav-relevant-ad-opt-out
+              a(href='/all-authors', target='') All Authors
+          li.nav-legals.nav-relevant-ad-opt-out
+              a(href='/all-categories', target='') All News Categories
+          li.nav-legals.nav-relevant-ad-opt-out
+              a(href='/survey-form', target='_blank') Survey Form
+          
+          
+      -if(env.partnerData.trendingTags && env.partnerData.trendingTags.length >0){
+        .content-item.cipos-2.cirpos-2.clearfix 
+          ul.footer-legals.trending-tags
+            li.label-text.trending-label-text Trending Topics
+            -for(var i=0;i<env.partnerData.trendingTags.length-1;i++){
+              li
+                a.current-page(href="#{env.rootUrl}/search?search=#{env.partnerData.trendingTags[i].value}&search_type=tags") #{env.partnerData.trendingTags[i].name}
+                    span &nbsp;|&nbsp;
+            -}
+        
+            li
+              a.current-page(href="#{env.rootUrl}/search?search=#{env.partnerData.trendingTags[env.partnerData.trendingTags.length-1].value}&search_type=tags") #{env.partnerData.trendingTags[env.partnerData.trendingTags.length-1].name}
+             
+      -}
+    
+
+    .content-item.cipos-3.cirpos-1.clearfix.row
+        .footer-copyright
+          span.copyright Copyright &copy; DelhiUpToDate News 2017 - 2018.
+          span.powered-by-hocalwire.pull-right
+              | Powered by 
+              a(href='http://hocalwire.com/') Hocalwire
+ 

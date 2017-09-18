@@ -1,0 +1,121 @@
+include ../../theme_cobra/allMixin
+include ../../common/_registerReporter
+extends ../../theme_cobra/layout
+block content
+    include ../../theme_cobra/partials/_header
+    div(id="sb-site", class="body_wraper_box")
+        include ../../theme_cobra/partials/_navArea
+        //- +stickySocialShare("","",true)
+        div#contact-us-page(data-role="page",class="main_content row")
+            div(class="content_wraper three_columns_container box-item")
+                div(class="twelve columns")
+                    #level_top_full
+                div(class="twelve columns")
+                    div(class="eight columns clearfix home_left_section")
+                        .container
+                            .row
+                                .eight.columns
+                                    h2.title-2
+                                        | Contact Information
+                                    .information
+                                        .contact-datails
+                                            .info
+                                                h3 Tahlka News
+                                                div.detail 5TH FLOOR, YMCA BUILDING, RANA PRATAP MARG
+                                                div.detail LUCKNOW, U.P. INDIA. Pin - 226001
+                                                div.detail Phone: 05223038512,   05223038511
+                                                br
+                                                div.detail Contact Person(s): 
+                                                    div.tel-block
+                                                        span.name Utkarsh Sinha, Editor
+                                                        span.email 
+                                                            a(href="mailto:utkarshks@gmail.com",target="_blank") utkarshks@gmail.com
+                                                        span.phone
+                                                            a(href="tel:+919935736877",target="_blank") +91 9935 736 877 
+                                                        span.phone
+                                                            a(href="tel:+919628110011",target="_blank") +91 9628 110 011
+                                                    //- div.tel-block
+                                                    //-     span.name Rajesh Mishra, Channel Manager
+                                                    //-     span.email 
+                                                    //-         a(href="mailto:rajeshkrmishra415@gmail.com",target="_blank") rajeshkrmishra415@gmail.com
+                                                    //-     span.phone
+                                                    //-         a(href="tel:+918115900061",target="_blank") +91 8115 900 061 
+                                                    //-     span.phone
+                                                    //-         a(href="tel:+919889481000",target="_blank") +91 9889 481 000
+                                                    div.tel-block
+                                                        span.name Ankur Tiwari, Managing Director
+                                                        span.email 
+                                                            a(href="mailto:dk.ankur@gmail.com",target="_blank") dk.ankur@gmail.com
+                                                        span.phone
+                                                            a(href="tel:+918577088188",target="_blank") +91 8577 088 188 
+                                                        
+                                                    div.tel-block
+                                                        span.name Anurag Tiwari, Special Correspondent
+                                                        span.email 
+                                                            a(href="mailto:anurag.journo@gmail.com",target="_blank") anurag.journo@gmail.com
+                                                        span.phone
+                                                            a(href="tel:+917007663250",target="_blank") +917007 663 250 
+                                                        span.phone
+                                                            a(href="tel:+919454871032",target="_blank") +91 9454 871 032
+                                                        span.phone
+                                                            a(href="tel:+919936116907",target="_blank") +91 9936 116 907
+
+
+                                                
+                                        
+                                       
+                            .row
+                                    .eight.columns
+                                        h2.title-2
+                                            | Leave A Meassage!
+                                        // Form
+                                        form#contactForm.contact-form.contact-us-form(data-toggle='validator')
+                                            .row
+                                                #success-common.error.common-error(style='display:none;')
+                                                #err-common.error.common-error(style='display:none;')
+                                            .row
+                                                .six.columns
+                                                    .form-group
+                                                        input#name.form-control.inputBox(type='text', name='name', placeholder='Full Name', required='',data-error='Please enter your name')
+                                                        #err-name.error.contact-us-error.left-align.help-block.with-errors(style='display:none;') Please enter your name.
+                                                .six.columns
+                                                    .form-group
+                                                        input#email.form-control.inputBox(type='email', name="email" placeholder='mail@sitename.com', required='', data-error='Please enter your email')
+                                                        #err-email.contact-us-error.error.help-block.with-errors.left-align(style='display:none;') Please enter your email.
+                                                        
+                                            .row
+                                                      
+                                                .six.columns
+                                                    .form-group
+                                                        input#phone.form-control.inputBox(type='text', name='phone', placeholder='Phone', required='', data-error='Please enter your Phone Number')
+                                                        #err-phone.contact-us-error.error.help-block.with-errors.left-align(style='display:none;') Please enter your Phone Number
+                                                .six.columns
+                                                    .form-group
+                                                        input#subject.form-control.inputBox(type='text', name='subject', placeholder='Subject', required='', data-error='Please enter your subject')
+                                                        #err-subject.contact-us-error.error.help-block.with-errors.left-align(style='display:none;') Please enter your subject
+                                            .row
+                                                
+                                                .twelve.columns
+                                                    .form-group
+                                                        textarea#message.form-control.inputBox(placeholder='Message', name="message",rows='3', data-error='Write your message', required='')
+                                                        #err-message.error.contact-us-error.left-align(style='display:none;') Please enter your message.
+                                            .row.margin-bottom20
+                                                
+                                                    .twelve.text-center
+                                                            button#submit.btn.btn-common.js-btn-submit-contact(type='submit') Send Your Message
+                                                            #msgSubmit.h3.text-center.hidden
+                                                            .clearfix
+                    .four.columns
+                        div(class="twelve columns clearfix")
+                            .sidebar.side-bar.right-sidebar
+                                include ../../theme_cobra/partials/_genericRightSection
+                div(class="content_wraper three_columns_container")
+                    div(class="row")
+                        #level_bottom_full
+                            -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                                +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                            -}
+
+        include ../../theme_cobra/partials/_footer
+block scripts
+    include ../../common/_reporterResources

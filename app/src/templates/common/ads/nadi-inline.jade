@@ -1,0 +1,26 @@
+include ../socialShare
+.outer.nadi-ad.nadi-inline
+    .level_1
+        .hocal_row.first_row
+            .hocal_col.hocal_col_3.col_share
+                span.share
+                    +socialShare("https://www.youtube.com/channel/UCCBY5zDLEC2-brPiwqJrvWw","NADI VAIDYA KAYAKALP","","","open")
+            .hocal_col.hocal_col_3.col_subscribe
+                div(class="g-ytsubscribe", data-channelid="UCCBY5zDLEC2-brPiwqJrvWw", data-layout="default" data-count="show")
+        .hocal_row
+            div.video-player-wrapper
+                iframe.video-iframe(src="http://www.youtube.com/embed/CFGGSve0KJU" frameborder="0" allowfullscreen)
+                //- iframe(src="https://www.youtube.com/watch?v=rif1QY3lmuY?auto_play=1")
+                //- div.my-player.video-player(data-type="youtube", data-video-id="rif1QY3lmuY")
+        .hocal_row
+            span.heading-wrapper
+                span.heading अगर मोटापे से है परेशान तो देखे 
+                span(stye="font-size:20px;") ये वीडियो
+
+style.
+    .nadi-inline {
+        border: 1px solid #ccc;
+        margin:5px;
+        padding:2px;
+        margin-bottom:2
+    }

@@ -1,0 +1,35 @@
+doctypemobile
+html
+  head
+    include headSectionTop
+
+    - if(environment === 'development') {
+        link(rel="preload", href="/styles/cart/bootstrap.css", as="style", onload="this.rel='stylesheet'")
+        link(rel="preload", href="/styles/cart/cartpage.css", as="style", onload="this.rel='stylesheet'")
+            
+    - } else {
+        style(type='text/css',class="styles")
+            include ../../public/styles/cartpage.min.c05ac6e0.css
+            
+    - }
+    include headSectionBottom
+body
+
+    include bodySectionTop
+
+    block commonScripts
+        - if(environment === 'development') {
+            include ../common/commonscripts
+            script(src="#{Utils.getCDNUrl('scripts/cart/bootstrap.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/cart/jquery.mycart.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/cart/custom.js')}")
+            
+        - } else {
+            script(src="#{Utils.getCDNUrl('scripts/hocalwirecommon.min.63ec8ced.js')}")
+            script(type="text/javascript", src="/scripts/cartpagejs.min.d2ddd943.js")
+        - }
+
+    include bodySectionBottom
+    
+    
+block script

@@ -1,0 +1,39 @@
+include ../../theme_wolf/allMixin
+extends ../../theme_wolf/layout
+block content
+    .boxed.active
+            include ../../theme_wolf/partials/_header
+        section.content
+            .wrapper
+                .main-content.has-sidebar
+                    #top-three-section
+                        -if(data['top-three-section'] && data['top-three-section'].templateData && data['top-three-section'].templateData.mixinName){
+                                                +#{data['top-three-section'].templateData.mixinName}(data['top-three-section'])
+                        -}
+                    .left-content
+                        h1.banner.margin-bottom10 Contact Us
+                        .paragraph-row
+                            .column12
+                                .column6.left
+                                    .yjsquare.yj2
+                                        .yjsquare_in
+                                            h1
+                                                strong
+                                                    span(style='text-decoration: underline;')
+                                                        span(style='color: #333333; text-decoration: underline;') Noida
+                                            p
+                                                | Noida: 318, Jaipuria Plaza, Block E Sector 26, Gautam Buddha Nagar District, Noida, Uttar Pradesh.
+                                            p Phone: 9412211222
+                                            h1
+                                                span(style='text-decoration: underline;')
+                                                    span(style='color: #333333;')
+                                                        strong Muzaffarnagar
+                                            p Royal House, 174, Gandhi Colony, Muzaffarnagar, Uttar Pradesh.
+                                            p Phone: 0131-2412225
+
+                               
+
+                                    
+                    aside#sidebar
+                        include ../../theme_wolf/partials/_homeRightSection
+            include ../../theme_bear/partials/_footer

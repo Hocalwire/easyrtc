@@ -1,0 +1,42 @@
+include ../../theme_loon/allMixin
+extends ../../theme_loon/layout
+block content
+    div(class="boxed")
+        include _header
+        div.content
+            div.wrapper
+                div#banner_area.banner_area
+                    -if(data['banner_area'] && data['banner_area'].templateData && data['banner_area'].templateData.mixinName){
+                        +#{data['banner_area'].templateData.mixinName}(data['banner_area'])
+                    -} 
+                div(class="clear-float")
+                div.news-ticker-area#news_ticker_area
+                    include newsUpdates
+                div(class="clear-float")
+                #level_top_full
+                    -if(data['level_top_full'] && data['level_top_full'].templateData && data['level_top_full'].templateData.mixinName){
+                        +#{data['level_top_full'].templateData.mixinName}(data['level_top_full'])
+                    -}
+                div(class="clear-float")
+                div.main-content
+                    div.main-page.left.sticky_elements_scroll
+                        div.single-block
+                            div.content-block.main.left
+                                include contents/_resourcesWrapper
+                    div.main-sidebar.right.sticky_elements_scroll
+                        div(class="right_blocks_wrapper")
+                            #right_level_1.right_level_1.right_level.widget
+                                include contents/_featureRight
+                            #right_level_2.right_level_2.right_level.widget
+                                include contents/_enquiryForm
+                            #right_level_3.right_level_3.right_level.widget
+                                include contents/_rightBottomSlider
+                    div(class="clear-float")
+        
+                div#level_bottom_full
+                    -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                        +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                    -}
+        div(class="clear-float")
+        include _subFooter
+        include ../../theme_loon/partials/_footer

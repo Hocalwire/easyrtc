@@ -1,0 +1,21 @@
+.row 
+    .col-md-12                   
+        | Referal Information (Mandatory to verify Confimation Code for successful referral registration)
+.row
+    .col-md-4
+        span Referral Code:
+    .col-md-8
+        input#agent_id
+    div.error_agent_code.err-msg.hide
+        |   Please enter a referral code
+    .confirm-agent-code
+      #submit_agent_code 
+            a.js_send_agent_code(href="javascript:void(0);") Send Confirmation Code
+            div.otp_for_agent_message.hide
+                |   Confirmation Code has been sent to your regisred mobile no.
+                .col-md-12
+                    .col-md-4
+                        span Confirmation Code:
+                    .col-md-8
+                        input#agent_otp
+                        

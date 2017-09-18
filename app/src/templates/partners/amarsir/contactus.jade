@@ -1,0 +1,33 @@
+include ../../theme_bear/allMixin
+extends ../../theme_bear/layout
+block content
+    .boxed.active
+        .wrapper
+            include ../../theme_bear/partials/_header
+        section.content
+            .wrapper
+                .main-content.has-sidebar
+                    #top-three-section
+                        -if(data['top-three-section'] && data['top-three-section'].templateData && data['top-three-section'].templateData.mixinName){
+                                                +#{data['top-three-section'].templateData.mixinName}(data['top-three-section'])
+                        -}
+                    .left-content
+                        h1.banner.margin-bottom10 Contact Us
+                        .paragraph-row
+                            .column12
+                                .column6.left
+                                    h3 Head Office:
+                                    p address line 1,
+                                    p address line 2,
+                                    p address line 3,
+                                    p Ph: xxxxxxxxxx
+                                    p email: xxxxxxx@xxxx.xxx
+                                    p Web: www.amarsir.com
+                                .column6.left
+                                    iframe(src='https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d15551.559898775906!2d77.57686606868724!3d12.978888453616166!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0xd73ff3a4d2fd6e5c!2sBfirst.in!5e0!3m2!1sen!2sin!4v1490791018806', width='100%', height='250', frameborder='0', style='border:0', allowfullscreen='')
+                            
+
+                                    
+                    aside#sidebar
+                        include ../../theme_bear/partials/_homeRightSection
+                include ../../theme_bear/partials/_footer

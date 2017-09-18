@@ -1,0 +1,6 @@
+mixin dateType(data)
+	div(class="input-group date_select_text", id='select_date_#{data.name}')
+		input(data-display-name="#{data.display_name}", data-mandatry='#{data.is_mandatory}', data-validation='#{data.validation_type}', id="val_#{data.id}" name="val_#{data.id}" class="datepicker date" type="text" value="#{data.value || ''}")
+		
+			
+		

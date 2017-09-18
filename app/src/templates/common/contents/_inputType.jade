@@ -1,0 +1,2 @@
+mixin inputType(data)
+    input(data-display-name="#{data.display_name}", placeHolder='#{data.display_name}', data-mandatry='#{data.is_mandatory}', data-validation='#{data.validation_type}', type='text', name='val_#{data.id}' id='val_#{data.id}' class="input_text use-google-translate1" value='#{data.value || ""}')

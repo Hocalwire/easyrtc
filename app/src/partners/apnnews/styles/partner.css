@@ -1,0 +1,16 @@
+.cp-mega-menu{
+	background: rgb(1, 1, 1);
+}
+.cp-mega-menu>ul>li>a{
+	color:#fff;
+}
+.leftNewSecHead{
+	border-top: 2px solid #090909;
+}
+.image-detail{
+	width: auto;
+    float: none;
+    max-height: 400px;
+    margin: 0 auto;
+    display: block;
+}
