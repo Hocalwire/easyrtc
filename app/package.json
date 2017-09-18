@@ -149,7 +149,7 @@
     "recorderjs": "git+https://github.com/mattdiamond/Recorderjs.git",
     "videojs-font": ">=1.3.0",
     "webfonts-generator": "^0.3.5"
-  }
+  },
   "license": "BSD2",
 
   "engines": {
