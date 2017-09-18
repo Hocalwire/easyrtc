@@ -29,6 +29,7 @@ var externalLinkPageHandler = require('src/controller/renderExternalLinkPage');
 var searchHandler = require('src/controller/renderSearchPage');
 var contentSearchHandler = require('src/controller/renderContentSearch');
 var loginController = require("src/controller/loginAndRegisterHandler");
+var liveController = require("src/controller/liveController");
 var notificationHandler = require("src/controller/notificationHandler");
 var cartController = require("src/controller/cartController");
 var postToSocial = require("src/controller/postToSocial");
@@ -781,6 +782,10 @@ function processPageRequest(req,res,next){
         res.redirect(301,url);
         return;
 
+    }
+    if(req.pathname.indexOf("/live/")==0){
+        liveController.handleRequest(req,res,next);
+        return;
     }
      var cookie = req.cookies._ga_store;
      if(req.pathname=="/scrape-bfirst-details"){
