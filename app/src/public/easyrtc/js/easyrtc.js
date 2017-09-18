@@ -8963,37 +8963,45 @@ easyrtc.setRecordingVideoCodec("vp8");
 * @param  {HTMLMediaStream} mediaStream 
 * @returns a recorder object or null if recording not supported.
 */
-function startRecording( mediaStream,timeSlice) {
+function startRecording(mediaStream,timeSliceV,onTimeStampFn,previewElement) {
 
     if( !easyrtc.supportsRecording ) {
     console.log("recording not supported by your browser");
     return null;
     }
-
-    var mediaRecorder = new MediaRecorder(mediaStream, {mimeType: mimeType});
-    if( !mediaRecorder ) {
+    var player = {};
+    if(timeSliceV){
+        window.recorder = new RecordRTC([mediaStream], {
+                  mimeType: 'video/webm\;codecs=h264',
+                  timeSlice : timeSliceV,
+                  type : "video",
+                  onTimeStamp : function(a,b){
+                      player.allTimestamps = b;
+                      player.currentTimestamp = a;
+ 
+                      var internal = window.recorder.getInternalRecorder().mediaRecorder;
+                      var blobs = internal.getArrayOfBlobs();
+                      player.recordedData = internal.getArrayOfBlobs();
+                      onTimeStampFn(player);
+                   },
+                  previewStream: function(s) {
+                    if(previewElement){
+                      $("#"+previewElement)[0].src=s;
+                    }
+                  }
+              });
+              
+    } else {
+      window.recorder = new MediaRecorder(mediaStream, {mimeType: mimeType});
+    }
+    
+    if( !window.recorder ) {
     console.log("no media recorder");
     return;
   }
-  mediaRecorder.start();
-
-  mediaRecorder.onerror = function(e) {
-  console.log("Media recording error:", e);
-}
-
-mediaRecorder.onwarning = function(e) {
-console.log("Media recording error:", e);
-}
-
-mediaRecorder.onstart = function(e) {
-console.log("Media recording started");
-}
-
-mediaRecorder.onstop = function(e) {
-console.log("Media recording stopped");
-}
-
-return mediaRecorder;
+  
+  window.recorder.startRecording();
+  return window.recorder;
 };
 
 /** This method creates a media recorder and populates it's ondataavailable
@@ -9005,8 +9013,13 @@ return mediaRecorder;
 * @param {HTMLMediaStream} mediaStream a local or remote media stream.
 * @param {Function} dataCallback a function to receive the webm data from.
 */
-easyrtc.recordToCallback = function (mediaStream, dataCallback,timeSlice) {
-  var mediaRecorder = startRecording(mediaStream,timeSlice);
+easyrtc.recordToCallback = function (mediaStream, dataCallback,timeSlice,previewElement) {
+  var mediaRecorder;
+  if(timeSlice){
+    mediaRecorder = startRecording(mediaStream,timeSlice,dataCallback,previewElement); 
+  }  else {
+    mediaRecorder = startRecording(mediaStream); 
+  }
   if( !mediaRecorder) {
     return null;
   }
