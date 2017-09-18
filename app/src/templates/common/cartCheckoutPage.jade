@@ -1,8 +1,0 @@
-include cart/_checkoutItems
-include cart/_cartPlans
-extends cartLayout
-block content
-    .container#checkoutpage(data-partner="#{env.partner}",data-planid="#{data.planId}")
-        .page-header
-            #person_details
-            #cart-items

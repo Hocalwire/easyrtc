@@ -1,4 +1,0 @@
-window.Hocalwire = {
-    Services: {}
-};
-

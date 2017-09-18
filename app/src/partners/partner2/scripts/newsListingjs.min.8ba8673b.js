@@ -1,1 +1,0 @@
-"use strict";!function(){function initSliders(){var images=$el.find(".listing-image");Utils.registerLoadOnVisible(images,function(elem){Utils.lazyLoadImage(elem)},!0),Utils.convertTimeToLocalTime()}var $el;$.addPageInit("#news-listing-page",function(){$el=$("#news-listing-page"),Hocalwire.PageLoader.init(),Hocalwire.CommonJs.init(),$.addPageLoad(initSliders,!0)})}();

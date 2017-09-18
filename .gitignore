@@ -2,6 +2,16 @@
 # It the same as the recommended default, but with an addition of restricting
 # node_modules from being committed and .log files.
 
+bower_components
+node_modules
+.npm-debug.log
+**/*.log
+**/*.DS_Store
+**/*.min.*
+hocalwire-website.log
+src/data/**/*
+
+
 #################
 ## Eclipse
 #################

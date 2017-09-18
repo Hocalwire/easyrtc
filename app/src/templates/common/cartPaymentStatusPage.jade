@@ -1,8 +1,0 @@
-include cart/_checkoutItems
-include cart/_cartPlans
-extends cartLayout
-block content
-    .container#paymentstatuspage(data-partner="#{env.partner}",data-txnid="#{data.txnId}",data-planid="#{data.planId}")
-        .page-header
-            #payment-details
-                include cart/_paymentStatus

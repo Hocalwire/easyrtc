@@ -1,7 +1,0 @@
-mixin radioType(data)
-    -var options = data.options
-    -for(var i=0;i<options.length;i++){
-        input(data-display-name="#{data.display_name}", data-validation='#{data.validation_type}', data-mandatry='#{data.is_mandatory}', id='val_#{options[i].id}',name='val_#{options[i].id}', style='width:22px;', type='radio' value='#{options[i].display_name}')
-        div(style='padding-right:15px;display:inline-block;') #{options[i].display_name}
-    -}
-    
