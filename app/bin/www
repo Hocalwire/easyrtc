@@ -1,0 +1,163 @@
+#!/usr/bin/env node
+
+
+var app = require('../app');
+var cluster = require('cluster');
+var debug = require('debug')('temp:server');
+var http = require('http');
+var numCPUs = require('os').cpus().length;
+var sc = require("../src/controller/inputStreamController");
+
+var serveStatic = require('serve-static');  // serve static files
+var socketIo = require("socket.io");        // web socket external module
+var easyrtc = require("../../");   
+/**
+ * Get port from environment and store in Express.
+ */
+
+var port = normalizePort(process.env.PORT || app.get('port') || 5005);
+app.set('port', port);
+
+if (cluster.isMaster) {
+	console.log("check if master");
+  // Fork workers.
+  var len = numCPUs > 1 ? 1 : numCPUs;
+  for (var i = 0; i < len; i++) {
+    cluster.fork();
+  }
+
+  // If a worker dies, log it to the console and start another worker.
+  cluster.on('exit', function(worker, code, signal) {
+    console.log('Worker ' + worker.process.pid + ' died.');
+    // cluster.fork();
+  });
+
+  // Log when a worker starts listening
+  cluster.on('listening', function(worker, address) {
+    console.log('Worker started with PID ' + worker.process.pid + '.');
+  });
+
+} else {
+  /**
+   * Create HTTP server.
+   */
+   console.log("creating server");
+
+  var server = http.createServer(app);
+  var webServer = server.listen(port);
+  server.on('error', onError);
+  server.on('listening', onListening);
+        // EasyRTC external module
+
+  // Set process name
+  process.title = "node-easyrtc";
+
+  // Start Socket.io so it attaches itself to Express server
+  var socketServer = socketIo.listen(webServer, {"log level":1});
+
+  easyrtc.setOption("logLevel", "debug");
+
+  // // Overriding the default easyrtcAuth listener, only so we can directly access its callback
+  easyrtc.events.on("easyrtcAuth", function(socket, easyrtcid, msg, socketCallback, callback) {
+      easyrtc.events.defaultListeners.easyrtcAuth(socket, easyrtcid, msg, socketCallback, function(err, connectionObj){
+          if (err || !msg.msgData || !msg.msgData.credential || !connectionObj) {
+              callback(err, connectionObj);
+              return;
+          }
+
+          connectionObj.setField("credential", msg.msgData.credential, {"isShared":false});
+
+          console.log("["+easyrtcid+"] Credential saved!", connectionObj.getFieldValueSync("credential"));
+
+          callback(err, connectionObj);
+      });
+  });
+
+  // To test, lets print the credential to the console for every room join!
+  easyrtc.events.on("roomJoin", function(connectionObj, roomName, roomParameter, callback) {
+      console.log("["+connectionObj.getEasyrtcid()+"] Credential retrieved!", connectionObj.getFieldValueSync("credential"));
+      easyrtc.events.defaultListeners.roomJoin(connectionObj, roomName, roomParameter, callback);
+  });
+
+  // Start EasyRTC server
+  var rtc = easyrtc.listen(app, socketServer, null, function(err, rtcRef) {
+      console.log("Initiated");
+
+      rtcRef.events.on("roomCreate", function(appObj, creatorConnectionObj, roomName, roomOptions, callback) {
+          console.log("roomCreate fired! Trying to create: " + roomName);
+
+          appObj.events.defaultListeners.roomCreate(appObj, creatorConnectionObj, roomName, roomOptions, callback);
+      });
+  });
+
+ 
+  /**
+   * Listen on provided port, on all network interfaces.
+   */
+
+  // sc.setupIO(xx);
+}
+
+// The rest of the bin/www file.....
+
+/**
+ * Normalize a port into a number, string, or false.
+ */
+
+function normalizePort(val) {
+  var port = parseInt(val, 10);
+
+  if (isNaN(port)) {
+    // named pipe
+    return val;
+  }
+
+  if (port >= 0) {
+    // port number
+    return port;
+  }
+
+  return false;
+}
+
+/**
+ * Event listener for HTTP server "error" event.
+ */
+
+function onError(error) {
+  console.log(error);
+  if (error.syscall !== 'listen') {
+    throw error;
+  }
+
+  var bind = typeof port === 'string'
+    ? 'Pipe ' + port
+    : 'Port ' + port;
+
+  // handle specific listen errors with friendly messages
+  switch (error.code) {
+    case 'EACCES':
+      console.error(bind + ' requires elevated privileges');
+      process.exit(1);
+      break;
+    case 'EADDRINUSE':
+      console.error(bind + ' is already in use');
+      process.exit(1);
+      break;
+    default:
+      throw error;
+  }
+}
+
+/**
+ * Event listener for HTTP server "listening" event.
+ */
+
+function onListening() {
+  var addr = server.address();
+  var bind = typeof addr === 'string'
+    ? 'pipe ' + addr
+    : 'port ' + addr.port;
+  debug('Listening on ' + bind);
+}
+
