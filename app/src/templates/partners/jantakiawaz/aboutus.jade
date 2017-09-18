@@ -1,0 +1,50 @@
+include ../../theme_ape/allMixin
+extends ../../theme_ape/layout
+block content
+    div#site.left.relative.home
+        #site-wrap.left.relative
+            include ../../theme_ape/partials/_header
+            .col-tabs-wrap.left.relative.mobile_tabs_wrapper(style='top: 0px;')
+                #mobile_tabs
+            #body-main-wrap.left.relative(style='transform: none;')
+                .body-main-out.relative(style='transform: none;')
+                    .body-main-in(style='transform: none;')
+                        #body-main-cont.left.relative(style='transform: none;')
+                            #level_top_full.leader-right-wrap
+                                -if(data['level_top_full'] && data['level_top_full'].templateData && data['level_top_full'].templateData.mixinName){
+                                    +#{data['level_top_full'].templateData.mixinName}(data['level_top_full'])
+                                -}
+                            #feat-top-wrap.feat_top_wrap.left.relative
+                                -if(data['feat-top-wrap'] && data['feat-top-wrap'].templateData && data['feat-top-wrap'].templateData.mixinName){
+                                    +#{data['feat-top-wrap'].templateData.mixinName}(data['feat-top-wrap'])
+                                -}
+                            #post-main-wrap.left.relative
+                                .post-wrap-out1
+                                    .post-wrap-in1.white_bg_card
+                                        .post-left-col.static-page-wrapper
+                                            h1(style="color:black") About Us
+                                            b Janta Ki Awaj 
+                                            span is an online publisher of news and information covering news of 10 states and 200 districts, has online readership of over 3 lakh user per month. Head office Located in New Delhi / NCR, Special Coverage News is No.1 online Hindi newspaper both as per Circulation & Readership.
+                                            br
+                                            br
+                                            b Janta Ki Awaj 
+                                            span is one of the top Hindi newspapers in Delhi and known as best source of Hindi news in India. Janta Ki Awaj is one of the largest Hindi newspaper groups of India .Special Coverage has earned a reputation as the leading online Hindi newspaper of India that provides news and information to its readers by focusing on crime news, politics news, business news, education news, Bollywood news, interview and opinion of expert people in their domain.
+                                            br
+                                            br
+                                            span As being a Reputed Media Company In India, Janta Ki Awaj provide latest news from all around the world to our readers. Janta Ki Awaj offers latest news in Hindi with useful content. Janta Ki Awaj is creating awareness and truth by its news to society.
+                                            br
+                                            br
+                                            .right-col
+                                              ul.arrow-list
+                                                    
+                                                li
+                                                  a(href='/') Go to homepage
+                            
+                                    #post-right-col
+                                        include ../../theme_ape/partials/_genericRightSection
+                                    #level_bottom_full.leader-right-wrap
+                                        -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                                            +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                                        -}
+                            
+                include ../../theme_ape/partials/_footer

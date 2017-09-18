@@ -1,0 +1,135 @@
+title= meta.title
+link(rel="icon", href="/images/ico/favicon.ico", type="image/x-icon")
+link(rel="shortcut icon", href="/images/ico/favicon.ico", type="image/x-icon")
+meta(charset="utf-8")
+meta(content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible")
+meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no")
+meta(name='description', content=meta.description)
+meta(name="application-name", content="#{meta.name || Hocalwire}")
+meta(name='keywords', content=meta.keywords)
+-if(env.partnerData.in_google_news){
+    -if(env.pageType=="article"){
+        meta(name='news_keywords', content=meta.keywords)
+    -} else if(env.pageType=="website"){
+        // meta(name="Googlebot-News", content="noindex, nofollow")  
+    -}
+-} 
+meta(name='language', content="#{env.lang=='hi' ? 'hi, हिंदी' : 'en-us, English'}")
+meta(name="google", content="notranslate")
+meta(http-equiv="Content-Language", content="#{env.lang=='hi' ? 'hi' : 'en'}")
+meta(name='author', content=meta.author)
+meta(name="copyright" content="#{meta.copyright}")
+-if(env.partnerData.gplus_publisher_link){
+    meta(name='Publisher', content=env.partnerData.gplus_publisher_link)
+-}
+
+meta(name='HandheldFriendly', content='true')
+meta(name='referrer', content='origin')
+-if(env.partnerData.hasAMPPage && meta.ampurl && !env.partnerData.isAMPPage){
+    link(rel="amphtml" href="#{meta.ampurl}")
+-}
+meta(name="twitter:card", content="summary_large_image")
+meta(property="og:url", content=meta.url)
+meta(name="twitter:url", content=meta.url)
+meta(name="title", content=meta.title)
+meta(name="image", content=meta.image)
+-if(env.partnerData.FBCODE){
+    meta(property="fb:app_id", content="#{env.partnerData.FBCODE}")
+-}
+-if(env.dynamicPage){
+    meta(property="og:type", content="Article")
+-} else {
+    meta(property="og:type", content="Website")
+-}
+
+-if(env.customSocialMeta){
+    -for(var k in env.customSocialMeta){
+        meta(property="#{k}",content="#{env.customSocialMeta[k]}")
+    -}
+-} else {
+    meta(property="og:title", content=meta.title)
+    meta(property="og:description", content=meta.description)
+    -if(env.partnerData.defaultSourceUrl){
+        meta(property='article:publisher', content='#{env.partnerData.defaultSourceUrl}')
+    -}
+    -if(meta.tags){
+        meta(property='article:tag', content='#{meta.tags}')
+    -}
+    meta(property="og:image", content=meta.shareImage || meta.image)
+    meta(property='og:author', content=env.partnerData.defaultSourceUrl || meta.author)
+    meta(name="twitter:title", content=meta.title)
+    meta(name="twitter:description", content=meta.description)
+    meta(name="twitter:image", content=meta.image)
+-}
+meta(property="og:image:width", content="600")
+meta(property="og:image:height", content="315")
+
+-if(env.partnerData.GACODE){
+    include ../common/GATrackingCode
+-}
+-if(env.partnerData.GTMCODE){
+    script(pageScript="true").
+        window.GTMCODE = "!{env.partnerData.GTMCODE}";
+-}
+-if(env.partnerData.FBCODE){
+    script(pageScript="true").
+        window.FBCODE = "!{env.partnerData.FBCODE}";
+-}
+-if(env.savePageScroll){
+    script.
+        window.saveScroll = true;
+-}
+-if(env.partnerData.insertPublishRightsMessage){
+       script.
+            window.insertPublishRightsMessage = '!{env.partnerData.insertPublishRightsMessage}';
+-}
+-if(env.partnerData.hasEPaperSmartTools){
+    script.
+        window.hasEPaperSmartTools = "!{env.partnerData.hasEPaperSmartTools || ''}"
+-}
+-if(env.partnerData.piwikSiteTrackingId){
+    script(pageScript="true").
+        window.PIWIKCODE = "!{env.partnerData.piwikSiteTrackingId}";
+        window.PIWIKCOOKIEDOMAIN = "*.!{env.partnerData.domainName}";
+        window.PIWIKDOMAINS = ["!{env.partnerData.partnerDomains ? env.partnerData.partnerDomains : '*.'+env.partnerData.domainName}"];
+-}
+
+-if(!env.partnerData.ignoreInsertLinkInCopy){
+    script(pageScript="true").
+        window.insetLinkInCopy = '!{env.partnerData.insert_copy_max_count ? env.partnerData.insert_copy_max_count : ""}' || true;
+
+-}
+
+-if(env.partnerData.disable_copy_paste){
+    script(pageScript="true").
+        window.disableCopyPaste = true
+-}
+-if(env.trackingPageType){
+        script(pageScript="true").
+            window.trackingPageType = "!{env.trackingPageType}";
+-}
+-if(env.partnerLoginData){
+        script(pageScript="true").
+            window.hasLogin = "true";
+            window.isLoggedIn = "!{env.partnerLoginData.isLoggedIn}";
+            window.loggedInAs = "!{env.partnerLoginData.loggedInAs}";
+-}
+-if(env.partnerData.externalResources){
+        script(pageScript="true").
+            window.externalResourcesVersion = "!{env.partnerData.externalResourcesVersion}";
+            window.externalResources = "!{env.partnerData.externalResources}";
+-}
+-if(Utils.clientConstants) {
+    script(pageScript="true").
+        window.Constants = !{JSON.stringify(Utils.clientConstants)};
+-}
+-if(env.partnerData.extraHeaderTags){
+    !{env.partnerData.extraHeaderTags}
+-}
+
+- if(environment === 'development') {
+        link(rel="stylesheet", type="text/css", href="/styles/common.css")
+- } else {
+      style(type='text/css',class="styles")
+        include ../../public/styles/commoncss.min.2a573e3e.css
+- }

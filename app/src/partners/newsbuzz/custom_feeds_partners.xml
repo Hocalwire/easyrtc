@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?><rss xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:content="http://purl.org/rss/1.0/modules/content/" xmlns:atom="http://www.w3.org/2005/Atom" version="2.0">
+    <channel>
+        <title><![CDATA[newsbuzz News]]></title>
+        <description><![CDATA[newsbuzz News]]></description>
+        <link>http://newsbuzz.co.in</link>
+        <image>
+            <url>/images/logo.png</url>
+            <title>newsbuzz News</title>
+            <link>http://newsbuzz.co.in</link>
+        </image>
+        <generator>RSS for Node</generator>
+        <lastBuildDate>Wed, 12 Jul 2017 13:46:30 GMT</lastBuildDate>
+        <atom:link href="http://newsbuzz.co.in/feeds.xml" rel="self" type="application/rss+xml"/>
+        <pubDate>Wed, 12 Jul 2017 13:46:00 GMT</pubDate>
+        <copyright><![CDATA[newsbuzz]]></copyright>
+        <language><![CDATA[en]]></language>
+        <managingEditor><![CDATA[admin@newsbuzz.com]]></managingEditor>
+        <ttl>1</ttl>
+        <item>
+            <title><![CDATA[RJD should come clean-JDU]]></title>
+            <description><![CDATA[IMP BUZZ-We expects that people who have been accused should present there case with all evidences as per expectations of the common people-JDU on RJD#JDU has history of giving political sacrifices]]></description>
+            <link>http://newsbuzz.co.in/indiabuzz/rjd-should-come-clean-jdu-533865</link>
+            <guid isPermaLink="true">http://newsbuzz.co.in/indiabuzz/rjd-should-come-clean-jdu-533865</guid>
+            <category><![CDATA[India Buzz]]></category>
+            <dc:creator><![CDATA[Maneesha Karn]]></dc:creator>
+            <pubDate>Tue, 11 Jul 2017 12:45:45 GMT</pubDate>
+            <image><![CDATA[ http://newsbuzz.co.inhttp://indiaprojectsnews.in/content/servlet/RDESController?command=rdm.Picture&sessionId=RDWEBE2R5KQAXRKK5K2KMMCXLGY7QT2FL6CWH&app=rdes&partner=hocal&type=7&uid=19361PkAtrQfJ2hZ8AdghsnmKxOCmuwur2hJh5146877 ]]></image>
+            <content:encoded><![CDATA[ <div>IMP BUZZ-We expects that people who have been accused should present there case with all evidences as per expectations of the common people-JDU on RJD<br></div><div>#JDU has history of giving political sacrifices</div> ]]></content:encoded>
+            <source><![CDATA[ Maneesha Karn ]]></source>
+        </item>
+        <item>
+            <title><![CDATA[Ravi Shastri new coach of Team India]]></title>
+            <description><![CDATA[IMP BUZZ-According to reports, Ravi Shastri has been appointed India coach]]></description>
+            <link>http://newsbuzz.co.in/indiabuzz/ravi-shastri-new-coach-of-team-india-533849</link>
+            <guid isPermaLink="true">http://newsbuzz.co.in/indiabuzz/ravi-shastri-new-coach-of-team-india-533849</guid>
+            <category><![CDATA[India Buzz]]></category>
+            <dc:creator><![CDATA[Newsbuzz Team]]></dc:creator>
+            <pubDate>Tue, 11 Jul 2017 11:30:11 GMT</pubDate>
+            <image><![CDATA[ http://newsbuzz.co.inhttp://indiaprojectsnews.in/content/servlet/RDESController?command=rdm.Picture&sessionId=RDWEBE2R5KQAXRKK5K2KMMCXLGY7QT2FL6CWH&app=rdes&partner=hocal&type=7&uid=19361d1R6nTFZSzb9RNIsj29y4jDyguEnF89W6751121 ]]></image>
+            <content:encoded><![CDATA[ IMP BUZZ-According to reports, Ravi Shastri has been appointed India coach ]]></content:encoded>
+            <source><![CDATA[ Newsbuzz Team ]]></source>
+        </item>
+    </channel>
+</rss>

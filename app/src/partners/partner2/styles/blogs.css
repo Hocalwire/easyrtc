@@ -1,0 +1,32 @@
+.post_detail h2{
+    font-size: 20px;
+    font-weight: bold;
+    color:#000;
+}
+p{
+	font-size: 15px;
+	line-height: 1.5;
+}
+.fa {
+	padding: 0px 5px 0px 0px;
+}
+
+.light-span {
+	padding: 0px 10px 0px 0px;
+    color: #888;
+    margin-left: 0px;
+}
+.content-div {
+	border-top: 2px solid #CCC;
+    margin-top: 22px;
+}
+.single_content {
+	border-bottom: 3px solid #BDBDBD !important;
+	border-top:none;
+}
+.post_detail a {
+	border: 1px solid #CCCCCC;
+    text-decoration: none;
+    font-size: 17px;
+    color: #eec107;
+}

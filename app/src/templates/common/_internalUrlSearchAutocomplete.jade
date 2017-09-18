@@ -1,0 +1,7 @@
+mixin internalUISearchAutocomplete(items)
+	div.hocal_row
+		.hocal_col
+		-for(var i=0;i<items.length;i++){
+			div.hocal_row
+				div(url="#{items[i].url}") !{items[i].title}
+		-}

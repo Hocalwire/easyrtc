@@ -1,0 +1,55 @@
+mixin authorAbout(data)
+    div.hocal_cp_about_author.hocal_well.hocal_well-lg
+        div(class="hocal_cp-author hocal_m20")
+            .row.hocal_border_bot
+                .hocal_author_wrapper
+                    div(class="hocal_cp-author-thumb hocal_about_author hocalwire-col-md-3")
+                        img(src='/images/authorplaceholder.jpg', data-src='#{data.imageUrl}', alt='#{data.name}', title='#{data.name}')
+                    div(class="hocal_cp-author-details hocalwire-col-md-9")
+                        h3
+                            a(href="#{data.url}") #{data.name} 
+                            // -if(data.total_news && data.total_news>0){
+                            //     span ( #{data.total_news} )
+                            // -}
+                        ul(class="hocalwire-cp-authors-social")
+                            -if(data.facebook){
+                                li(class="facebook")
+                                    a(title="Facebook", href="#{data.facebook}", target="_blank")
+                                        img(src="/images/social/facebook_icon.png",class="fb_social_icon_image social_icon_image")
+                            -} else {
+                                li(class="facebook dark")
+                                    a(title="Facebook", href="#", target="_blank")
+                                        img(src="/images/social/facebook_icon.png",class="fb_social_icon_image social_icon_image")
+                            -}
+                            -if(data.twitter){
+                                li(class="twitter")
+                                    a(title="Twitter", href="#{data.twitter}", target="_blank")
+                                        img(src="/images/social/twitter_icon.png",class="twitter_social_icon_image social_icon_image")
+                            -} else {
+                                li(class="twitter dark")
+                                    a(title="Facebook", href="#", target="_blank")
+                                        img(src="/images/social/twitter_icon.png",class="twitter_social_icon_image social_icon_image")
+                            -}
+                            -if(data.googleplus){
+                                li(class="googleplus")
+                                    a(title="Google Plus", href="#{data.googleplus}", target="_blank")
+                                        img(src="/images/social/gplus_icon.png",class="gplus_social_icon_image social_icon_image")
+                            -} else {
+                                li(class="googleplus dark")
+                                    a(title="Google Plus", href="#", target="_blank")
+                                        img(src="/images/social/gplus_icon.png",class="gplus_social_icon_image social_icon_image")
+                            -}
+                            -if(data.linkedin){
+                                li(class="linkedin")
+                                    a(title="LinkedIn", href="#", target="_blank")
+                                        img(src="/images/social/linkedin_icon.png",class="linkedin_social_icon_image social_icon_image")
+                            -} else {
+                                li(class="linkedin dark")
+                                    a(title="LinkedIn", href="#{data.linkedin}", target="_blank")
+                                        img(src="/images/social/linkedin_icon.png",class="linkedin_social_icon_image social_icon_image")
+                            -}
+            .row
+                -if(data.description){
+                    p !{data.description}
+                -}
+            br

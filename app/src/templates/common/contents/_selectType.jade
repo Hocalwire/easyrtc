@@ -1,0 +1,12 @@
+mixin selectType(data)
+	-var options = data.options
+	-var len = options.length
+	select(data-display-name="#{data.display_name}", data-mandatry='#{data.is_mandatory}', data-validation='#{data.validation_type}', id='val_#{data.id}', class="selectbox_text", name='val_#{data.id}')
+		-for(var i=0;i<len;i++){
+			-if(data.value==options[i].name){
+				option(selected data-child='', data-tag='#{options[i].name}', data-uid='', value='#{options[i].name}') #{options[i].display_name}
+			-} else {
+				option(data-child='', data-tag='#{options[i].name}', data-uid='', value='#{options[i].name}') #{options[i].display_name}
+			-}
+			
+		-}

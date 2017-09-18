@@ -1,0 +1,28 @@
+section#pricing-table.plan_price_section
+    .hocal_row#plan_block
+        .content
+             -if(data && data.subscriptionData){
+                div.hocal_row
+                    .hocal_col
+                    div.hocal_row
+                        div.transaction_id Plan Name: !{data.subscriptionData.planName}
+                    div.hocal_row
+                        div.transaction_amount Amount : !{data.subscriptionData.amount}
+                    div.hocal_row
+                        div.transaction_amount Expires On : 
+                            span.convert-to-localtime.date-only(data-datestring = "#{data.subscriptionData.expiry}") #{data.subscriptionData.expiry}
+                
+                -if(data.item_count && data.item_count > 0) {
+                    -for(var k=0 ; k<data.item_count ; k++) {
+                        -var name = data['item_name_'+k]
+                        div.subscribed_plan !{name}
+
+                    -}
+                -}
+            -} else {
+                div(class='inner-box')
+                    div You are not subscribed yet. Please view options to subscribe
+                    button.submit-payment-info-btn1.js_submit_payment_info_btn1
+                        a(href="#{env.partnerData.subscriptionPageUrl}") View Packages
+            -}
+          

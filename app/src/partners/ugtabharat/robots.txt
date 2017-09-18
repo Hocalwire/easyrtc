@@ -1,0 +1,13 @@
+#
+# robots.txt for http://ugtabharat.com
+
+User-agent: *
+Allow: /
+Disallow: /admin/*
+
+Disallow: /xhr/*
+Disallow: /refer-*
+
+Allow: /content/servlet/RDESController?*
+
+Sitemap: http://ugtabharat.com/sitemap/sitemap-index.xml

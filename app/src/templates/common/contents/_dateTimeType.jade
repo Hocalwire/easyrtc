@@ -1,0 +1,8 @@
+mixin dateTimeType(data)
+	div(class="input-group", id='select_date_time_#{data.name}' style='width: 200px;')
+		input(id="val_#{data.id}" name="val_#{data.id}" class="date_time" type="hidden" value="")
+		input(data-display-name="#{data.display_name}", placeHolder='#{data.display_name}', data-mandatry='#{data.is_mandatory}', data-validation='#{data.validation_type}', id="input_date_time_#{data.name}" name="input_date_time_#{data.name}" type="text" class="input_date_time form-control" value="#{data.value || data.display_name}" style='border: 1px solid #CCC;height: 38px;')
+		span(class="input-group-addon")
+			span(class="glyphiconq glyphicon-timeq")
+				img(src='/images/datetime.png')
+		

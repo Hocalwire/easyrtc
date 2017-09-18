@@ -1,0 +1,70 @@
+include ../../theme_ape/allMixin
+extends ../../theme_ape/layout
+block content
+    div#site.left.relative.home
+        #site-wrap.left.relative
+            include ../../theme_ape/partials/_header
+            .col-tabs-wrap.left.relative.mobile_tabs_wrapper(style='top: 0px;')
+                #mobile_tabs
+            #body-main-wrap.left.relative(style='transform: none;')
+                .body-main-out.relative(style='transform: none;')
+                    .body-main-in(style='transform: none;')
+                        #body-main-cont.left.relative(style='transform: none;')
+                            #level_top_full.leader-right-wrap
+                                -if(data['level_top_full'] && data['level_top_full'].templateData && data['level_top_full'].templateData.mixinName){
+                                    +#{data['level_top_full'].templateData.mixinName}(data['level_top_full'])
+                                -}
+                            #feat-top-wrap.feat_top_wrap.left.relative
+                                -if(data['feat-top-wrap'] && data['feat-top-wrap'].templateData && data['feat-top-wrap'].templateData.mixinName){
+                                    +#{data['feat-top-wrap'].templateData.mixinName}(data['feat-top-wrap'])
+                                -}
+                            #post-main-wrap.left.relative
+                                .post-wrap-out1
+                                    .post-wrap-in1.white_bg_card
+                                        .post-left-col.static-page-wrapper
+                                            h3 Support Us
+                                            p   Science touches our lives at every stage. But we never bother to find out,
+                                                how it touches or who made it possible. We do not seek it, so the
+                                                mainstream media ignore it. The result, science is not a saleable
+                                                commodity in media. Largely, it remains locked up in laboratories or
+                                                beyond the limelight. Scientists are generally not publicity seekers and
+                                                are shy to come out. 
+                                                br
+                                            p   We at Indian Science Journal are striving to bridge the gap between
+                                                scientists and researchers, and the general public. Besides, sourced or
+                                                exclusive news, we also curate news reports from other media, through our
+                                                mobile application, downloadable free from Google Playstore, to provide
+                                                you a one-stop source for all that is happening in the world of science,
+                                                technology, healthcare, agriculture and allied fields. 
+                                                br
+                                            p   In the more than three years since the launch of Indian Science Journal,
+                                                we have been trying to do our best, with no source of funding – only by
+                                                digging out our personal savings. But it is now time to shift it to the
+                                                next gear to knock the doors of more scientific institutions, meet
+                                                scientists in person, understand their works and put it in simple language
+                                                for everyone to digest on a larger canvas. 
+                                                br
+                                            p   Our platform is open to scientists and researchers from all core areas –
+                                                science, technology, agriculture and healthcare to publish their works. We
+                                                will use all means to disseminate their innovations to a large number of
+                                                readers across India and abroad. We can also share it with interested
+                                                journals, publications for a wider impact, so that the work of our
+                                                scientists reach every section of the populace – students and researchers,
+                                                of all disciplines and science administrators in the government, besides
+                                                general public. 
+                                                br
+                                            p   But we need your help – to sustain our efforts. We do not expect to make
+                                                profits from our operations, but just to sustain the operations for a
+                                                longer haul in the interest of science communication, we need your support
+                                                – crowd-funding. 
+                                                br
+                                            p   If you can help us, please write to a(href="mailto:nbnair@indiansciencejournal.com")nbnair@indiansciencejournal.com to pledge your support.
+                                    #post-right-col
+                                        include ../../theme_ape/partials/_genericRightSection
+                                    #level_bottom_full.leader-right-wrap
+                                        -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                                            +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                                        -}
+                            
+                include ../../theme_ape/partials/_footer
+                    

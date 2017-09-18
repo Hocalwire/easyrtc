@@ -1,0 +1,32 @@
+
+include ../../theme_bee/allMixin
+extends ../../theme_bee/layout
+block content
+    include ../../theme_bee/partials/_header
+    div.container
+        include ../../theme_bee/partials/_navArea
+        .main-content.row.mtop15
+            .row-seventy.main-c
+                .huge-message
+                          b.big-title Support Us
+                          p.aboutUs
+                            | We need your help to reach readers around the world. The content consumer, together, with team Narada, makes it what it is – a platform for the dissemination and consumption of news, by you, and for you; this is what makes Narada News unique.
+                            br
+                            |Narada News is a space where people can share, and gain information, about the world that we live in.
+                            br
+                            | In order for us to achieve our goals, and help you, the news consumers, to let your voices be heard, we need your collective efforts to help sustain this unbiased, and all-inclusive platform.
+                            br
+                            | You are our stakeholder. Please consider making a donation to Narada News, to protect us, aid us in being able to pursue unbiased and independent journalism, and to help us grow. We depend on crowd-funding to sustain operations and broaden reach.
+                            br
+                            | We believe that the right information should reach readers around the world  to help build opinions. Current Affairs, events, and other forces shaping lives of the present generation will have a bearing on future generations as well. By supporting us, you help us to maintain our independence and freedom to be fearless and unbiased in our news reporting.
+                            br
+                            | You can write to 
+                            a(href="mailto:editor@naradanews.com") editor@naradanews.com 
+                            | for details
+                          a.icon-link(href='/')
+                            span.icon-text 
+                              i.fa.fa-home
+                            | Back to Homepage
+            .row-thirty.c-bar
+                   include ../../theme_bee/partials/_genericRightSection
+    include ../../theme_bee/partials/_footer

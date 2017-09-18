@@ -1,0 +1,372 @@
+include cart/_checkoutItems
+include cart/_cartPlans
+include _includeElement
+include _syncHtmlContent
+include _syncFileContent
+
+include _placeHolderMixin
+-var selectedPlan = data.planById[0]
+div#checkout-page-plan.plans(data-planid="#{selectedPlan.id}")
+    -var lData = data.allPlans
+    
+    div.plan_data
+        section#pricing-table.plan_price_section
+            .container
+                .row
+                    span.your_plan_heading Your Selected Plan 
+                    -if(lData && lData.length>0){
+                        -for(var i=0;i<lData.length;i++){
+                            -if(selectedPlan.id==lData[i].id){
+                                div(class="plan_item")
+                                    .title
+                                      !{lData[i].headingDisplay}
+                                    .price-value
+                                        |  !{lData[i].pricingDisplay} 
+                                    
+                          -}
+                        -}
+                    -}
+
+div.items
+    +checkoutItems({"data":data.cartItems})
+-var pdata = data.paymentData
+div#checkout_details.checkout_details(data-txnid="#{pdata.p_tid}")
+    div.details_heading Order & Payment Details
+    div.order_id Order Id : #{pdata.p_order_id}
+    | (Use this id while communicating to support)
+    div.total_amount Amount: #{pdata.p_currency} 
+        span#total_payable_amount #{pdata.total_amount}
+    -if(env.partnerData.support_coupon_in_plan){
+        div.coupon-row
+            div.hocal_row
+                .hocal_col.hocal_col_4
+                    span.coupon-code-heading Do you have a Discount Coupon Code?
+                .hocal_col.hocal_col_4
+                    input(id="coupon_code",placeholder="Enter Coupon Code",class='form-control')
+                .hocal_col.hocal_col_4
+                    button.js_validate_coupon Validate Coupon Code
+            div.row.hocal_row
+                span.error_message.error_coupon_empty_code.hide Error
+            div.row.hocal_row
+                span.error_message.error_coupon_empty_code.hide Error
+            div.row
+                span.discount_message.hide 
+    -}
+
+    div.tabs.container-tabs.payment_tabs
+        ul(class="nav nav-tabs")
+            li(class="active")
+                a(data-toggle="tab" href="#payment_tab_0") Pay Online
+            -if(env.partnerData.has_pay_by_collect_cash){
+                li(class="")
+                    a(data-toggle="tab" href="#payment_tab_1") Request Cash Collection
+            -}
+            -if(env.partnerData.has_pay_by_cash){
+                li(class="")
+                    a(data-toggle="tab" href="#payment_tab_1_1") Pay By Cash
+            -}
+            -if(env.partnerData.has_pay_by_cheque){
+                li(class="")
+                    a(data-toggle="tab" href="#payment_tab_2") Payment via Cheque
+            -}
+            -if(env.partnerData.has_pay_by_neft){
+                li(class="")
+                    a(data-toggle="tab" href="#payment_tab_3") Payment via NEFT
+            -}
+                
+        div(class='inner-box')
+            div.tab-content#tabs_data
+                div(id="payment_tab_0" , data-type="1", class="tab-pane fade in active")
+                    -if(!env.partnerData.hide_volunteer_code){
+                        .row.referral_code_wrapper
+                            .col-md-4.textleft
+                                span Volunteer Code:
+                            .col-md-8.textleft
+                                input#agent_id
+                            div.error_agent_code.err-msg.hide
+                                |   Please enter a volunteer code
+                    -}    
+                    form.checkout-form(action="#{pdata.payment_url}",method="POST")
+                        input.hide(name="app" value="#{Constants.app}")
+                        input.hide(name="partner"  value="#{env.partner}")
+                        input.hide.agent-code(name="agent_code"  value="")
+                        input.hide.coupon-code(name="coupon_code"  value="")
+                        
+                        -for(var k in pdata){
+                            -if(k.indexOf("p_")==0){
+                                input.hide(name="#{k}" value="#{pdata[k]}")
+                            -}
+                            
+                        -} 
+                        button.checkout_btn.js_checkout_button(type="submit", data-payment-url="#{pdata.payment_url}") Proceed To Payment
+                -if(env.partnerData.has_pay_by_collect_cash){
+                    div(id="payment_tab_1", data-type="2", class="tab-pane fade in")
+                        -if(!env.partnerData.hide_volunteer_code){
+                            .row.referral_code_wrapper
+                                .col-md-4.textleft
+                                    span Volunteer Code:
+                                .col-md-8.textleft
+                                    input#agent_id
+                        -}
+                        .row
+                            .col-md-4.textleft
+                                span Address:
+                            .col-md-8.textleft
+                                textarea#payment_address
+                        .row
+                            .col-md-4.textleft
+                                span Preferred Time:
+                            .col-md-8.padding-left0.textleft
+                                .col-md-6.no-padding
+                                    .col-md-2.no-padding
+                                        span From:
+                                    .col-md-10.no-padding
+                                        select#time_from(name='time_from')
+                                            option(value='01:00') 01:00 AM
+                                            option(value='02:00') 02:00 AM
+                                            option(value='03:00') 03:00 AM
+                                            option(value='04:00') 04:00 AM
+                                            option(value='05:00') 05:00 AM
+                                            option(value='06:00') 06:00 AM
+                                            option(value='07:00') 07:00 AM
+                                            option(value='08:00') 08:00 AM
+                                            option(value='09:00') 09:00 AM
+                                            option(value='10:00') 10:00 AM
+                                            option(value='11:00') 11.00 AM
+                                            option(value='12:00') 12.00 AM
+                                            option(value='13:00') 01.00 PM
+                                            option(value='14:00') 02:00 PM
+                                            option(value='15:00') 03:00 PM
+                                            option(value='16:00') 04:00 PM
+                                            option(value='17:00') 05:00 PM
+                                            option(value='18:00') 06:00 PM
+                                            option(value='19:00') 07:00 PM
+                                            option(value='20:00') 08:00 PM
+                                            option(value='21:00') 09:00 PM
+                                            option(value='22:00') 10:00 PM
+                                            option(value='23:00') 11:00 PM
+                                            option(value='24:00') 12:00 PM
+                                .col-md-6.no-padding
+                                    .col-md-2.no-padding
+                                        span To:
+                                    .col-md-10.no-padding
+                                        select#time_to(name='time_to')
+                                            option(value='01:00') 01:00 AM
+                                            option(value='02:00') 02:00 AM
+                                            option(value='03:00') 03:00 AM
+                                            option(value='04:00') 04:00 AM
+                                            option(value='05:00') 05:00 AM
+                                            option(value='06:00') 06:00 AM
+                                            option(value='07:00') 07:00 AM
+                                            option(value='08:00') 08:00 AM
+                                            option(value='09:00') 09:00 AM
+                                            option(value='10:00') 10:00 AM
+                                            option(value='11:00') 11.00 AM
+                                            option(value='12:00') 12.00 AM
+                                            option(value='13:00') 01.00 PM
+                                            option(value='14:00') 02:00 PM
+                                            option(value='15:00') 03:00 PM
+                                            option(value='16:00') 04:00 PM
+                                            option(value='17:00') 05:00 PM
+                                            option(value='18:00') 06:00 PM
+                                            option(value='19:00') 07:00 PM
+                                            option(value='20:00') 08:00 PM
+                                            option(value='21:00') 09:00 PM
+                                            option(value='22:00') 10:00 PM
+                                            option(value='23:00') 11:00 PM
+                                            option(value='24:00') 12:00 PM
+                            .row
+                                .col-md-4.textleft
+                                    span Your Message
+                                .col-md-8.textleft
+                                    textarea#user_message
+                        button.submit-payment-info-btn.js_submit_payment_info_btn Submit
+                -}
+                -if(env.partnerData.has_pay_by_cash){
+                    div(id="payment_tab_1_1" , data-type="3", class="tab-pane fade in")
+                        .row 
+                            .col-md-12.textleft                  
+                                | Volunteer Information (Mandatory to verify Confimation Code(OTP) for successful referral registration. Please ensure a payment success status while submitting the details)
+                        .row.referral_code_wrapper
+                            .col-md-4.textleft
+                                span Volunteer Code:
+                            .col-md-8.textleft
+                                input#agent_id
+                            div.error_agent_code.err-msg.hide.textleft
+                                |   Please enter a volunteer code
+                            a.js_send_agent_code(href="javascript:void(0);") Send Confirmation Code(OTP)
+                            .confirm-agent-code
+                                #submit_agent_code
+                                    div.otp_for_agent_message.hide
+                                        
+                                        .row
+                                            div.col-md-12.textleft.agent-information
+                                        .row
+                                            .col-md-12
+                                                h4.volunteer_head Volunteer Information
+                                            // .table-responsive.responsiv-table
+                                            //     table.table.bio-table
+                                            //         tbody
+                                            //             tr
+                                            //                 td Name 
+                                            //                 td.agent_name_on_checkout#agent_name_on_checkout
+                                            //             tr
+                                            //                 td Mobile
+                                            //                 td.agent_mobile_on_checkout#agent_mobile_on_checkout
+                                        .row
+                                            .col-md-4.textleft
+                                                span Name:
+                                            .col-md-8.textleft
+                                                span.agent_name_on_checkout#agent_name_on_checkout
+                                        .row
+                                            .col-md-4.textleft
+                                                span Mobile:
+                                            .col-md-8.textleft
+                                                span.agent_mobile_on_checkout#agent_mobile_on_checkout
+                                        .row.paddingtop20
+                                            .col-md-4
+                                            div.col-md-8.textleft Confirmation Code(OTP) has been sent to your registered mobile no
+                                        .row
+                                            
+                                            .col-md-4.textleft
+                                                span Confirmation Code(OTP):
+                                            .col-md-8.textleft
+                                                input#agent_otp
+                                        .row
+                                            .col-md-4.textleft
+                                                span Your Message
+                                            .col-md-8.textleft
+                                                textarea#user_message
+                                        button.submit-payment-info-btn.js_submit_payment_info_btn Submit
+                -}
+                -if(env.partnerData.has_pay_by_cheque){
+                    div(id="payment_tab_2" , data-type="4", class="tab-pane fade in")
+                        .row
+                            .col-md-12
+                                +includeElement(data,"cheque_account_details")
+                        h4 Provide information for cheque collection 
+                        -if(!env.partnerData.hide_volunteer_code){
+                            .row 
+                                .col-md-12.textleft                
+                                    | Volunteer Information (Mandatory to verify Confimation Code(OTP) for successful referral registration. Please ensure a payment success status while submitting the details)
+                            .row.referral_code_wrapper
+                                .col-md-4.textleft
+                                    span Volunteer Code:
+                                .col-md-8
+                                    input#agent_id
+                                div.error_agent_code.err-msg.hide
+                                    |   Please enter a volunteer code
+                                a.js_send_agent_code(href="javascript:void(0);") Send Confirmation Code(OTP)
+                                .confirm-agent-code
+                                    #submit_agent_code
+                                        div.otp_for_agent_message.hide
+                                            
+                                            .row
+                                                div.col-md-12.textleft.agent-information
+                                            .row
+                                                .col-md-12
+                                                    h4.volunteer_head Volunteer Information
+                                                // .table-responsive.responsiv-table
+                                                //     table.table.bio-table
+                                                //         tbody
+                                                //             tr
+                                                //                 td Name 
+                                                //                 td.agent_name_on_checkout#agent_name_on_checkout
+                                                //             tr
+                                                //                 td Mobile
+                                                //                 td.agent_mobile_on_checkout#agent_mobile_on_checkout
+                                            .row
+                                                
+                                                .col-md-4.textleft
+                                                    span Name:
+                                                .col-md-8.textleft
+                                                    span.agent_name_on_checkout#agent_name_on_checkout
+                                            .row
+                                                
+                                                .col-md-4.textleft
+                                                    span Mobile:
+                                                .col-md-8.textleft
+                                                    span.agent_mobile_on_checkout#agent_mobile_on_checkout
+                                            .row.paddingtop20
+                                                .col-md-4.textleft
+                                                    
+                                                .col-md-8.textleft
+                                                    | Confirmation Code has been sent to your registered mobile no
+                                            .row
+                                                
+                                                .col-md-4.textleft
+                                                    span Confirmation Code(OTP):
+                                                .col-md-8.textleft
+                                                    input#agent_otp
+                                            // button.submit-payment-info-btn.js_submit_payment_info_btn Submit
+                                            .row
+                                                .col-md-4.textleft
+                                                    span Bank Name:
+                                                .col-md-8.textleft
+                                                    input#bank_name
+                                            .row
+                                                .col-md-4.textleft
+                                                    span Cheque Number:
+                                                .col-md-8.textleft
+                                                    input#cheque_number
+                                            .row
+                                                .col-md-4.textleft
+                                                    span Your Message
+                                                .col-md-8.textleft
+                                                    textarea#user_message
+                                            button.submit-payment-info-btn.js_submit_payment_info_btn Submit
+                        -} else {
+                            div#no-check-validation
+                                .row
+                                    .col-md-4.textleft
+                                        span Bank Name:
+                                    .col-md-8.textleft
+                                        input#bank_name
+                                .row
+                                    .col-md-4.textleft
+                                        span Cheque Number:
+                                    .col-md-8.textleft
+                                        input#cheque_number
+                                .row
+                                    .col-md-4.textleft
+                                        span Your Message
+                                    .col-md-8.textleft
+                                        textarea#user_message
+                                button.submit-payment-info-btn.js_submit_payment_info_btn Submit
+                        -}
+                -}
+                -if(env.partnerData.has_pay_by_neft){
+                    div(id="payment_tab_3" , data-type="5", class="tab-pane fade in")
+                        
+                        .row
+                            .col-md-12
+                                +includeElement(data,"neft_account_details")
+                        h4 Provide your bank information for NEFT transfer 
+                        -if(!env.partnerData.hide_volunteer_code){
+                            .row.referral_code_wrapper
+                                .col-md-4.textleft
+                                    span Volunteer Code:
+                                .col-md-8.textleft
+                                    input#agent_id
+                                div.error_agent_code.err-msg.hide
+                                    |   Please enter a volunteer code
+                                
+                        -}
+                        .row
+                            .col-md-4.textleft
+                                span Bank Name:
+                            .col-md-8.textleft
+                                input#bank_name
+                        // .row
+                        //     .col-md-4.textleft
+                        //         span Ref Number:
+                        //     .col-md-8.textleft
+                        //         input#ref_number
+                        .row
+                            .col-md-4.textleft
+                                span Your Message
+                            .col-md-8.textleft
+                                textarea#user_message
+                        button.submit-payment-info-btn.js_submit_payment_info_btn Submit
+                -}
+        #submit-payment-generic-error-msg.hide.form

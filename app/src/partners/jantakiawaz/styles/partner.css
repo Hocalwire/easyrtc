@@ -1,0 +1,362 @@
+@font-face { font-family: Georgia; src: url('/theme_specialcoverage/fonts/Georgia.ttf'); } 
+body {
+	background:#F1F2F3;
+}
+body,h1,h2,h3,h4,h5{
+	font-family: Georgia, 'Rokkitt', serif; 
+	font-weight: 400;
+}
+p {
+	font-family: Georgia, 'Rokkitt', serif; 
+	font-weight: 100;
+}
+@font-face { font-family: Montserrat; src: url('/fonts/Montserrat-Regular.otf'); } 
+
+* {
+	font-family: "Montserrat" !important;
+}
+img.desktop-hide{
+	width: 50%;
+	margin:0 auto;
+}
+.side-list-text p {
+	font-size: 14px;
+    font-weight: 500;
+}
+ul.fly-bottom-soc{
+	margin-top: 100px;
+}
+.feat-widget-text h2, .blog-widget-text h2 {
+	font-size: 14px;
+    font-weight: 500;
+}
+.news_desc {
+	color: #555;
+    line-height: 1.5 !important;
+    font-size: 17px;
+    font-weight: 500;
+}
+h1.post-title {
+	color: #222;
+    font-size: 2.3rem;
+    line-height: 1.3 !important;
+    text-transform: none;
+    padding-bottom: 20px;
+}
+.col-tabs-wrap {
+    margin-top: 0px;
+}
+.col-tabs-wrap.fixed-col {
+    margin-top: 50px;
+}
+@media screen and (max-width: 479px){
+    .nav-left-wrap {
+        width: 100% !important;
+    }
+    .nav-logo{
+        width: 75%;
+    }
+    .four .social_follow div{
+        vertical-align: text-bottom;
+    }
+}
+/*.widget .home-slider .entry-item .entry-title {
+    font-size: 25px;
+    line-height:40px;
+    padding-top: 15px;
+    padding-left:5px;
+    padding-right:5px;
+}
+.widget .entry-item .entry-title {
+    font-size: 18px;
+}
+.widget-area-12 .widget.kopa-entry-list-widget .entry-item .entry-title {
+    font-size: 16px;
+    color: #000;
+}
+.kopa-article-list-widget .tab-container-1 ul li .entry-title {
+    font-size: 18px;
+}
+
+.widget-area-1 .widget .widget-title {
+    font-size: 20px;
+}
+.gallery-slider .gallery-caption {
+    font-size: 25px;
+}
+
+.widget-title .title-text a, .kp-headline-title a{
+	padding-top:5px;
+}
+#main-menu > li > a {
+	font-size:16px;
+}
+#main-menu > li {
+	margin-left: 30px;
+}
+.external-site-name {
+	background: #e03d3d;
+	padding: 5px 10px;
+	font-size: 16px;
+	margin-top: -5px !important;
+}
+.external-site-name a:hover {
+	color:#ddd !important;
+}
+.breadcrumb{
+	font-size: 14px;
+}
+#main-content {
+	font-size: 15px;
+}
+
+.entry-item h4.entry-title{
+	line-height: 32px;
+}
+.entry-item .entry-title a,ul.older-post li,.details-content-story {
+	line-height: 24px;
+}
+.photo-gallery {
+	max-height: 285px;
+	overflow: hidden;
+	margin-bottom: 10px !important;
+}
+.entry-box .enry-title {
+	line-height: 32px;
+}
+.entry-box h1.enry-title {
+	line-height: 40px;
+}
+.entry-box p {
+	color: #000;
+}
+.details-content-story{
+	color:black;
+}
+#news_details_main header h4{
+	line-height: 44px;
+}
+#main-menu li ul li a {
+	font-size: 14px;
+	padding-top: 5px;
+}
+#main-menu li ul li {
+	padding: 3px 15px;
+	line-height: 16px;
+}
+header h1 {
+	line-height: 35px !important;
+}
+.widget-area-2 {
+	display: none !important;
+}
+.widget-area-1 {
+	width: 61% !important;
+}
+.widget-area-1 .widget .widget-title {
+	background: #be0503	
+}
+.widget-area-1 .widget .widget-title .title-text {
+	background-color: transparent;
+}
+.widget-area-1 .widget .widget-title .title-right {
+	display: none;
+}
+.widget-area-1 .widget .widget-title .title-text .triangle-left {
+	display: none;
+}
+.kopa-article-list-widget .tab-container-1 ul li .entry-thumb {
+	display: none;
+}
+.kopa-article-list-widget .tab-container-1 ul li .entry-content {
+	padding-left: 15px;
+}
+.entry-date {
+	color:#909090;
+}
+.widget .widget-title, .widget .widget-title .title-text {
+	background-color: #be0503
+}
+.widget .widget-title .title-line {
+	background-color: #dcdcdc;
+}
+.widget-area-1 .widget .widget-title .title-text .triangle-right {
+	display: none;
+}
+.widget-area-1 .widget .widget-title .title-text .triangle-bottom {
+	border-top: 20px solid #be0503
+}
+.entry-date .kopa-minus {
+	background-color: #909090;
+}
+.bottom-sidebar,.widget-area-14 {
+	background: #69abbf;
+}
+
+
+#header-bottom {
+	border-bottom: 3px solid #be0503
+}
+
+.widget .widget-title .title-text {
+
+}
+#logo-image {
+	margin: 43px 0 0 25px;
+}
+#header-top {
+	background-color:#be0503
+}
+@media only screen and (max-width: 1066px) {
+	#logo-image {
+		margin: 38px 0 0 10px;
+	}
+	#logo-image img{
+		height: 110px;
+    	width: auto;
+	}
+}
+
+
+@media only screen and (max-width: 979px) and (min-width: 800px) {
+	.widget-area-1 {
+		width: 60% !important;
+	}
+	.widget-area-3 {
+		width: 35% !important;
+    	margin-top: 0px;
+    	padding-left: 20px;
+	}
+	#logo-image {
+		margin: 18px 0 0 0px;
+	}
+	#logo-image img{
+		height: 65px;
+    	width: auto;
+	}
+}
+@media only screen and (max-width: 799px) {
+	.widget-area-1 {
+		width: 100% !important;
+	}
+	#logo-image {
+		margin: 18px 0 0 0px;
+	}
+	#logo-image img{
+		height: 65px;
+    	width: auto;
+	}
+}
+
+@media only screen and (max-width: 639px) and (min-width: 480px) {
+	.widget-area-1 {
+		width: 100% !important;
+	}
+	#logo-image {
+		margin: 23px 0 0 0px;
+	}
+	#logo-image img{
+		height: 80px;
+    	width: auto;
+	}
+}
+@media only screen and (max-width: 479px) {
+	.widget-area-1 {
+		width: 100% !important;
+	}
+	#logo-image {
+		margin: 33px 0 0 0px;
+	}
+}
+/*.cp-contactus .container {
+    border: 1px solid #f1f2f3;
+    padding-bottom: 10px;
+}*/
+/*
+.cp-contact-form ul {
+    margin: 0;
+    padding: 0;
+}
+
+.cp-contact-form {
+	padding:20px;
+}
+.cp-contact-form .btn {
+	background: #be0503
+    padding: 5px 30px;
+    color: #FFF;
+    text-shadow: none;
+    font-size: 18px;
+}
+
+.cp-contact-form input {
+    background: none repeat scroll 0 0 #FFF;
+    border: 1px solid #C1C1C1;
+    padding: 10px 7px;
+    font-size: 17px;
+    line-height: 1.33;
+    border-radius: 4px;
+    background-image: none;
+    border: 1px solid #D0CFCF;
+    color: #333;
+    width: 100%;
+    margin: 5px 0px;
+    max-width: 400px;
+    resize: vertical;
+    font-family: "Exo2-Regular","ProximaNova-Regular";
+}
+
+.cp-contact-form textarea {
+	width: 100%;
+    margin: 5px 0px;
+    max-width: 400px;
+    height: 100px;
+}
+
+.cp-contact-form ul li.input-group {
+    list-style: none;
+    padding: 10px 0;
+}
+.privacy_policy .heading {
+	font-size: 20px;
+    font-weight: bold;
+    color: #000;
+    text-shadow: none;
+}
+.bottom-cat-label {
+	background-color:#000;
+	color:#fff;
+	padding:3px 10px;
+}
+.bottom-cat-list a{
+	color:white !important;
+}
+#main-menu li ul {
+	background-color: #be0503
+}
+#main-menu li ul li {
+    border-top: 1px solid #ccc;
+}
+.sb-search.sb-search-open .sb-icon-search, .no-js .sb-search .sb-icon-search{
+	background: #be0503
+}
+#comments h3, #contact-box h3, #respond h3, .kopa-related-post h3 {
+	background-color: #be0503
+}
+#comments h3 .title-text, #contact-box h3 .title-text, #respond h3 .title-text, .kopa-related-post h3 .title-text{
+	background-color: #be0503	
+}
+.kp-headline dd a {
+	color: #fff;
+}
+.widget-area-6,.widget-area-9 {
+	padding-right: 20px;
+}
+.widget-area-7 {
+	padding-left: 20px;
+}
+.fab.child img{
+	top: 10%;
+    position: absolute;
+    left: 10%;
+}*/

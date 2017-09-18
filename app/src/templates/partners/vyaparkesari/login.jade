@@ -1,0 +1,32 @@
+extends ../../theme_lion/layout
+block content
+  div#login-page(data-role="page")
+    .main-content
+        .container
+          .row
+            .col-md-12
+              .cp-login-box
+                .cp-login-form
+                  form.login-form
+                    #err-common.error.common-error(style='display:none;')
+                    ul
+                      #err-name.error.left-align(style='display:none;') Please enter Valid Mobile Number.
+                      li.input-group
+                        span.input-group-addon
+                          i.icon-25
+                        input.form-control(type='text', name='mobile_no', id='mobile_no', placeholder='Mobile No')
+                      #err-password.error.left-align(style='display:none;') Please enter valid Password.
+                      li.input-group
+                        span.input-group-addon
+                          i.fa.fa-lock
+                        input.form-control(type='password', name='password', id='password', placeholder='Password')
+                      li
+                        button.btn.btn-submit.js-btn-submit-login.waves-effect.waves-button(type='submit')
+                          | Login 
+                          i.fa.fa-angle-right
+                      li.forgot
+                        a(href='/forgotPassword') Forgot your Password
+                  .signup
+                    a(href='/register') You Don’t have an account? SIGN UP NOW
+
+

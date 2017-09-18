@@ -1,0 +1,11 @@
+#
+# robots.txt for http://pninews.com
+Allow: /
+Disallow: /admin/*
+
+Disallow: /xhr/*
+Disallow: /refer-*
+
+Allow: /content/servlet/RDESController?*
+
+Sitemap: http://pninews.com/sitemap/sitemap-index.xml

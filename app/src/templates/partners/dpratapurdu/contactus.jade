@@ -1,0 +1,99 @@
+include ../../theme_specialcoverage/mixin/_mainBigSlider
+include ../../theme_specialcoverage/mixin/_newsList
+include ../../theme_specialcoverage/mixin/_newsListStrip
+include ../../theme_specialcoverage/mixin/_newsListWithPreview
+
+include ../../theme_specialcoverage/mixin/_newsSlider
+include ../../theme_specialcoverage/mixin/_newsTiles
+include ../../theme_specialcoverage/mixin/_newsTilesWithDetails
+include ../../theme_specialcoverage/mixin/_newsWithTabs
+include ../../theme_specialcoverage/mixin/_newsWithTopBig
+include ../../theme_specialcoverage/mixin/_photoGallery
+include ../../theme_specialcoverage/mixin/_newsDetailsMain
+include ../../theme_specialcoverage/mixin/_headerCatNews
+
+extends ../../theme_specialcoverage/layout
+block content
+    
+    .kopa-single-2#contact-us-page
+        .wrapper.kopa-shadow
+            .row-fluid
+                div.span12.clearfix
+                    header#page-header
+                      include ../../theme_specialcoverage/partials/_topCatHeader
+                      #header-top.clearfix
+                        #top_category_news
+                          -if(data['top_category_news'] && data['top_category_news'].templateData && data['top_category_news'].templateData.mixinName){
+                            +#{data['top_category_news'].templateData.mixinName}(data['top_category_news'])
+                          -}
+                        #partner_social_links
+                          .social-search-box
+                            include ../../theme_specialcoverage/partials/_socialLinks
+                    #main-content
+                        .row-fluid
+                          .span12
+                            .breadcrumb.clearfix
+                        #main-col
+                          #ad_details_main_level_1.entry-box.clearfix.hide
+                          //- #news_details_main.entry-box.clearfix
+
+                          section.clearfix
+                            h1(style="color:black") Contact Us
+                            .kopa-divider
+
+                            br
+                            b अगर आप कोई सुझाव देना चाहते है या किसी और कारन से आप हमें संपर्क करना चाहते है  तो नीचे दिए गए फॉर्म को भरकर हमसे संपर्क करे !
+                            br
+                           .cp-contactus
+                                  // Contact Info
+                              .col-md-6
+                                .cp-contact-form
+
+                                  form.material.contact-us-form
+                                    #success-common.error.common-error(style='display:none;')
+                                    #err-common.error.common-error(style='display:none;')
+                                    ul
+                                        li.input-group
+                                            input.form-control(name="name", id="name", type='text', placeholder='Name')
+                                            #err-name.error.contact-us-error.left-align(style='display:none;') Please enter your name.
+                                        li.input-group
+                                            input.form-control(name="email", id="email",type='text', placeholder='Email')
+                                            #err-email.contact-us-error.error.left-align(style='display:none;') Please enter your email.
+                                        li.input-group
+                                            input.form-control(name="subject", id="subject",type='text', placeholder='Subject')
+                                            #err-subject.contact-us-error.error.left-align(style='display:none;') Please enter a subject.
+                                        li.input-group
+                                            textarea.form-control(name="message", id="message",placeholder='Message')
+                                            #err-message.error.contact-us-error.left-align(style='display:none;') Please enter your message.
+                                        li
+                                            button.btn.btn-submit.waves-effect.waves-button.js-btn-submit-contact(type='submit')
+                                                | Submit 
+                                                i.fa.fa-angle-right
+                            
+                          #ad_details_main_level_2.entry-box.clearfix.hide
+                                             
+                          
+                          #comments
+                            //- .news-content Comments (news_comments)
+                          // comments
+                        // main-col
+                        .widget-area-3.sidebar
+                          #ad_right_level_1.widget.kopa-adv-widget.hide
+                                            
+                          #news_tabs_right_level_1.widget.kopa-article-list-widget
+                            -if(data['news_tabs_right_level_1'] && data['news_tabs_right_level_1'].templateData && data['news_tabs_right_level_1'].templateData.mixinName){
+                                +#{data['news_tabs_right_level_1'].templateData.mixinName}(data['news_tabs_right_level_1'])
+                            -}
+                          #ad_right_level_2.widget.kopa-adv-widget.hide
+                            
+                          #news_listing_right_level_2.widget.kopa-most-review-widget
+                            -if(data['news_listing_right_level_2'] && data['news_listing_right_level_2'].templateData && data['news_listing_right_level_2'].templateData.mixinName){
+                                +#{data['news_listing_right_level_2'].templateData.mixinName}(data['news_listing_right_level_2'])
+                            -}
+                          #news_listing_right_level_3.widget.kopa-most-review-widget
+                            -if(data['news_listing_right_level_3'] && data['news_listing_right_level_3'].templateData && data['news_listing_right_level_3'].templateData.mixinName){
+                                +#{data['news_listing_right_level_3'].templateData.mixinName}(data['news_listing_right_level_3'])
+                            -}
+                        .clear
+            include ../../theme_specialcoverage/partials/_footer 
+                         

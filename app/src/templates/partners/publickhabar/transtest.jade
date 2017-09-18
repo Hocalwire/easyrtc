@@ -1,0 +1,40 @@
+div#editor-test(contenteditable="true",style="min-height:200px;")
+    | Edit this area
+
+script.
+    // Load the Google Transliterate API
+   
+
+    function onTranslationLoad() {
+        var options = {
+            sourceLanguage:
+                google.elements.transliteration.LanguageCode.ENGLISH,
+            destinationLanguage:
+                [google.elements.transliteration.LanguageCode.HINDI],
+            shortcutKey: 'ctrl+g',
+            transliterationEnabled: true
+        };
+
+        // Create an instance on TransliterationControl with the required
+        // options.
+        var control =
+            new google.elements.transliteration.TransliterationControl(options);
+
+        // Enable transliteration in the textbox with id
+        // 'transliterateTextarea'.
+        control.makeTransliteratable(['editor-test']);
+    }
+    setTimeout(
+        function(){
+                google.load('elements', '1', 
+                            {'callback':onTranslationLoad, 
+                                'packages':'transliteration'
+                            });
+        }, 
+    1000);
+    //- google.setOnLoadCallback(onLoad);
+    //- google.load("elements", "1", {
+    //-     packages: "transliteration"
+    //-   });
+                    
+                    

@@ -1,0 +1,127 @@
+.paragraph-row .follow-us-links .social_nav{
+	float: right !important;
+}
+.paragraph-row .follow-us-links .social_nav li{
+	float: right !important;
+}
+.paragraph-row .header-date-row {
+	text-align: right !important;
+}
+.paragraph-row .header-date-row span {
+    margin-right: 10px;
+}
+.cp-mega-menu .drop-down.full-width{
+	width:100% !important;
+	
+}
+.cp-mega-menu .drop-down li a {
+    color: #ffffff !important;
+    background-color: #1c1c1c !important;
+}
+.cp-mega-menu .drop-down{
+	background: #1c1c1c !important;
+	border-top: 3px solid #fc0203;
+}
+.cp-mega-menu .drop-down.full-width.col-5>li{
+	background: #1c1c1c !important;
+}
+.waves-button{
+	color:#f2f2f2;
+}
+.article-photo{
+	padding: 0px;
+}
+.cp-megamenu{
+    background: #007cbf;
+    border-bottom: 4px solid #79cef6;
+}
+.cp-mega-menu>ul>li {
+    float: left;
+    /* color: #1cca95; */
+    border-right: 1px solid #089de3;
+}
+li.current {
+    background: #0a3a82;
+}
+.sb-search.sb-search-open .sb-icon-search, .no-js .sb-search .sb-icon-search, .sb-icon-search{
+	background: #79cef6;
+}
+.cp-mega-menu>ul>li:hover {
+    background: #1cca95;
+}
+.archive-button{
+	background: #089de3;
+}
+a{
+	color: #089de3;
+}
+.hocal-feat-top2-left-text, .hocal-feat-top2-right-text {
+    background: rgba(12, 25, 58, 0.65);
+}
+.tech-inner {
+    background: #dcf2fd;
+}
+.tech-inner .row-half a.head-link, .tech-inner .row-seventy{
+	background: rgb(121, 206, 246);
+}
+.ent-small {
+    border-bottom: 1px solid #79cef6;
+}
+.ent-inner {
+    background: #089de3;
+}
+#sidebar .widget > h3{
+	background-color: #dcf2fd;
+    border-left: 3px solid #089de3;
+}
+.article-links-block .item > h3, h3.heading{
+	color: #089de3;
+    border-bottom: 3px solid #79cef6;
+}
+.content a:hover {
+    color: #1f195f;
+    text-decoration: none;
+}
+.top-image-heading a:hover{
+	color:#ccc;
+}
+.cp-mega-menu .drop-down {
+    background: #37afe7 !important;
+    border-top: 3px solid #79cef6;
+}
+.cp-mega-menu .drop-down.full-width.col-5>li {
+    background: #37afe7 !important;
+}
+.cp-mega-menu .drop-down li a {
+    color: #ffffff !important;
+    background-color: #37afe7 !important;
+}
+.eqWrap {
+	display: flex;
+	overflow-x: auto;
+    width: 100%;
+}
+
+.eq {
+	padding: 10px;
+}
+.eq:nth-of-type(odd) {
+    background: #166185;
+}
+
+.eq:nth-of-type(even) {
+	background: #0a4866;
+}
+.equalHW {
+	flex: 1;
+}
+.eqbox-wrapper{
+	width:100px;
+	height:100px;
+	border-radius: 50%;
+	overflow: hidden;
+	margin: 0 auto;
+}
+.footer{
+	background: #089de3;
+}

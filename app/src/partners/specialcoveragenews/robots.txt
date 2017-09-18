@@ -1,0 +1,13 @@
+#
+# robots.txt for http://specialcoveragenews.com
+
+User-agent: *
+Allow: /
+Disallow: /admin/*
+
+Disallow: /xhr/*
+Disallow: /refer-*
+
+Allow: /content/servlet/RDESController?*
+
+Sitemap: http://specialcoveragenews.com/sitemap/sitemap-index.xml

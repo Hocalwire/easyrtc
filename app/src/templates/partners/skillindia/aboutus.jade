@@ -1,0 +1,23 @@
+include ../../theme_wolf/allMixin
+extends ../../theme_wolf/layout
+block content
+    .boxed.active
+        .wrapper
+            include ../../theme_wolf/partials/_header
+        section.content
+            .wrapper
+                .main-content.has-sidebar
+                    #top-three-section
+                        -if(data['top-three-section'] && data['top-three-section'].templateData && data['top-three-section'].templateData.mixinName){
+                                                +#{data['top-three-section'].templateData.mixinName}(data['top-three-section'])
+                        -}
+                    .left-content
+                        h1.banner About Us
+                        br
+                        p The Skill India Post is an earnest initiative by a team of dedicated journalists to bring relevant stories on Skill India, Digital India, Startup India, and other government and industry initiatives in an uncluttered, unbiased and simple language to its readers.
+                        p In spite of resources being very limited and meagre Team Skill India Post is very positive and immensely excited  to bring you all a very enriching, value adding and profitable reading experience.
+                        p We welcome your feedback on a continuous basis so that you too become an active participant in the improvement of the quality of content you consume.
+                        p Happy reading!
+                    aside#sidebar
+                        include ../../theme_wolf/partials/_homeRightSection
+            include ../../theme_wolf/partials/_footer

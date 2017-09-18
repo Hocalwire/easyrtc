@@ -1,0 +1,24 @@
+mixin cartItems(data)
+    .row
+        -for(var j=0;j<data.data.length;j++){
+            -var items = data.data[j]
+            div.group-wrapper.no-zoom
+                div.name #{items.group.display_name}
+                -for(var i=0;i<items.length;i++){
+                    .hocal_col.hocal_col_3.text-center.item-row.my-cart-wrapper-row(data-id='#{items[i].itemId}', data-name='#{items[i].name}', data-summary='#{items[i].description}', data-price='#{items[i].price}', data-quantity='#{items[i].quantity || 1}', data-max-quantity="#{items[i].quantity || 1}" data-image='#{items[i].image}',data-group="#{items[i].groupName || 'others'}")
+                        div.inside-wrapper
+                            -if(items[i].image && items[i].image != "null"){
+                                img(src='#{items[i].image}', width='250px', height='150px')
+                                br
+                            -}
+                            span.item_name  #{items[i].name}
+                            
+                            br
+                            strong
+                                span.item_price ₹#{items[i].price}
+                            button.btn.btn-add.my-cart-btn(data-id='#{items[i].itemId}', data-name='#{items[i].name}', data-summary='#{items[i].description}', data-price='#{items[i].price}', data-quantity='#{items[i].quantity || 1}', data-max-quantity="#{items[i].quantity || 1}" data-image='#{items[i].image}',data-group="#{items[i].groupName || 'others'}") Add 
+                            // a.btn.btn-info(href='#{items[i].url}',target="_blank") Details
+                -}
+    
+        -}
+            

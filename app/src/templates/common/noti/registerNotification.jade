@@ -1,0 +1,121 @@
+doctype html
+html
+    head
+        meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+        meta(name='viewport', content='width=device-width,initial-scale=1.0,max-scale=1.0')
+        -if(env.partnerData.GACODE){
+            include ../GATrackingCode
+        -}
+    body(data-partner="#{data.partner}",data-domain="#{data.domainName}")
+        #black-wrapper
+        #white-wrapper
+        #mobile
+            #mobile-top-section
+                #mobile-top-section-wrapper
+                    .hocal_row(style='margin-top: 100px;')
+                        .hocal_col.hocal_col_12
+                            span.hocal_col_2
+                            span.hocal_col_8
+                                #mobile-top-section-content
+                                    div(style='height: 25px;')
+                                        a.btn-close.default-link(onclick='window.close();') x
+                                    .title.domainName You are almost done with the Subscription for latest Update
+                                    p#mobile-directions Just click on the enable button at right bottom.
+                                    #desktop-notification
+                                        img#desktop-notification-icon(src='#{data.domainName}/images/logo.png')
+                                        p#x x
+                                        p#desktop-notification-title.truncatable.mobile.message
+                                            | #{data.partnerName} Notification
+                                        p#desktop-notification-message.truncatable.mobile.message
+                                            | This is how Notifications will appear on your Desktop
+                                        p#desktop-notification-url.truncatable.mobile.message
+                                    p#mobile-opt-out.truncatable.opt-out.message You can manage your notifications any time from your browser settings.
+
+                                    #mobile-button-container
+                                        .mobile-button-wrapper
+                                            button#close-button.truncatable.mobile-button(onclick='window.close();') Not Now
+                                        .mobile-button-wrapper
+                                            button#show-prompt-button.truncatable.mobile-button.js-push-button
+                                                | Enable
+                            span.hocal_col_2
+                    
+
+            footer#mobile-footer
+                hr
+                
+                p#mobile-footer-message
+                    a(href='https://hocalwire.com/', target='_blank')
+                        img(src='https://hocalwire.com/images/logo.png')
+                        | Hocalwire
+        #error-box
+            #error-message-padding
+                #ios.error.error-element
+                    p  Web Push Notifications are not supported by iOS. 
+                #not-chrome-desktop.error.hide.error-element
+                    p
+                        | Web Push Notifications are not supported by your browser. Please install
+                        a.default-link(href='https://www.google.com/chrome/browser/desktop', target='_blank') Chrome
+                        | 				to get
+                        | 				notifications.
+                #not-chrome-Android.error.hide.error-element
+                    p  Please install Chrome web browser to get notifications. 
+                    p
+                        a.default-link(href='https://play.google.com/store/apps/details?id=com.android.chrome')
+                            | Tap
+                            | here
+                        |  to
+                        | 				download from the Google Play Store.
+                #outdated-chrome-desktop.error.hide.error-element
+                    p  Please update your Chrome web browser to get notifications. 
+                #outdated-chrome-mobile.error.hide.error-element
+                    p  Please update your Chrome web browser to get notifications. 
+                    p
+                        a.default-link(href='https://play.google.com/store/apps/details?id=com.android.chrome')
+                            | Tap
+                            | here
+                        |  to
+                        | 				download from the Google Play Store.
+                #disabled-notifications-desktop.error.hide.error-element
+                    p  Notifications are currently disabled.
+                    p
+                        | Please re-enable them by clicking/tapping on the lock icon in the top left of this window.
+                
+                #notifications-already-enabled.error.hide.error-element
+                    p  Notifications are already enabled, you may close this window. 
+                    p(style='font-size: 12px')
+                        | If you would like to unsubscribe from all notifications from
+                        span.domainName #{data.domainName}
+                        |  click on the lock icon to the left
+                        | 				of the address.
+    block commonScripts
+        script(pageScript="true").
+            //- window.enquiryDetails = Math.random();
+            window.allScriptsTemplate = [];
+        - if(environment === 'development') {
+            link(rel="stylesheet", type="text/css", href="/styles/noti.css")
+            include ../commonscripts
+            script(src="#{Utils.getCDNUrl('scripts/noti.js')}")
+        - }else {
+            // script.
+            //     var loadDeferredStylesPDF = function() {
+            //         var head = document.getElementsByTagName("head")[0];
+            //         var s = document.createElement("script");
+            //         s.type = "text/javascript";
+            //         s.src = "/scripts/epaperjs.min.6173c36e.js";
+            //         head.appendChild(s);
+            //         var event = new CustomEvent("EPAPER_RESOURCES_LOADED", { "detail": "ALL PDF DEPENDENCIES LOADED" });
+            //         document.dispatchEvent(event);
+                
+            //     };
+            //     document.addEventListener("RESOURCES_LOADED", function(e) {
+            //         loadDeferredStylesPDF();
+            //     });
+            include ../_loadThemeResources
+            -var css = "/styles/noti.css"
+            -var jscomm = "/scripts/hocalwirecommon.min.587e7cbe.js"
+            -var jstheme = "/scripts/notificationcommonjs.min.814f67ea.js"
+            -var partnerss = false
+            
+            +loadThemeResources(css,jscomm,jstheme,partnerss)
+
+    - }

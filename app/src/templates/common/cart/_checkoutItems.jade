@@ -1,0 +1,36 @@
+mixin checkoutItems(data)
+    .row
+        -for(var j=0;j<data.data.length;j++){
+            -var items = data.data[j]
+            div.group-wrapper.no-zoom
+                div.name Your Subscription Items Selected Are
+                -for(var count=0 ; count< items.length ; count+=3) {
+                    -var limit = items.length >(count+3) ? count+3 : items.length
+                    div(class="hocal_row cart-item-wrapper-inside")
+                        -for(var i=count;i<limit;i++){
+                            .hocal_col.hocal_col_4
+                                .hocal_row
+                                    div.inside-wrapper.clearfix
+                                        -if(items[i].image){
+                                            .hocal_col.hocal_col_6
+                                                img.checkout-item-img(src='#{items[i].image}')
+                                                br
+                                                br
+                                        -}
+                                        div(class="hocal_col #{items[i].image ? 'hocal_col_6': 'hocal_col_12'}")
+                                            div.checkout_item_details
+                                                span.item_name  #{items[i].name}
+                                                
+                                                br
+                                                .bold
+                                                    span.item_price Price : 
+                                                        span.price.boldit ₹#{items[i].price}
+                                                .bold
+                                                    span.item_price Quanity : 
+                                                        span.quant.boldit #{items[i].quantity}
+                        -}
+                -}
+                
+    
+        -}
+            

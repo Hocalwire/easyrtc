@@ -1,0 +1,36 @@
+include ../../theme_elephant/allMixin
+extends ../../theme_elephant/layout
+block content
+    include ../../theme_elephant/partials/_header
+    include ../../theme_elephant/partials/_navArea
+    div.container
+        .row.mtop15
+            #breaking-news-section
+                -if(data['breaking-news-section'] && data['breaking-news-section'].templateData && data['breaking-news-section'].templateData.mixinName){
+                                +#{data['breaking-news-section'].templateData.mixinName}(data['breaking-news-section'])
+                -}
+        .row.mtop15
+            .col-md-8.no-padding.pright15
+               .outer_wrapper.clearfix
+                    .row.mtop15
+                        .col-md-12
+                            h3.center.hocal-page-header
+                                span
+                                    | Disclaimer
+                            p.static-page-content
+                                | वैधानिक 
+                            p.static-page-content सर्वाधिकार सुरक्षित @ janshakti.co.in
+                            p.static-page-content @janshakti.co.in समसामयिक मुद्दों, राजनीतिक, आर्थिक व सामाजिक मुद्दों पर खुली बहस को विभिन्न विरोधी विचारों को बहस के लिए आमंत्रित करता है इसलिए यहाँ प्रकाशित आलेख में विचार लेखकों के अपने हैं और इसके लिए सभी जिम्मेदारियां भी उनकी हैं, लेखकों के विचार से @janshakti.co.in का सहमत होना जरूरी नहीं है. चूंकि यह स्वस्थ एवं गंभीर बहस के लिए एक खुला मंच है इसलिए हम विभिन्न विचारों को एक मंच पर लाने के लिए अन्य स्थानों जैसे ब्लोग्स, समाचार पत्र इत्यादि से भी आलेख पोस्ट करते हैं, लेकिन ऐसे लेखों पर मूल सोर्स का उल्लेख भी करते हैं एवं साभार भी लिखते हैं. इसलिए हम भी चाहते हैं कि जो समाचार पत्र या अन्य माध्यम हमारे आलेख का प्रकाशन करते हैं वे भी सोर्स के रूप में @janshakti.co.in का उल्लेख अवश्य करें.
+                            p.static-page-content @janshakti.co.in पर प्रकाशित किसी भी विज्ञापन की सूचनाओं की जिम्मेदारी विज्ञापनदाता की है, @janshakti.co.in की नहीं इसलिए किसी भी विज्ञापन पर पहली पूरी जानकारी स्वयं कर लें एवं सत्यता की जांच स्वयं करें. इस साइट पर अन्य साइट्स के लिंक भी हैं तो केवल संदर्भ के रूप में हैं उनकी विषयवस्तु (कंटेंट) व वहां प्रदत्त सूचनाओं से हस्तक्षेप का कोई लेना देना नहीं है।   यदि आपको लगता है कि @janshakti.co.in पर प्रकाशित किसी विज्ञापन या लेख में कोई भ्रामक जानकारी है अथवा वह तथ्यों से परे है तो contact.janshakti@gmail.com पर सूचित करें .
+                            p.static-page-content किसी भी विवाद की स्थिति में दिल्ली न्यायालय ही न्याय क्षेत्र होगा. 
+                            p.static-page-content अधिकांश फोटो गूगल के सौजन्य से है। हम हमारी वेबसाइट और हमारे फेसबुक पेज पर प्रदर्शित होने वाली तस्वीरों के लिए किसी प्रकार का दावा नहीं करते। इन तस्वीरों को भिन्न-भिन्न स्रोतों से लिया जाता है, जिन पर इनके मालिकों का अपना कॉपीराइट है। यदि आपको लगता है कि हमारे द्वारा इस्तेमाल की गई कोई भी तस्वीर कॉपीराइट का उल्लंघन करती है तो आप यहां अपनी आपत्ति दर्ज करा सकते हैं.
+
+                            h4.center
+                                span
+                                    
+            .col-md-4.no-padding
+                include ../../theme_elephant/partials/_genericRightSection
+                      
+            
+    include ../../theme_elephant/partials/_footer
+

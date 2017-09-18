@@ -1,0 +1,52 @@
+
+
+-if(env.lazyloadResources){
+    - if(environment === 'development') {
+        script(src="#{Utils.getCDNUrl('scripts/verify.js')}")
+        script(src="#{Utils.getCDNUrl('scripts/login.js')}")
+        script(src="#{Utils.getCDNUrl('scripts/register.js')}")
+        script(src="#{Utils.getCDNUrl('scripts/forgotPassword.js')}")
+        script(src="#{Utils.getCDNUrl('scripts/subscribeDetails.js')}")
+        -if(env.partnerLoginData){
+            script(src="#{Utils.getCDNUrl('scripts/headerSlider.js')}")
+        -}
+    - } else {
+        script.
+            var loadDeferredStylesLogin = function() {
+                var head = document.getElementsByTagName("head")[0];
+                var s = document.createElement("script");
+                s.type = "text/javascript";
+                s.src = "#{Utils.getCDNUrl('scripts/hocalwirecommonlogin.min.e1d2d383.js')}";
+                head.appendChild(s);
+                s.addEventListener("load", function (e) {
+                    var event = new CustomEvent("LOGIN_RESOURCES_LOADED", { "detail": "ALL LOGIN DEPENDENCIES LOADED" });
+                    document.dispatchEvent(event);
+            
+                });
+            
+            };
+            document.addEventListener("RESOURCES_LOADED", function(e) {
+                loadDeferredStylesLogin();
+            });
+        
+    - }
+
+-} else {
+    - if(environment === 'development') {
+        script(src="#{Utils.getCDNUrl('scripts/verify.js')}")
+        script(src="#{Utils.getCDNUrl('scripts/login.js')}")
+        script(src="#{Utils.getCDNUrl('scripts/register.js')}")
+        script(src="#{Utils.getCDNUrl('scripts/forgotPassword.js')}")
+        script(src="#{Utils.getCDNUrl('scripts/subscribeDetails.js')}")
+        -if(env.partnerLoginData){
+            script(src="#{Utils.getCDNUrl('scripts/headerSlider.js')}")
+        -}
+
+            
+    - } else {
+        script(src="#{Utils.getCDNUrl('scripts/hocalwirecommonlogin.min.e1d2d383.js')}")
+    - }
+   
+-}
+
+  

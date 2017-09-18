@@ -1,0 +1,40 @@
+doctypemobile
+html
+  head
+    include headSectionTop
+
+    - if(environment === 'development') {
+        link(rel="preload", href="/styles/pdfviewer.css", as="style", onload="this.rel='stylesheet'")
+        // link(rel="preload", href="/styles/imgareaselect-default.css", as="style", onload="this.rel='stylesheet'")
+        link(rel="preload", href="/styles/jquery.Jcrop.css", as="style", onload="this.rel='stylesheet'")
+            
+    - } else {
+            link(rel="preload", href="/styles/pdfviewer.min.bb4d68ec.css", as="style", onload="this.rel='stylesheet'")
+    - }
+    include headSectionBottom
+body#epaper-full-view-body
+
+    include bodySectionTop
+    include stickySocialShare
+    +stickySocialShare()
+    a#top(href="#0", class="cd-top") Top
+    block commonScripts
+        - if(environment === 'development') {
+            include ../common/commonscripts
+            script(src="#{Utils.getCDNUrl('scripts/pdf.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/pdf.worker.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/i18n.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/viewerClipHelper.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/canvasToPDF.js')}")
+            script(src="#{Utils.getCDNUrl('snap-share/js/html2canvas.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/jquery.Jcrop.js')}")
+            script(src="#{Utils.getCDNUrl('scripts/viewer.js')}")
+        - } else {
+            script(src="#{Utils.getCDNUrl('scripts/hocalwirecommon.min.587e7cbe.js')}")
+            script(type="text/javascript", src="/scripts/pdfviewerjs.min.fdec59e3.js")
+        - }
+
+    include bodySectionBottom
+    
+    
+block script

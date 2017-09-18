@@ -1,0 +1,27 @@
+include ../../theme_kangaroo/allMixin
+extends ../../theme_kangaroo/layout
+block content
+    #wrapper.clearfix
+        include ../../theme_kangaroo/partials/_header
+        section#content
+            .content-wrap
+                .section.no-mar.bottommargin-lg.clearfix(style='padding: 5px 0;')
+                    +includeElement(data,"breaking_news_area")
+                +includeElement(data,"ad_after_nav")
+                .container.clearfix
+                    .row
+                        .col-md-8.bottommargin
+                            .bg-404
+                                .error404-content
+                                    h1  Sorry this page never returned from a trip to server.
+                                    div.clearfix.error-button-wrapper
+                                        a.error-button(href="/") Go to HomePage
+                        .col-md-4
+                            .line.hidden-lg.hidden-md
+                            .sidebar-widgets-wrap.clearfix
+                                include ../../theme_kangaroo/partials/_homeRightSection
+                
+                    div.row
+                        div(class="col-lg-12 col-md-12 col-sm-12")
+                            +includeElement(data,"level_bottom_full")
+        include ../../theme_kangaroo/partials/_footer

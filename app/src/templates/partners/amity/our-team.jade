@@ -1,0 +1,35 @@
+include ../../theme_ape/allMixin
+extends ../../theme_ape/layout
+block content
+    div#site.left.relative.home
+        #site-wrap.left.relative
+            include ../../theme_ape/partials/_header
+            .col-tabs-wrap.left.relative.mobile_tabs_wrapper(style='top: 0px;')
+                #mobile_tabs
+            #body-main-wrap.left.relative(style='transform: none;')
+                .body-main-out.relative(style='transform: none;')
+                    .body-main-in(style='transform: none;')
+                        #body-main-cont.left.relative(style='transform: none;')
+                            #level_top_full.leader-right-wrap
+                                -if(data['level_top_full'] && data['level_top_full'].templateData && data['level_top_full'].templateData.mixinName){
+                                    +#{data['level_top_full'].templateData.mixinName}(data['level_top_full'])
+                                -}
+                            #feat-top-wrap.feat_top_wrap.left.relative
+                                -if(data['feat-top-wrap'] && data['feat-top-wrap'].templateData && data['feat-top-wrap'].templateData.mixinName){
+                                    +#{data['feat-top-wrap'].templateData.mixinName}(data['feat-top-wrap'])
+                                -}
+                            #post-main-wrap.left.relative
+                                .post-wrap-out1
+                                    .post-wrap-in1.white_bg_card
+                                        .post-left-col.static-page-wrapper
+                                            h3 Our Team
+                                            p Indian Science Journal is a non-profit initiative by a team of mainstream journalists, with wide range of experience right from reporting national and international events to playing key management roles in several frontline news organisations. The digital platform is devoted exclusively for news from the field of science and technology and research in agriculture and healthcare. 
+                                    #post-right-col
+                                        include ../../theme_ape/partials/_genericRightSection
+                                    #level_bottom_full.leader-right-wrap
+                                        -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                                            +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                                        -}
+                            
+                include ../../theme_ape/partials/_footer
+                    

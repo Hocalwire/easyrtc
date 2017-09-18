@@ -1,0 +1,30 @@
+include ../../theme_wolf/allMixin
+extends ../../theme_wolf/layout
+block content
+    .boxed.active
+        .wrapper
+            include ../../theme_wolf/partials/_header
+        section.content
+            .wrapper
+                .main-content.has-sidebar
+                    #top-three-section
+                        -if(data['top-three-section'] && data['top-three-section'].templateData && data['top-three-section'].templateData.mixinName){
+                                                +#{data['top-three-section'].templateData.mixinName}(data['top-three-section'])
+                        -}
+                    .left-content
+                        h1.small-title All Categories
+                            .details-content-story
+                                div(class="cp-authors")
+                                    div(class="row")
+                                      ul(class="cp-authors-grid")
+                                        -for(var i=0;i<env.partnerCatData.length;i++){
+                                            li(class="author-tag")
+                                                a(href="#{env.partnerCatData[i].url}",class="cp-author-box")
+                                                    
+                                                    h3  #{env.partnerCatData[i].name}
+                                                    // p ( #{env.partnerAuthorData[i].total_news} )
+                                              
+                                        -}
+                    aside#sidebar
+                        include ../../theme_wolf/partials/_homeRightSection
+                include ../../theme_wolf/partials/_footer

@@ -1,0 +1,59 @@
+include ../socialShare
+.outer.nadi-ad.nadi-inline
+    .level_1
+        .hocal_row.first_row
+            .hocal_col.hocal_col_3.col_subscribe
+                div(class="g-ytsubscribe", data-channelid="UC2fD-MPx-JgJJE5gr-gMzXA", data-layout="default" data-count="show")
+        .hocal_row
+            div.video-player-wrapper
+                -if(env.isMobile){
+                    a.add-wrapper.image-ad-unit(href="tel:08595197197", onclick="$('.callback-wrapper').removeClass('hide');",data-category="nadi-ad",data-label="image-ad-3",data-ip="#{env.requestIp}")
+                        img(src="/images/ads/image3.jpg")
+                -} else {
+                    a.add-wrapper.image-ad-unit(onclick="$('.callback-wrapper').removeClass('hide');",data-category="nadi-ad",data-label="image-ad-3",data-ip="#{env.requestIp}")
+                        img(src="/images/ads/image3.jpg")
+                -}
+        div.callback-wrapper.hide
+            -env.adunitname="nadi-image-3"
+            include callback-form
+
+
+style.
+    .nadi-inline {
+        border: 1px solid #ccc;
+        margin:5px;
+        padding:2px;
+        margin-bottom:10px;
+        max-width:400px;
+        text-align:center;
+        margin:0px auto;
+        width: 100%;
+        display: block;
+    }
+    .nadi-ad-submit-btn {
+        background: #13d413;
+        padding: 5px;
+        border-radius: 15px;
+        color: #fff;
+        margin-top:15px;
+        margin-bottom:15px;
+    }
+    .nadi-ad-submit-btn:hover{
+    color:#ccc;
+    cursor: pointer;
+    }
+    .btn-hold{
+        margin-top:15px;
+        margin-bottom:15px;
+    }
+    .nadi-form-title{
+    margin-bottom:15px;
+
+    }
+    .ad-input {
+        width: 86%;
+        height: 25px;
+        background: #fff;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+    }

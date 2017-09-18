@@ -1,0 +1,41 @@
+doctype html
+html
+    head
+        meta(http-equiv='Content-Type', content='text/html; charset=UTF-8')
+        -if(env.partnerData.GACODE){
+            include GATrackingCode
+        -}
+           
+    body#notification-settings-page(data-partner="#{data.partner}",data-lat="#{data.lat}",data-lng="#{data.lng}")
+        
+        #black-wrapper
+        #white-wrapper
+        #mobile
+            
+            .title.domainName Thanks for allowing your location. We will be serving your prefered content and ads based on your location
+                            
+            footer#mobile-footer
+                hr
+                p#mobile-footer-message
+                    a(href='https://hocalwire.com/', target='_blank')
+                        img(src='https://hocalwire.com/images/logo.png')
+                        | Hocalwire
+        
+    block commonScripts
+        script(pageScript="true").
+            //- window.enquiryDetails = Math.random();
+            window.allScriptsTemplate = [];
+        - if(environment === 'development') {
+            link(rel="stylesheet", type="text/css", href="/styles/noti.css")
+            include commonscripts
+            // script(src="#{Utils.getCDNUrl('scripts/noti.js')}")
+        - }else {
+            include _loadThemeResources
+            -var css = "/styles/noti.css"
+            -var jscomm = "/scripts/hocalwirecommon.min.587e7cbe.js"
+            -var jstheme = ""
+            -var partnerss = false
+            
+            +loadThemeResources(css,jscomm,jstheme,partnerss)
+
+    - }

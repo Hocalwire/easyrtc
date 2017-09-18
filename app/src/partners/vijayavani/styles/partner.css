@@ -1,0 +1,15 @@
+.main-menu {
+	background: #802890;
+}
+.breaking-news .the-title,
+.widget > h3,
+.button,
+a.small-button,
+.marker,
+.hover-effect,
+.block-title,
+#wp-calendar td#today,
+.small-button,
+#writecomment p input[type=submit] {
+	background-color: #ff0000;
+}

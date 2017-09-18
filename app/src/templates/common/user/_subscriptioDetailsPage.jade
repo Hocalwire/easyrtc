@@ -1,0 +1,18 @@
+div#subscription-details-page(data-role="page")
+      div(class="cp-gallery")
+        .title.center
+          h2 Your selected plan
+          br
+          .plan_details 
+            !{data['mainCatNews'].data[0].headingDisplay} 
+        br
+        .col-sm-6.col-sm-offset-3.col-md-4.col-md-offset-4
+          .cp-contact-form
+            form.subscription-form
+                span.input-group-addon
+                  textarea.form-control(placeholder='Enter Address')
+                button.btn.btn-submit.js-btn-submit-subscription.waves-effect.waves-button(type='submit')
+                    | Submit 
+                    i.fa.fa-angle-right
+
+

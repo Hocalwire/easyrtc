@@ -1,0 +1,132 @@
+.archive-button{
+	background: rgba(80, 80, 80, 0.68);
+    margin-top: -6px;
+}
+
+.top-header{
+	background: #fb4834;
+}
+.fixed-header{
+	background: #b0dbff;
+} 
+.cp-megamenu{
+	background: #b0dbff;
+	border-bottom: 4px solid #fb4834;
+    border-top: 4px solid #fb4834;
+}
+li.current {
+    background: #ff1313;
+}
+.sb-icon-search{
+	background: #ff0000;
+}
+body{
+	background: rgba(0, 0, 0, 0.06);
+}
+.section-title{
+	padding: 0 10px;
+	background: linear-gradient(to right, #5d0c03 , #fb4834);
+	color: #FFF;
+	text-align: left;
+}
+.section-title h3{
+	padding: 8px 5px;
+	background: transparent;
+}
+.article-list-block{
+	padding-top: 10px;
+}
+.section-title:after, .section-title:before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    height: 0;
+    width: 50%;
+    border: 0px solid #ffffff;
+    z-index: -1;
+}
+
+.header .header-logo{
+	margin-left: 15px;
+}
+a{
+	color: #30a1ff;
+}
+.section-body{
+	padding-top: 10px;
+}
+#photoGallery .feature-text{
+	box-shadow: inset 0 -380px 110px -200px rgb(80, 79, 83);
+}
+.image_text_similar{
+	background: #504f53;
+	font-size: 17px;
+}
+.share-text{
+	margin-top: 10px;
+}
+#sidebar .widget > form, #sidebar .widget > dl, #sidebar .widget > ul, #sidebar .widget > div{
+	padding: 0px 0 0px 0;
+    border-bottom: 0px dotted #ccc;
+}
+.breaking-news .breaking-title{
+	background: #fb4834;
+}
+.footer-widgets .ot-tab-block{
+	display: block !important;
+}
+.list-group {
+    display: flex;
+    width: 100%;
+}
+.ot-tab-block .list-group li {
+    display: inline-block !important;
+    color: white;
+    margin-right: 10px;
+}
+.featured-news .news-cells {
+	margin-top:5px;
+}
+.storyImg img  {
+	display: none;
+}
+#top-head-level {
+	display: none !important;
+}
+.top-header {
+	height: 8px !important;
+    min-height: 5px !important;
+    margin-bottom: 5px !important;
+}
+.follow-us-links ul {
+	width: 150px !important;
+}
+.header-date-row span {
+	width:100%;
+}
+.home-featured-article .home-featured-item.big img, .home-featured-article .home-featured-item.small img {
+	max-height: 350px;
+}
+.footer {
+	background: #fb4834 !important;
+}
+.footer-copyright {
+	background: #000;
+}
+.footer .footer-widgets {
+    max-height: 40px;
+    padding-top: 0px;
+}
+
+.footer .footer-widgets .ot-tab-block {
+	background: #fb4834 !important;
+    height: 30px;
+    width: 100%;
+    text-align: center;
+}
+.footer .footer-widgets .wrapper {
+	    padding-top: 5px;
+}
+.post-intro {
+	display: none;
+}

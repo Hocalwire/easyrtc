@@ -1,0 +1,50 @@
+extends ../../theme_eagle/layout
+include ../../theme_eagle/allMixin
+block content
+    include ../../theme_eagle/partials/_header
+    div.container
+        
+        include ../../theme_eagle/partials/_navArea
+        div#contentSection
+            div.row.row_main#article-post-page
+                div(class="col-md-12")
+                    #level_top_full
+                        -if(data['level_top_full'] && data['level_top_full'].templateData && data['level_top_full'].templateData.mixinName){
+                            +#{data['level_top_full'].templateData.mixinName}(data['level_top_full'])
+                        -}
+                div(class="col-lg-12 col-md-12 col-sm-12")
+
+                    div(class="top_left_content")
+                        div.breadcrumb-static
+                          include ../../theme_eagle/partials/_breadcrumb
+                        h2 Dainik Hawk
+                        p
+                          | Plainly speaking, Dainik Hawk means a strong swift bird of prey with sharp eyesight—as opposed to dove which is widely accepted as a symbol of peace. In modern political parlance, Hawk connotes a person who advocates aggressive policies in foreign affairs rather than negotiation and compromise. In today’s newspapering, this meaning or symbolization of Dainik Hawk is not confined to foreign affairs. On the contrary, it pervades the whole political spectrum. Figuratively, furthermore, it signifies a keen-sighted person. A person who is endowed with penetating eyes, exceptional breadth of vision and a penchant for minutest of details of anything. When, in 1979, we launched this journalistic venture, we were brimming with ideas such as these. So far as aggression is concerned, we are aggressive in the sense only that we are not docile. We are forcefully conversant, emphatically articulate and are uncompromisingly independent as against vulnerable and amenable to pressures or whatever has been doled out to us—wrong notwithstanding. It never meant taking up an extremist line and giving up moderation, sobriety and other traits of a gentleman. We advocate fast and revolutionary changes for the better, but we don’t advocate and support revolutions aimed at overthrowing governments established by law.most outstanding and notable feature of Dainik Hawk is that it is so thoroughly wedded to the concept of plurality of viewpoint which is the hallmark of a democratic polity. Our slogan ‘Everyone’s News, Everyone’s Views’ so graphically explains our commitment to free debate and defines our stand on selection of news and other items which go into the making of Dainik Hawk..
+
+                        p
+                          | Dainik Hawk started its journey as a fortnightly way back in June 1979. It metamorphosed into a weekly in 1985 and later to a daily in November 1987. All the three variants of the newspaper were approved for publishing central and state government advertisements. With the onset of the year 2001, the publication launched its daily Hindi Edition nSfud gkd (Dainik Hawk). The year 2003 saw two more editions of the newspaper viz Dainik Hawk (English) Daily and nSfud gkd (Dainik Hawk) (Hindi) from Saharanpur (Uttar Pradesh). As of today, all the four editions of the newspaper are approved for publishing central and state governments (both Uttaranchal and Uttar Pradesh) advertisements.
+
+                        p
+                          | The newspaper establishment is armed with a well-equipped and modern printing press and enjoys a vast network of correspondents spread throughout the length and breadth of Uttaranchal, Uttar Pradesh, Haryana and Punjab. The newspapers also subscribe to the services of a number of news agencies to strengthen and supplement further their information base. The underlying thought is to allow all kinds of news and opinions representing a cross section of society as vast as possible in our publications so that no one dare complain that we are wedded to or against any one school of thought, group, alliance or political party. Our simple, self-assigned role is to give our readers all kinds of news and viewpoints and unleash an endless debate to enable them to arrive at a well-informed, qualified judgement or decision. We do not believe in moulding public opinion; on the contrary, we act as a facilitator to develop a spontaneous, rational and reasonable public opinion..
+                    +socialShare("/about-us","About Us",true)
+                        
+                //- div(class="col-lg-4 col-md-4 col-sm-4")
+                //-     aside(class="right_content")
+                //-         include ../../theme_eagle/partials/_genericRightSection
+            #ad_first_middle
+            div.row.row_main
+                div(class="col-lg-12 col-md-12 col-sm-12")   
+                     include ../../theme_eagle/partials/_genericMiddleSection
+            div.row.row_main
+                div(class="col-lg-12 col-md-12 col-sm-12")
+                    #level_bottom_full
+                        -if(data['level_bottom_full'] && data['level_bottom_full'].templateData && data['level_bottom_full'].templateData.mixinName){
+                            +#{data['level_bottom_full'].templateData.mixinName}(data['level_bottom_full'])
+                        -}
+                    div.comments-wrapper
+                        #comments
+                            
+                        
+        include ../../theme_eagle/partials/_footer
+    
+                 

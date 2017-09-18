@@ -1,0 +1,22 @@
+mixin style2(props)
+    -var img = props.img
+    -var bigCount=props.bigCount || 2
+    -var smallCount=props.smallCount || 0
+    span.hocal_row
+        .hocal_col_4.hocal_col
+            div(class="#{img || 'medium'} img animated-background")
+        .hocal_col_8.hocal_col
+            .hocal_row
+                -for(var i=0;i<bigCount;i++){
+                    .hocal_row
+                        .content.medium.animated-background
+                -}
+            -if(smallCount){
+                .hocal_row
+                    -for(var i=0;i<smallCount;i++){
+                        .hocal_row
+                            .content.small.animated-background
+                    -}
+            -}
+            
+    

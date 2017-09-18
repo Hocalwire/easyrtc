@@ -1,0 +1,9 @@
+#
+# robots.txt for http://www.voice4justice.com
+
+User-agent: *
+Allow: /
+Disallow: /admin/*
+Disallow: /refer-*
+Disallow: /404
+Allow: /content/servlet/RDESController?*

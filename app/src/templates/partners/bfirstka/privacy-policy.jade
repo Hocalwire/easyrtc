@@ -1,0 +1,50 @@
+include ../../theme_bear/allMixin
+extends ../../theme_bear/layout
+block content
+    .boxed.active
+        .wrapper
+            include ../../theme_bear/partials/_header
+        section.content
+            .wrapper
+                .main-content.has-sidebar
+                    #top-three-section
+                        -if(data['top-three-section'] && data['top-three-section'].templateData && data['top-three-section'].templateData.mixinName){
+                                                +#{data['top-three-section'].templateData.mixinName}(data['top-three-section'])
+                        -}
+                    .left-content
+                        h1.banner Privacy Policy
+                        
+                        
+                        br
+                        p Dear Netizens,
+                        br
+                        p Please note that this privacy policy applies to our portal/website www.bfirst.in and our associated mobile applications. In case if you do not wish to accept this privacy policy and cookies notice, you may avoid the use of www.bfirst.in.
+
+                        p When a user creates or logs on to an online account, the user by default, agrees to the privacy policy and cookie notices of www.bfirst.in by Ammembala Media. Information collected during the use of www.bfirst.in or our mobile applications will be processed in accordance with this notice.
+
+                        p www.bfirst.in may obtain some information about you in accordance with what is provided by you to us-your location, IP address, services enquired about and ordered, interaction details with service providers, registration and comments, technical details from your device relating to the service you receive and cookies.
+
+                        p Furnished information will be used to improve our service and reach maximum user
+
+ 
+
+                        p
+                            b Your information is secured:
+
+                        p Your account and browsing information is protected by a password for your privacy and security.
+
+                        p Only the employees of Ammembala Media, who need personal information to perform a specific job are granted access to it. All of our employees are kept up-to-date on our privacy and security practices.
+
+ 
+
+                        p
+                            b COPYRIGHT AND NO RETRANSMISSION OF INFORMATION:
+
+                        p Design of www.bfirst.in and information contained here is highly valuable and exclusive property of Ammembala Media, and nothing in this Agreement shall be construed as transferring or assigning any such ownership rights to you or any other person or entity.
+
+                        p User may not resell, redistribute, broadcast or transfer the information or use the information in a searchable, machine-readable database unless separately and specifically authorised in writing by www.bfirst.in prior to such use.
+
+                        p We may change present privacy policy, terms and conditions at any time. Your continued use of www.bfirst.in means that you accept any new or modified terms and conditions that we come up with.
+                    aside#sidebar
+                        include ../../theme_bear/partials/_homeRightSection
+                include ../../theme_bear/partials/_footer

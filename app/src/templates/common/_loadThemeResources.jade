@@ -1,0 +1,38 @@
+mixin loadThemeResources(css,jscomm,jstheme,partner)
+    include loadcss
+    -env.lazyloadResources = true
+    -if(css){
+      link(rel="preload", href="#{css}", as="style", onload="this.rel='stylesheet'")
+    -}
+    -if(partner){
+      link(rel="preload", href="#{partner}", as="style", onload="this.rel='stylesheet'")
+    -}
+    
+    
+    script.
+      var loadDeferredStyles = function() { 
+        var head = document.getElementsByTagName("head")[0];
+        var s = document.createElement("script");
+            s.type = "text/javascript";
+            s.src = "!{jscomm}";
+            s.addEventListener("load", function (e) {
+                var s1 = document.createElement("script");
+                s1.type = "text/javascript";
+                s1.src = "!{jstheme}";
+                head.appendChild(s1);
+                s1.addEventListener("load", function (e) {
+                    if(!window.insertLoadTriggered && window.triggerInsertLoad && document.readyState=="complete") {
+                        window.triggerInsertLoad();
+                    }
+                    var event = new CustomEvent("RESOURCES_LOADED", { "detail": "ALL DEPENDENCIES LOADED" });
+                    document.dispatchEvent(event);
+                });
+            }, false);
+        
+        head.appendChild(s);
+        
+      };
+      var raf = requestAnimationFrame || mozRequestAnimationFrame ||
+          webkitRequestAnimationFrame || msRequestAnimationFrame;
+      if (raf) raf(function() { window.setTimeout(loadDeferredStyles, 0); });
+      else window.addEventListener('load', loadDeferredStyles);

@@ -1,0 +1,188 @@
+.header_main_wrapper{
+        background: #ffffff !important;
+}
+.header_bottom .row{
+    background: #ffffff !important;
+}
+.widget.color-4 h2, .feature-two-column.color-4 .widget-title h2 , .widget.color-5 h2, .feature-two-column.color-5 .widget-title h2{
+    background: #C0C0C0 !important;
+    border-radius: 10px 10px 0px 0px;
+}
+.widget.color-4 .widget-title, .widget .color-4 .widget-title , .widget.color-3 .widget-title, .widget .color-3 .widget-title, .widget.color-5 .widget-title, .widget .color-5 .widget-title{
+    border-bottom-color:#336699 !important;
+    border-bottom:2px solid #336699 !important;
+}
+.widget.color-3 h2, .feature-two-column.color-3 .widget-title h2{
+    background: #C0C0C0 !important;
+    border-radius: 10px 10px 0px 0px;
+}
+#navWrapper{
+    background: #336699 !important;
+}
+#mainmenu{
+    background: #336699 !important;
+}
+#mainmenu li.current_page_item>a, #mainmenu li.current-menu-item>a, #menu a.current, #mainmenu li:hover, #mainmenu li.sfHover{
+    background-color: #0e0e0e !important;
+}
+.sb-icon-search{
+    background: #336699;
+}
+.read-more-button, .more_button_post{
+    background: #336699 !important;
+}
+.feature-post-list{
+    margin-top: 15px;
+}
+.post_list_medium_widget{
+    margin-top: 15px;
+}
+.box-1 .caption-overlay{
+    background: rgba(0, 0, 0, 0.7);
+}
+.grid_below_list{
+    margin-bottom: 15px !important;
+}
+.grid_3.grid:last-child{
+    padding-right:0px;
+}
+.post_list_medium_widget .builder_belowpost{
+    padding: 5px;
+    background: #ccc;
+}
+.sub-cats-mixin-headerwrapper ul li h4 a{
+    color: #336699 !important;
+}
+.footer_meta a{
+    color:#336699;
+}
+body{
+    background: #f3eff4;
+    font-family: 
+}
+.content_wraper .four.columns{
+    background: #d1d1d1 !important; 
+}
+.sidebar .widget-title h2{
+    background:#336699 !important; 
+}
+.sidebar .widget-title h2 a{
+    color: #fff !important;
+}
+.big_grid_items .big_grid_item{
+    width:25%;
+}
+.sf-menu li{
+    background: #336699;
+}
+#top_half_carousel_left .post_list_medium_widget{
+    margin-top: 0px;
+}
+.sf-menu ul{
+    max-height:200px;
+    overflow-y: scroll;
+}
+.sf-menu ul li{
+    background: #336699;
+}
+#header_breaking_area .latest_newsarea {
+    background: #336699 !important;
+}
+#header_breaking_area .latest_newsarea span {
+    background: #0e0e0e !important;
+    padding-top: 5px;
+}
+.latest_newsarea span a {
+    font-size: 18px;
+}
+.widget-title {
+    position: relative;
+    z-index: 9999;
+    background: #d1d1d1;
+}
+.sf-menu a{
+    border-left: 1px solid #fff !important;
+}
+
+.fix-this{
+    position: fixed;
+    top: 45px;
+    z-index: 999999999;
+    background: #ccc;
+    padding: 4px;
+}
+.fix-search{
+    position: fixed;
+    top: 80px;
+    /*width:77.7%;*/
+    z-index: 99999999999;
+    background: #ccc;
+    padding: 4px;
+}
+.sb-search-wrapper.sb-search-on-menu{
+    right: 0px;
+}
+#mainmenu li>a{
+    padding:0px 8px !important;
+}
+.todays-date-time{
+    color:#7d5484 !important;
+}
+.fixed-header  .logo_fixed {
+  display: inline-block;
+  background: #fff;
+  width: 120px;
+  padding-top: 5px;
+}
+img.logo_fixed{
+    padding-top: 10px;
+}
+.fixed-header .row {
+    width: 100% !important;
+    max-width: 100% !important;
+}
+.max-height100 {
+    max-height: 85px;
+}
+.logo_area .logo img {
+    max-height: 110px;
+}
+.logo_fixed a:hover {
+    background: #FFF;
+}
+#sb-site{
+    z-index: inherit;
+}
+.fix-this{
+    left:0;
+    z-index: 2;
+}
+.latest_newsarea{
+    width:100%;
+}
+@media only screen and (max-width: 480px) {
+    .logo_area .col-6 {
+       width: 79% !important;
+    }
+}
+/*#top_carousel.show_before_carousel_init .item{
+    max-width:100%;
+    width:100%;
+}
+.post_list_medium_widget {
+    margin-top: 0px;
+}
+#top_carousel.show_before_carousel_init{
+    margin-top:0px !important;
+}
+.big_image{
+    max-height: 400px;
+}
+
+*/
+/*.fixed-header .home-item span.menu-name{
+  display: none;
+}*/
+/*.fixed-header #mainmenu li.current-menu-item.home-item>a {
+    background-color: #eee6e6 !important;
+}*/
