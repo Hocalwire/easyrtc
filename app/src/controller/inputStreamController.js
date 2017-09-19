@@ -74,7 +74,7 @@ function onUploadStart(socket,data){
         var filepath1 = path.join(fileRoot, "original_"+filename);
         var logStream = fs.createWriteStream(filepath1, {'flags': 'a'});
         var originalStream = fs.createWriteStream(filepath, {'flags': 'a'});
-        writeStreams[filepath] = {"state":"STARTED","outStream":logStream,"accessToken":data.accessToken,"originalStream":originalStream,"filename":filename,"streamId":data.streamId,"postId":data.postId};
+        writeStreams[filepath] = {"fileRoot":fileRoot,"state":"STARTED","outStream":logStream,"accessToken":data.accessToken,"originalStream":originalStream,"filename":filename,"streamId":data.streamId,"postId":data.postId};
         var s = writeStreams[filepath];
         s.partner = data.partner || "allytech";
         s.accessToken=data.accessToken;
@@ -93,12 +93,12 @@ function onUploadResume(){
 function onUploadComplete(socket,data){
     var fs = require("fs");
     var filename = data.name;
-    var filepath = path.join('src/data/uploads/', filename);
+    var filepath = path.join(data.fileRoot || 'src/data/uploads/' , filename);
     var s  = writeStreams[filepath];
-    if(s.logStream) {
+    if(s && s.logStream) {
         s.logStream.end();
     }
-    if(s.originalStream) {
+    if(s && s.originalStream) {
         s.originalStream.end();
     }
     s.state="ENDED";
@@ -106,14 +106,14 @@ function onUploadComplete(socket,data){
 function onUploadData(socket,data){
     var fs = require("fs");
     var filename = data.name;
-    var filepath = path.join('src/data/uploads/', filename);
+    var filepath = path.join(data.fileRoot || 'src/data/uploads/', filename);
     var s  = writeStreams[filepath];
     console.log("unupload data:");
     console.log(s);
-    if(s.logStream) {
+    if(s && s.logStream) {
         s.logStream.write(new Buffer(data.data));
     }
-    if(s.originalStream) {
+    if(s && s.originalStream) {
         s.originalStream.write(new Buffer(data.data));
     }
     if(s.accessToken && s.state!="RUNNING"){
