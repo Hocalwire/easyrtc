@@ -27,11 +27,8 @@ html
                 // Main Content
                 // show
                 #demoContainer
-                    
-                    
                     #videos
                         video#selfVideo.easyrtcMirror(autoplay='autoplay',muted=false)
-                        
                     #recordButtons
                         //- button#startRecording(disabled='disabled', onclick='startRecording();') Start recording
                         button#stopRecording(disabled='disabled', onclick='endRecording();') End/finish recording
@@ -119,10 +116,10 @@ html
         //
         var selfEasyrtcid = "";
         var socket;
-        var partner =  getParameterByName("partner_value");
+        var partner =  getParameterByName("partner_value") || "allytech";
         var blobs = [];
         var mediaId = getParameterByName("video_url");
-        var fileName = getParameterByName("video_id");
+        var fileName = getParameterByName("video_id") || "test.mp4";
         if(mediaId) {
           mediaId = decodeURIComponent(mediaId);
         } else {

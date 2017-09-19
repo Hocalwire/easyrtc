@@ -64,22 +64,25 @@ function onUploadStart(socket,data){
     var fs = require("fs");
     var filename = data.name;
     var fileRoot = data.fileRoot || "src/data/uploads/";
-    var filepath = path.join(fileRoot, filename);
-    var filepath1 = path.join(fileRoot, "original_"+filename);
-    var logStream = fs.createWriteStream(filepath1, {'flags': 'a'});
-    var originalStream = fs.createWriteStream(filepath, {'flags': 'a'});
-    writeStreams[filepath] = {"state":"STARTED","outStream":logStream,"accessToken":data.accessToken,"originalStream":originalStream,"filename":filename,"streamId":data.streamId,"postId":data.postId};
-    var s = writeStreams[filepath];
-    s.partner = data.partner || "allytech";
-    s.accessToken=data.accessToken;
-    s.streamId=data.streamId;
-    s.ptitle=data.title;
-    s.pdescription=data.description;
-    socket.emit('moreData', { 'timestamp' : 0});
-    // if(data.streamId){
-    //     postToSocial.sendStateRDM(data.streamId,"","PROCESSING",s.partner); 
-    // }
-    
+    var mkdirp = require('mkdirp');
+    mkdirp(fileRoot, function(err) { 
+        if(err){
+            logger.error("====================================Error in creating Folder path:"+fileRoot);
+            return;
+        }
+        var filepath = path.join(fileRoot, filename);
+        var filepath1 = path.join(fileRoot, "original_"+filename);
+        var logStream = fs.createWriteStream(filepath1, {'flags': 'a'});
+        var originalStream = fs.createWriteStream(filepath, {'flags': 'a'});
+        writeStreams[filepath] = {"state":"STARTED","outStream":logStream,"accessToken":data.accessToken,"originalStream":originalStream,"filename":filename,"streamId":data.streamId,"postId":data.postId};
+        var s = writeStreams[filepath];
+        s.partner = data.partner || "allytech";
+        s.accessToken=data.accessToken;
+        s.streamId=data.streamId;
+        s.ptitle=data.title;
+        s.pdescription=data.description;
+        socket.emit('moreData', { 'timestamp' : 0});
+    });
 }
 function onUploadPause(){
 

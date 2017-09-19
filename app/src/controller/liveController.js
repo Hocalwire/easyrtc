@@ -46,7 +46,7 @@ function handleRequest(req,res,next){
     var pathname = req.pathname;
     if(pathname=="/live/record-and-save"){
         recordAndSave(req,res,next);
-    } else if(pathname=="/auto-record-and-save"){
+    } else if(pathname=="/live/auto-record-and-save"){
         autoRecordAndSave(req,res,next);
     }else if(pathname=="/create-or-join"){
         recordAnSave(req,res,next);
