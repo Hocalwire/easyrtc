@@ -1473,7 +1473,6 @@ module.exports = function (grunt) {
 
     grunt.registerTask('build', [
         'clean:dist',
-        
         'cssmin',
         'copy:css',
         'uglify:dist',
