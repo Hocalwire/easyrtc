@@ -29,11 +29,7 @@ html
                 h1 EasyRTC Demo: Video+Audio HD 720p
                 #demoContainer
                     
-                    #connectControls
-                        #iam Not yet connected...
-                        br
-                        strong Connected users:
-                        #otherClients
+                    
                     #videos
                         video#selfVideo.easyrtcMirror(autoplay='autoplay')
                         
@@ -44,8 +40,21 @@ html
             #footer
                
     style.
+        body {
+            display: block;
+            margin: 0px auto;
+            text-align: center;
+        }
+        #container {
+            display: inline-block;
+            height: 350px;
+            width: 550px;
+            padding-top: 20px;
+        }
         #demoContainer {
-          position:relative;
+            position:relative;
+            display: inline-block;
+            width: 100%;
         }
         #connectControls {
           float:left;
@@ -53,17 +62,26 @@ html
           text-align:center;
           border: 2px solid black;
         }
+        #main {
+            background:transparent;
+        }
         #otherClients {
           height:200px;
           overflow-y:scroll;
         }
+        #videos {
+            height: 350px;
+            margin: 0px auto;
+            display: inline-block;
+            text-align: center;
+            width: 100%;
+        }
         #selfVideo {
-          height:300px;
-          width:500px;
+          height:225px;
+          width:300px;
           float:left;
           border:1px solid gray;
           margin-left:10px;
-          padding:20px;
         }
         #callerVideo {
           height:225px;
@@ -112,13 +130,15 @@ html
         var streamId = "12345";
         var streamName = "";
         var accessToken = "";
+        var title="";
+        var postId="";
         function connect() {
           if( !easyrtc.supportsRecording()) {
              window.alert("This browser does not support recording. Try chrome or firefox.");
              return;
           }
           
-          easyrtc.setVideoDims(1200,768);
+          easyrtc.setVideoDims(640,480);
           easyrtc.setRecordingVideoCodec("h264");
           easyrtc.setRoomOccupantListener(convertListToButtons);
           easyrtc.easyApp("easyrtc.audioVideoSimple", "selfVideo", [], loginSuccess, loginFailure);
@@ -152,7 +172,7 @@ html
         }
         function loginSuccess(easyrtcid) {
           selfEasyrtcid = easyrtcid;
-          socket=io.connect(domain);
+          socket=easyrtc.webSocket;
           socket.on('moreData', requestedMoreData);
 
           //- document.getElementById("iam").innerHTML = "I am " + easyrtc.cleanId(easyrtcid);
