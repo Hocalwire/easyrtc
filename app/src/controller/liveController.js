@@ -26,13 +26,28 @@ function recordAndSave(req,res,next){
     });
     return;
 }
+function autoRecordAndSave(req,res,next){
+    var dataV = {};
+    var renderUrl = "common/autoRecordAndSave"
+    res.render(renderUrl, {
+      data : dataV
+        
+    }, function(err, html) {
+        if (err) {
+            logger.error('in index file', err.message);
+            return next(err);
+        }
 
+        res.send(200, html);
+    });
+    return;
+}
 function handleRequest(req,res,next){
     var pathname = req.pathname;
     if(pathname=="/live/record-and-save"){
         recordAndSave(req,res,next);
-    } else if(pathname=="/record-and-emit"){
-        recordAnSave(req,res,next);
+    } else if(pathname=="/auto-record-and-save"){
+        autoRecordAndSave(req,res,next);
     }else if(pathname=="/create-or-join"){
         recordAnSave(req,res,next);
     } else {

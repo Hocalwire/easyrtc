@@ -63,10 +63,11 @@ function setupReportingHandles(){
 function onUploadStart(socket,data){
     var fs = require("fs");
     var filename = data.name;
-    var filepath = path.join('src/data/uploads/', filename);
-    var filepath1 = path.join('src/data/uploads/', "original_"+filename);
-    var logStream = fs.createWriteStream(filepath, {'flags': 'a'});
-    var originalStream = fs.createWriteStream(filepath1, {'flags': 'a'});
+    var fileRoot = data.fileRoot || "src/data/uploads/";
+    var filepath = path.join(fileRoot, filename);
+    var filepath1 = path.join(fileRoot, "original_"+filename);
+    var logStream = fs.createWriteStream(filepath1, {'flags': 'a'});
+    var originalStream = fs.createWriteStream(filepath, {'flags': 'a'});
     writeStreams[filepath] = {"state":"STARTED","outStream":logStream,"accessToken":data.accessToken,"originalStream":originalStream,"filename":filename,"streamId":data.streamId,"postId":data.postId};
     var s = writeStreams[filepath];
     s.partner = data.partner || "allytech";

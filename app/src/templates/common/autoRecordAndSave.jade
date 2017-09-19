@@ -31,10 +31,10 @@ html
                     
                     
                     #videos
-                        video#selfVideo.easyrtcMirror(autoplay='autoplay')
+                        video#selfVideo.easyrtcMirror(autoplay='autoplay',muted=false)
                         
                     #recordButtons
-                        button#startRecording(disabled='disabled', onclick='startRecording();') Start recording
+                        //- button#startRecording(disabled='disabled', onclick='startRecording();') Start recording
                         button#stopRecording(disabled='disabled', onclick='endRecording();') End/finish recording
                         
             #footer
@@ -120,18 +120,32 @@ html
         //
         var selfEasyrtcid = "";
         var socket;
-        var partner =  "thamarai";
-        var domain = "http://thamaraisite.vocalwire.com";
-        domain = domain.replace("http://","https://");
+        var partner =  getParameterByName("partner_value");
         var blobs = [];
-        var mediaId = "test";
-        var fileName = mediaId+".mp4";
+        var mediaId = getParameterByName("video_url");
+        var fileName = getParameterByName("video_id");
+        if(mediaId) {
+          mediaId = decodeURIComponent(mediaId);
+        } else {
+          mediaId = fileName;
+        }
         var mediaIds = mediaId;
         var streamId = "12345";
         var streamName = "";
         var accessToken = "";
         var title="";
         var postId="";
+        function getParameterByName(name, url) {
+          if (!url) {
+            url = window.location.href;
+          }
+          name = name.replace(/[\[\]]/g, '\\$&');
+          var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
         function connect() {
           if( !easyrtc.supportsRecording()) {
              window.alert("This browser does not support recording. Try chrome or firefox.");
@@ -174,7 +188,7 @@ html
           selfEasyrtcid = easyrtcid;
           socket=easyrtc.webSocket;
           socket.on('moreData', requestedMoreData);
-
+          startRecording();
           //- document.getElementById("iam").innerHTML = "I am " + easyrtc.cleanId(easyrtcid);
           document.getElementById("startRecording").disabled = false;
         }
@@ -202,7 +216,7 @@ html
         }
         function endRecording() {
           if( selfRecorder ) {
-             selfRecorder.stop();
+             selfRecorder.stopRecording();
           }
           
           document.getElementById("startRecording").disabled = false;
@@ -211,7 +225,7 @@ html
         }
         function uploadStart(){
             if (socket) {
-                socket.emit('uploadStart', {"name":fileName,"streamName":streamName,"streamId":streamId,"accessToken":accessToken,"partner":partner,"title":title,"postId":postId});
+                socket.emit('uploadStart', {"name":fileName,"streamName":streamName,"streamId":streamId,"accessToken":accessToken,"partner":partner,"title":title,"postId":postId,"fileRoot":"src/public/data/"+partner+"/"});
             }
         }
         function uploadResumed(){
