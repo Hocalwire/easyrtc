@@ -116,6 +116,7 @@ html
         //
         var selfEasyrtcid = "";
         var socket;
+        var waitingForBlob=false;
         var partner =  getParameterByName("partner_value") || "allytech";
         var blobs = [];
         var mediaId = getParameterByName("video_url");
@@ -201,7 +202,6 @@ html
           selfRecorder = easyrtc.recordToCallback( easyrtc.getLocalStream(), 
                  callback,2000);
           if( selfRecorder ) {
-             document.getElementById("startRecording").disabled = true;
              document.getElementById("stopRecording").disabled = false;
           }
           else {
@@ -215,7 +215,6 @@ html
              selfRecorder.stopRecording();
           }
           
-          document.getElementById("startRecording").disabled = false;
           document.getElementById("stopRecording").disabled = true;
           uploadComplete();
         }
