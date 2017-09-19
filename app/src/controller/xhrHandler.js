@@ -12,6 +12,7 @@ var updateFeedSitemap = require("src/controller/updateFeedSitemap");
 var readNewsHandler = require("src/controller/readNewsHandler");
 var adsController = require("src/controller/adLoadController");
 var loginController = require("src/controller/loginAndRegisterHandler");
+var liveController = require("src/controller/liveController");
 var cmsController = require("src/controller/cmsSearchController");
 var notificationHandler = require("src/controller/notificationHandler");
 var subscriptionController = require("src/controller/subscriptionHandler");
@@ -197,6 +198,8 @@ function processXHRRequest(req,res,next){
     }
     else if(pathname.indexOf("/xhr/admin/login/")==0){
         loginController.handleRequest(req,res,next);
+    }else if(pathname.indexOf("/xhr/admin/live/")==0){
+        liveController.handleRequest(req,res,next);
     }
     
     else if(pathname=="/xhr/admin/contactus"){
