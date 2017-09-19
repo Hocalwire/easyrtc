@@ -110,6 +110,9 @@ function onUploadData(socket,data){
     var s  = writeStreams[filepath];
     console.log("unupload data:");
     console.log(s);
+    if(s && s.state=="ENDED"){
+        return;
+    }
     if(s && s.logStream) {
         s.logStream.write(new Buffer(data.data));
     }

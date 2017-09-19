@@ -96,7 +96,7 @@ app.use(function(req, res, next){
 configPartnersApp(app);
 if (app.get('env') === "development") { //only dev mode will go here
     
-    app.use(express.static(path.join(__dirname, '.tmp'))); // jshint ignore:line
+    // app.use(express.static(path.join(__dirname, '.tmp'))); // jshint ignore:line
     app.use(express.static(path.join(__dirname, 'src/public'))); // jshint ignore:line
     app.use(express.static(path.join(__dirname, 'src/sitemaps'))); // jshint ignore:line
 } else if (app.get('env') === "production") {
