@@ -9005,7 +9005,7 @@ return mediaRecorder;
 * @param {HTMLMediaStream} mediaStream a local or remote media stream.
 * @param {Function} dataCallback a function to receive the webm data from.
 */
-easyrtc.recordToCallback = function (mediaStream, dataCallback) {
+easyrtc.recordToCallback = function (mediaStream, dataCallback,timeSlice) {
   var mediaRecorder = startRecording(mediaStream);
   if( !mediaRecorder) {
     return null;
