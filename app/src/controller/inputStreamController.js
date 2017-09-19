@@ -30,20 +30,17 @@ var ioM = require('socket.io');
 var ss = require('socket.io-stream');
 var path = require('path');
 var app;
-module.exports.setup = function(app) {
-    viewapp=app;
+module.exports.setup = function(viewapp) {
+    app=viewapp;
     if(app.get('env')=="development"){
         isDevMode=true;
     }
 
 };
-module.exports.setupIO = function(server) {
-    socketio=ioM.listen(server, { log: false });
-    app=server;
-    // viewapp=app;
-    console.log(" io setup called********************");
+module.exports.setupIO = function(socketServer) {
+    socketio=socketServer
     setupReportingHandles();
-    setupSignalingServer();
+    // setupSignalingServer();
 };
 var recordingData = {};
 var writeStreams = {};
