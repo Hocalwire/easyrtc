@@ -95,7 +95,7 @@ if (cluster.isMaster) {
    * Listen on provided port, on all network interfaces.
    */
 
-  sc.setupIO(webServer);
+  sc.setupIO(socketServer);
 }
 
 // The rest of the bin/www file.....

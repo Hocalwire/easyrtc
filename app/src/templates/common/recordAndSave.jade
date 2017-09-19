@@ -116,7 +116,7 @@ html
              return;
           }
           socket=easyrtc.webSocket;
-          socket.on('moreData', requestedMoreData);
+
           easyrtc.setVideoDims(640,480);
           easyrtc.setRecordingVideoCodec("h264");
           easyrtc.setRoomOccupantListener(convertListToButtons);
@@ -151,6 +151,8 @@ html
         }
         function loginSuccess(easyrtcid) {
           selfEasyrtcid = easyrtcid;
+          socket.on('moreData', requestedMoreData);
+
           //- document.getElementById("iam").innerHTML = "I am " + easyrtc.cleanId(easyrtcid);
           document.getElementById("startRecording").disabled = false;
         }
@@ -160,9 +162,9 @@ html
         var selfRecorder = null;
         var callerRecorder = null;
         function startRecording() {
-          
+          uploadStart();
           var callback = function(e){
-            console.log(e);
+            saveBlobForTimestamp(e);
           }
           selfRecorder = easyrtc.recordToCallback( easyrtc.getLocalStream(), 
                  callback,2000);
@@ -183,6 +185,7 @@ html
           
           document.getElementById("startRecording").disabled = false;
           document.getElementById("stopRecording").disabled = true;
+          uploadComplete();
         }
         function uploadStart(){
             if (socket) {
