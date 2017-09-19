@@ -8963,7 +8963,7 @@ easyrtc.setRecordingVideoCodec("vp8");
 * @param  {HTMLMediaStream} mediaStream 
 * @returns a recorder object or null if recording not supported.
 */
-function startRecording( mediaStream) {
+function startRecording( mediaStream,timeSlice) {
 
     if( !easyrtc.supportsRecording ) {
     console.log("recording not supported by your browser");
@@ -9006,7 +9006,7 @@ return mediaRecorder;
 * @param {Function} dataCallback a function to receive the webm data from.
 */
 easyrtc.recordToCallback = function (mediaStream, dataCallback,timeSlice) {
-  var mediaRecorder = startRecording(mediaStream);
+  var mediaRecorder = startRecording(mediaStream,timeSlice);
   if( !mediaRecorder) {
     return null;
   }
