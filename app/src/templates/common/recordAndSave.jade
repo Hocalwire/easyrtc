@@ -100,16 +100,26 @@ html
         //POSSIBILITY OF SUCH DAMAGE.
         //
         var selfEasyrtcid = "";
+        var socket;
+        var partner =  "thamarai";
+        var domain = "http://thamaraisite.vocalwire.com";
+        domain = domain.replace("http://","https://");
+        var blobs = [];
+        var mediaId = "test";
+        var fileName = mediaId+".mp4";
+        var mediaIds = mediaId;
+        var streamId = "12345";
+        var streamName = "";
         function connect() {
           if( !easyrtc.supportsRecording()) {
              window.alert("This browser does not support recording. Try chrome or firefox.");
              return;
           }
-          
+          socket=io.connect(domain);
           easyrtc.setVideoDims(640,480);
           easyrtc.setRecordingVideoCodec("h264");
           easyrtc.setRoomOccupantListener(convertListToButtons);
-          easyrtc.easyApp("easyrtc.audioVideoSimple", "selfVideo", ["callerVideo"], loginSuccess, loginFailure);
+          easyrtc.easyApp("easyrtc.audioVideoSimple", "selfVideo", [], loginSuccess, loginFailure);
          }
         function clearConnectList() {
           var otherClientDiv = document.getElementById("otherClients");
@@ -140,7 +150,7 @@ html
         }
         function loginSuccess(easyrtcid) {
           selfEasyrtcid = easyrtcid;
-          document.getElementById("iam").innerHTML = "I am " + easyrtc.cleanId(easyrtcid);
+          //- document.getElementById("iam").innerHTML = "I am " + easyrtc.cleanId(easyrtcid);
           document.getElementById("startRecording").disabled = false;
         }
         function loginFailure(errorCode, message) {
@@ -149,8 +159,7 @@ html
         var selfRecorder = null;
         var callerRecorder = null;
         function startRecording() {
-          var selfLink = document.getElementById("selfDownloadLink");
-          selfLink.innerText = "";
+          
           var callback = function(e){
             console.log(e);
           }
@@ -164,27 +173,75 @@ html
              window.alert("failed to start recorder for self");
              return;
           }
-          var callerLink = document.getElementById("callerDownloadLink");
-          callerLink.innerText = "";
-          if( easyrtc.getIthCaller(0)) {
-             callerRecorder = easyrtc.recordToFile(
-               easyrtc.getRemoteStream(easyrtc.getIthCaller(0), null), 
-               callerLink, "callerVideo");
-             if( !callerRecorder ) {
-              window.alert("failed to start recorder for caller");
-             }
-          }
-          else {
-             callerRecorder = null;
-          }
+          
         }
         function endRecording() {
           if( selfRecorder ) {
              selfRecorder.stop();
           }
-          if( callerRecorder ) {
-             callerRecorder.stop();
-          }
+          
           document.getElementById("startRecording").disabled = false;
           document.getElementById("stopRecording").disabled = true;
         }
+        function uploadStart(){
+            if (socket) {
+                socket.emit('uploadStart', {"name":fileName,"streamName":streamName,"streamId":streamId,"accessToken":accessToken,"partner":partner,"title":title,"postId":postId});
+            }
+        }
+        function uploadResumed(){
+            if (socket) {
+                socket.emit('uploadResume', {"name":fileName,"streamName":streamName,"streamId":streamId});
+            }
+        }
+        function uploadBlob(data,timestamp){
+            if (socket) {
+                socket.emit('uploadData', {"name":fileName,"streamName":streamName,"timestamp":data.timestamp,"data":data.data,"streamId":streamId});
+            }
+        }
+        function uploadComplete(){
+            if (socket) {
+                socket.emit('uploadComplete', {"name":fileName,"streamName":streamName,"streamId":streamId});
+            }
+        }
+        var isSaving=false;
+        function requestedMoreData(data){
+            var timestamp = data.timestamp;
+            if(blobs.length){
+                if(isSaving){
+                    setTimeout(function(){
+                        var b = blobs.shift();
+                        uploadBlob(b);
+                        waitingForBlob=false;
+                    },100);
+                } else {
+                    var b = blobs.shift();
+                    uploadBlob(b);
+                    waitingForBlob=false;
+                }
+                
+            } else {
+                waitingForBlob=true;
+            }
+        }
+
+        function saveBlobForTimestamp(player){
+            isSaving=true;
+            var recordedData = player.recordedData;
+            var allTimestamps = player.allTimestamps;
+            var currentTimestamp = player.currentTimestamp;
+            if(recordedData.length){
+                var blob = recordedData[recordedData.length-1]; 
+                var bb = new Blob([blob], {type: 'video/mp4'});
+                var item = {"data":bb,"timestamp":currentTimestamp};
+                blobs.push(item);
+                blobs = blobs.sort(function(a,b){
+                    return (a['timestamp']-b['timestamp']);
+                });
+                isSaving=false;
+                if(waitingForBlob){
+                    requestedMoreData(blobs[0]);
+                }    
+            } else {
+                isSaving=false;
+            }
+        } 
