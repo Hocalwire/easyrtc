@@ -16,6 +16,7 @@ html
         // show
         // Assumes global locations for socket.io.js and easyrtc.js
         script(src='/easyrtc/js/socket-io.js?b=20')
+        script(src="/recording/scripts/RecordRTC.js")
         script(type='text/javascript', src='/easyrtc/js/easyrtc.js?a=20')
         //- script(type='text/javascript', src='js/demo_audio_video_simple_hd.js')
     body(onload='connect();')
@@ -35,27 +36,43 @@ html
                         #otherClients
                     #videos
                         video#selfVideo.easyrtcMirror(autoplay='autoplay', muted='muted', volume='0')
-                        div(style='position:relative;float:left;')
-                            video#callerVideo(autoplay='autoplay')
-                        // each caller video needs to be in it"s own div so it"s close button can be positioned correctly
+                        
                     #recordButtons
-                        input#useVP8(type='radio', onclick='easyrtc.setRecordingVideoCodec(', checked='checked', name='codecUsed')
-                        |  VP8 
-                        input#useVP9(type='radio', onclick='easyrtc.setRecordingVideoCodec(', name='codecUsed')
-                        |  VP9 
-                        input#useH264(type='radio', onclick='easyrtc.setRecordingVideoCodec(', name='codecUsed')
-                        |  H264 
-                        br
                         button#startRecording(disabled='disabled', onclick='startRecording();') Start recording
                         button#stopRecording(disabled='disabled', onclick='endRecording();') End/finish recording
-                        br
-                        |              download links for videos: self:
-                        a#selfDownloadLink
-                        |               caller:
-                        a#callerDownloadLink
+                        
             #footer
                
-    
+    style.
+        #demoContainer {
+          position:relative;
+        }
+        #connectControls {
+          float:left;
+          width:250px;
+          text-align:center;
+          border: 2px solid black;
+        }
+        #otherClients {
+          height:200px;
+          overflow-y:scroll;
+        }
+        #selfVideo {
+          height:225px;
+          width:300px;
+          float:left;
+          border:1px solid gray;
+          margin-left:10px;
+        }
+        #callerVideo {
+          height:225px;
+          width:300px;
+          border:1px solid gray;
+          margin-left:10px;
+        }
+        #recordButtons {
+          clear:both;
+        }
     script.
         //
         //Copyright (c) 2016, Skedans Systems, Inc.
@@ -88,9 +105,7 @@ html
              window.alert("This browser does not support recording. Try chrome or firefox.");
              return;
           }
-          if( easyrtc.isRecordingTypeSupported("h264")) document.getElementById("useH264").disabled = false;
-          if( easyrtc.isRecordingTypeSupported("vp9")) document.getElementById("useVP9").disabled = false;
-          if( easyrtc.isRecordingTypeSupported("vp8")) document.getElementById("useVP8").disabled = false;
+          
           easyrtc.setVideoDims(640,480);
           easyrtc.setRecordingVideoCodec("h264");
           easyrtc.setRoomOccupantListener(convertListToButtons);
