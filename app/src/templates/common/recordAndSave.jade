@@ -115,7 +115,8 @@ html
              window.alert("This browser does not support recording. Try chrome or firefox.");
              return;
           }
-          socket=io.connect(domain);
+          socket=easyrtc.webSocket;
+          socket.on('moreData', requestedMoreData);
           easyrtc.setVideoDims(640,480);
           easyrtc.setRecordingVideoCodec("h264");
           easyrtc.setRoomOccupantListener(convertListToButtons);
