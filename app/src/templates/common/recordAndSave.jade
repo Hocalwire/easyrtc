@@ -35,7 +35,7 @@ html
                         strong Connected users:
                         #otherClients
                     #videos
-                        video#selfVideo.easyrtcMirror(autoplay='autoplay', muted='muted', volume='0')
+                        video#selfVideo.easyrtcMirror(autoplay='autoplay')
                         
                     #recordButtons
                         button#startRecording(disabled='disabled', onclick='startRecording();') Start recording
@@ -58,11 +58,12 @@ html
           overflow-y:scroll;
         }
         #selfVideo {
-          height:225px;
-          width:300px;
+          height:300px;
+          width:500px;
           float:left;
           border:1px solid gray;
           margin-left:10px;
+          padding:20px;
         }
         #callerVideo {
           height:225px;
@@ -110,14 +111,14 @@ html
         var mediaIds = mediaId;
         var streamId = "12345";
         var streamName = "";
+        var accessToken = "";
         function connect() {
           if( !easyrtc.supportsRecording()) {
              window.alert("This browser does not support recording. Try chrome or firefox.");
              return;
           }
-          socket=easyrtc.webSocket;
-
-          easyrtc.setVideoDims(640,480);
+          
+          easyrtc.setVideoDims(1200,768);
           easyrtc.setRecordingVideoCodec("h264");
           easyrtc.setRoomOccupantListener(convertListToButtons);
           easyrtc.easyApp("easyrtc.audioVideoSimple", "selfVideo", [], loginSuccess, loginFailure);
@@ -151,6 +152,7 @@ html
         }
         function loginSuccess(easyrtcid) {
           selfEasyrtcid = easyrtcid;
+          socket=io.connect(domain);
           socket.on('moreData', requestedMoreData);
 
           //- document.getElementById("iam").innerHTML = "I am " + easyrtc.cleanId(easyrtcid);
