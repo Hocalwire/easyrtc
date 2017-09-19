@@ -1,6 +1,6 @@
 module.exports = {
     production: {
-        port: '5002',
+        port: '5005',
         website: {host: 'localhost', port: 8080},
         api: {host: 'localhost', port: 8080},
         redisURL: 'redis://localhost:6379',
@@ -9,7 +9,7 @@ module.exports = {
     },
     
     development: {
-        port: '5002',
+        port: '5005',
         // website: {host: 'sudarshannews.com', port: 80},
         // api: {host: 'sudarshannews.com', port: 80},
          // website: {host: 'hocalwire.allytechnologies.in', port: 80},
