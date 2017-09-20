@@ -48,7 +48,7 @@ html
         }
         #container {
             display: inline-block;
-            height: 350px;
+            height: 500px;
             width: 550px;
             padding-top: 20px;
         }
@@ -78,9 +78,8 @@ html
             width: 100%;
         }
         #selfVideo {
-            max-height: 300px;
-            max-width: 500px;
-            width:100%;
+            height: 500px;
+            width: 500px;
             text-align:center;
             margin-left: 0px;
             margin-top: 13px;
@@ -93,6 +92,13 @@ html
         }
         #recordButtons {
           clear:both;
+        }
+        @media (max-width: 768px)  {
+          #selfVideo {
+              height: 300px;
+              width: 300px;
+              margin-top: 3px;
+          }
         }
     script.
         //

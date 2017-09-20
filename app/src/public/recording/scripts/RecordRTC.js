@@ -4416,11 +4416,11 @@ if (typeof RecordRTC !== 'undefined') {
 function MultiStreamRecorder(arrayOfMediaStreams, options) {
     var self = this;
 
-    var width = 500;
-    var height=300;
+    var w = 500;
+    var h=500;
     if(window.screen.width<768){
-        width = screen.width-20;
-        height = screen.height-20;
+        width = 300;
+        height = 300;
     }
     options = options || {
         mimeType: 'video/webm',
