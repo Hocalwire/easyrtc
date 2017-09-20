@@ -1,6 +1,7 @@
 doctype html
 html
     head
+        -var random=Math.random()
         meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
         // skip
         link(rel="icon", href="/images/ico/favicon.ico", type="image/x-icon")
@@ -21,7 +22,7 @@ html
         // show
         // Assumes global locations for socket.io.js and easyrtc.js
         script(src='/easyrtc/js/socket-io.js?b=20')
-        script(src="/recording/scripts/RecordRTC.js")
+        script(src="/recording/scripts/RecordRTC.js?a=20")
         script(type='text/javascript', src='/easyrtc/js/easyrtc.js?a=20')
         //- script(type='text/javascript', src='js/demo_audio_video_simple_hd.js')
     body(onload='connect();')
@@ -47,10 +48,10 @@ html
             text-align: center;
         }
         #container {
-            display: inline-block;
-            height: 500px;
-            width: 550px;
-            padding-top: 20px;
+          display: inline-block;
+          height: 100%;
+          width: 100%;
+          padding-top: 20px;
         }
         #demoContainer {
             position:relative;
@@ -78,11 +79,11 @@ html
             width: 100%;
         }
         #selfVideo {
-            height: 500px;
-            width: 500px;
-            text-align:center;
-            margin-left: 0px;
-            margin-top: 13px;
+          min-height: 300px;
+          width: 100%;
+          text-align: center;
+          margin-left: 0px;
+          margin-top: 13px;
         }
         #callerVideo {
           height:225px;
@@ -95,9 +96,8 @@ html
         }
         @media (max-width: 768px)  {
           #selfVideo {
-              height: 300px;
-              width: 300px;
-              margin-top: 3px;
+              width: 95%;
+              height: auto;
           }
         }
     script.
@@ -161,12 +161,11 @@ html
              return;
           }
           var width = window.screen.width;
-          //- var w=640;
-          //- var h = 480;
+          //- var w=500;
+          //- var h = 500;
           //- if(width>768){
-          //-   easyrtc.setVideoDims(w,h);
+          //-   easyrtc.setVideoDims(w,h);  
           //- }
-          
           easyrtc.setRecordingVideoCodec("h264");
           easyrtc.setRoomOccupantListener(convertListToButtons);
           easyrtc.easyApp("easyrtc.audioVideoSimple", "selfVideo", [], loginSuccess, loginFailure);
@@ -188,7 +187,7 @@ html
           selfEasyrtcid = easyrtcid;
           socket=easyrtc.webSocket;
           socket.on('moreData', requestedMoreData);
-          startRecording();
+          startRecordingNow();
           //- document.getElementById("iam").innerHTML = "I am " + easyrtc.cleanId(easyrtcid);
         }
         function loginFailure(errorCode, message) {
@@ -197,8 +196,20 @@ html
         var selfRecorder = null;
         var callerRecorder = null;
         var timeoutId = 0;
+        function startRecordingNow(){
+          var count = 5;
+          setInterval(function(){
+            $("#stopRecording").html("starting in "+count+" seconds");
+            count--;
+            if(count<=0){
+              startRecording();
+            }
+          },1000);
+        }
         function startRecording() {
           uploadStart();
+          var d = $("#selfVideo");
+          window.globalRecordingDimension = {"w":d.width(),"h":d.height()};
           var callback = function(e){
             saveBlobForTimestamp(e);
             if(endTriggered){

@@ -4416,11 +4416,15 @@ if (typeof RecordRTC !== 'undefined') {
 function MultiStreamRecorder(arrayOfMediaStreams, options) {
     var self = this;
 
-    var w = 500;
+    var w =500;
     var h=500;
     if(window.screen.width<768){
-        width = 300;
-        height = 300;
+        w = 300;
+        h = 300;
+    }
+    if(window.globalRecordingDimension){
+        w = window.globalRecordingDimension.w;
+        h = window.globalRecordingDimension.h;
     }
     options = options || {
         mimeType: 'video/webm',
@@ -4439,11 +4443,11 @@ function MultiStreamRecorder(arrayOfMediaStreams, options) {
     }
 
     if (!options.video.width) {
-        options.video.width = 360;
+        options.video.width = w;
     }
 
     if (!options.video.height) {
-        options.video.height = 240;
+        options.video.height = h;
     }
 
     /**
