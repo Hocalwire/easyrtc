@@ -184,41 +184,29 @@ html
           uploadStart();
           var callback = function(e){
             saveBlobForTimestamp(e);
-            if(timeoutId){
-              clearTimeout(timeoutId);
-            }
             if(endTriggered){
-              timeoutId = setTimeout(function(){
-                if(window.recorder.getBlob()){
-                    var blob = window.recorder.getBlob(); 
-                    var bb = new Blob([blob], {type: 'video/mp4'});
-                    var timestamp = new Date().getTime();
-                    var item = {"data":bb,"timestamp":timestamp};
-                    uploadBlob(item,timestamp);
-                    setTimeout(function(){
-                      uploadComplete();
-                      setTimeout(function(){
-                        window.close();
-                        alert("close endTriggered - close the video as its not recording anymore");
-                      },1000);
-                    },5000);
-                } else {
-                  uploadComplete();
-                  setTimeout(function(){
-                    window.close();
-                    alert("close endTriggered - close the video as its not recording anymore");
-                  },1000);
+              var cTimeStamp = e.currentTimestamp;
+              if(cTimeStamp>endTriggeredTimeStamp){
+                if(selfRecorder){
+                  selfRecorder.stopRecording();
                 }
-                
-
-                  
-              },5000);
-              
+                //all blobs are received, wait for all blobs transmit and then close
+                var timeoutId = setInterval(function(){
+                    if(!blobs.length) {
+                        //all blobs transmitted, saved, you can close it now
+                        uploadComplete();
+                        setTimeout(function(){
+                          window.close();
+                          setTimeout(function(){alert("close endTriggered - close the video as its not recording anymore");},1000);
+                        },1000);
+                        clearInterval(timeoutId);
+                    }
+                },1000);
+              }
             }
-            
-          }
+          };
           selfRecorder = easyrtc.recordToCallback( easyrtc.getLocalStream(), 
-                 callback,2000);
+                 callback,1000);
           if( selfRecorder ) {
              document.getElementById("stopRecording").disabled = false;
           }
@@ -229,11 +217,9 @@ html
           
         }
         var endTriggered=false;
+        var endTriggeredTimeStamp=0;
         function endRecording() {
-          if( selfRecorder ) {
-             selfRecorder.stopRecording();
-          }
-          
+          endTriggeredTimeStamp=new Date().getTime();
           document.getElementById("stopRecording").disabled = true;
           endTriggered=true;
           var count = 12;
