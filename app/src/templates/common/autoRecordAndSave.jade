@@ -179,19 +179,25 @@ html
         }
         var selfRecorder = null;
         var callerRecorder = null;
+        var timeoutId = 0;
         function startRecording() {
           uploadStart();
           var callback = function(e){
             saveBlobForTimestamp(e);
+            if(timeoutId){
+              clearTimeout(timeoutId);
+            }
             if(endTriggered){
-              setTimeout(function(){
-                uploadComplete();
-                setTimeout(function(){
-                  window.close();
-                },1000);
+              timeoutId = setTimeout(function(){
+                  uploadComplete();
+                  setTimeout(function(){
+                    window.close();
+                    alert("close endTriggered - close the video as its not recording anymore");
+                  },1000);
               },8000);
               
             }
+            
           }
           selfRecorder = easyrtc.recordToCallback( easyrtc.getLocalStream(), 
                  callback,2000);
@@ -214,7 +220,7 @@ html
           endTriggered=true;
           var count = 12;
           setInterval(function(){
-            $("#stopRecording").html("stopping in "+count+" seconds");
+            $("#stopRecording").html("stopping in "+count+" seconds, saving captured data");
             count--;
           },1000);
         }
