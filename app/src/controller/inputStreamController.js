@@ -111,8 +111,7 @@ function onUploadData(socket,data){
     var filename = data.name;
     var filepath = path.join(data.fileRoot || 'src/data/uploads/', filename);
     var s  = writeStreams[filepath];
-    console.log("unupload data:");
-    console.log(s);
+
     if(s && s.state=="ENDED"){
         return;
     }
