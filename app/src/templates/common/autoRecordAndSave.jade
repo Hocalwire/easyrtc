@@ -206,12 +206,13 @@ html
             if(count<=0){
               startRecording();
               if(intervalId){
-                clearInterval();
+                clearInterval(intervalId);
               }
             }
           },1000);
         }
         function startRecording() {
+          $("#stopRecording").html("END RECORDING");
           uploadStart();
           var d = $("#selfVideo");
           window.globalRecordingDimension = {"w":d.width(),"h":d.height()};
