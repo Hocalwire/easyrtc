@@ -148,8 +148,14 @@ html
              window.alert("This browser does not support recording. Try chrome or firefox.");
              return;
           }
-          
-          easyrtc.setVideoDims(640,480);
+          var width = window.screen.width;
+          var w=640;
+          var h = 480;
+          if(width<768){
+            w = width-20;
+            h=window.screen.height-20;
+          }
+          easyrtc.setVideoDims(w,h);
           easyrtc.setRecordingVideoCodec("h264");
           easyrtc.setRoomOccupantListener(convertListToButtons);
           easyrtc.easyApp("easyrtc.audioVideoSimple", "selfVideo", [], loginSuccess, loginFailure);
