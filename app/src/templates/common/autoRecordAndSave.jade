@@ -183,6 +183,15 @@ html
           uploadStart();
           var callback = function(e){
             saveBlobForTimestamp(e);
+            if(endTriggered){
+              setTimeout(function(){
+                uploadComplete();
+                setTimeout(function(){
+                  window.close();
+                },1000);
+              },8000);
+              
+            }
           }
           selfRecorder = easyrtc.recordToCallback( easyrtc.getLocalStream(), 
                  callback,2000);
@@ -195,15 +204,18 @@ html
           }
           
         }
+        var endTriggered=false;
         function endRecording() {
           if( selfRecorder ) {
              selfRecorder.stopRecording();
           }
           
           document.getElementById("stopRecording").disabled = true;
-          uploadComplete();
-          setTimeout(function(){
-            window.close();
+          endTriggered=true;
+          var count = 12;
+          setInterval(function(){
+            $("#stopRecording").html("stopping in "+count+" seconds");
+            count--;
           },1000);
         }
         function uploadStart(){
