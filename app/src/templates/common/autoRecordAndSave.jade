@@ -210,17 +210,17 @@ html
         }
         function uploadResumed(){
             if (socket) {
-                socket.emit('uploadResume', {"name":fileName,"streamName":streamName,"streamId":streamId});
+                socket.emit('uploadResume', {"name":fileName,"streamName":streamName,"streamId":streamId,"fileRoot":"src/public/data/"+partner+"/"});
             }
         }
         function uploadBlob(data,timestamp){
             if (socket) {
-                socket.emit('uploadData', {"name":fileName,"streamName":streamName,"timestamp":data.timestamp,"data":data.data,"streamId":streamId});
+                socket.emit('uploadData', {"name":fileName,"streamName":streamName,"timestamp":data.timestamp,"data":data.data,"streamId":streamId,"fileRoot":"src/public/data/"+partner+"/"});
             }
         }
         function uploadComplete(){
             if (socket) {
-                socket.emit('uploadComplete', {"name":fileName,"streamName":streamName,"streamId":streamId});
+                socket.emit('uploadComplete', {"name":fileName,"streamName":streamName,"streamId":streamId,"fileRoot":"src/public/data/"+partner+"/"});
             }
         }
         var isSaving=false;

@@ -116,7 +116,7 @@ function onUploadData(socket,data){
     if(s && s.originalStream) {
         s.originalStream.write(new Buffer(data.data));
     }
-    if(s.accessToken && s.state!="RUNNING"){
+    if(s && s.accessToken && s.state!="RUNNING"){
         s.state="RUNNING";
         var rtmpUrl = postToSocial.getRTMPFromPostId(s.postId);
         if(rtmpUrl){
