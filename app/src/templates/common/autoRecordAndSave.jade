@@ -189,12 +189,30 @@ html
             }
             if(endTriggered){
               timeoutId = setTimeout(function(){
+                if(window.recorder.getBlob()){
+                    var blob = window.recorder.getBlob(); 
+                    var bb = new Blob([blob], {type: 'video/mp4'});
+                    var timestamp = new Date().getTime();
+                    var item = {"data":bb,"timestamp":timestamp};
+                    uploadBlob(item,timestamp);
+                    setTimeout(function(){
+                      uploadComplete();
+                      setTimeout(function(){
+                        window.close();
+                        alert("close endTriggered - close the video as its not recording anymore");
+                      },1000);
+                    },5000);
+                } else {
                   uploadComplete();
                   setTimeout(function(){
                     window.close();
                     alert("close endTriggered - close the video as its not recording anymore");
                   },1000);
-              },8000);
+                }
+                
+
+                  
+              },5000);
               
             }
             

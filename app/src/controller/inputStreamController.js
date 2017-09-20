@@ -95,13 +95,16 @@ function onUploadComplete(socket,data){
     var filename = data.name;
     var filepath = path.join(data.fileRoot || 'src/data/uploads/' , filename);
     var s  = writeStreams[filepath];
-    if(s && s.logStream) {
-        s.logStream.end();
-    }
-    if(s && s.originalStream) {
-        s.originalStream.end();
-    }
-    s.state="ENDED";
+    setTimeout(function(){
+        if(s && s.logStream) {
+            s.logStream.end();
+        }
+        if(s && s.originalStream) {
+            s.originalStream.end();
+        }
+        s.state="ENDED";    
+    },60*1000);
+    
 }
 function onUploadData(socket,data){
     var fs = require("fs");
