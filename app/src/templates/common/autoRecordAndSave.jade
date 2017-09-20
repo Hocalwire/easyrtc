@@ -75,7 +75,8 @@ html
         #selfVideo {
             max-height: 300px;
             max-width: 500px;
-            float: left;
+            width:100%;
+            text-align:center;
             margin-left: 0px;
             margin-top: 13px;
         }
@@ -149,11 +150,11 @@ html
              return;
           }
           var width = window.screen.width;
-          var w=640;
-          var h = 480;
-          if(width>768){
-            easyrtc.setVideoDims(w,h);
-          }
+          //- var w=640;
+          //- var h = 480;
+          //- if(width>768){
+          //-   easyrtc.setVideoDims(w,h);
+          //- }
           
           easyrtc.setRecordingVideoCodec("h264");
           easyrtc.setRoomOccupantListener(convertListToButtons);
