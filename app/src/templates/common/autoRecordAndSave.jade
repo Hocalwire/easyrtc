@@ -219,7 +219,7 @@ html
         var endTriggered=false;
         var endTriggeredTimeStamp=0;
         function endRecording() {
-          endTriggeredTimeStamp=new Date().getTime();
+          endTriggeredTimeStamp=new Date().getTime()+1000;
           document.getElementById("stopRecording").disabled = true;
           endTriggered=true;
           var count = 12;
