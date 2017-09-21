@@ -9,7 +9,7 @@ html
         meta(charset="utf-8")
         meta(content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible")
         meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no")
-        title EasyRTC Demo:EasyRTC Demo: Video+Audio HD 720
+        title Hocalwire Auto Record And Save
         link(rel='stylesheet', type='text/css', href='/easyrtc/css/easyrtc.css')
         // hide
         link(rel='stylesheet', type='text/css', href='/easyrtc/css/landing.css')
@@ -22,8 +22,8 @@ html
         // show
         // Assumes global locations for socket.io.js and easyrtc.js
         script(src='/easyrtc/js/socket-io.js?b=20')
-        script(src="/recording/scripts/RecordRTC.js?a=20")
-        script(type='text/javascript', src='/easyrtc/js/easyrtc.js?a=20')
+        script(src="/recording/scripts/RecordRTC.js?random=#{random}")
+        script(type='text/javascript', src='/easyrtc/js/easyrtc.js?random=#{random}')
         //- script(type='text/javascript', src='js/demo_audio_video_simple_hd.js')
     body(onload='connect();')
         // hide
@@ -196,13 +196,18 @@ html
         var selfRecorder = null;
         var callerRecorder = null;
         var timeoutId = 0;
+        var intervalId=0;
         function startRecordingNow(){
           var count = 5;
-          setInterval(function(){
+           
+          intervalId = setInterval(function(){
             $("#stopRecording").html("starting in "+count+" seconds");
             count--;
             if(count<=0){
               startRecording();
+              if(intervalId){
+                clearInterval();
+              }
             }
           },1000);
         }
