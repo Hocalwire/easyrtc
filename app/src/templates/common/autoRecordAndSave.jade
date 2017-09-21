@@ -37,7 +37,7 @@ html
                         video#selfVideo.easyrtcMirror(autoplay='autoplay',muted="true",volume=0)
                     #recordButtons
                         //- button#startRecording(disabled='disabled', onclick='startRecording();') Start recording
-                        button#stopRecording(disabled='disabled', onclick='endRecording();') End/finish recording
+                        button#stopRecording(disabled='disabled', onclick='endRecording();') End Recording
                         
             #footer
                
@@ -93,6 +93,7 @@ html
         }
         #recordButtons {
           clear:both;
+          margin-top:20px;
         }
         @media (max-width: 768px)  {
           #selfVideo {
@@ -212,7 +213,7 @@ html
           },1000);
         }
         function startRecording() {
-          $("#stopRecording").html("END RECORDING");
+          $("#stopRecording").html("End Recording");
           uploadStart();
           var d = $("#selfVideo");
           window.globalRecordingDimension = {"w":d.width(),"h":d.height()};
