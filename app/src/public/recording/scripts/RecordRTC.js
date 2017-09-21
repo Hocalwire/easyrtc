@@ -4416,7 +4416,7 @@ if (typeof RecordRTC !== 'undefined') {
 function MultiStreamRecorder(arrayOfMediaStreams, options) {
     var self = this;
 
-    var w = 500;
+    var w =500;
     var h=500;
     if(window.screen.width<768){
         width = 300;
@@ -4439,11 +4439,11 @@ function MultiStreamRecorder(arrayOfMediaStreams, options) {
     }
 
     if (!options.video.width) {
-        options.video.width = 360;
+        options.video.width = w;
     }
 
     if (!options.video.height) {
-        options.video.height = 240;
+        options.video.height = h;
     }
 
     /**
