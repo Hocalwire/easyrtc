@@ -4419,8 +4419,12 @@ function MultiStreamRecorder(arrayOfMediaStreams, options) {
     var w =500;
     var h=500;
     if(window.screen.width<768){
-        width = 300;
-        height = 300;
+        w = 300;
+        h = 300;
+    }
+    if(window.globalRecordingDimension){
+        w = window.globalRecordingDimension.w;
+        h = window.globalRecordingDimension.h;
     }
     options = options || {
         mimeType: 'video/webm',

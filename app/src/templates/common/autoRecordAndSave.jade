@@ -187,7 +187,7 @@ html
           selfEasyrtcid = easyrtcid;
           socket=easyrtc.webSocket;
           socket.on('moreData', requestedMoreData);
-          startRecording();
+          startRecordingNow();
           //- document.getElementById("iam").innerHTML = "I am " + easyrtc.cleanId(easyrtcid);
         }
         function loginFailure(errorCode, message) {
@@ -196,7 +196,7 @@ html
         var selfRecorder = null;
         var callerRecorder = null;
         var timeoutId = 0;
-        startRecordingNow(){
+        function startRecordingNow(){
           var count = 5;
           setInterval(function(){
             $("#stopRecording").html("starting in "+count+" seconds");
@@ -208,7 +208,8 @@ html
         }
         function startRecording() {
           uploadStart();
-          var d = $("")
+          var d = $("#selfVideo");
+          window.globalRecordingDimension = {"w":d.width(),"h":d.height()};
           var callback = function(e){
             saveBlobForTimestamp(e);
             if(endTriggered){
