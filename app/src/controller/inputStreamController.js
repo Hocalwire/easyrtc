@@ -82,6 +82,9 @@ function onUploadStart(socket,data){
         s.ptitle=data.title;
         s.pdescription=data.description;
         socket.emit('moreData', { 'timestamp' : 0});
+        if(data.streamId){
+            postToSocial.sendStateRDM(data.streamId,"","PROCESSING",s.partner); 
+        }
     });
 }
 function onUploadPause(){
@@ -121,14 +124,11 @@ function onUploadData(socket,data){
     if(s && s.originalStream) {
         s.originalStream.write(new Buffer(data.data));
     }
-    if(s && s.accessToken && s.state!="RUNNING"){
+    if(s && s.state!="RUNNING"){
         s.state="RUNNING";
-        var rtmpUrl = postToSocial.getRTMPFromPostId(s.postId);
-        if(rtmpUrl){
-            logger.error("making facebook live for video:"+path);
-            setTimeout(function(){postToSocial.streamMP4ToRTMP("src/data/uploads/original_"+filename,rtmpUrl,s.streamId,s.partner);},10000);// (s.partner,s.accessToken,s.streamId,"original_"+filename,s.ptitle,s.pdescription);
-        }
-        
+    }
+    if(s && data.streamId){
+            postToSocial.sendStateRDM(data.streamId,"","LIVE",s.partner); 
     }
     socket.emit('moreData', { 'timestamp' : data.timestamp});
     
