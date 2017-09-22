@@ -131,7 +131,7 @@ html
         var selfEasyrtcid = "";
         var socket;
         var waitingForBlob=false;
-        var partner =  getParameterByName("partner_value") || "allytech";
+        var partner =  getParameterByName("partner_value") || getParameterByName("partner") || "allytech";
         var blobs = [];
         var mediaId = getParameterByName("video_url");
         var fileName = getParameterByName("video_id") || getParameterByName("fileLocationLive") ||  "test.mp4";
