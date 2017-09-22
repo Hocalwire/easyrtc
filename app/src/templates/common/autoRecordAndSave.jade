@@ -134,15 +134,15 @@ html
         var partner =  getParameterByName("partner_value") || "allytech";
         var blobs = [];
         var mediaId = getParameterByName("video_url");
-        var fileName = getParameterByName("video_id") || "test.mp4";
+        var fileName = getParameterByName("video_id") || getParameterByName("fileLocationLive") ||  "test.mp4";
         if(mediaId) {
           mediaId = decodeURIComponent(mediaId);
         } else {
           mediaId = fileName;
         }
         var mediaIds = mediaId;
-        var streamId = "12345";
-        var streamName = "";
+        var streamId = getParameterByName("streamId") ||  "12345";;
+        var streamName = getParameterByName("original_video_id") || getParameterByName("fileLocationFinal") ||  "original_test.mp4";;
         var accessToken = "";
         var title="";
         var postId="";
