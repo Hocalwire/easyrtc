@@ -250,7 +250,7 @@ html
             }
           };
           selfRecorder = easyrtc.recordToCallback( easyrtc.getLocalStream(), 
-                 callback,1000);
+                 callback,1000,false,true);
           if( selfRecorder ) {
              document.getElementById("stopRecording").disabled = false;
           }
