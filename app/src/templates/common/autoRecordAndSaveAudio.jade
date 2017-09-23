@@ -35,6 +35,7 @@ html
                 #demoContainer
                     #videos
                         video#selfVideo.easyrtcMirror(autoplay='autoplay',muted="true",volume=0)
+                    img(src="/images/recording-in-progress.jpg",style="max-width:500px;")
                     #recordButtons
                         //- button#startRecording(disabled='disabled', onclick='startRecording();') Start recording
                         button#stopRecording(disabled='disabled', onclick='endRecording();') End Recording
