@@ -8963,7 +8963,7 @@ easyrtc.setRecordingVideoCodec("vp8");
 * @param  {HTMLMediaStream} mediaStream 
 * @returns a recorder object or null if recording not supported.
 */
-function startRecording(mediaStream,timeSliceV,onTimeStampFn,previewElement) {
+function startRecording(mediaStream,timeSliceV,onTimeStampFn,previewElement,audioOnly) {
 
     if( !easyrtc.supportsRecording ) {
     console.log("recording not supported by your browser");
@@ -8974,7 +8974,7 @@ function startRecording(mediaStream,timeSliceV,onTimeStampFn,previewElement) {
         window.recorder = new RecordRTC([mediaStream], {
                   mimeType: 'video/webm\;codecs=h264',
                   timeSlice : timeSliceV,
-                  type : "video",
+                  type : (audioOnly ? "audio" : "video"),
                   onTimeStamp : function(a,b){
                       player.allTimestamps = b;
                       player.currentTimestamp = a;
@@ -9013,10 +9013,10 @@ function startRecording(mediaStream,timeSliceV,onTimeStampFn,previewElement) {
 * @param {HTMLMediaStream} mediaStream a local or remote media stream.
 * @param {Function} dataCallback a function to receive the webm data from.
 */
-easyrtc.recordToCallback = function (mediaStream, dataCallback,timeSlice,previewElement) {
+easyrtc.recordToCallback = function (mediaStream, dataCallback,timeSlice,previewElement,audioOnly) {
   var mediaRecorder;
   if(timeSlice){
-    mediaRecorder = startRecording(mediaStream,timeSlice,dataCallback,previewElement); 
+    mediaRecorder = startRecording(mediaStream,timeSlice,dataCallback,previewElement,audioOnly); 
   }  else {
     mediaRecorder = startRecording(mediaStream); 
   }
