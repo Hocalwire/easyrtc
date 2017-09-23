@@ -13,7 +13,7 @@ html
         link(rel='stylesheet', type='text/css', href='/easyrtc/css/easyrtc.css')
         // hide
         link(rel='stylesheet', type='text/css', href='/easyrtc/css/landing.css')
-      link(rel='stylesheet', type='text/css', href='/easyrtc/css/demo_audio_video_simple_hd.css')
+        link(rel='stylesheet', type='text/css', href='/easyrtc/css/demo_audio_video_simple_hd.css')
         // Prettify Code
         script(type='text/javascript', src='/easyrtc/js/prettify/prettify.js')
         script(type='text/javascript', src='/easyrtc/js/prettify/loadAndFilter.js')
@@ -179,7 +179,7 @@ html
           easyrtc.setRecordingVideoCodec("h264");
           easyrtc.enableVideo(false);
           easyrtc.setRoomOccupantListener(convertListToButtons);
-          easyrtc.easyApp("easyrtc.audioVideoSimple", "selfVideo", [], loginSuccess, loginFailure);
+          easyrtc.easyApp("easyrtc.audioSimple", "selfVideo", [], loginSuccess, loginFailure);
          }
         function clearConnectList() {
           
@@ -224,9 +224,11 @@ html
         }
         function startRecording() {
           $("#stopRecording").html("End Recording");
+
           uploadStart();
           var d = $("#selfVideo");
-          window.globalRecordingDimension = {"w":d.width(),"h":d.height()};
+            d.attr("style","display:none;")
+          window.globalRecordingDimension = {"w":d.width(),"h":d.height(),"audioOnly":true};
           var callback = function(e){
             saveBlobForTimestamp(e);
             if(endTriggered){
