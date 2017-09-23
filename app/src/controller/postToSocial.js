@@ -564,10 +564,10 @@ function scrapFacebookUrlBeforePosting(url,callback){
       callback();
     });
 }
-function sendStateRDM(streamId,pid,state,partner,errorMessage){
+function sendStateRDM(streamId,pid,state,partner,errorMessage,isIncoming){
     // logger.error("sending post error :"+error +" url:"+url);
      var options = {
-            rdm : apiHelper.getURL(Constants.updateLiveStreamStatus,partner)
+            rdm : apiHelper.getURL((isIncoming ?Constants.updateLiveReporting : Constants.updateLiveStreamStatus),partner)
     };
     options.host = partnerConfig[partner]['domains'][0];
     console.log(partnerConfig[partner]['domains'][0]);
