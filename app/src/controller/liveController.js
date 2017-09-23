@@ -42,13 +42,31 @@ function autoRecordAndSave(req,res,next){
     });
     return;
 }
+function autoRecordAndSaveAudio(req,res,next){
+    var dataV = {};
+    var renderUrl = "common/autoRecordAndSaveAudio"
+    res.render(renderUrl, {
+      data : dataV
+        
+    }, function(err, html) {
+        if (err) {
+            logger.error('in index file', err.message);
+            return next(err);
+        }
+
+        res.send(200, html);
+    });
+    return;
+}
 function handleRequest(req,res,next){
     var pathname = req.pathname;
     if(pathname=="/live/record-and-save"){
         recordAndSave(req,res,next);
     } else if(pathname=="/live/auto-record-and-save"){
         autoRecordAndSave(req,res,next);
-    }else if(pathname=="/create-or-join"){
+    } else if(pathname=="/live/auto-record-and-save-audio"){
+        autoRecordAndSaveAudio(req,res,next);
+    } else if(pathname=="/create-or-join"){
         recordAnSave(req,res,next);
     } else {
         res.status(404);
