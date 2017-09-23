@@ -132,6 +132,7 @@ module.exports = {
     getUserSubscriptionFilter : "com.rdes.engine.news.RDNewsEngine#getUserSubscriptionFilter",
     requestForTrialPlan : "com.rdes.service.rdm.RDMessageHandler#requestForTrialPlan",
     updateLiveStreamStatus : "com.rdes.service.rdm.RDMessageHandler#updateLiveStreamStatus",
+    updateLiveReporting : "com.rdes.service.rdm.RDMessageHandler#updateLiveReporting",
     getNewsComments : "com.rdes.engine.news.RDNewsEngine#getNewsComments",
     addNewsComment : "com.rdes.engine.news.RDNewsEngine#addNewsComment",
     validateCouponCode : "com.rdes.service.rdm.RDMessageHandler#validateCouponCode",

@@ -83,7 +83,7 @@ function onUploadStart(socket,data){
         s.pdescription=data.description;
         socket.emit('moreData', { 'timestamp' : 0});
         if(data.streamId){
-            postToSocial.sendStateRDM(data.streamId,"","PROCESSING",s.partner); 
+            postToSocial.sendStateRDM(data.streamId,"","PROCESSING",s.partner,"",true); 
         }
     });
 }
@@ -128,7 +128,7 @@ function onUploadData(socket,data){
         s.state="RUNNING";
     }
     if(s && data.streamId){
-            postToSocial.sendStateRDM(data.streamId,"","LIVE",s.partner); 
+            postToSocial.sendStateRDM(data.streamId,"","LIVE",s.partner,"",true); 
     }
     socket.emit('moreData', { 'timestamp' : data.timestamp});
     
