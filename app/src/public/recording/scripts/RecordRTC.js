@@ -4474,7 +4474,9 @@ function MultiStreamRecorder(arrayOfMediaStreams, options) {
 
         mediaRecorder = new MediaStreamRecorder(mixedVideoStream, options);
         self.mediaRecorder = mediaRecorder;
-        drawVideosToCanvas();
+        if(!window.globalRecordingDimension.audioOnly){
+            drawVideosToCanvas();
+        }
 
         mediaRecorder.record();
     };
