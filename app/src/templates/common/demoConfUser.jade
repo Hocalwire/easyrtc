@@ -28,9 +28,9 @@ html
         script(src="/recording/scripts/multipartyHandler.js?random=#{random}")
     body(onload='appInit()')
         // hide
+        #capture-wrapper(style='z-index: 9999999;position: absolute;')
+            a#capture(style='font-size:20px;background:green;padding:10px;display:block')  RECORD 
         #container
-            #capture-wrapper(style='border:2px solid #ccc; padding: 5px;')
-                a#capture(style='font-size:20px;background:green;padding:10px;display:block')  RECORD 
             #fullpage.boxCommon(style='background-image:url(/images/breaking.gif)')
                 video#box0.transit.boxCommon.thumbCommon.easyrtcMirror(muted='muted', volume='0')
                 video#box1.transit.boxCommon.thumbCommon(style='visibility:hidden')
