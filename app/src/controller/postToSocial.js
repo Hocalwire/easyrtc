@@ -1433,4 +1433,5 @@ module.exports.streamMP4ToRTMP = streamMP4ToRTMP;
 module.exports.sendStateRDM=sendStateRDM;
 module.exports.postMP4ToFacebook=postMP4ToFacebook;
 module.exports.getRTMPFromPostId=getRTMPFromPostId;
+module.exports.runCommand = runCommand;
 //module.exports.makeVideoFromCategory=makeVideoFromCategory;
