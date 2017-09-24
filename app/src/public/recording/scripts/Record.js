@@ -60,7 +60,7 @@ function Record(){
     function startRecording() {
         uploadStart();
         window.globalRecordingDimension = {"w":(self.options.width || self.defaults.width),"h":(self.options.height || self.defaults.height),"audioOnly":(self.options.audioOnly || false)};
-        self.recorder = RecordRTC([self.options.initStream], {
+        window.recorder = RecordRTC([self.options.initStream], {
             mimeType: 'video/webm\;codecs=h264',
             timeSlice : self.options.timeSlice || self.defaults.timeSlice,
             type : "video",
@@ -68,7 +68,7 @@ function Record(){
                 var player = {};
                 player.allTimestamps = b;
                 player.currentTimestamp = a;
-                var internal = self.recorder.getInternalRecorder().mediaRecorder;
+                var internal = window.recorder.getInternalRecorder().mediaRecorder;
                 var blobs = internal.getArrayOfBlobs();
                 player.recordedData = internal.getArrayOfBlobs();
                 if(player.recordedData) {
@@ -105,7 +105,8 @@ function Record(){
                 
             }
         });
-        
+        self.recorder = window.recorder;
+        self.recorder.startRecording();
     }
     function endRecording() {
       self.endTriggered=true;
