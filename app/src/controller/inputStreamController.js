@@ -109,6 +109,33 @@ function onUploadComplete(socket,data){
     },60*1000);
     
 }
+function emitFileAsHLS(){
+    var cmd = 'ffmpeg';
+
+    var args = [
+        '-re', 
+        '-i', mp4path,
+        '-acodec','libmp3lame',
+        '-s', '640x480', 
+        '-ar','44100',
+        '-b:a','128k',
+        '-pix_fmt','yuv420p',
+        '-profile:v','baseline',
+        '-s','426x240',
+        '-bufsize','6000k',
+        '-vb','400k',
+        '-maxrate','1500k', 
+        '-deinterlace','-vcodec',
+        'libx264','-preset', 
+        'slow','-g', 
+        '30','-r','30','-f', 'flv',rtmpurl
+    ];
+    var callback = function(){
+        console.log("===========================================");
+        console.log("command finished   -------------");
+    }
+    postToSocial.runCommand(cmd,args,callback,streamId,partner);
+}
 function onUploadData(socket,data){
     var fs = require("fs");
     var filename = data.name;
@@ -126,6 +153,9 @@ function onUploadData(socket,data){
     }
     if(s && s.state!="RUNNING"){
         s.state="RUNNING";
+        if(data.hlsName){
+            emitFileAsHLS(filepath,data.hlsName)
+        }
     }
     if(s && data.streamId){
             postToSocial.sendStateRDM(data.streamId,"","LIVE",s.partner,"",true); 
