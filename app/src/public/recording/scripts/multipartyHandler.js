@@ -469,7 +469,7 @@ function updateMuteImage(toggle) {
             isMuted = !isMuted;
             videoObject.muted = isMuted;
         }
-        muteButton.src = isMuted?"images/button_unmute.png":"images/button_mute.png";
+        muteButton.src = isMuted?"/recording/images/button_unmute.png":"/recording/images/button_mute.png";
     }
     else {
         muteButton.style.display = "none";
@@ -603,7 +603,7 @@ function showMessage(startX, startY, content) {
 
 
     var cloudObject = document.createElement("img");
-    cloudObject.src = "images/cloud.png";
+    cloudObject.src = "/recording/images/cloud.png";
     cloudObject.style.width = "1px";
     cloudObject.style.height = "1px";
     cloudObject.style.left = startX + "px";
@@ -670,7 +670,7 @@ function messageListener(easyrtcid, msgType, content) {
 }
 
 
-function appInit() {
+function appInit(callback) {
 
     // Prep for the top-down layout manager
     setReshaper('fullpage', reshapeFull);
@@ -722,5 +722,6 @@ function appInit() {
             handleWindowResize();
         },20);
     });
+
 }
 

@@ -4,8 +4,8 @@ html
         -var random=Math.random()
         meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
         // skip
-        link(rel="icon", href="/images/ico/favicon.ico", type="image/x-icon")
-        link(rel="shortcut icon", href="/images/ico/favicon.ico", type="image/x-icon")
+        link(rel="icon", href="//recording/images/ico/favicon.ico", type="image/x-icon")
+        link(rel="shortcut icon", href="//recording/images/ico/favicon.ico", type="image/x-icon")
         meta(charset="utf-8")
         meta(content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible")
         meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no")
@@ -42,9 +42,9 @@ html
                     br
                     button#textentrySubmit(style='float:right;margin-right:1em', onclick='sendText()') Send
                     button#textentryCancel(style='float:left;margin-left:1em', onclick='cancelText()') Cancel
-                img#killButton.transit.boxCommon(onclick='killActiveBox()', src='images/button_close.png', style='display:none;z-index:3', alt='close button')
-                img#muteButton.transit.boxCommon(onclick='muteActiveBox()', src='images/button_mute.png', style='display:none;z-index:3', alt='mute button')
-                img#textEntryButton.transit.boxCommon(onclick='showTextEntry()', src='images/textEntry.png', style='z-index:3;display:none', alt='text button')
+                img#killButton.transit.boxCommon(onclick='killActiveBox()', src='/recording/images/button_close.png', style='display:none;z-index:3', alt='close button')
+                img#muteButton.transit.boxCommon(onclick='muteActiveBox()', src='/recording/images/button_mute.png', style='display:none;z-index:3', alt='mute button')
+                //- img#textEntryButton.transit.boxCommon(onclick='showTextEntry()', src='/recording/images/textEntry.png', style='z-index:3;display:none', alt='text button')
 
                         
             #footer
