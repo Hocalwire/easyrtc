@@ -25,6 +25,7 @@ html
         script(src="/recording/scripts/RecordRTC.js?random=#{random}")
         script(type='text/javascript', src='/easyrtc/js/easyrtc.js?random=#{random}')
         script(src="/recording/scripts/Record.js?random=#{random}")
+        script(src="https://cdn.WebRTC-Experiment.com/getScreenId.js")
         script(src="/recording/scripts/multipartyHandler.js?random=#{random}")
     body(onload='appInit()')
         // hide
@@ -50,6 +51,15 @@ html
                
     
     script.
+        function captureScreen(cb) {
+            getScreenId(function (error, sourceId, screen_constraints) {
+              
+                navigator.getUserMedia(screen_constraints, cb, function (error) {
+                  console.error('getScreenId error', error);
+                  alert('Failed to capture your screen. Please check Chrome console logs for further information.');
+                });
+            });
+        }
         var bindCapture = function(){
             $("#capture").on("click",function(){
                 navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
