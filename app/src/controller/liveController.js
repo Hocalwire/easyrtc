@@ -58,6 +58,22 @@ function autoRecordAndSaveAudio(req,res,next){
     });
     return;
 }
+function autoRecordAndSaveConf(req,res,next){
+    var dataV = {};
+    var renderUrl = "common/autoRecordAndSaveConf"
+    res.render(renderUrl, {
+      data : dataV
+        
+    }, function(err, html) {
+        if (err) {
+            logger.error('in index file', err.message);
+            return next(err);
+        }
+
+        res.send(200, html);
+    });
+    return;
+}
 function handleRequest(req,res,next){
     var pathname = req.pathname;
     if(pathname=="/live/record-and-save"){
@@ -66,6 +82,8 @@ function handleRequest(req,res,next){
         autoRecordAndSave(req,res,next);
     } else if(pathname=="/live/auto-record-and-save-audio"){
         autoRecordAndSaveAudio(req,res,next);
+    }  else if(pathname=="/live/auto-record-and-save-conf"){
+        autoRecordAndSaveConf(req,res,next);
     } else if(pathname=="/create-or-join"){
         recordAnSave(req,res,next);
     } else {
