@@ -167,7 +167,7 @@ function Record(){
                 });
                 isSaving=false;
                 if(waitingForBlob){
-                    requestedMoreData(blobs[0]);
+                    requestedMoreData(self.blobs[0]);
                 }    
             } else {
                 isSaving=false;
