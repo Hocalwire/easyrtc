@@ -29,20 +29,21 @@ html
     body(onload='appInit()')
         // hide
         #container
-            #main
-                #fullpage.boxCommon(style='background-image:url(/images/breaking.jpg)')
-                    video#box0.transit.boxCommon.thumbCommon.easyrtcMirror(muted='muted', volume='0')
-                    video#box1.transit.boxCommon.thumbCommon(style='visibility:hidden')
-                    video#box2.transit.boxCommon.thumbCommon(style='visibility:hidden')
-                    video#box3.transit.boxCommon.thumbCommon(style='visibility:hidden')
-                    #textentryBox(onsubmit='sendText()', style='display:none')
-                        input#textentryField.transit.boxcommon(type='text')
-                        br
-                        button#textentrySubmit(style='float:right;margin-right:1em', onclick='sendText()') Send
-                        button#textentryCancel(style='float:left;margin-left:1em', onclick='cancelText()') Cancel
-                    img#killButton.transit.boxCommon(onclick='killActiveBox()', src='images/button_close.png', style='display:none;z-index:3', alt='close button')
-                    img#muteButton.transit.boxCommon(onclick='muteActiveBox()', src='images/button_mute.png', style='display:none;z-index:3', alt='mute button')
-                    img#textEntryButton.transit.boxCommon(onclick='showTextEntry()', src='images/textEntry.png', style='z-index:3;display:none', alt='text button')
+            #capture-wrapper(style='border:2px solid #ccc; padding: 5px;')
+                a#capture(style='font-size:20px;background:green;padding:10px;display:block')  RECORD 
+            #fullpage.boxCommon(style='background-image:url(/images/breaking.gif)')
+                video#box0.transit.boxCommon.thumbCommon.easyrtcMirror(muted='muted', volume='0')
+                video#box1.transit.boxCommon.thumbCommon(style='visibility:hidden')
+                video#box2.transit.boxCommon.thumbCommon(style='visibility:hidden')
+                video#box3.transit.boxCommon.thumbCommon(style='visibility:hidden')
+                #textentryBox(onsubmit='sendText()', style='display:none')
+                    input#textentryField.transit.boxcommon(type='text')
+                    br
+                    button#textentrySubmit(style='float:right;margin-right:1em', onclick='sendText()') Send
+                    button#textentryCancel(style='float:left;margin-left:1em', onclick='cancelText()') Cancel
+                img#killButton.transit.boxCommon(onclick='killActiveBox()', src='images/button_close.png', style='display:none;z-index:3', alt='close button')
+                img#muteButton.transit.boxCommon(onclick='muteActiveBox()', src='images/button_mute.png', style='display:none;z-index:3', alt='mute button')
+                img#textEntryButton.transit.boxCommon(onclick='showTextEntry()', src='images/textEntry.png', style='z-index:3;display:none', alt='text button')
 
                         
             #footer

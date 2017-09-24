@@ -60,7 +60,7 @@ function autoRecordAndSaveAudio(req,res,next){
 }
 function autoRecordAndSaveConf(req,res,next){
     var dataV = {};
-    var renderUrl = "common/autoRecordAndSaveConf"
+    var renderUrl = "common/demoConfUser"
     res.render(renderUrl, {
       data : dataV
         
