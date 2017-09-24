@@ -54,17 +54,8 @@ function Record(){
     }
 
     function startRecordingNow(startInDuration){
-      var count = startInDuration || 5;
-      var intervalId = setInterval(function(){
-        $("#stopRecording").html("starting in "+count+" seconds");
-        count--;
-        if(count<=0){
-          startRecording();
-          if(intervalId){
-            clearInterval(intervalId);
-          }
-        }
-      },1000);
+        startRecording();
+      
     }
     function startRecording() {
         uploadStart();
@@ -121,36 +112,36 @@ function Record(){
     }
     function uploadStart(){
             if (self.socket) {
-                self.socket.emit('uploadStart', {"name":self.outputFileName,"streamName":self.originalOutputFileName,"streamId":self.streamId,"accessToken":self.accessToken,"partner":self.partner,"title":"","postId":"","fileRoot":"src/public/data/"+partner+"/"});
+                self.socket.emit('uploadStart', {"name":self.outputFileName,"streamName":self.originalOutputFileName,"streamId":self.streamId,"accessToken":self.accessToken,"partner":self.partner,"title":"","postId":"","fileRoot":"src/public/data/"+self.partner+"/"});
             }
         }
         function uploadResumed(){
             if (self.socket) {
-                self.socket.emit('uploadResume', {"name":self.outputFileName,"streamName":self.originalOutputFileName,"streamId":self.streamId,"accessToken":self.accessToken,"partner":self.partner,"title":"","postId":"","fileRoot":"src/public/data/"+partner+"/"});
+                self.socket.emit('uploadResume', {"name":self.outputFileName,"streamName":self.originalOutputFileName,"streamId":self.streamId,"accessToken":self.accessToken,"partner":self.partner,"title":"","postId":"","fileRoot":"src/public/data/"+self.partner+"/"});
             }
         }
         function uploadBlob(data,timestamp){
             if (self.socket) {
-                self.socket.emit('uploadData', {"name":self.outputFileName,"streamName":self.originalOutputFileName,"timestamp":data.timestamp,"data":data.data,"streamId":self.streamId,"fileRoot":"src/public/data/"+partner+"/"});
+                self.socket.emit('uploadData', {"name":self.outputFileName,"streamName":self.originalOutputFileName,"timestamp":data.timestamp,"data":data.data,"streamId":self.streamId,"fileRoot":"src/public/data/"+self.partner+"/"});
             }
         }
         function uploadComplete(){
             if (self.socket) {
-                self.socket.emit('uploadComplete', {"name":self.outputFileName,"streamName":self.originalOutputFileName,"streamId":self.streamId,"accessToken":self.accessToken,"partner":self.partner,"title":"","postId":"","fileRoot":"src/public/data/"+partner+"/"});
+                self.socket.emit('uploadComplete', {"name":self.outputFileName,"streamName":self.originalOutputFileName,"streamId":self.streamId,"accessToken":self.accessToken,"partner":self.partner,"title":"","postId":"","fileRoot":"src/public/data/"+self.partner+"/"});
             }
         }
         var isSaving=false;
         function requestedMoreData(data){
             var timestamp = data.timestamp;
-            if(blobs.length){
+            if(self.blobs.length){
                 if(isSaving){
                     setTimeout(function(){
-                        var b = blobs.shift();
+                        var b = self.blobs.shift();
                         uploadBlob(b);
                         waitingForBlob=false;
                     },100);
                 } else {
-                    var b = blobs.shift();
+                    var b = self.blobs.shift();
                     uploadBlob(b);
                     waitingForBlob=false;
                 }
@@ -169,8 +160,8 @@ function Record(){
                 var blob = recordedData[recordedData.length-1]; 
                 var bb = new Blob([blob], {type: 'video/mp4'});
                 var item = {"data":bb,"timestamp":currentTimestamp};
-                blobs.push(item);
-                blobs = blobs.sort(function(a,b){
+                self.blobs.push(item);
+                self.blobs = self.blobs.sort(function(a,b){
                     return (a['timestamp']-b['timestamp']);
                 });
                 isSaving=false;
