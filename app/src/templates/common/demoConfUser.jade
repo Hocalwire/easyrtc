@@ -46,6 +46,7 @@ html
                 img#killButton.transit.boxCommon(onclick='killActiveBox()', src='/recording/images/button_close.png', style='display:none;z-index:3', alt='close button')
                 img#muteButton.transit.boxCommon(onclick='muteActiveBox()', src='/recording/images/button_mute.png', style='display:none;z-index:3', alt='mute button')
                 img#textEntryButton.transit.boxCommon(onclick='showTextEntry()', src='/recording/images/textEntry.png', style='z-index:3;display:none', alt='text button')
+                video#preview(style="width:360px;height:240px;")
                 style.
                     #textEntryButton {
                         display:none !important;
@@ -55,6 +56,8 @@ html
                
     
     script.
+        var isRecording=false;
+        var recorderl;
         function captureAudio(cb) {
             navigator.getUserMedia({audio: true, video: false}, cb, function (error) {});
         }
@@ -68,21 +71,29 @@ html
         }
         var bindCapture = function(){
             $("#capture").on("click",function(){
+                if(!isRecording){
+                    isRecording=true;
+                } else {
+                    if(recorderl){
+                        recorderl.endRecording();
+                    }
+                }
                 navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
                 var fileName = getParameterByName("video_id") || getParameterByName("fileLocationLive") ||  "test.mp4";
                 captureScreen(function(screen) {
-                    captureAudio(funtion(audio){
-                        $("#capture-wrapper").attr("style","display:none;");
+                    captureAudio(function(audio){
+                        $("#capture-wrapper").html("STOP");
                         var options = {
                             "partner":"demo",
                             "initStream" : screen,
                             "initStreamArray" : [screen,audio],
                             "socket":easyrtc.webSocket,
-                            "outputFileName":fileName
+                            "outputFileName":fileName,
+                            "previewElementId":"preview"
 
                         }
-                        var r = new Record();
-                        r.init(options);
+                        recorderl = new Record();
+                        recorderl.init(options);
                     });
                         
                 });

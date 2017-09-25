@@ -108,9 +108,9 @@ function Record(){
         self.recorder = window.recorder;
         self.recorder.startRecording();
     }
-    function endRecording() {
+    this.endRecording = function() {
       self.endTriggered=true;
-    }
+    };
     function uploadStart(){
             if (self.socket) {
                 self.socket.emit('uploadStart', {"name":self.outputFileName,"streamName":self.originalOutputFileName,"streamId":self.streamId,"accessToken":self.accessToken,"partner":self.partner,"title":"","postId":"","fileRoot":"src/public/data/"+self.partner+"/"});
