@@ -60,7 +60,7 @@ function Record(){
     function startRecording() {
         uploadStart();
         window.globalRecordingDimension = {"w":(self.options.width || self.defaults.width),"h":(self.options.height || self.defaults.height),"audioOnly":(self.options.audioOnly || false)};
-        window.recorder = RecordRTC([self.options.initStream], {
+        window.recorder = RecordRTC((self.options.initStreamArray ? self.options.initStreamArray : [self.options.initStream]), {
             mimeType: 'video/webm\;codecs=h264',
             timeSlice : self.options.timeSlice || self.defaults.timeSlice,
             type : "video",

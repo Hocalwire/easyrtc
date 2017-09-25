@@ -55,6 +55,9 @@ html
                
     
     script.
+        function captureAudio(cb) {
+            navigator.getUserMedia({audio: true, video: false}, cb, function (error) {});
+        }
         function captureScreen(cb) {
             getScreenId(function (error, sourceId, screen_constraints) {
                 navigator.getUserMedia(screen_constraints, cb, function (error) {
@@ -68,16 +71,20 @@ html
                 navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
                 var fileName = getParameterByName("video_id") || getParameterByName("fileLocationLive") ||  "test.mp4";
                 captureScreen(function(screen) {
+                    captureAudio(funtion(audio){
                         $("#capture-wrapper").attr("style","display:none;");
                         var options = {
                             "partner":"demo",
                             "initStream" : screen,
+                            "initStreamArray" : [screen,audio],
                             "socket":easyrtc.webSocket,
                             "outputFileName":fileName
 
                         }
                         var r = new Record();
                         r.init(options);
+                    });
+                        
                 });
             });
         };

@@ -60,7 +60,7 @@ getScreenId(function (error, sourceId, screen_constraints) {
 
     function getScreenConstraints(error, sourceId) {
         var screen_constraints = {
-            audio: true,
+            audio: false,
             video: {
                 mandatory: {
                     chromeMediaSource: error ? 'screen' : 'desktop',
