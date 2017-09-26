@@ -19,10 +19,25 @@ function Record(){
         self.defaults.width = 300;
         self.defaults.height=300;
     }
+    this.getRecordingStream = function(){
+        return self.recorder;
+    }
     this.init = function(options){
         self.socket = options.socket;
         // socketConnect(options.socketServer || self.defaults['socketDomain'],options.signalServer || self.defaults['signalDomain'])
         setup(options);
+    }
+    this.addStream = function(stream){
+
+    }
+    this.removeStream = function()(stream){
+
+    }
+    this.muteStream = function(){
+
+    }
+    this.unmuteStream = function(){
+
     }
     var setup = function(options,callback){
         self.saveType = options.saveType || self.defaults.saveType;
@@ -60,7 +75,7 @@ function Record(){
     function startRecording() {
         uploadStart();
         window.globalRecordingDimension = {"w":(self.options.width || self.defaults.width),"h":(self.options.height || self.defaults.height),"audioOnly":(self.options.audioOnly || false)};
-        window.recorder = RecordRTC((self.options.initStreamArray ? self.options.initStreamArray : [self.options.initStream]), {
+        self.recorder = RecordRTC((self.options.initStreamArray ? self.options.initStreamArray : [self.options.initStream]), {
             mimeType: 'video/webm\;codecs=h264',
             timeSlice : self.options.timeSlice || self.defaults.timeSlice,
             type : "video",
@@ -68,7 +83,7 @@ function Record(){
                 var player = {};
                 player.allTimestamps = b;
                 player.currentTimestamp = a;
-                var internal = window.recorder.getInternalRecorder().mediaRecorder;
+                var internal = self.recorder.getInternalRecorder().mediaRecorder;
                 var blobs = internal.getArrayOfBlobs();
                 player.recordedData = internal.getArrayOfBlobs();
                 if(player.recordedData) {
@@ -105,7 +120,6 @@ function Record(){
                 
             }
         });
-        self.recorder = window.recorder;
         self.recorder.startRecording();
     }
     this.endRecording = function() {

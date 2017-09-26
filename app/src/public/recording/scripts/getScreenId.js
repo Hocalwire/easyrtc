@@ -117,7 +117,7 @@ getScreenId(function (error, sourceId, screen_constraints) {
 
             loadCallback();
         };
-        iframe.src = 'https://www.webrtc-experiment.com/getSourceId/'; // https://wwww.yourdomain.com/getScreenId.html
+        iframe.src = 'https://rtc.vocalwire.com/getSourceId.html'; // https://wwww.yourdomain.com/getScreenId.html
         iframe.style.display = 'none';
         (document.body || document.documentElement).appendChild(iframe);
     }
