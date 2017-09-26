@@ -19,6 +19,7 @@ var screenCallback;
 
 DetectRTC.screen = {
     chromeMediaSource: 'screen',
+
     getSourceId: function (callback) {
 		screenCallback = callback;
         window.postMessage('get-sourceId', '*');
@@ -42,21 +43,27 @@ DetectRTC.screen = {
             if (screenCallback) screenCallback(DetectRTC.screen.sourceId);
         }
     },
-    Ext_Detect_NotInstalled: function (ExtName,ExtID) {
+    Ext_Detect_NotInstalled: function (ExtName,ExtID,callback) {
         console.log(ExtName + ' Not Installed');
-        if (divAnnounce.innerHTML  != '')
+        var divAnnounce = window.createElement("div");
+        if (divAnnounce.innerHTML  != ''){
             divAnnounce.innerHTML = divAnnounce.innerHTML + "<BR>"
             divAnnounce.innerHTML = divAnnounce.innerHTML + 'Page needs ' + ExtName + ' Extension -- to intall the Screen Recording extension click <a href="https://chrome.google.com/webstore/detail/locallinks/' + ExtID +'">here</a>';
+        }
+        if(callback)
+            callback();
     },
 
-    Ext_Detect_Installed : function(ExtName,ExtID) {
+    Ext_Detect_Installed : function(ExtName,ExtID,callback) {
         console.log(ExtName + ' Installed');
+        if(callback)
+            callback();
     },
 
-    Ext_Detect : function(ExtName,ExtID) {
+    Ext_Detect : function(ExtName,ExtID,callback) {
         var s = document.createElement('script');
-        s.onload = function(){Ext_Detect_Installed(ExtName,ExtID);};
-        s.onerror = function(){Ext_Detect_NotInstalled(ExtName,ExtID);};
+        s.onload = function(){DetectRTC.screen.Ext_Detect_Installed(ExtName,ExtID,callback);};
+        s.onerror = function(){DetectRTC.screen.Ext_Detect_NotInstalled(ExtName,ExtID,callback);};
         s.src = 'chrome-extension://' + ExtID + '/manifest.json';
         document.body.appendChild(s);
     },
@@ -68,29 +75,30 @@ DetectRTC.screen = {
         var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
         var hasExtension = false;
         if (is_chrome==true)
-        {
-           hasExtension= Ext_Detect('RecordRTC',extensionid);};
+        {  
+            var callback = function(){
+                if(!DetectRTC.screen) DetectRTC.screen = {};
+                    if(!DetectRTC.screen.chromeMediaSource) DetectRTC.screen.chromeMediaSource = '';
+                    
+                    if(DetectRTC.screen.chromeMediaSource === 'desktop') {
+                        callback('installed-enabled');
+                        return;
+                    }
+                    
+                    DetectRTC.screen.chromeMediaSource = 'screen';
+                    window.postMessage('are-you-there', '*');
+                    setTimeout(function () {
+                        if (DetectRTC.screen.chromeMediaSource == 'screen') {
+                            callback('installed-disabled');
+                        } else {
+                            callback('installed-enabled');
+                        }
+                    }, 2000);
+            }   
+            DetectRTC.screen.Ext_Detect('RecordRTC',extensionid,callback);
+        
         }
-        if(hasExtension){
-            if(!DetectRTC.screen) DetectRTC.screen = {};
-            if(!DetectRTC.screen.chromeMediaSource) DetectRTC.screen.chromeMediaSource = '';
-            
-            if(DetectRTC.screen.chromeMediaSource === 'desktop') {
-                callback('installed-enabled');
-                return;
-            }
-            
-            DetectRTC.screen.chromeMediaSource = 'screen';
-            window.postMessage('are-you-there', '*');
-            setTimeout(function () {
-                if (DetectRTC.screen.chromeMediaSource == 'screen') {
-                    callback('installed-disabled');
-                } else {
-                    callback('installed-enabled');
-                }
-            }, 2000);
-        }
-       	
+        
     }
 };
 
