@@ -48,11 +48,7 @@ html
             a#capture(style='font-size:20px;background:green;padding:10px;display:block')  RECORD 
         #container
             #fullpage.boxCommon(style='background-image:url(/images/breaking.gif)')
-                -if(window.isHost){
-                    video#box0.transit.boxCommon.thumbCommon.easyrtcMirror(style="display:none")
-                -} else {
-                    video#box0.transit.boxCommon.thumbCommon.easyrtcMirror(muted='muted', volume='0')
-                -}
+                video#box0.transit.boxCommon.thumbCommon.easyrtcMirror(muted='muted', volume='0')
                 
                 video#box1.transit.boxCommon.thumbCommon(style='visibility:hidden')
                 video#box2.transit.boxCommon.thumbCommon(style='visibility:hidden')
@@ -132,8 +128,8 @@ html
         var isHost = getParameterByName("is_host");
         if(isHost){
             bindCapture();
-            easyrtc.enableVideo(false);
-            easyrtc.enableAudio(false);
+            //- easyrtc.enableVideo(false);
+            //- easyrtc.enableAudio(false);
         } else {
             $("#capture-wrapper").attr("style","display:none;");
         }
