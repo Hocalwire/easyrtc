@@ -30,7 +30,7 @@ function Record(){
     this.addStream = function(stream){
 
     }
-    this.removeStream = function()(stream){
+    this.removeStream = function(stream){
 
     }
     this.muteStream = function(){

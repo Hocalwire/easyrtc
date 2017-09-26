@@ -42,34 +42,55 @@ DetectRTC.screen = {
             if (screenCallback) screenCallback(DetectRTC.screen.sourceId);
         }
     },
+    Ext_Detect_NotInstalled: function (ExtName,ExtID) {
+        console.log(ExtName + ' Not Installed');
+        if (divAnnounce.innerHTML  != '')
+            divAnnounce.innerHTML = divAnnounce.innerHTML + "<BR>"
+            divAnnounce.innerHTML = divAnnounce.innerHTML + 'Page needs ' + ExtName + ' Extension -- to intall the Screen Recording extension click <a href="https://chrome.google.com/webstore/detail/locallinks/' + ExtID +'">here</a>';
+    },
+
+    Ext_Detect_Installed : function(ExtName,ExtID) {
+        console.log(ExtName + ' Installed');
+    },
+
+    Ext_Detect : function(ExtName,ExtID) {
+        var s = document.createElement('script');
+        s.onload = function(){Ext_Detect_Installed(ExtName,ExtID);};
+        s.onerror = function(){Ext_Detect_NotInstalled(ExtName,ExtID);};
+        s.src = 'chrome-extension://' + ExtID + '/manifest.json';
+        document.body.appendChild(s);
+    },
+
     getChromeExtensionStatus: function (callback) {
 		// https://chrome.google.com/webstore/detail/screen-capturing/ajhifddimkapgcifgcodmmfdlknahffk
-        var extensionid = 'pcnepejfgcmidedoimegcafiabjnodhk';
+        var extensionid = 'ndcljioonkecdnaaihodjgiliohngojp';
 
-        var image = document.createElement('img');
-        image.src = 'chrome-extension://' + extensionid + '/icon.png';
-        image.onload = function () {
-			if(!DetectRTC.screen) DetectRTC.screen = {};
-			if(!DetectRTC.screen.chromeMediaSource) DetectRTC.screen.chromeMediaSource = '';
-			
-			if(DetectRTC.screen.chromeMediaSource === 'desktop') {
-				callback('installed-enabled');
-				return;
-			}
-			
+        var is_chrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+        var hasExtension = false;
+        if (is_chrome==true)
+        {
+           hasExtension= Ext_Detect('RecordRTC',extensionid);};
+        }
+        if(hasExtension){
+            if(!DetectRTC.screen) DetectRTC.screen = {};
+            if(!DetectRTC.screen.chromeMediaSource) DetectRTC.screen.chromeMediaSource = '';
+            
+            if(DetectRTC.screen.chromeMediaSource === 'desktop') {
+                callback('installed-enabled');
+                return;
+            }
+            
             DetectRTC.screen.chromeMediaSource = 'screen';
             window.postMessage('are-you-there', '*');
             setTimeout(function () {
                 if (DetectRTC.screen.chromeMediaSource == 'screen') {
                     callback('installed-disabled');
                 } else {
-					callback('installed-enabled');
-				}
+                    callback('installed-enabled');
+                }
             }, 2000);
-        };
-        image.onerror = function () {
-            callback('not-installed');
-        };
+        }
+       	
     }
 };
 
