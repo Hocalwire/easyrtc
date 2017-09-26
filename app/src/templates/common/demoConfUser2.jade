@@ -1,0 +1,141 @@
+doctype html
+html
+    head
+        -var random=Math.random()
+        meta(http-equiv='Content-Type', content='text/html; charset=utf-8')
+        // skip
+        link(rel="icon", href="//recording/images/ico/favicon.ico", type="image/x-icon")
+        link(rel="shortcut icon", href="//recording/images/ico/favicon.ico", type="image/x-icon")
+        meta(charset="utf-8")
+        meta(content="IE=Edge,chrome=1" http-equiv="X-UA-Compatible")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0, maximum-scale=1.0,user-scalable=no")
+        title Hocalwire Auto Record And Save
+        link(rel='stylesheet', type='text/css', href='/easyrtc/css/easyrtc.css')
+        // hide
+        link(rel='stylesheet', type='text/css', href='/easyrtc/css/landing.css')
+        link(rel='stylesheet', type='text/css', href='/easyrtc/css/demo_room.css')
+        // Prettify Code
+        script(type='text/javascript', src='/easyrtc/js/prettify/prettify.js')
+        script(type='text/javascript', src='/easyrtc/js/prettify/loadAndFilter.js')
+        script(type='text/javascript', src='/easyrtc/js/prettify/jquery.min.js')
+        link(rel='stylesheet', type='text/css', href='/easyrtc/js/prettify/prettify.css')
+        // show
+        // Assumes global locations for socket.io.js and easyrtc.js
+        script(src='/easyrtc/js/socket-io.js?b=20')
+        script(src="/recording/scripts/RecordRTC.js?random=#{random}")
+        script(type='text/javascript', src='/easyrtc/js/easyrtc.js?random=#{random}')
+        script(src="https://cdn.webrtc-experiment.com/RTCMultiConnection.js")
+        script(src="/recording/scripts/Record.js?random=#{random}")
+        script(src="/recording/scripts/getScreenId.js")
+        script(src="/recording/scripts/multipartyHandler.js?random=#{random}")
+    body(onload='appInit()')
+        script.
+            function getParameterByName(name, url) {
+              if (!url) {
+                url = window.location.href;
+              }
+              name = name.replace(/[\[\]]/g, '\\$&');
+              var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+                results = regex.exec(url);
+              if (!results) return null;
+              if (!results[2]) return '';
+              return decodeURIComponent(results[2].replace(/\+/g, ' '));
+            }
+
+            window.isHost = getParameterByName("is_host");
+        // hide
+        #capture-wrapper(style='z-index: 9999999;position: absolute;')
+            a#capture(style='font-size:20px;background:green;padding:10px;display:block')  RECORD 
+        #container
+            #fullpage.boxCommon(style='background-image:url(/images/breaking.gif)')
+                -if(window.isHost){
+                    video#box0.transit.boxCommon.thumbCommon.easyrtcMirror(style="display:none")
+                -} else {
+                    video#box0.transit.boxCommon.thumbCommon.easyrtcMirror(muted='muted', volume='0')
+                -}
+                
+                video#box1.transit.boxCommon.thumbCommon(style='visibility:hidden')
+                video#box2.transit.boxCommon.thumbCommon(style='visibility:hidden')
+                video#box3.transit.boxCommon.thumbCommon(style='visibility:hidden')
+                #textentryBox(onsubmit='sendText()', style='display:none')
+                    input#textentryField.transit.boxcommon(type='text')
+                    br
+                    button#textentrySubmit(style='float:right;margin-right:1em', onclick='sendText()') Send
+                    button#textentryCancel(style='float:left;margin-left:1em', onclick='cancelText()') Cancel
+                img#killButton.transit.boxCommon(onclick='killActiveBox()', src='/recording/images/button_close.png', style='display:none;z-index:3', alt='close button')
+                img#muteButton.transit.boxCommon(onclick='muteActiveBox()', src='/recording/images/button_mute.png', style='display:none;z-index:3', alt='mute button')
+                img#textEntryButton.transit.boxCommon(onclick='showTextEntry()', src='/recording/images/textEntry.png', style='z-index:3;display:none', alt='text button')
+                video#preview(style="width:360px;height:240px;")
+                style.
+                    #textEntryButton {
+                        display:none !important;
+                    }
+                        
+            #footer
+               
+    
+    script.
+        var isRecording=false;
+        var recorderl;
+        function captureAudio(cb) {
+            navigator.getUserMedia({audio: true, video: false}, cb, function (error) {});
+        }
+        function captureScreen(cb) {
+            getScreenId(function (error, sourceId, screen_constraints) {
+                navigator.getUserMedia(screen_constraints, cb, function (error) {
+                  console.error('getScreenId error', error);
+                  alert('Failed to capture your screen. Please check Chrome console logs for further information.');
+                });
+            });
+        }
+        var bindCapture = function(){
+            $("#capture").on("click",function(){
+                if(!isRecording){
+                    isRecording=true;
+                } else {
+                    if(recorderl){
+                        recorderl.endRecording();
+                    }
+                }
+                navigator.getUserMedia = navigator.getUserMedia || navigator.mozGetUserMedia || navigator.webkitGetUserMedia;
+                var fileName = getParameterByName("video_id") || getParameterByName("fileLocationLive") ||  "test.mp4";
+                captureScreen(function(screen) {
+                    captureAudio(function(audio){
+                        $("#capture-wrapper").html("STOP");
+                        var options = {
+                            "partner":"demo",
+                            "initStream" : screen,
+                            "initStreamArray" : [screen,audio],
+                            "socket":easyrtc.webSocket,
+                            "outputFileName":fileName,
+                            "previewElementId":"preview"
+
+                        }
+                        recorderl = new Record();
+                        recorderl.init(options);
+                    });
+                        
+                });
+            });
+        };
+        function getParameterByName(name, url) {
+          if (!url) {
+            url = window.location.href;
+          }
+          name = name.replace(/[\[\]]/g, '\\$&');
+          var regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+          if (!results) return null;
+          if (!results[2]) return '';
+          return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+        var isHost = getParameterByName("is_host");
+        if(isHost){
+            bindCapture();
+            easyrtc.enableVideo(false);
+            easyrtc.enableAudio(false);
+        } else {
+            $("#capture-wrapper").attr("style","display:none;");
+        }
+        
+        
