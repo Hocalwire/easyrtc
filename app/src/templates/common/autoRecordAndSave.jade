@@ -226,7 +226,7 @@ html
           uploadStart();
           var d = $("#selfVideo");
           window.globalRecordingDimension = {"w":d.width(),"h":d.height()};
-          var thumbBlob = captureVideoFrame("selfVideo","jpg");
+          var thumbBlob = captureVideoFrame("selfVideo","jpeg");
           if(thumbBlob.blob){
             var dataThumb = {"timestamp":new Date().getTime(),"data":thumbBlob.blob};
             uploadThumbBlob(dataThumb);
@@ -411,5 +411,5 @@ html
           });
         }
         if(navigator.mediaDevices.enumerateDevices){
-          navigator.mediaDevices.enumerateDevices().then(gotDevices).catch(handleError);
+          navigator.mediaDevices.enumerateDevices().then(gotDevices);
         }
