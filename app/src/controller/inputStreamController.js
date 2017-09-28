@@ -58,6 +58,9 @@ function setupReportingHandles(){
         socket.on('uploadData', function(data) {
             onUploadData(socket,data);
         });
+        socket.on('uploadThumbData', function(data) {
+            onUploadThumbData(socket,data);
+        });
     });
 }
 function onUploadStart(socket,data){
@@ -72,9 +75,14 @@ function onUploadStart(socket,data){
         }
         var filepath = path.join(fileRoot, filename);
         var filepath1 = path.join(fileRoot, "original_"+filename);
+        var ind = filename.indexOf(".mp4");
+        var thumbName = filename.substring(0,ind)+".jpg";
+
+        var filepathThumb = path.join(fileRoot, thumbName);
         var logStream = fs.createWriteStream(filepath1, {'flags': 'a'});
         var originalStream = fs.createWriteStream(filepath, {'flags': 'a'});
-        writeStreams[filepath] = {"fileRoot":fileRoot,"state":"STARTED","outStream":logStream,"accessToken":data.accessToken,"originalStream":originalStream,"filename":filename,"streamId":data.streamId,"postId":data.postId};
+        var thumbStream = fs.createWriteStream(filepathThumb, {'flags': 'a'});
+        writeStreams[filepath] = {"thumbStream":thumbStream,"fileRoot":fileRoot,"state":"STARTED","outStream":logStream,"accessToken":data.accessToken,"originalStream":originalStream,"filename":filename,"streamId":data.streamId,"postId":data.postId};
         var s = writeStreams[filepath];
         s.partner = data.partner || "allytech";
         s.accessToken=data.accessToken;
@@ -135,6 +143,22 @@ function emitFileAsHLS(){
         console.log("command finished   -------------");
     }
     postToSocial.runCommand(cmd,args,callback,streamId,partner);
+}
+function onUploadThumbData(socket,data){
+    var fs = require("fs");
+    var filename = data.name;
+    var filepath = path.join(data.fileRoot || 'src/data/uploads/', filename);
+    var s  = writeStreams[filepath];
+
+    if(s && s.state=="ENDED"){
+        return;
+    }
+    if(s && s.thumbStream) {
+        s.thumbStream.write(new Buffer(data.data));
+        s.end();
+    }
+    
+    
 }
 function onUploadData(socket,data){
     var fs = require("fs");
