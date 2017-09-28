@@ -38,8 +38,11 @@ html
                         video#selfVideo.easyrtcMirror(autoplay='autoplay',muted="true",volume=0)
                     #recordButtons
                         //- button#startRecording(disabled='disabled', onclick='startRecording();') Start recording
-                        button#stopRecording(disabled='disabled', onclick='endRecording();') End Recording
-                        
+                        span.record-camera-controls
+                          button#stopRecording(disabled='disabled', onclick='endRecording();')
+                            img(src='/images/endrecording.png')
+                          button#switchRecording(disabled='disabled')
+                            img(src='/images/switchrecording.png')
             #footer
                
     style.
@@ -412,4 +415,38 @@ html
         }
         if(navigator.mediaDevices.enumerateDevices){
           navigator.mediaDevices.enumerateDevices().then(gotDevices);
+        }
+        var videoSrcFront,videoSrcBack;
+        var currSrc;
+        function switchCamera(){
+          easyrtc.getVideoSourceList( function(list) {
+              var i;
+              alert(list);
+              if(!list.length || list.length<2){
+                console.log("only one camera available"); 
+                console.log("remove switch camera button");
+                
+              } else {
+                for( i = 0; i < list.length; i++ ) {
+                  console.log("label=" + list[i].label + ", id= " + list[i].id);
+                  if(list[i].label.indexOf('back') > 0){  
+                    videoSrcBack=list[i].id;
+                  } else {
+                    videoSrcFront=list[i].id;
+                  }
+                }
+                $("#switchRecording").removeClass("hide");
+                $("#switchrecording").on("click",function(){
+                  alert("switch camera clicked");
+                  if(!currSrc){
+                    currSrc = videoSrcBack;
+                  } else {
+                    currSrc = (currSrc==videoSrcBack?videoSrcFront:videoSrcBack);
+                  }
+                  easyrtc.setVideoSource(currSrc);
+                  easyrtc.setVideoObjectSrc($("#selfVideo")[0], easyrtc.getLocalStream());
+                });
+              }
+              
+             } 
         }

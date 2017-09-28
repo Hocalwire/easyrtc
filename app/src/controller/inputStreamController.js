@@ -155,7 +155,7 @@ function onUploadThumbData(socket,data){
     }
     if(s && s.thumbStream) {
         s.thumbStream.write(new Buffer(data.data));
-        s.end();
+        s.thumbStream.end();
     }
     
     
