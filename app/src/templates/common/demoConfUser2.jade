@@ -48,28 +48,10 @@ html
             a#capture(style='font-size:20px;background:green;padding:10px;display:block')  RECORD 
         #container
             #fullpage.boxCommon(style='background-image:url(/images/breaking.gif)')
-                -if(window.isHost){
-                    video#box0.transit.boxCommon.thumbCommon.easyrtcMirror(style="display:none")
-                -} else {
-                    video#box0.transit.boxCommon.thumbCommon.easyrtcMirror(muted='muted', volume='0')
-                -}
-                
+                video#box0.transit.boxCommon.thumbCommon.easyrtcMirror(muted='muted', volume='0')
                 video#box1.transit.boxCommon.thumbCommon(style='visibility:hidden')
                 video#box2.transit.boxCommon.thumbCommon(style='visibility:hidden')
                 video#box3.transit.boxCommon.thumbCommon(style='visibility:hidden')
-                #textentryBox(onsubmit='sendText()', style='display:none')
-                    input#textentryField.transit.boxcommon(type='text')
-                    br
-                    button#textentrySubmit(style='float:right;margin-right:1em', onclick='sendText()') Send
-                    button#textentryCancel(style='float:left;margin-left:1em', onclick='cancelText()') Cancel
-                img#killButton.transit.boxCommon(onclick='killActiveBox()', src='/recording/images/button_close.png', style='display:none;z-index:3', alt='close button')
-                img#muteButton.transit.boxCommon(onclick='muteActiveBox()', src='/recording/images/button_mute.png', style='display:none;z-index:3', alt='mute button')
-                img#textEntryButton.transit.boxCommon(onclick='showTextEntry()', src='/recording/images/textEntry.png', style='z-index:3;display:none', alt='text button')
-                video#preview(style="width:360px;height:240px;")
-                style.
-                    #textEntryButton {
-                        display:none !important;
-                    }
                         
             #footer
                
@@ -105,10 +87,10 @@ html
                         var options = {
                             "partner":"demo",
                             "initStream" : screen,
-                            "initStreamArray" : [screen,audio],
+                            //- "initStreamArray" : [screen,audio],
                             "socket":easyrtc.webSocket,
                             "outputFileName":fileName,
-                            "previewElementId":"preview"
+                            //- "previewElementId":"preview"
 
                         }
                         recorderl = new Record();
@@ -132,8 +114,8 @@ html
         var isHost = getParameterByName("is_host");
         if(isHost){
             bindCapture();
-            easyrtc.enableVideo(false);
-            easyrtc.enableAudio(false);
+            //- easyrtc.enableVideo(false);
+            //- easyrtc.enableAudio(false);
         } else {
             $("#capture-wrapper").attr("style","display:none;");
         }
