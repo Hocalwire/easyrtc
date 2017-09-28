@@ -32,7 +32,7 @@ html
             #main
                 // Main Content
                 // show
-                select#videoSource
+                //- select#videoSource
                 #demoContainer
                     #videos
                         video#selfVideo.easyrtcMirror(autoplay='autoplay',muted="true",volume=0)
@@ -41,8 +41,7 @@ html
                         span.record-camera-controls
                           button#stopRecording(disabled='disabled', onclick='endRecording();')
                             img(src='/images/endrecording.png')
-                          button#switchRecording(disabled='disabled')
-                            img(src='/images/switchrecording.png')
+                          
             #footer
                
     style.
@@ -257,6 +256,7 @@ html
               }
             }
           };
+          
           selfRecorder = easyrtc.recordToCallback( easyrtc.getLocalStream(), 
                  callback,1000);
           if( selfRecorder ) {
@@ -380,73 +380,4 @@ html
 
           var blob = new Blob([ arr ], { type: mimeType });
           return { blob: blob, dataUri: dataUri, format: format };
-        };
-        var videoSelect = document.querySelector('select#videoSource');
-        var selectors = [videoSelect];
-
-        function gotDevices(deviceInfos) {
-          // Handles being called several times to update labels. Preserve values.
-          var values = selectors.map(function(select) {
-            return select.value;
-          });
-          selectors.forEach(function(select) {
-            while (select.firstChild) {
-              select.removeChild(select.firstChild);
-            }
-          });
-          for (var i = 0; i !== deviceInfos.length; ++i) {
-            var deviceInfo = deviceInfos[i];
-            var option = document.createElement('option');
-            option.value = deviceInfo.deviceId;
-           if (deviceInfo.kind === 'videoinput') {
-              option.text = deviceInfo.label || 'camera ' + (videoSelect.length + 1);
-              videoSelect.appendChild(option);
-            } else {
-              console.log('Some other kind of source/device: ', deviceInfo);
-            }
-          }
-          selectors.forEach(function(select, selectorIndex) {
-            if (Array.prototype.slice.call(select.childNodes).some(function(n) {
-              return n.value === values[selectorIndex];
-            })) {
-              select.value = values[selectorIndex];
-            }
-          });
-        }
-        if(navigator.mediaDevices.enumerateDevices){
-          navigator.mediaDevices.enumerateDevices().then(gotDevices);
-        }
-        var videoSrcFront,videoSrcBack;
-        var currSrc;
-        function switchCamera(){
-          easyrtc.getVideoSourceList( function(list) {
-              var i;
-              alert(list);
-              if(!list.length || list.length<2){
-                console.log("only one camera available"); 
-                console.log("remove switch camera button");
-                
-              } else {
-                for( i = 0; i < list.length; i++ ) {
-                  console.log("label=" + list[i].label + ", id= " + list[i].id);
-                  if(list[i].label.indexOf('back') > 0){  
-                    videoSrcBack=list[i].id;
-                  } else {
-                    videoSrcFront=list[i].id;
-                  }
-                }
-                $("#switchRecording").removeClass("hide");
-                $("#switchrecording").on("click",function(){
-                  alert("switch camera clicked");
-                  if(!currSrc){
-                    currSrc = videoSrcBack;
-                  } else {
-                    currSrc = (currSrc==videoSrcBack?videoSrcFront:videoSrcBack);
-                  }
-                  easyrtc.setVideoSource(currSrc);
-                  easyrtc.setVideoObjectSrc($("#selfVideo")[0], easyrtc.getLocalStream());
-                });
-              }
-              
-             } 
         }
